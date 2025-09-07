@@ -13,7 +13,7 @@ O **Portal de Professores** é uma plataforma que centraliza e organiza as infor
 
 | Recurso | Link |
 | :--- | :--- |
-| 📖 **Documentação Completa** | [**Acesse o site aqui**](https://unb-mds.github.io/2025-2-Squad-04/) |
+| 📖 **Documentação Completa** | [**Acesse o site aqui**](https://unb-mds.github.io/2025-2-Portal-dos-Professores/) |
 | 🎨 **Template Figma** | [**Visualizar no Figma**](https://www.figma.com/design/bjxbjjiQO9wNsDTUrOxa95/MDS---SQUAD-4) |
 | 🐞 **Tracker de Issues** | [**Ver Tarefas e Bugs**](https://github.com/unb-mds/2025-2-Squad-04/issues) |
 
