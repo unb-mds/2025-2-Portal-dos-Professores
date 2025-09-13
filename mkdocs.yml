@@ -11,6 +11,7 @@ nav:
   - 'Guias de Uso': 'guias-de-uso.md'
   - 'Desenvolvimento': 'desenvolvimento.md'
   - 'Documento de Visão': 'documento_de_visao.md'
+  - 'Atas': 'atas.md'
 
 
 theme:
