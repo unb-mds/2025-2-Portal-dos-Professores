@@ -136,8 +136,8 @@ Oferecer um **ponto único** e confiável de acesso às informações de docente
 | RF-02 | O sisema deve ter uma página index com um looping de menu para acessar as diferentes funcionalidades                        | Alta |
 | RF-03 | O sistema deve ser capaz de minerar dados de outros sites já existentes de exibição do corpo docente da UnB.                 | Média |
 | RF-04 |O sistema deve permitir a visualização da linha de tempo de disciplinas ministradas ao longo dos períodos letivos.     | Alta |
-| RF-05 | *[em definição]                          | Média |
-| RF-06 | *[em definição]         | Baixa |
+| RF-05 | O sistema deve exportar e compartilhar o perfil do professor (PDF) incluindo bio, áreas, últimas publicações e disciplinas.                        | Média |
+| RF-06 | O sistema deve esibir um painel de informações resumidas do professor (mini-card) com foto, nome, unidade, área principal e link para o perfil completo.       | Baixa |
 | RF-07 | O sistema deve permitir a filtragem de professores por ano da última publicação.         | Baixa |
 | RF-08 | O sistema deve indicar a data da última atualização dos dados do professor.        | Baixa |
 
@@ -145,11 +145,10 @@ Oferecer um **ponto único** e confiável de acesso às informações de docente
 
 | Categoria        | Meta/Política                                                                 |
 |------------------|-------------------------------------------------------------------------------|
-| Performance      | p95 < **2s** para render de páginas principais; busca indexada p95 < **500ms** |
-| Acessibilidade   | Conformidade **WCAG 2.1 AA** (teclado, contraste, aria-labels)                |
-| Segurança        | HTTPS, cabeçalhos de segurança, mínimos dados pessoais, **LGPD**              |
-| Disponibilidade  | **99%** durante o semestre letivo **[ajuste conforme infra]**                 |
-| Observabilidade  | Logs de acesso/erros, monitoramento básico                                    |
+| Performance      | Responder a requisições em até **4 segundos** em 95% dos casos.|
+| Segurança   | Dados sensíveis criptografados, Conexões restritas a **HTTPS**, **LGPD**                |
+| Escalabilidade  | Arquitetura preparada para aumento de carga sem reestruturação, suporte à integração de novos módulos sem impactos no núcleo.          |
+| Usabilidade  | Interface **responsiva** (desktop, tablet, mobile), Interface intuitiva com foco em clareza e organização.                               |
 | Privacidade      | Somente dados **públicos**/consentidos; anonimizar métricas de uso            |
 | Manutenibilidade | Código modular, README, linters, CI simples                                   |
 
@@ -164,18 +163,6 @@ Oferecer um **ponto único** e confiável de acesso às informações de docente
 | **Lattes**   | Externa     | Links de referência para currículos         | Opcional no MVP |
 | **Planilhas internas**      | Interna     | Importação semiautomatizada (CSV)            | N/A |
 | **Deptos/Unidades**         | Interna     | Confirmação/atualização de dados              | N/A |
-
----
-
-## 9. Métricas e Critérios de Sucesso (OKRs)
-
-**Objetivo O1 — Descoberta rápida de docentes**  
-- KR1: **Tempo de busca p95 ≤ 10s** (do abrir página até clicar em perfil).  
-- KR2: **≥ 70%** dos usuários encontram o que procuram na **1ª tentativa** (survey).
-
-**Objetivo O2 — Cobertura e qualidade dos dados**  
-- KR3: **≥ 80%** do corpo docente com perfil básico preenchido até **Dez/2025**.  
-- KR4: **≥ 60%** dos perfis com pelo menos **1** link de publicação válido.
 
 ---
 
