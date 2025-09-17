@@ -70,3 +70,72 @@ Para formalizar estas escolhas, foi redigido o seguinte Architecture Decision Re
         * Potencial de custo futuro em caso de expansão massiva do projeto.
 
 ---
+
+## 5. POC mínima
+
+### A ideia da POC é mostrar um exemplo mínimo de como rodaria o código em conjunto da biblioteca **Playwright** para a raspagem dos dados e integrando com os **Agentes de IA** do **Gemini**.
+
+### Link do script que roda a POC mínima: [POC (script)](https://github.com/unb-mds/2025-2-Portal-dos-Professores/blob/main/docs/SPRINT_03/Sprint03_POC_minima.py)
+### Guia Rápido: Rodar a POC Localmente
+
+Guia para configurar e rodar o script da Prova de Conceito (POC) sem Docker.
+
+### Pré-requisitos
+- Python 3.9+ e Git instalados.
+
+---
+
+### 1. Preparar o Ambiente
+
+No seu terminal, clone o repositório, entre na pasta, crie e ative um ambiente virtual.
+
+```bash
+# Clone o projeto e entre na pasta
+git clone <URL_DO_REPOSITORIO>
+cd <NOME_DO_PROJETO>
+
+# Crie e ative o ambiente virtual
+python -m venv .venv
+
+# No Windows (PowerShell):
+.venv\Scripts\Activate.ps1
+
+# No Linux/macOS:
+source .venv/bin/activate
+```
+
+### 2. Instalar Dependências
+
+Com o ambiente (.venv) ativado, instale os pacotes necessários.
+
+```bash
+# Instalar bibliotecas Python
+pip install -r requirements.txt
+
+# Instalar navegadores do Playwright
+playwright install
+```
+
+### 3. Configurar a Chave de API
+
+Você precisa de uma chave secreta do Google para rodar o script.
+
+Copie o arquivo de exemplo para criar seu arquivo de segredos local.
+
+- No Windows: copy .env.example .env
+- No Linux/macOS: cp .env.example .env
+
+Gere sua chave no [Google AI Studio](https://aistudio.google.com/).
+
+Cole a chave dentro do arquivo .env que você acabou de criar.
+
+### 4. Executar o Script
+Execute a POC com o seguinte comando:
+
+```bash
+python poc.py
+```
+
+Você verá o texto original da Wikipedia e o resumo gerado pela IA no terminal.
+
+---
