@@ -26,3 +26,33 @@ O **Product Backlog** é um arterfato do scrum (método ágil utilizado no nosso
 - **Como aluno**, quero visualizar os professores disponíveis em uma lista para encontrar informações facilmente.  
 - **Como pesquisador**, quero ver os principais artigos de um professor para analisar sua produção acadêmica.  
 - **Como coordenador**, quero visualizar métricas consolidadas para entender o perfil do corpo docente.  
+
+# Product Backlog – Histórias de Usuário (Portal de Professores)
+
+## Descrição  
+Este backlog reúne as principais histórias de usuário do Portal de Professores, organizadas por prioridade e status.  
+
+---
+
+## Backlog de Histórias de Usuário
+
+| ID  | História de Usuário                                                                                  | Prioridade | Status       |
+|-----|------------------------------------------------------------------------------------------------------|------------|--------------|
+| 1   | Como aluno, quero visualizar a lista de professores disponíveis para encontrar informações facilmente. | Alta       | A Fazer      |
+| 2   | Como aluno, quero pesquisar professores por nome ou área de atuação para localizar rapidamente quem procuro. | Alta       | A Fazer      |
+| 3   | Como pesquisador, quero ver os principais artigos de um professor para analisar sua produção acadêmica. | Alta       | A Fazer      |
+| 4   | Como pesquisador, quero visualizar métricas de publicações (quantidade, ano, áreas) para entender a evolução da pesquisa de cada professor. | Média      | A Fazer      |
+| 5   | Como visitante, quero acessar informações básicas de cada professor (nome, área, titulação) para conhecer o corpo docente da universidade. | Alta       | A Fazer      |
+| 6   | Como visitante, quero visualizar um resumo automático do currículo de um professor para entender rapidamente sua área de pesquisa. | Média      | A Fazer      |
+
+---
+
+## Legenda de Status  
+- **A Fazer** → Item ainda não iniciado  
+- **Em Progresso** → Item em andamento  
+- **Concluído** → Item finalizado  
+
+## Legenda de Prioridade  
+- **Alta** → Funcionalidade essencial para o valor do produto  
+- **Média** → Importante, mas pode ser entregue depois das críticas  
+- **Baixa** → Funcionalidade extra / melhoria futura  
