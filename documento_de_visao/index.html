@@ -1,0 +1,1697 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Visão, escopo, stakeholders, métricas e riscos do Portal de Professores da UnB, projeto da disciplina MDS (2025/2).">
+      
+      
+        <meta name="author" content="Squad 04 — UnB/MDS">
+      
+      
+      
+        <link rel="prev" href="../desenvolvimento/">
+      
+      
+        <link rel="next" href="../atas/">
+      
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Documento de Visão — Portal de Professores da UnB (Squad 04) - Portal dos Professores</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#documento-de-visao-portal-de-professores-da-unb-squad-04" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Portal dos Professores" class="md-header__button md-logo" aria-label="Portal dos Professores" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Portal dos Professores
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Documento de Visão — Portal de Professores da UnB (Squad 04)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../requisitos/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Requisitos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../arquitetura/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Arquitetura
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../guias-de-uso/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Guias de Uso
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../desenvolvimento/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Desenvolvimento
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Documento de Visão
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../atas/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Atas
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Portal dos Professores" class="md-nav__button md-logo" aria-label="Portal dos Professores" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    Portal dos Professores
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Início
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requisitos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arquitetura
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guias-de-uso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Guias de Uso
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../desenvolvimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Desenvolvimento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Documento de Visão
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--Em elaboração"></span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Documento de Visão
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--Em elaboração"></span>
+  
+
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-objetivo-e-visao" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Objetivo e Visão
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-problema-e-oportunidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Problema e Oportunidade
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-escopo" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Escopo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Escopo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-incluido-mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Incluído (MVP)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-fora-de-escopo-nesta-fase" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Fora de escopo (nesta fase)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-publico-alvo-e-personas" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Público-Alvo e Personas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-stakeholders-e-governanca" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Stakeholders e Governança
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-funcionalidades-alto-nivel" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Funcionalidades (alto nível)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Funcionalidades (alto nível)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-catalogo-de-docentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Catálogo de Docentes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-producao-academica" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 Produção Acadêmica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-historico-de-ensino" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 Histórico de Ensino
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-busca-e-filtros" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 Busca e Filtros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-administracao-basica" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5 Administração Básica
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Requisitos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Requisitos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-requisitos-funcionais-rf" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 Requisitos Funcionais (RF)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-requisitos-nao-funcionais-rnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 Requisitos Não Funcionais (RNF)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-fontes-de-dados-e-integracoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Fontes de Dados e Integrações
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-riscos-e-mitigacoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Riscos e Mitigações
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-cronograma-macro-roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Cronograma Macro (Roadmap)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-principios-de-ux-e-acessibilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Princípios de UX e Acessibilidade
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-governanca-de-dados-lgpd-e-etica" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Governança de Dados, LGPD e Ética
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-criterios-de-aceite-do-mvp-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Critérios de Aceite do MVP (checklist)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-anexos" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. Anexos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Anexos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-glossario" class="md-nav__link">
+    <span class="md-ellipsis">
+      15.1 Glossário
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-licenca" class="md-nav__link">
+    <span class="md-ellipsis">
+      15.2 Licença
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../atas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Atas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-objetivo-e-visao" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Objetivo e Visão
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-problema-e-oportunidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Problema e Oportunidade
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-escopo" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Escopo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Escopo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-incluido-mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Incluído (MVP)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-fora-de-escopo-nesta-fase" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Fora de escopo (nesta fase)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-publico-alvo-e-personas" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Público-Alvo e Personas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-stakeholders-e-governanca" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Stakeholders e Governança
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-funcionalidades-alto-nivel" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Funcionalidades (alto nível)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Funcionalidades (alto nível)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-catalogo-de-docentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Catálogo de Docentes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-producao-academica" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 Produção Acadêmica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-historico-de-ensino" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 Histórico de Ensino
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-busca-e-filtros" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 Busca e Filtros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-administracao-basica" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5 Administração Básica
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Requisitos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Requisitos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-requisitos-funcionais-rf" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 Requisitos Funcionais (RF)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-requisitos-nao-funcionais-rnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 Requisitos Não Funcionais (RNF)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-fontes-de-dados-e-integracoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Fontes de Dados e Integrações
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-riscos-e-mitigacoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Riscos e Mitigações
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-cronograma-macro-roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Cronograma Macro (Roadmap)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-principios-de-ux-e-acessibilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Princípios de UX e Acessibilidade
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-governanca-de-dados-lgpd-e-etica" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Governança de Dados, LGPD e Ética
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-criterios-de-aceite-do-mvp-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Critérios de Aceite do MVP (checklist)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-anexos" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. Anexos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Anexos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-glossario" class="md-nav__link">
+    <span class="md-ellipsis">
+      15.1 Glossário
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-licenca" class="md-nav__link">
+    <span class="md-ellipsis">
+      15.2 Licença
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="documento-de-visao-portal-de-professores-da-unb-squad-04">Documento de Visão — Portal de Professores da UnB (Squad 04)</h1>
+<blockquote>
+<p><strong>Resumo</strong><br />
+O Portal de Professores da UnB centraliza e organiza informações do corpo docente (perfil, áreas de pesquisa, produção acadêmica e histórico de ensino) para facilitar a descoberta, conexão e transparência na comunidade universitária.</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Contexto do curso</p>
+<p>Projeto da disciplina <strong>Métodos de Desenvolvimento de Software (MDS)</strong> — UnB, <strong>Semestre 2025/2</strong>.<br />
+Status: <strong>Em Desenvolvimento</strong> · Licença: <strong>MIT</strong></p>
+</div>
+<hr />
+<h2 id="1-objetivo-e-visao">1. Objetivo e Visão</h2>
+<p><strong>Objetivo:</strong><br />
+Oferecer um <strong>ponto único</strong> e confiável de acesso às informações de docentes da UnB, reduzindo a fragmentação atual e acelerando a descoberta por parte de alunos, pesquisadores e gestores.</p>
+<p><strong>Visão (frase norteadora):</strong>  </p>
+<blockquote>
+<p>“Até <strong>Dezembro/2025</strong>, qualquer pessoa conseguirá <strong>encontrar</strong> o docente certo na UnB em <strong>menos de 10 segundos</strong>, com <strong>informações atualizadas</strong> e <strong>busca inteligente</strong>.”</p>
+</blockquote>
+<hr />
+<h2 id="2-problema-e-oportunidade">2. Problema e Oportunidade</h2>
+<p><strong>Problema atual</strong>
+- Dados dispersos (Lattes, sites de departamentos, perfis pessoais).
+- Dificuldade de comparar e filtrar por <strong>área de pesquisa</strong>, <strong>departamento</strong> e <strong>palavras-chave</strong>.
+- Ausência de uma <strong>fonte oficial consolidada</strong> para consulta rápida.</p>
+<p><strong>Oportunidade</strong>
+- Melhorar a experiência acadêmica (alunos encontrando orientadores/disciplinas).
+- Aumentar a <strong>visibilidade</strong> da produção científica.
+- Apoiar decisões e relatórios de gestão com <strong>dados estruturados</strong>.</p>
+<hr />
+<h2 id="3-escopo">3. Escopo</h2>
+<h3 id="31-incluido-mvp">3.1 Incluído (MVP)</h3>
+<ul>
+<li><strong>Perfis unificados</strong> de docentes (resumo, contato institucional, áreas de pesquisa).</li>
+<li><strong>Produção acadêmica</strong> (lista de publicações/projetos com links externos quando possível).</li>
+<li><strong>Histórico de ensino</strong> (disciplinas já ministradas).</li>
+<li><strong>Busca avançada</strong> com filtros (nome, departamento, área, palavra-chave).</li>
+<li><strong>Responsividade</strong> (desktop e mobile) e <strong>acessibilidade básica</strong>.</li>
+</ul>
+<h3 id="32-fora-de-escopo-nesta-fase">3.2 Fora de escopo (nesta fase)</h3>
+<ul>
+<li>Integração com sistemas administrativos (ex.: SIGAA) para <strong>notas/matrículas</strong>.    </li>
+<li><strong>Coleta automatizada de dados</strong> onde houver restrições legais/técnicas (ex.: scraping sem autorização).  </li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Fronteira de escopo</p>
+<p>Integrações automáticas com fontes externas (ex.: Plataforma Lattes/CNPq) devem respeitar <strong>políticas de uso</strong> e <strong>LGPD</strong>. Avaliar modelo <strong>semiautomático</strong> ou <strong>fontes oficiais</strong> internas. <strong>[preencha: decisão]</strong></p>
+</div>
+<hr />
+<h2 id="4-publico-alvo-e-personas">4. Público-Alvo e Personas</h2>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Objetivos principais</th>
+<th>Dores atuais</th>
+<th>Sinais de sucesso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Aluno de Graduação</strong></td>
+<td>Achar docentes e disciplinas alinhadas ao interesse</td>
+<td>Info dispersa, links quebrados, nomenclaturas diferentes</td>
+<td>Encontrar em ≤10s; decidir orientador/optativa com confiança</td>
+</tr>
+<tr>
+<td><strong>Pós-graduando</strong></td>
+<td>Mapear grupos e linhas de pesquisa; contato para orientação</td>
+<td>Falta de filtros por linha/tema; difícil comparar produção</td>
+<td>Lista curta de potenciais orientadores relevante</td>
+</tr>
+<tr>
+<td><strong>Pesquisador Externo</strong></td>
+<td>Identificar expertise para parceria/projeto</td>
+<td>Descoberta lenta; pouca visibilidade de produção recente</td>
+<td>Contato feito rapidamente; aumento de convites</td>
+</tr>
+<tr>
+<td><strong>Gestor Acadêmico</strong></td>
+<td>Consolidar dados para relatórios e decisões</td>
+<td>Coleta manual demorada e sujeita a erro</td>
+<td>Export/consulta rápida; dados consistentes</td>
+</tr>
+<tr>
+<td><strong>Docente</strong></td>
+<td>Ter perfil institucional claro e atualizado</td>
+<td>Perfis duplicados/desatualizados; baixa exposição</td>
+<td>Perfil unificado; tráfego/contatos qualificados</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-stakeholders-e-governanca">5. Stakeholders e Governança</h2>
+<table>
+<thead>
+<tr>
+<th>Papel/Entidade</th>
+<th>Nome(s)</th>
+<th>Responsabilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Product Owner (PO)</strong></td>
+<td>Paulo Sérgio e Bruno Dantas</td>
+<td>Priorizar backlog, definir visão</td>
+</tr>
+<tr>
+<td><strong>Scrum Master</strong></td>
+<td>Caio Lacerda e Kaio Amoury</td>
+<td>Facilitar processos, remover impedimentos</td>
+</tr>
+<tr>
+<td><strong>Arquiteto</strong></td>
+<td>Ian Pedersoli e Arthur Scartezini</td>
+<td>Facilitar processos, remover impedimentos</td>
+</tr>
+<tr>
+<td><strong>Desenvolvimento (DEV)</strong></td>
+<td>Todos do grupo</td>
+<td>Implementação técnica</td>
+</tr>
+<tr>
+<td><strong>Design/UX</strong></td>
+<td>Todos do grupo</td>
+<td>Pesquisa, fluxos, protótipos e acessibilidade</td>
+</tr>
+<tr>
+<td><strong>Dados/Integrações</strong></td>
+<td>Todos do grupo</td>
+<td>Modelagem de dados e conexões externas</td>
+</tr>
+<tr>
+<td><strong>TI/Infra UnB</strong></td>
+<td>Git e Github</td>
+<td>Hospedagem, domínio, segurança</td>
+</tr>
+</tbody>
+</table>
+<p><strong>RACI (macro)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Entregável</th>
+<th>R (Responsável)</th>
+<th>A (Aprovador)</th>
+<th>C (Consultado)</th>
+<th>I (Informado)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Documento de Visão</td>
+<td>PO/UX</td>
+<td>Patrocinador</td>
+<td>DEV, Dados</td>
+<td>Squad</td>
+</tr>
+<tr>
+<td>Prototipação (UX)</td>
+<td>UX</td>
+<td>PO</td>
+<td>DEV</td>
+<td>Stakeholders</td>
+</tr>
+<tr>
+<td>MVP em produção</td>
+<td>DEV(s)</td>
+<td>PO/TI</td>
+<td>UX/Dados</td>
+<td>Comunidade</td>
+</tr>
+<tr>
+<td>Política de dados/LGPD</td>
+<td>Dados/TI</td>
+<td>Patrocinador</td>
+<td>Jurídico [opt]</td>
+<td>Squad</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-funcionalidades-alto-nivel">6. Funcionalidades (alto nível)</h2>
+<h3 id="61-catalogo-de-docentes">6.1 Catálogo de Docentes</h3>
+<ul>
+<li>Página de <strong>perfil</strong> com: nome, foto (opcional), e-mail institucional, departamento, áreas/palavras-chave, links (Lattes, ORCID, Google Scholar, site pessoal).  </li>
+<li><strong>[preencha]</strong>: campos mínimos obrigatórios e campos opcionais.</li>
+</ul>
+<h3 id="62-producao-academica">6.2 Produção Acadêmica</h3>
+<ul>
+<li>Lista de <strong>publicações</strong> e <strong>projetos</strong> por docente, com fonte e link de referência (DOI, repositório).  </li>
+<li><strong>[preencha]</strong>: critérios de inclusão (janela temporal, tipos de publicação).</li>
+</ul>
+<h3 id="63-historico-de-ensino">6.3 Histórico de Ensino</h3>
+<ul>
+<li>Disciplinas já ministradas (código, nome, período/semestre).  </li>
+<li><strong>[preencha]</strong>: fonte dos dados e periodicidade de atualização.</li>
+</ul>
+<h3 id="64-busca-e-filtros">6.4 Busca e Filtros</h3>
+<ul>
+<li>Busca por <strong>nome</strong>, <strong>departamento</strong>, <strong>área de pesquisa</strong>, <strong>palavra-chave</strong>.  </li>
+<li>Ordenação por <strong>relevância</strong>.  </li>
+<li><strong>[preencha]</strong>: sinônimos/tesauro para melhorar recall (opcional).</li>
+</ul>
+<h3 id="65-administracao-basica">6.5 Administração Básica</h3>
+<ul>
+<li>Mecanismo mínimo de <strong>ingestão/atualização semiautomática</strong> (CSV/planilha, importador simples).  </li>
+<li><strong>[preencha]</strong>: perfis com permissão de atualização.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Critérios de aceite (exemplo para Busca)</p>
+<ul>
+<li>Dado que o usuário digita “<strong>Visão Computacional</strong>”,<br />
+  Quando aplicar filtro por “<strong>Departamento X</strong>”,<br />
+  Então vê a <strong>lista de docentes</strong> com essa especialidade ordenada por relevância.  </li>
+<li>Pesquisa retorna resultados com latência <strong>≤ 500ms p95</strong> para consultas indexadas. <strong>[ajuste conforme infra]</strong></li>
+</ul>
+</div>
+<hr />
+<h2 id="7-requisitos">7. Requisitos</h2>
+<h3 id="71-requisitos-funcionais-rf">7.1 Requisitos Funcionais (RF)</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requisito</th>
+<th style="text-align: right;">Prioridade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RF-01</td>
+<td>O sistema deve exibir uma lista de professores com busca por nome, área de atuação e unidade acadêmica.</td>
+<td style="text-align: right;">Alta</td>
+</tr>
+<tr>
+<td>RF-02</td>
+<td>O sisema deve ter uma página index com um looping de menu para acessar as diferentes funcionalidades</td>
+<td style="text-align: right;">Alta</td>
+</tr>
+<tr>
+<td>RF-03</td>
+<td>O sistema deve ser capaz de minerar dados de outros sites já existentes de exibição do corpo docente da UnB.</td>
+<td style="text-align: right;">Média</td>
+</tr>
+<tr>
+<td>RF-04</td>
+<td>O sistema deve permitir a visualização da linha de tempo de disciplinas ministradas ao longo dos períodos letivos.</td>
+<td style="text-align: right;">Alta</td>
+</tr>
+<tr>
+<td>RF-05</td>
+<td>O sistema deve exportar e compartilhar o perfil do professor (PDF) incluindo bio, áreas, últimas publicações e disciplinas.</td>
+<td style="text-align: right;">Média</td>
+</tr>
+<tr>
+<td>RF-06</td>
+<td>O sistema deve esibir um painel de informações resumidas do professor (mini-card) com foto, nome, unidade, área principal e link para o perfil completo.</td>
+<td style="text-align: right;">Baixa</td>
+</tr>
+<tr>
+<td>RF-07</td>
+<td>O sistema deve permitir a filtragem de professores por ano da última publicação.</td>
+<td style="text-align: right;">Baixa</td>
+</tr>
+<tr>
+<td>RF-08</td>
+<td>O sistema deve indicar a data da última atualização dos dados do professor.</td>
+<td style="text-align: right;">Baixa</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72-requisitos-nao-funcionais-rnf">7.2 Requisitos Não Funcionais (RNF)</h3>
+<table>
+<thead>
+<tr>
+<th>Categoria</th>
+<th>Meta/Política</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Performance</td>
+<td>Responder a requisições em até <strong>4 segundos</strong> em 95% dos casos.</td>
+</tr>
+<tr>
+<td>Segurança</td>
+<td>Dados sensíveis criptografados, Conexões restritas a <strong>HTTPS</strong>, <strong>LGPD</strong></td>
+</tr>
+<tr>
+<td>Escalabilidade</td>
+<td>Arquitetura preparada para aumento de carga sem reestruturação, suporte à integração de novos módulos sem impactos no núcleo.</td>
+</tr>
+<tr>
+<td>Usabilidade</td>
+<td>Interface <strong>responsiva</strong> (desktop, tablet, mobile), Interface intuitiva com foco em clareza e organização.</td>
+</tr>
+<tr>
+<td>Privacidade</td>
+<td>Somente dados <strong>públicos</strong>/consentidos; anonimizar métricas de uso</td>
+</tr>
+<tr>
+<td>Manutenibilidade</td>
+<td>Código modular, README, linters, CI simples</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-fontes-de-dados-e-integracoes">8. Fontes de Dados e Integrações</h2>
+<table>
+<thead>
+<tr>
+<th>Fonte/Integração</th>
+<th>Tipo</th>
+<th>Uso planejado</th>
+<th>Observações</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma Lattes (CNPq)</strong></td>
+<td>Externa</td>
+<td>Link/atribuição de publicações e currículo</td>
+<td>Respeitar termos; evitar scraping sem acordo</td>
+</tr>
+<tr>
+<td><strong>ORCID / DOI / Scholar</strong></td>
+<td>Externa</td>
+<td>Links de referência para publicações</td>
+<td>Opcional no MVP</td>
+</tr>
+<tr>
+<td><strong>Lattes</strong></td>
+<td>Externa</td>
+<td>Links de referência para currículos</td>
+<td>Opcional no MVP</td>
+</tr>
+<tr>
+<td><strong>Planilhas internas</strong></td>
+<td>Interna</td>
+<td>Importação semiautomatizada (CSV)</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><strong>Deptos/Unidades</strong></td>
+<td>Interna</td>
+<td>Confirmação/atualização de dados</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-riscos-e-mitigacoes">10. Riscos e Mitigações</h2>
+<table>
+<thead>
+<tr>
+<th>Risco</th>
+<th style="text-align: center;">Prob.</th>
+<th style="text-align: center;">Impacto</th>
+<th>Mitigação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dificuldade de acesso/uso de dados externos</td>
+<td style="text-align: center;">Alta</td>
+<td style="text-align: center;">Alta</td>
+<td>Priorizar dados públicos; ingestão <strong>manual/CSV</strong> no MVP; acordos formais</td>
+</tr>
+<tr>
+<td>Baixa adoção pelos usuários</td>
+<td style="text-align: center;">Média</td>
+<td style="text-align: center;">Alta</td>
+<td>Divulgar em turmas/portais; incorporar feedback contínuo</td>
+</tr>
+<tr>
+<td>Dados desatualizados</td>
+<td style="text-align: center;">Média</td>
+<td style="text-align: center;">Média</td>
+<td>Rotina de atualização agendada; pontos focais nos departamentos</td>
+</tr>
+<tr>
+<td>Restrições de tempo/recursos do semestre</td>
+<td style="text-align: center;">Alta</td>
+<td style="text-align: center;">Média</td>
+<td>Escopo enxuto; cortar nice-to-have; cadência semanal</td>
+</tr>
+<tr>
+<td>Questões de LGPD/privacidade</td>
+<td style="text-align: center;">Baixa</td>
+<td style="text-align: center;">Alta</td>
+<td>Apenas dados públicos; política de privacidade; revisão jurídica [opt]</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-cronograma-macro-roadmap">11. Cronograma Macro (Roadmap)</h2>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Entregáveis principais</th>
+<th>Janela</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>F1 — Descoberta/Design</strong></td>
+<td>Personas, fluxos, protótipo navegável (Figma)</td>
+<td><strong>[Out/2025]</strong></td>
+</tr>
+<tr>
+<td><strong>F2 — Conteúdo/Dados</strong></td>
+<td>Carga inicial de docentes e validação com departamentos</td>
+<td><strong>[Nov/2025]</strong></td>
+</tr>
+<tr>
+<td><strong>F3 — Beta Público</strong></td>
+<td>Testes de usabilidade, ajustes de RNF, analytics básico</td>
+<td><strong>[Nov/2025]</strong></td>
+</tr>
+<tr>
+<td><strong>F5 — Lançamento</strong></td>
+<td>Go-live + divulgação + plano de manutenção</td>
+<td><strong>[Dez/2025]</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-principios-de-ux-e-acessibilidade">12. Princípios de UX e Acessibilidade</h2>
+<ul>
+<li><strong>Clareza primeiro:</strong> hierarquia tipográfica, listas, links explícitos (DOI/ORCID).  </li>
+<li><strong>Acessibilidade:</strong> contraste AA, navegação por teclado, textos alternativos.  </li>
+<li><strong>Consistência:</strong> padrões de componentes; breadcrumbs simples (Home › Docentes › Perfil).  </li>
+<li><strong>Pesquisar é tarefa primária:</strong> campo de busca presente em locais de destaque.</li>
+</ul>
+<h2 id="13-governanca-de-dados-lgpd-e-etica">13. Governança de Dados, LGPD e Ética</h2>
+<ul>
+<li><strong>Base legal:</strong> dados acadêmicos <strong>públicos</strong> ou com <strong>consentimento</strong>.  </li>
+<li><strong>Transparência:</strong> página de <strong>Política de Privacidade</strong> e <strong>Fontes dos Dados</strong>.  </li>
+<li><strong>Direito de correção/remoção:</strong> canal de contato institucional <strong>a definir</strong>.  </li>
+<li><strong>Retenção:</strong> definir periodicidade de atualização e <strong>logs</strong>. </li>
+</ul>
+<hr />
+<h2 id="14-criterios-de-aceite-do-mvp-checklist">14. Critérios de Aceite do MVP (checklist)</h2>
+<ul>
+<li>[ ] Catálogo navegável de docentes com <strong>perfil mínimo</strong>.  </li>
+<li>[ ] Busca e filtros funcionando com <strong>relevância aceitável</strong>.  </li>
+<li>[ ] Pelo menos <strong>60%</strong> de docentes carregados.  </li>
+<li>[ ] Páginas responsivas e com <strong>acessibilidade básica</strong>.  </li>
+<li>[ ] Documentação (README, instruções de deploy, política de dados).</li>
+</ul>
+<hr />
+<h2 id="15-anexos">15. Anexos</h2>
+<h3 id="151-glossario">15.1 Glossário</h3>
+<table>
+<thead>
+<tr>
+<th>Termo</th>
+<th>Definição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lattes</td>
+<td>Plataforma de currículos do CNPq.</td>
+</tr>
+<tr>
+<td>ORCID</td>
+<td>Identificador único de pesquisadores.</td>
+</tr>
+<tr>
+<td>DOI</td>
+<td>Identificador de objetos digitais (artigos, datasets, etc.).</td>
+</tr>
+<tr>
+<td>WCAG</td>
+<td>Diretrizes de acessibilidade para conteúdo web.</td>
+</tr>
+<tr>
+<td>LGPD</td>
+<td>Lei Geral de Proteção de Dados (Brasil).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="152-licenca">15.2 Licença</h3>
+<ul>
+<li><strong>MIT</strong></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Squad 04 - Todos os Direitos Reservados
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/unb-mds/2025-2-Portal-Dos-Professores" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.toc.integrate", "navigation.instant", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
