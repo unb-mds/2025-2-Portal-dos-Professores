@@ -1,0 +1,31 @@
+name: Scraping POC
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+  schedule:
+    - cron: "0 12 * * *" # roda todo dia às 12h UTC (09h de Brasília)
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install requests beautifulsoup4
+
+      - name: Rodar raspagem
+        run: python scraper.py
+
+      - name: Upload do JSON gerado
+        uses: actions/upload-artifact@v4
+        with:
+          name: professores-json
+          path: professores.json
