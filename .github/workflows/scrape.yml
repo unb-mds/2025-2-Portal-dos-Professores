@@ -1,11 +1,11 @@
-name: Scraping POC
+name: Scraping POC (SIGAA)
 
 on:
   push:
     branches: [ "main" ]
   workflow_dispatch: {}
   schedule:
-    - cron: "0 12 * * *" # roda todo dia às 12h UTC (09h de Brasília)
+    - cron: "0 12 * * *" # 09h de Brasília
 
 jobs:
   scrape:
@@ -16,13 +16,16 @@ jobs:
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
-      - name: Instalar dependências
-        run: pip install requests beautifulsoup4
+      - name: Instalar dependências Python
+        run: |
+          python -m pip install --upgrade pip
+          pip install playwright beautifulsoup4
+          python -m playwright install --with-deps
 
-      - name: Rodar raspagem
-        run: python scraper.py
+      - name: Rodar raspagem SIGAA
+        run: python scraper_sigaa.py
 
       - name: Upload do JSON gerado
         uses: actions/upload-artifact@v4
