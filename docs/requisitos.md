@@ -8,7 +8,7 @@ Os itens marcados como *[em definição]* ainda estão em aberto para futura esp
 ## 📑 Índice
 
 - [Requisitos Funcionais](#requisitos-funcionais)
-- [Requisitos Não Funcionais](#requisitos-não-funcionais)
+- [Requisitos Não Funcionais](#requisitos-nao-funcionais)
 
 ---
 
@@ -28,7 +28,7 @@ Os itens marcados como *[em definição]* ainda estão em aberto para futura esp
 
 ---
 
-## 📜 Requisitos Não Funcionais (Exemplo)
+## 📜 Requisitos Não Funcionais
 
 ### 🔧 Desempenho
 - Responder a requisições em até **4 segundos** em 95% dos casos.  
