@@ -1,0 +1,996 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação central do projeto Portal dos Professores da UnB.">
+      
+      
+        <meta name="author" content="Squad 04 - MDS 2025/2">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Decisões Técnicas Iniciais: Coleta e Processamento de Dados - Portal dos Professores</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#decisoes-tecnicas-iniciais-coleta-e-processamento-de-dados" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Portal dos Professores" class="md-header__button md-logo" aria-label="Portal dos Professores" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Portal dos Professores
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Decisões Técnicas Iniciais: Coleta e Processamento de Dados
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../requisitos/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Requisitos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../arquitetura/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Arquitetura
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../guias-de-uso/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Guias de Uso
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../desenvolvimento/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Desenvolvimento
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../documento_de_visao/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Documento de Visão
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../atas/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Atas
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Portal dos Professores" class="md-nav__button md-logo" aria-label="Portal dos Professores" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    Portal dos Professores
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Início
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requisitos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arquitetura
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guias-de-uso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Guias de Uso
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../desenvolvimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Desenvolvimento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documento_de_visao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Documento de Visão
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--Em elaboração"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Atas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-contexto-e-objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Contexto e Objetivos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-escolha-da-ferramenta-de-web-scraping" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Escolha da Ferramenta de Web Scraping
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Escolha da Ferramenta de Web Scraping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tabela-comparativa-de-ferramentas-de-scraping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabela Comparativa de Ferramentas de Scraping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decisao-playwright" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decisão: Playwright
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-escolha-da-ferramenta-de-sumarizacao-por-ia" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Escolha da Ferramenta de Sumarização por IA
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Escolha da Ferramenta de Sumarização por IA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tabela-comparativa-de-abordagens-de-sumarizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabela Comparativa de Abordagens de Sumarização
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decisao-api-do-google-gemini" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decisão: API do Google Gemini
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-documento-de-decisao-arquitetural-adr" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Documento de Decisão Arquitetural (ADR)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Documento de Decisão Arquitetural (ADR)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adr-001-escolha-de-ferramentas-para-coleta-de-dados-e-sumarizacao-por-ia" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADR-001: Escolha de Ferramentas para Coleta de Dados e Sumarização por IA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-poc-minima" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. POC mínima
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. POC mínima">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-ideia-da-poc-e-mostrar-um-exemplo-minimo-de-como-rodaria-o-codigo-em-conjunto-da-biblioteca-playwright-para-a-raspagem-dos-dados-e-integrando-com-os-agentes-de-ia-do-gemini" class="md-nav__link">
+    <span class="md-ellipsis">
+      A ideia da POC é mostrar um exemplo mínimo de como rodaria o código em conjunto da biblioteca Playwright para a raspagem dos dados e integrando com os Agentes de IA do Gemini.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#link-do-script-que-roda-a-poc-minima-poc-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Link do script que roda a POC mínima: POC (script)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guia-rapido-rodar-a-poc-localmente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guia Rápido: Rodar a POC Localmente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pré-requisitos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-preparar-o-ambiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Preparar o Ambiente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-instalar-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Instalar Dependências
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configurar-a-chave-de-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Configurar a Chave de API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-executar-o-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Executar o Script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="decisoes-tecnicas-iniciais-coleta-e-processamento-de-dados">Decisões Técnicas Iniciais: Coleta e Processamento de Dados</h1>
+<p>Este documento resume as decisões tomadas em relação às tecnologias de Web Scraping e Sumarização por Inteligência Artificial para o projeto "Portal de Professores da UnB".</p>
+<h2 id="1-contexto-e-objetivos">1. Contexto e Objetivos</h2>
+<p>O projeto necessita de um processo automatizado para:
+1.  <strong>Coletar</strong> informações públicas de docentes de fontes como Lattes, Sigaa e Google Scholar.
+2.  <strong>Processar</strong> os dados coletados para gerar um resumo qualitativo sobre a atuação de cada professor.
+3.  <strong>Operar</strong> de forma eficiente e confiável dentro de uma arquitetura serverless em workflows do GitHub Actions.</p>
+<p>Para atender a esses requisitos, realizamos uma análise de ferramentas para cada etapa do processo.</p>
+<h2 id="2-escolha-da-ferramenta-de-web-scraping">2. Escolha da Ferramenta de Web Scraping</h2>
+<p>Analisamos diversas bibliotecas Python, com foco na capacidade de lidar com sites modernos e na viabilidade de execução no ambiente do GitHub Actions.</p>
+<h3 id="tabela-comparativa-de-ferramentas-de-scraping">Tabela Comparativa de Ferramentas de Scraping</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Ferramenta</th>
+<th style="text-align: left;">Prós</th>
+<th style="text-align: left;">Contras</th>
+<th style="text-align: left;">Viabilidade em GitHub Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Requests + BS4</strong></td>
+<td style="text-align: left;">🔹 Leve e rápido<br>🔹 Simples de usar</td>
+<td style="text-align: left;">🔸 <strong>Não executa JavaScript</strong><br>🔸 Ineficaz para sites dinâmicos</td>
+<td style="text-align: left;"><strong>Limitada</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Selenium</strong></td>
+<td style="text-align: left;">🔹 Padrão de mercado<br>🔹 Robusto e confiável</td>
+<td style="text-align: left;">🔸 Mais lento que Playwright<br>🔸 API mais verbosa</td>
+<td style="text-align: left;"><strong>Excelente</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">⭐ <strong>Playwright</strong></td>
+<td style="text-align: left;">🔹 <strong>Rápido e moderno</strong><br>🔹 API limpa com suporte <code>async</code><br>🔹 <strong>Setup simplificado</strong></td>
+<td style="text-align: left;">🔸 Curva de aprendizado um pouco maior que o básico</td>
+<td style="text-align: left;"><strong>Excelente (Recomendado)</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="decisao-playwright">Decisão: Playwright</h3>
+<p>A biblioteca <strong>Playwright</strong> foi a escolhida. Sua performance superior, API moderna e, principalmente, sua facilidade de configuração em ambientes de CI/CD como o GitHub Actions a tornam a solução ideal para garantir uma coleta de dados robusta e eficiente.</p>
+<h2 id="3-escolha-da-ferramenta-de-sumarizacao-por-ia">3. Escolha da Ferramenta de Sumarização por IA</h2>
+<p>A sumarização dos dados coletados é um requisito chave. Avaliamos duas abordagens principais: rodar um modelo de IA localmente no runner do GitHub Actions ou utilizar uma API externa.</p>
+<h3 id="tabela-comparativa-de-abordagens-de-sumarizacao">Tabela Comparativa de Abordagens de Sumarização</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Abordagem</th>
+<th style="text-align: left;">Prós</th>
+<th style="text-align: left;">Contras</th>
+<th style="text-align: left;">Viabilidade em GitHub Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Modelo Local (Hugging Face)</strong></td>
+<td style="text-align: left;">🔹 Sem custo de API<br>🔹 Controle total</td>
+<td style="text-align: left;">🔸 <strong>Alto consumo de CPU/RAM</strong><br>🔸 Lento, aumenta o tempo do workflow<br>🔸 Risco de falhas por limite de recursos</td>
+<td style="text-align: left;"><strong>Baixa</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">⭐ <strong>API Externa (Google Gemini)</strong></td>
+<td style="text-align: left;">🔹 <strong>Leve e rápido para o runner</strong><br>🔹 Resumos de altíssima qualidade<br>🔹 <strong>Implementação simples</strong><br>🔹 Custo zero para a escala do projeto</td>
+<td style="text-align: left;">🔸 Dependência externa<br>🔸 Requer gerenciamento de chaves de API</td>
+<td style="text-align: left;"><strong>Excelente (Recomendado)</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="decisao-api-do-google-gemini">Decisão: API do Google Gemini</h3>
+<p>Optamos por utilizar a <strong>API do Google Gemini</strong>. Esta abordagem delega o processamento pesado de IA para um serviço especializado, mantendo nosso workflow no GitHub Actions extremamente rápido, leve e confiável. A qualidade dos resumos é excelente e a cota de uso gratuito é mais do que suficiente para as necessidades do projeto.</p>
+<h2 id="4-documento-de-decisao-arquitetural-adr">4. Documento de Decisão Arquitetural (ADR)</h2>
+<p>Para formalizar estas escolhas, foi redigido o seguinte Architecture Decision Record (ADR).</p>
+<hr />
+<h3 id="adr-001-escolha-de-ferramentas-para-coleta-de-dados-e-sumarizacao-por-ia">ADR-001: Escolha de Ferramentas para Coleta de Dados e Sumarização por IA</h3>
+<ul>
+<li>
+<p><strong>Status:</strong> <code>Accepted</code></p>
+</li>
+<li>
+<p><strong>Context:</strong> O projeto "Portal de Professores da UnB" necessita de um processo automatizado para coletar dados de fontes web e gerar resumos qualitativos por IA. Este processo deve operar em uma arquitetura serverless (GitHub Actions), sendo robusto para sites dinâmicos e eficiente com os recursos disponíveis.</p>
+</li>
+<li>
+<p><strong>Decision:</strong></p>
+<ol>
+<li>Para web scraping, utilizaremos a biblioteca <strong>Playwright</strong>.</li>
+<li>Para a geração dos resumos por IA, utilizaremos a <strong>API do Google Gemini</strong>.</li>
+</ol>
+</li>
+<li>
+<p><strong>Consequences:</strong></p>
+<ul>
+<li><strong>Positivas:</strong><ul>
+<li>Capacidade de extrair dados de sites complexos e dinâmicos.</li>
+<li>Workflow de dados rápido e eficiente no GitHub Actions.</li>
+<li>Alta qualidade nos resumos gerados com implementação simplificada.</li>
+<li>Manutenção do "backend" focada em scripts Python, sem a complexidade de gerenciar modelos de IA.</li>
+</ul>
+</li>
+<li><strong>Negativas:</strong><ul>
+<li>Introduz uma dependência externa (API do Google Gemini).</li>
+<li>Exige o gerenciamento seguro de chaves de API através do GitHub Secrets.</li>
+<li>Potencial de custo futuro em caso de expansão massiva do projeto.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="5-poc-minima">5. POC mínima</h2>
+<h3 id="a-ideia-da-poc-e-mostrar-um-exemplo-minimo-de-como-rodaria-o-codigo-em-conjunto-da-biblioteca-playwright-para-a-raspagem-dos-dados-e-integrando-com-os-agentes-de-ia-do-gemini">A ideia da POC é mostrar um exemplo mínimo de como rodaria o código em conjunto da biblioteca <strong>Playwright</strong> para a raspagem dos dados e integrando com os <strong>Agentes de IA</strong> do <strong>Gemini</strong>.</h3>
+<h3 id="link-do-script-que-roda-a-poc-minima-poc-script">Link do script que roda a POC mínima: <a href="https://github.com/unb-mds/2025-2-Portal-dos-Professores/blob/main/docs/SPRINT_03/Sprint03_POC_minima.py">POC (script)</a></h3>
+<h3 id="guia-rapido-rodar-a-poc-localmente">Guia Rápido: Rodar a POC Localmente</h3>
+<p>Guia para configurar e rodar o script da Prova de Conceito (POC) sem Docker.</p>
+<h3 id="pre-requisitos">Pré-requisitos</h3>
+<ul>
+<li>Python 3.9+ e Git instalados.</li>
+</ul>
+<hr />
+<h3 id="1-preparar-o-ambiente">1. Preparar o Ambiente</h3>
+<p>No seu terminal, clone o repositório, entre na pasta, crie e ative um ambiente virtual.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Clone o projeto e entre na pasta</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>clone<span class="w"> </span>&lt;URL_DO_REPOSITORIO&gt;
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">cd</span><span class="w"> </span>&lt;NOME_DO_PROJETO&gt;
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># Crie e ative o ambiente virtual</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># No Windows (PowerShell):</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>.venv<span class="se">\S</span>cripts<span class="se">\A</span>ctivate.ps1
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># No Linux/macOS:</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</code></pre></div>
+<h3 id="2-instalar-dependencias">2. Instalar Dependências</h3>
+<p>Com o ambiente (.venv) ativado, instale os pacotes necessários.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Instalar bibliotecas Python</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Instalar navegadores do Playwright</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>playwright<span class="w"> </span>install
+</code></pre></div>
+<h3 id="3-configurar-a-chave-de-api">3. Configurar a Chave de API</h3>
+<p>Você precisa de uma chave secreta do Google para rodar o script.</p>
+<p>Copie o arquivo de exemplo para criar seu arquivo de segredos local.</p>
+<ul>
+<li>No Windows: copy .env.example .env</li>
+<li>No Linux/macOS: cp .env.example .env</li>
+</ul>
+<p>Gere sua chave no <a href="https://aistudio.google.com/">Google AI Studio</a>.</p>
+<p>Cole a chave dentro do arquivo .env que você acabou de criar.</p>
+<h3 id="4-executar-o-script">4. Executar o Script</h3>
+<p>Execute a POC com o seguinte comando:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>poc.py
+</code></pre></div>
+<p>Você verá o texto original da Wikipedia e o resumo gerado pela IA no terminal.</p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Squad 04 - Todos os Direitos Reservados
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/unb-mds/2025-2-Portal-Dos-Professores" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.toc.integrate", "navigation.instant", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
