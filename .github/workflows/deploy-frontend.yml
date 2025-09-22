@@ -1,19 +1,13 @@
-# .github/workflows/deploy-frontend.yml
-
 name: Deploy Frontend to GitHub Pages
 
-# Gatilho: Roda sempre que houver um push na branch 'main'
-# E apenas se houver alterações nas pastas 'frontend/' ou 'data/'
 on:
   push:
     branches: ["main"]
     paths:
       - 'frontend/**'
       - 'data/**'
-  # Permite que você rode este workflow manualmente pela aba Actions
   workflow_dispatch:
 
-# Permissões necessárias para que o Action possa publicar no GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -28,41 +22,33 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      # 1. Baixa o código do seu repositório para a máquina do Action
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Prepara o ambiente Node.js na versão correta
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22 # Use a mesma versão do seu Dockerfile
+          node-version: 22
 
-      # 3. Copia os dados mais recentes para a pasta pública do frontend
-      #    Este passo garante que o site seja publicado com os dados atualizados.
       - name: Copy data to public folder
         run: |
           mkdir -p frontend/public/data
           cp data/professors.json frontend/public/data/professors.json
 
-      # 4. Instala as dependências e constrói a versão de produção do site
       - name: Install dependencies and build
         run: |
           cd frontend
           npm install
           npm run build
 
-      # 5. Prepara o artefato (a pasta 'dist' com o site compilado) para o upload
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      # 6. Faz o upload do artefato
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './frontend/dist'
 
-      # 7. Faz o deploy final do artefato no GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
