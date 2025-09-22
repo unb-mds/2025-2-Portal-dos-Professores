@@ -1,0 +1,21 @@
+# .readthedocs.yaml
+# Read the Docs configuration file
+# https://docs.readthedocs.io/en/stable/config-file/v2.html
+
+# Required
+version: 2
+
+# Ambiente de build
+build:
+  os: ubuntu-24.04
+  tools:
+    python: "3.13"
+
+# Usando MkDocs
+mkdocs:
+  configuration: mkdocs.yml
+
+# Dependências extras (se precisar de plugins ou temas)
+python:
+  install:
+    - requirements: requirements.txt
