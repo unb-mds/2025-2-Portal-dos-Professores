@@ -6,8 +6,17 @@ function App() {
   const [data, setData] = useState(null)
 
   useEffect(() => {
-    fetch('/data/professors.json')
-      .then(response => response.json())
+    // CORREÇÃO AQUI: Usando import.meta.env.BASE_URL para construir o caminho dinamicamente
+    const jsonPath = `${import.meta.env.BASE_URL}data/professors.json`;
+    console.log("Tentando buscar JSON em:", jsonPath); // Adicionado para depuração
+
+    fetch(jsonPath)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status} at ${jsonPath}`);
+        }
+        return response.json();
+      })
       .then(jsonData => setData(jsonData))
       .catch(error => console.error('Erro ao buscar JSON:', error))
   }, [])
