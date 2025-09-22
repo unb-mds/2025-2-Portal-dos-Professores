@@ -1,6 +1,21 @@
-venv/
-/venv/
-.venv/
-/.venv/
+# Pastas de dependências
+frontend/node_modules
+scripts/venv
 
+# Arquivos de build/distribuição
+frontend/dist
+frontend/.DS_Store
+
+# Caches do Python
+scripts/__pycache__
+.pytest_cache
+
+# Arquivos de ambiente e logs
 .env
+*.env
+npm-debug.log
+
+# Arquivos do sistema operacional e do editor
+.DS_Store
+Thumbs.db
+.vscode/
