@@ -23,6 +23,9 @@ function App() {
     <h2>
       Testando o Cache CDN do Github
     </h2>
+    <h2>
+      Hello World
+    </h2>
     </>
   )
 }
