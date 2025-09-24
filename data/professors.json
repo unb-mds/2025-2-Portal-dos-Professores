@@ -1,5 +1,820 @@
 {
-    "last_updated": "2025-09-22T20:51:09.171168",
-    "message": "Olá do script Python!",
-    "logs": "testing the CDN cache from Github"
+    "professors": [
+        {
+            "nome": "ALESSANDRO BORGES DE SOUSA OLIVEIRA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2024150224ff243068307f3c4b15a8090/abso_2024.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1281464"
+        },
+        {
+            "nome": "ALEX REIS",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020010191738e2048786ae0a675ab743/IMG-1192.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1036116"
+        },
+        {
+            "nome": "ANDRE BARROS DE SALES",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2023105152024328179026b7493ed0e49/Foto_Andr.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1314342"
+        },
+        {
+            "nome": "ANDREIA ALVES COSTA LINDINGER",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020097188d3e82049490ebf714c01af2/DSC_0794_4.JPG",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1905463"
+        },
+        {
+            "nome": "ANDRE LUIS RODRIGUES ARAUJO",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2025181096d1ec36016455a3b90b1edc1/unnamed_1.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1353395"
+        },
+        {
+            "nome": "ANDRE LUIZ ALMEIDA PENNA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3474580"
+        },
+        {
+            "nome": "ANDRE LUIZ PERON MARTINS LANNA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1558082"
+        },
+        {
+            "nome": "ARTEM ANDRIANOV",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2016299"
+        },
+        {
+            "nome": "ARTUR ELIAS DE MORAIS BERTOLDI",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020177047ab3c20459134b454fe1dfd7/artur.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1759328"
+        },
+        {
+            "nome": "AUGUSTO CESAR DE MENDONCA BRASIL",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1337656"
+        },
+        {
+            "nome": "BRUNO CESAR RIBAS",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20242220384d0e3266296a96f565b3584/bruno_capa..png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1937247"
+        },
+        {
+            "nome": "BRUNO LUIZ PEREIRA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1127536"
+        },
+        {
+            "nome": "CARLA SILVA ROCHA AGUIAR",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020049025f17f2054547e76459bd76e8/WhatsApp_Image_2020-07-06_at_09.34.26_1.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1877077"
+        },
+        {
+            "nome": "CARLA TATIANA MOTA ANFLOR",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1436914"
+        },
+        {
+            "nome": "CLAUDIA PATRICIA OCHOA DIAZ",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202017107213ae2040942aa9b697c2501/me.JPG",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3132850"
+        },
+        {
+            "nome": "CRISTIANE SOARES RAMOS",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202011108717482048458e7f63ad71db6/Foto_perfil.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1771715"
+        },
+        {
+            "nome": "CRISTIANO JACQUES MIOSSO RODRIGUES MENDES",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2343453"
+        },
+        {
+            "nome": "DANIEL COSTA ARAUJO",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3157968"
+        },
+        {
+            "nome": "DANIEL MAURICIO MUNOZ ARBOLEDA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20200502449e162038378fcfee8d3d78c/foto_informal2.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1912898"
+        },
+        {
+            "nome": "DANIEL SUNDFELD LIMA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2022242239ab692420849f783c625559e/index.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1007019"
+        },
+        {
+            "nome": "DIOGO CAETANO GARCIA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202015618332212038112d5302dd4fb22/citations_big.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1838398"
+        },
+        {
+            "nome": "DIOGO DE OLIVEIRA COSTA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2025096040eb433592464f9dbef81fe43/nova_foto_perfil_c.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3682585"
+        },
+        {
+            "nome": "EBERTH DE ALMEIDA CORREA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20202100202b2f2060850ed5c4a65b31a/foto_recente.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1645170"
+        },
+        {
+            "nome": "EDISON GUSTAVO CUEVA GALARRAGA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1774518"
+        },
+        {
+            "nome": "EDSON ALVES DA COSTA JUNIOR",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2379711"
+        },
+        {
+            "nome": "ELAINE VENSON",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202111203784532193127b3c6e06e85bf/aIMG_7499.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1912751"
+        },
+        {
+            "nome": "EMMANUEL PACHECO ROCHA LIMA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20250280786fbb3635381a60f553e1907/IMG_20241107_171218880_AE.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1346254"
+        },
+        {
+            "nome": "ENEIDA GONZALEZ VALDES",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=4279045"
+        },
+        {
+            "nome": "EULER DE VILHENA GARCIA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1652716"
+        },
+        {
+            "nome": "EVANDRO LEONARDO SILVA TEIXEIRA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2025154118d1263348417219f2693f5a5/foto_bio_Evandro_1.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2772128"
+        },
+        {
+            "nome": "FABIANA FREITAS MENDES",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202014613120152040832ff8dd714efd5/2019-08-10_18.41.44.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1596344"
+        },
+        {
+            "nome": "FABIANO ARAUJO SOARES",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20202481375a2020571150f5bdc147879/Sem_ttulo.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1780244"
+        },
+        {
+            "nome": "FABIO ALFAIA DA CUNHA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2024164092ac5d30451505a49f70d3410/foto2024.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2650831"
+        },
+        {
+            "nome": "FABIO CORDEIRO DE LISBOA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202022814873c32047933bd7b4d329208/Foto_para_Moodle.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1897366"
+        },
+        {
+            "nome": "FABIO MACEDO MENDES",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2541812"
+        },
+        {
+            "nome": "FABRICIO ATAIDES BRAZ",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202016511985e42041190d90757c695e7/54357e_2c44bb8ee1c8414083b1bb04e8dcc9d5mv2.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1984632"
+        },
+        {
+            "nome": "FELIPE CHAGAS STORTI",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20220671448c562354992fa89bf903b9a/me_1.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2319383"
+        },
+        {
+            "nome": "FELIX MARTIN CARBAJAL GAMARRA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1796750"
+        },
+        {
+            "nome": "FERNANDO WILLIAM CRUZ",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2024168187dc5031981418089b40f2a61/images_fernandow.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1252015"
+        },
+        {
+            "nome": "FLAVIO HENRIQUE JUSTINIANO RIBEIRO DA SILVA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1679283"
+        },
+        {
+            "nome": "GABRIELA CUNHA POSSA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1018416"
+        },
+        {
+            "nome": "GEORGE MARSICANO CORREA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20220081144a0d2548630fe4303562ae1/FotoGeorge.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1313290"
+        },
+        {
+            "nome": "GERARDO ANTONIO IDROBO PIZO",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2822138"
+        },
+        {
+            "nome": "GILMAR SILVA BESERRA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20202310129c50204938129434355070f/rg3.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2475115"
+        },
+        {
+            "nome": "GIOVANNI ALMEIDA SANTOS",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2021120041361d2169813632f7bb04c53/perfil.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1769608"
+        },
+        {
+            "nome": "GLAUCENY CIRNE DE MEDEIROS",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1646200"
+        },
+        {
+            "nome": "GLAUCO VITOR PEDROSA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20201721680fbe2038082bb42e4e1a4ec/servletrecuperafoto.gif",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3064724"
+        },
+        {
+            "nome": "GUILLERMO ALVAREZ BESTARD",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20200771411d372056243a1f269e57336/2.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1399631"
+        },
+        {
+            "nome": "HENRIQUE GOMES DE MOURA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202415305393ec3152924a757e691a4ee/Rosto.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1769345"
+        },
+        {
+            "nome": "HENRIQUE MARRA TAIRA MENEGAZ",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20231270701b3f2692982c28227da4428/download.jfif",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2269423"
+        },
+        {
+            "nome": "HILMER RODRIGUES NERI",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1780591"
+        },
+        {
+            "nome": "HIMILSYS HERNANDEZ GONZALEZ",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2518384"
+        },
+        {
+            "nome": "JHON NERO VAZ GOULART",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2021182151eab3217329750807ece4082/IMG_20201224_111834777_MP.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1693584"
+        },
+        {
+            "nome": "JOHN LENON CARDOSO GARDENGHI",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2025232243309a33826578f32cd432e64/foto_2024.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3089262"
+        },
+        {
+            "nome": "JORGE ANDRES CORMANE ANGARITA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020140164696320588106187dbbd88bc/Nova_Imagem.bmp",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2721661"
+        },
+        {
+            "nome": "JOSIANE DO SOCORRO AGUIAR DE SOUZA DE OLIVEIRA CAMPOS",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20211920925a0c2139287103e65c180b6/foto_watsap2.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1772705"
+        },
+        {
+            "nome": "JULIANA PETROCCHI RODRIGUES",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2023088066f4842738352a64f1bd549c0/foto_perfil_2.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1795655"
+        },
+        {
+            "nome": "LEANDRO XAVIER CARDOSO",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2021131134f2572094309068e79d5eff2/Leandro.JPG",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1127607"
+        },
+        {
+            "nome": "LINDOMAR BOMFIM DE CARVALHO DE JESUS",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1773044"
+        },
+        {
+            "nome": "LOANA NUNES VELASCO",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2022216028b828246243491e5aae204dd/FOTO_TEAMS.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1157123"
+        },
+        {
+            "nome": "LUCIANO EMIDIO NEVES DA FONSECA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20200202017b512057463edc60763d09d/20525577_1324385751006224_4911600222133387043_n.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1866449"
+        },
+        {
+            "nome": "LUCIANO GONCALVES NOLETO",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20201721587fd92041578c3e266ddea38/IMG_2456.JPG",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2556079"
+        },
+        {
+            "nome": "LUIS FILOMENO DE JESUS FERNANDES",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3424071"
+        },
+        {
+            "nome": "LUI TXAI CALVOSO HABL",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202506502638ae359474271de953ce3a5/IMG_4762.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2879502"
+        },
+        {
+            "nome": "LUIZA YOKO TANEGUTI",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020158065f87e2052805cf7b633c596a/IMG_20190104_193912918.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3731404"
+        },
+        {
+            "nome": "LUIZ CARLOS MIYADAIRA RIBEIRO JUNIOR",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1722813"
+        },
+        {
+            "nome": "MANUEL NASCIMENTO DIAS BARCELOS JUNIOR",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20200530273b362051238f00c8aab609a/Foto_Manuel.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1652569"
+        },
+        {
+            "nome": "MARCELINO MONTEIRO DE ANDRADE",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20210950805088224265403146e7fd801/eu.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3343211"
+        },
+        {
+            "nome": "MARCELO BENTO DA SILVA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1649346"
+        },
+        {
+            "nome": "MARCUS VINICIUS BATISTUTA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2343624"
+        },
+        {
+            "nome": "MARCUS VINICIUS CHAFFIM COSTA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020136165f6ed20481316fec15472752/marcus-chaffim_Foto_Lattes.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1901903"
+        },
+        {
+            "nome": "MARIA ALZIRA DE ARAUJO NUNES",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20252322204e1c3466283739b7f313671/foto_ziza_2025.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1734228"
+        },
+        {
+            "nome": "MARIA DEL PILAR HIDALGO FALLA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1721557"
+        },
+        {
+            "nome": "MARIANA COSTA BERNARDES MATIAS",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020230127461b20526939855bf6c16ef/WhatsApp_Image_2020-07-13_at_13.13.33.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1163784"
+        },
+        {
+            "nome": "MARIA VITORIA DUARTE FERRARI",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202003806217932049675cb2fbcd62da4/DSC_0333-2.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1797986"
+        },
+        {
+            "nome": "MARILIA MIRANDA FORTE GOMES",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2859300"
+        },
+        {
+            "nome": "MARIO DE OLIVEIRA ANDRADE",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2022112188a3cb2577144289f5d135f9e/moa_2.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1892915"
+        },
+        {
+            "nome": "MATEUS RODRIGUES MIRANDA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202006111361ff20463131959cc7f11dc/foto_perfil_menor2.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1724779"
+        },
+        {
+            "nome": "MATHEUS BERNARDINI DE SOUZA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2024151206604f315395207494e87c327/IMG_2423.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1275682"
+        },
+        {
+            "nome": "MAURA ANGELICA MILFONT SHZU",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202012303701b420474519724e2ba6774/WhatsApp_Image_2020-06-09_at_19.34.04.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2583882"
+        },
+        {
+            "nome": "MAURICIO SERRANO",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20200252175954205888395e8adf3014b/photo_2020-06-01_15-19-11.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1984262"
+        },
+        {
+            "nome": "MILENE SERRANO",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020056248469c20442167f941a0ca4cc/Milene_-_Foto.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1984257"
+        },
+        {
+            "nome": "NILTON CORREIA DA SILVA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020090019676920547460c2e4c9016a4/Nilton.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1985245"
+        },
+        {
+            "nome": "OLEXIY SHYNKARENKO",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2024160171da91332748423138fd09d54/20241017_135943-4EDIT.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2017545"
+        },
+        {
+            "nome": "PATRICIA REGINA SOBRAL BRAGA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2021244024ef962141075b9bf02b0092d/DSC03198.JPG",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1905478"
+        },
+        {
+            "nome": "PAULA MEYER SOARES",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020117243a5f0204361986afb1e1f753/IMG_9800_1.JPG",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2104433"
+        },
+        {
+            "nome": "POLLIANA CANDIDA OLIVEIRA MARTINS",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202113716472282293300ddb0c7c3410f/photo.JPG",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1193378"
+        },
+        {
+            "nome": "RAFAEL CASTILHO FARIA MENDES",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202219303135fb2497786aab8e2e21e66/IMG20220706091140.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3295206"
+        },
+        {
+            "nome": "RAFAEL MORGADO SILVA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2486253"
+        },
+        {
+            "nome": "RAFAEL RODRIGUES DA SILVA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202316121546b127603555a0e0ac1b6e3/foto.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2855005"
+        },
+        {
+            "nome": "REJANE MARIA DA COSTA FIGUEIREDO",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020248050bb112043804175f6552145c/Rejane_Figueiredo.gif",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1650604"
+        },
+        {
+            "nome": "RENAN UTIDA BARBOSA FERREIRA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202005020871a420436280a9cdadbda8d/rosto_2020_oculos.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1934635"
+        },
+        {
+            "nome": "RENATO CORAL SAMPAIO",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2216360"
+        },
+        {
+            "nome": "RENATO VILELA LOPES",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2024219130c38f32433381972ac682b7e/Renato1.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1855113"
+        },
+        {
+            "nome": "RHANDER VIANA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1568990"
+        },
+        {
+            "nome": "RICARDO AJAX DIAS KOSLOSKI",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020208163b3242055000f431e6d46b55/Nova_foto.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1905275"
+        },
+        {
+            "nome": "RICARDO MATOS CHAIM",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1334353"
+        },
+        {
+            "nome": "RICARDO RAMOS FRAGELLI",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202003024440042055259d3e41418077d/Screenshot_20200807-080033_Facebook.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2344411"
+        },
+        {
+            "nome": "RITA DE CASSIA SILVA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2493326"
+        },
+        {
+            "nome": "ROBERTO DE SOUZA BAPTISTA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020035169290f2040441181a4c08c84b/Foto3x4-2020-02.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1264416"
+        },
+        {
+            "nome": "RODRIGO ANDRES MIRANDA CERDA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1906134"
+        },
+        {
+            "nome": "RODRIGO ARBEY MUNOZ MENESES",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2934459"
+        },
+        {
+            "nome": "RONNE TOLEDO",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1081125"
+        },
+        {
+            "nome": "RONNI GERALDO GOMES DE AMORIM",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2022243012fd8a229630656a51e48f02e/foto_ronni.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1803399"
+        },
+        {
+            "nome": "ROSEANY DE VASCONCELOS VIEIRA LOPES",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1795599"
+        },
+        {
+            "nome": "RUDI HENRI VAN ELS",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/201924111171232031393738136fd3208/pasfoto.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2316997"
+        },
+        {
+            "nome": "SALEH BARBOSA KHALIL",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202022404922c7204807435cfe89805a1/40_Saleh_Khalil_fga.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1999691"
+        },
+        {
+            "nome": "SANDRA MARIA DA LUZ",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020154014b3172041192a65b5294b5d4/Untitled.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1720225"
+        },
+        {
+            "nome": "SANDRA MARIA FALEIROS LIMA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2380139"
+        },
+        {
+            "nome": "SANDRO AUGUSTO PAVLIK HADDAD",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202000825382532058200cdd5262565fe/P_20180711_082348_BF_p.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1781626"
+        },
+        {
+            "nome": "SEBASTIEN ROLAND MARIE JOSEPH RONDINEAU",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202420714716fc312493709026d7a30d0/foto_seb.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2193312"
+        },
+        {
+            "nome": "SERGIO ANTONIO ANDRADE DE FREITAS",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202215922233cf25756177289cb19cd21/foto2.Sergio.sem_fundo.v2.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1298865"
+        },
+        {
+            "nome": "SERGIO HENRIQUE DA SILVA CARNEIRO",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2022145184437a2376276ab3f2a8c58a9/Sergio_Terno.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2205442"
+        },
+        {
+            "nome": "SUELIA DE SIQUEIRA RODRIGUES FLEURY ROSA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20202342333451204963910fbc0c948fa/Professora_Suelia_-_fotos_Thas_Mallon-1-6.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2506617"
+        },
+        {
+            "nome": "SUZANA MOREIRA AVILA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020235215ca9f20588121b1738dc7163/eu_suzana.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2213675"
+        },
+        {
+            "nome": "TAIS CALLIERO TOGNETTI",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1840391"
+        },
+        {
+            "nome": "TATIANE DA SILVA EVANGELISTA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2024097012d87b3043805cd9dd24a5a27/IMG_20240106_204755_586.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1748086"
+        },
+        {
+            "nome": "THIAGO FELIPPE KURUDEZ CORDEIRO",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020234124465a2049277efb1b4ff7f4b/Thiago.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1999853"
+        },
+        {
+            "nome": "TIAGO ALVES DA FONSECA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1715832"
+        },
+        {
+            "nome": "VANDOR ROBERTO VILARDI RISSOLI",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20222301666e7d244951330e9fc9cb3f6/foto_pessoal_Moodles.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2102874"
+        },
+        {
+            "nome": "VANESSA MARIA DE CASTRO",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2023009016d03a28935361510cbb05a1f/VMC_foto_.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1821597"
+        },
+        {
+            "nome": "VINICIUS DE CARVALHO RISPOLI",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20231680462fed28126551b1e43030705/servletrecuperafoto.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1769665"
+        },
+        {
+            "nome": "WANDER CLEBER MARIA PEREIRA DA SILVA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020149009225320563781cf1db337d01/Wander_Whatsapp.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2241438"
+        },
+        {
+            "nome": "WELLINGTON AVELINO DO AMARAL",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1913187"
+        },
+        {
+            "nome": "WILLIAM REIS SILVA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2025173206d0fa3420265cfae7a7bc349/WhatsApp_Image_2024-09-03_at_13.32.41.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3056359"
+        },
+        {
+            "nome": "WYTLER CORDEIRO DOS SANTOS",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20200890402de72057250c18f2832660f/nkbaph.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1095582"
+        },
+        {
+            "nome": "YEVSEY YEHOSHUA SOBOLEVSKY",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1767089"
+        },
+        {
+            "nome": "PAOLO GESSINI",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1742664"
+        },
+        {
+            "nome": "CLENIO EMIDIO DA FONSECA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2024054173237f30601871dc9569bf6da/3x4.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3391740"
+        },
+        {
+            "nome": "CRISTIANE LOESCH DE SOUZA COSTA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202412903959bd320957953ea5f8fcd4d/cris.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3393841"
+        },
+        {
+            "nome": "EUCLIDES DELGADO MARQUES SANTANNA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20242220187d7c30327013c2f143c9c33/Eu_atual.png.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1303488"
+        },
+        {
+            "nome": "LUCAS URSULINO BOAVENTURA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/20220600494a9626035458466e9eebfac/WhatsApp_Image_2022-10-28_at_14.08.27.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3469503"
+        },
+        {
+            "nome": "RENDISLEY ARISTOTELES DOS SANTOS PAIVA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2025040165366c3495344a5266fc0fe66/foto.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3465919"
+        },
+        {
+            "nome": "THIAGO LUIZ DE SOUZA GOMES",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1242128"
+        },
+        {
+            "nome": "JULIANA DALBONI ROCHA",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1563458"
+        },
+        {
+            "nome": "TERCIO BRUM",
+            "departamento": "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202302713286d82856256d5afc811e0fa/Tercio.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3465921"
+        }
+    ]
 }
