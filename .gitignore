@@ -1,21 +1,52 @@
-# Pastas de dependências
-frontend/node_modules
-scripts/venv
+# Arquivo .gitignore para o Projeto Portal de Professores
+# Versão Completa e Organizada
 
-# Arquivos de build/distribuição
-frontend/dist
-frontend/.DS_Store
+# === Ambientes Virtuais e Dependências ===
+# Ignorar a pasta do ambiente virtual do Python. É específica de cada máquina.
+/scripts/venv/
 
-# Caches do Python
-scripts/__pycache__
-.pytest_cache
+# Ignorar a pasta de dependências do Node.js. É gigante e pode ser recriada.
+/frontend/node_modules/
 
-# Arquivos de ambiente e logs
+
+# === Arquivos de Build e Distribuição ===
+# Ignorar a pasta de build do React/Vite. É gerada a cada deploy.
+/frontend/dist/
+/frontend/dist-ssr/
+
+
+# === Caches e Arquivos Compilados do Python ===
+# Ignorar as pastas de cache e arquivos compilados do Python em qualquer lugar do projeto.
+__pycache__/
+*.pyc
+.pytest_cache/
+
+
+# === Arquivos de Segredos e Ambiente (MUITO IMPORTANTE) ===
+# NUNCA envie chaves de API, senhas ou outras informações sensíveis.
 .env
 *.env
-npm-debug.log
+*.env.local
 
-# Arquivos do sistema operacional e do editor
+
+# === Logs ===
+# Ignorar arquivos de log que podem ser gerados por diversas ferramentas.
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+
+# === Arquivos de Sistema Operacional e Editor de Código ===
+# Arquivos gerados pelo macOS, Windows e Linux
 .DS_Store
 Thumbs.db
-.vscode/
+
+# Arquivos gerados pelo VS Code, exceto configurações que queiramos compartilhar
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# Arquivos gerados por outras IDEs (ex: JetBrains)
+.idea/
+*.suo
