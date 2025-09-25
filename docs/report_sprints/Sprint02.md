@@ -65,10 +65,10 @@
 
 ## 7. Evidências e Links
 
-* **Documento de Visão:** {{Link}}  
+* **Documento de Visão:** [{{Link}}  ](https://github.com/unb-mds/2025-2-Portal-dos-Professores/blob/main/docs/SPRINT_02/Sprint02_Documento_de_Vis%C3%A3o.md)
 * **Requisitos Não Funcionais:** {{Link}}  
-* **Diagrama de Fishbone (Atraso na Entrega):** Diagrama de fishbone atraso na entrega.jam  
-* **Estudo Story Map:** {{Link}}  
+* **Diagrama de Fishbone (Atraso na Entrega):** https://github.com/unb-mds/2025-2-Portal-dos-Professores/blob/main/docs/SPRINT_02/Sprint02_Conceito_Diagrama_de_Fishbone.md
+* **Estudo Story Map:** [{{Link}}](https://github.com/unb-mds/2025-2-Portal-dos-Professores/blob/main/docs/SPRINT_02/Sprint02_Story_Map.md)  
 
 ---
 
@@ -76,10 +76,10 @@
 
 - **Caio Lacerda** — Ajudou no levantamento dos requisitos não funcionais, preenchimento do Figma e criação da primeira versão do Documento de Visão. Links: Documento de Visão e Requisitos Não Funcionais.  
 - **Ian Pedersoli** — Estudou sobre Diagrama de Fishbone, auxiliou na criação do mesmo e no preenchimento do Figma.  
-- **Bruno Augusto** — Estudou sobre Documento de Visão, revisou o documento criado pelo Caio e preencheu algumas partes do Figma. Links: {{URL1}}, {{URL2}}.  
+- **Bruno Augusto** — Estudou sobre Documento de Visão, revisou o documento criado pelo Caio e preencheu algumas partes do Figma. 
 - **Arthur Scartezini** — Estudou sobre Diagrama de Fishbone e montou um que servirá de referência para a equipe evitar problemas relacionados a atraso na entrega do produto. Links: Diagrama de fishbone atraso na entrega.jam.  
-- **Paulo Sérgio** — Estudou sobre Documento de Visão, revisou o documento feito pelo Caio e deu opiniões.  
-- **Kaio Amoury** — Estudou e documentou sobre Story Map, ajudou na realização do Diagrama de Fishbone, continuou o preenchimento do Figma e documentação das ATAs semanais. Links: Estudo.  
+- **Paulo Sérgio** — Estudou sobre Documento de Visão, revisou o documento feito pelo Caio. 
+- **Kaio Amoury** — Estudou e documentou sobre Story Map, ajudou na realização do Diagrama de Fishbone, continuou o preenchimento do Figma e documentação das ATAs semanais. 
 
 ---
 
