@@ -71,12 +71,12 @@
 
 ## 8. Contribuições por Integrante
 
-- **Caio Lacerda** — Estudou sobre Figma e criou a página inicial da documentação. Links: Página de Documentação.  
+- **Caio Lacerda** — Estudou sobre Figma e criou a página inicial da documentação.   
 - **Ian Pedersoli** — Auxiliou no levantamento de requisitos funcionais.  
-- **Bruno Augusto** — Pesquisou e documentou sobre sites similares. Links: Estudo.  
+- **Bruno Augusto** — Pesquisou e documentou sobre sites similares. 
 - **Arthur Scartezini** — Preencheu algumas partes do Figma.  
-- **Paulo Sérgio** — Estudou sobre Figma e documentou o estudo. Links: {{URL1}}, {{URL2}}.  
-- **Kaio Amoury** — Organizou encontros, fez upload e documentou as atas e preencheu o Figma. Links: Estudo.  
+- **Paulo Sérgio** — Estudou sobre Figma e documentou o estudo. 
+- **Kaio Amoury** — Organizou encontros, fez upload e documentou as atas e preencheu o Figma.  
 
 ---
 
