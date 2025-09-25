@@ -63,10 +63,9 @@
 
 ## 7. Evidências e Links
 
-* **Página de Documentação (Figma):** {{Link}}  
-* **Estudo sites similares:** {{Link}}  
-* **Estudos Figma:** {{URL1}}, {{URL2}}  
-* **Estudos Kaio:** {{Link}}  
+* **Página de Documentação (Figma):** (https://www.figma.com/design/bjxbjjiQO9wNsDTUrOxa95/MDS---SQUAD-4?node-id=0-1&p=f&t=Jvzh2XJP4vCyth79-0)
+* **Estudo sites similares:** (https://github.com/unb-mds/2025-2-Portal-dos-Professores/blob/main/docs/SPRINT_01/Sprint01_Sites_Similares.md)  
+* **Estudos Figma:** (https://github.com/unb-mds/2025-2-Portal-dos-Professores/blob/main/docs/SPRINT_01/Sprint01_Figma.md) 
 
 ---
 
