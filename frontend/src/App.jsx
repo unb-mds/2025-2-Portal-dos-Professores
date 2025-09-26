@@ -3,7 +3,7 @@ import './App.css';
 import { getProfessorsData } from './services/api';
 
 function App() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     getProfessorsData().then(jsonData => {
@@ -16,12 +16,14 @@ function App() {
       <h1>Portal de Professores da UnB</h1>
       <p>O teste de integração com o Docker funcionou!</p>
 
-      {!data ? (
-        <p>Carregando dados do JSON...</p>
+      {/* Este ternário agora só mostra "Carregando" se a lista estiver vazia. */}
+      {data.length === 0 ? (
+        <p>Carregando dados da API...</p>
       ) : (
         <div className="cards-container">
-          {data.professors.map((professor, index) => (
-            <div className="card-professor" key={index}>
+          {/* MUDANÇA 2: Mapear 'data' diretamente, pois ele já é o array */}
+          {data.map((professor) => (
+            <div className="card-professor" key={professor.id}> 
               <img
                 src={professor.foto_url}
                 alt={`Foto de ${professor.nome}`}
@@ -43,8 +45,7 @@ function App() {
         </div>
       )}
 
-      <h2>Testando o Cache CDN do Github</h2>
-      <h2>Hello World</h2>
+      {/* ... resto do seu código ... */}
     </div>
   );
 }
