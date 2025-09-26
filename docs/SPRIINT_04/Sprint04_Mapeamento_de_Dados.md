@@ -1,4 +1,4 @@
-# 📊 Mapeamento de Dados – Portal dos Professores  
+# Mapeamento de Dados – Portal dos Professores  
 
 ## Professores
 - `id_professor` (número único identificador)  
@@ -9,7 +9,7 @@
 - `departamento` (ex: Engenharia de Software, Matemática)  
 - `área_de_atuacao` (palavras-chave / tags)  
 - `titulacao` (ex: Mestre, Doutor)  
-- `curriculo_lattes` (link)  
+- `curriculo_lattes` (link → [Plataforma Lattes](https://lattes.cnpq.br/)) )  
 - `foto` (URL da imagem)  
 
 ---
