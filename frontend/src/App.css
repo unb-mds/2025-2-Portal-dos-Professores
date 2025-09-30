@@ -1,3 +1,6 @@
+html{
+  height: 100%;
+}
 body, h1, p, ul, li {
   margin: 0;
   padding: 0;
@@ -8,12 +11,14 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: #f7f7f7;
   color: #333;
+  min-height: 100%;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  flex-grow: 1;
 }
 
 .navbar {
@@ -96,7 +101,8 @@ body {
 
 /* Conteúdo Principal */
 .main-content {
-  flex: 1;
+  flex-grow: 1;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -107,9 +113,11 @@ body {
 }
 
 .hero-box {
-  width: 100%;
+  box-sizing: border-box; 
+  width: 90%;
   max-width: none;
-  padding: 2rem;
+  margin: 0 auto;     
+  padding: 3rem;
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 119, 204, 0.1);
