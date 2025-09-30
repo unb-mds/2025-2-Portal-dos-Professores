@@ -6,21 +6,24 @@ import HomePage from '../pages/HomePage';
 import SobreNosPage from '../pages/SobreNosPage';
 import ProfessoresPage from '../pages/ProfessoresPage';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    children: [
-      { path: '/', element: <HomePage /> },
-      { path: '/professores', element: <ProfessoresPage /> },
-      { path: '/sobre-nos', element: <SobreNosPage /> },
-      {
-        path: '*', 
-        element: <Navigate to="/" replace />, 
-      },
-    ],
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <App />,
+      children: [
+        { path: '/', element: <HomePage /> },
+        { path: '/professores', element: <ProfessoresPage /> },
+        { path: '/sobre-nos', element: <SobreNosPage /> },
+        {
+          path: '*',
+          element: <Navigate to="/" replace />,
+        },
+      ],
+    },
+  ],
+  { basename: '/2025-2-Portal-dos-Professores/' }
+);
 
 export function AppRoutes() {
   return <RouterProvider router={router} />;
