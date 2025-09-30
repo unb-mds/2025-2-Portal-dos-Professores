@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  appType: 'spa',
   base: '/2025-2-Portal-dos-Professores/',
   // Adicione esta seção para configurar o servidor de desenvolvimento
   server: {
