@@ -1,10 +1,25 @@
-import React, { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+// 1. IMPORTE 'useEffect' E 'useNavigate'
+import React, { useState, useEffect } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Menu, X, Linkedin, Twitter, Github } from "lucide-react";
 import "./App.css";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const redirectPath = sessionStorage.getItem('redirectPath');
+    if (redirectPath) {
+      sessionStorage.removeItem('redirectPath');
+      
+      const appPath = redirectPath.replace('/2025-2-Portal-dos-Professores', '');
+    
+      navigate(appPath || '/', { replace: true });
+    }
+  }, [navigate]);
+
 
   const NavItem = ({ to, children }) => (
     <li>

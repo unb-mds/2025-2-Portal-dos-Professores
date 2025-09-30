@@ -8,16 +8,14 @@
 
     <script>
       (function() {
-        const redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
-        if (redirect && redirect !== location.href) {
-          history.replaceState(null, null, redirect);
-        }
+        const path = window.location.pathname;
+        sessionStorage.setItem('redirectPath', path);
+        
+        window.location.href = '/2025-2-Portal-dos-Professores/';
       })();
     </script>
-    </head>
+
+  </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    </body>
 </html>
