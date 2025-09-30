@@ -50,3 +50,4 @@ Thumbs.db
 # Arquivos gerados por outras IDEs (ex: JetBrains)
 .idea/
 *.suo
+teste-front/
