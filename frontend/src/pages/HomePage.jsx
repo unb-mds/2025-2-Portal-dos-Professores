@@ -3,12 +3,17 @@ import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   return (
-    <div style={{ textAlign: 'center', padding: '50px' }}>
-      <h1>Bem-vindo ao Portal de Professores</h1>
-      <p>Encontre informações e publicações dos docentes da universidade.</p>
-      <Link to="/professores">
-        <button>Ver lista de professores</button>
-      </Link>
+    <div className="hero-box">
+      <h1>Hub Docente UnB</h1>
+      <p>
+        Sabemos como é desafiador encontrar informações sobre os professores de forma
+        clara e centralizada. Por isso, apresentamos o seu portal de professores da
+        FCTE. Mapeamos os dados públicos para que você possa focar no que realmente
+        importa: descobrir linhas de pesquisa, publicações e disciplinas para
+        encontrar o professor que deseja, ou o orientador perfeito para o seu
+        trabalho.
+      </p>
+      <button>Explorar Professores</button>
     </div>
   );
 }
