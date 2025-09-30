@@ -6,7 +6,6 @@ import "./App.css";
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Componente auxiliar para os itens do menu
   const NavItem = ({ to, children }) => (
     <li>
       <Link to={to} onClick={() => setIsMenuOpen(false)}>
@@ -33,7 +32,6 @@ export default function App() {
             </ul>
           </nav>
 
-          {/* Botão Mobile */}
           <button
             className="mobile-toggle"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -43,7 +41,6 @@ export default function App() {
           </button>
         </div>
 
-        {/* Menu Mobile Dropdown */}
         {isMenuOpen && (
           <ul className="mobile-menu-dropdown">
             <NavItem to="/">HOME</NavItem>
@@ -53,13 +50,10 @@ export default function App() {
         )}
       </header>
 
-      {/* Conteúdo Principal */}
       <main className="main-content">
-        {/* Se quiser manter o hero fixo na Home, crie uma HomePage separada */}
         <Outlet />
       </main>
 
-      {/* Rodapé */}
       <footer className="footer">
         <p>Projeto da disciplina de MDS - UnB</p>
         <p>&copy; 2025 Hub Docente UnB</p>
