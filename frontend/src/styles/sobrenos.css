@@ -1,0 +1,125 @@
+
+:root {
+    /* Cores baseadas no seu app.css */
+    --cor-fundo-principal: #f7f7f7;
+    --cor-azul-fundo-secao: #e6f3ff; 
+    --cor-texto-principal: #333;
+    --cor-primaria-azul: #0077cc;
+    --cor-sombra-azul-clara: rgba(0, 119, 204, 0.1);
+    --cor-sombra-azul-foco: rgba(0, 119, 204, 0.4);
+    --largura-maxima-container: 1100px;
+}
+
+/* --- Seção Principal (Correção do Fundo) --- */
+#quem-somos {
+    width: 100%;
+    padding: 60px 2rem;
+    box-sizing: border-box;
+    background-color: var(--cor-azul-fundo-secao); 
+    min-height: calc(100vh - 80px); 
+    color: var(--cor-texto-principal);
+}
+
+#quem-somos h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #005fa3;
+    margin-bottom: 3rem;
+}
+
+/* 1. ESTILO DA CAIXA DE TEXTO */
+#quem-somos .quem-somos-texto {
+    box-sizing: border-box; 
+    width: 90%;
+    max-width: none; 
+    margin: 0 auto 90px auto; 
+    line-height: 1.7;
+    padding: 3rem; 
+    background: #ffffff; 
+    border-radius: 12px; 
+    box-shadow: 0 10px 25px var(--cor-sombra-azul-clara); 
+    
+    text-align: justify;
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out; 
+    color: var(--cor-texto-principal);
+    font-size: 1.1rem;
+}
+
+#quem-somos .quem-somos-texto:hover {
+    transform: translateY(-4px); 
+    box-shadow: 0 15px 35px var(--cor-sombra-azul-foco);
+}
+
+
+/* 2. GRADE DE PARTICIPANTES */
+.participantes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;   
+    max-width: var(--largura-maxima-container);
+    width: 90%; 
+    margin: 0 auto 40px auto; 
+    padding: 0; 
+}
+
+/* Estilo Individual do Cartão do Participante */
+.participante-card {
+    background-color: #fff; 
+    border-radius: 12px; 
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); 
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+}
+
+.participante-card:hover {
+    transform: translateY(-4px); 
+    box-shadow: 0 10px 25px var(--cor-sombra-azul-clara);
+}
+
+.participante-card .foto {
+    width: 100%;
+    height: 150px; 
+    background-color: #e0e0e0; 
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    text-transform: uppercase;
+    border-radius: 8px;
+}
+
+.participante-card h4 {
+    margin: 5px 0;
+    font-size: 1.1rem;
+    color: var(--cor-texto-principal);
+}
+
+.participante-card a {
+    color: var(--cor-primaria-azul);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.participante-card a:hover {
+    color: #005fa3;
+}
+
+
+/* --- Media Queries (Mantidas) --- */
+@media (max-width: 992px) {
+    .participantes-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 640px) {
+    #quem-somos .quem-somos-texto {
+        padding: 2.5rem 1.5rem;
+    }
+    .participantes-grid {
+        grid-template-columns: 1fr; 
+    }
+}
