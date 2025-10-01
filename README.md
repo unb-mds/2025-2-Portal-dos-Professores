@@ -15,21 +15,6 @@ O **Portal de Professores** é uma plataforma que centraliza e organiza as infor
 
 ---
 
-## 📍 Índice
-
-- [Sobre o Projeto](#sobre-o-projeto)
-- [Arquitetura](#arquitetura)
-- [Funcionalidades Principais](#funcionalidades-principais)
-- [Estrutura de Diretórios](#estrutura-de-diretórios)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Como Rodar Localmente](#como-rodar-localmente)
-- [Mineração de Dados](#mineração-de-dados)
-- [Como Contribuir](#como-contribuir)
-- [Equipe](#equipe-squad-04)
-- [Licença](#licença)
-
----
-
 ### ✨ Acesso Rápido
 
 | Recurso | Link |
