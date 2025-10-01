@@ -13,18 +13,20 @@ Projeto desenvolvido para a disciplina de **Métodos de Desenvolvimento de Softw
 
 O **Portal de Professores** é uma plataforma que centraliza e organiza as informações do corpo docente da UnB, solucionando a dificuldade de encontrar dados acadêmicos consolidados e facilitando a conexão na comunidade universitária. Este documento detalha a arquitetura do projeto, o fluxo de dados e as instruções para configuração e execução local, a fim de orientar novos contribuidores e usuários.
 
+---
+
 ## 📍 Índice
 
-- [Sobre o Projeto](#-sobre-o-projeto)
-- [Arquitetura](#-arquitetura)
-- [Funcionalidades Principais](#-funcionalidades-principais)
-- [Estrutura de Diretórios](#-estrutura-de-diretórios)
-- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
-- [Como Rodar Localmente](#-como-rodar-localmente)
-- [Mineração de Dados](#-mineração-de-dados)
-- [Como Contribuir](#-como-contribuir)
-- [Equipe](#-equipe-squad-04)
-- [Licença](#-licença)
+- [Sobre o Projeto](#sobre-o-projeto)
+- [Arquitetura](#arquitetura)
+- [Funcionalidades Principais](#funcionalidades-principais)
+- [Estrutura de Diretórios](#estrutura-de-diretórios)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Como Rodar Localmente](#como-rodar-localmente)
+- [Mineração de Dados](#mineração-de-dados)
+- [Como Contribuir](#como-contribuir)
+- [Equipe](#equipe-squad-04)
+- [Licença](#licença)
 
 ---
 
