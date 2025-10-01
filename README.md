@@ -17,7 +17,7 @@ O **Portal de Professores** é uma plataforma que centraliza e organiza as infor
 
 - [Sobre o Projeto](#-sobre-o-projeto)
 - [Arquitetura](#-arquitetura)
-- [Funcionalidades Principais](#funcionalidades-principais)
+- [Funcionalidades Principais](#-funcionalidades-principais)
 - [Estrutura de Diretórios](#-estrutura-de-diretórios)
 - [Tecnologias Utilizadas](#-tecnologias-utilizadas)
 - [Como Rodar Localmente](#-como-rodar-localmente)
@@ -51,13 +51,13 @@ O **Portal de Professores** é uma plataforma que centraliza e organiza as infor
 
 A arquitetura do projeto é desacoplada, dividida entre um frontend moderno e um backend Python que serve os dados através de uma API.
 
-1.  **Frontend (Aplicação Estática):** A interface do usuário é construída como uma aplicação estática (React, Vue, etc.). Ela não lê dados diretamente de arquivos, mas sim consome as rotas expostas pelo backend FastAPI, tornando a aplicação mais escalável e segura.
+-  **Frontend (Aplicação Estática):** A interface do usuário é construída como uma aplicação estática (React, Vue, etc.). Ela não lê dados diretamente de arquivos, mas sim consome as rotas expostas pelo backend FastAPI, tornando a aplicação mais escalável e segura.
 
-2.  **Backend (API com FastAPI):** O núcleo do projeto é uma API desenvolvida em Python com o framework FastAPI. Ele é responsável por ler o arquivo `professores.json`, processar os dados e expor endpoints (rotas) para o frontend consumir.
+-  **Backend (API com FastAPI):** O núcleo do projeto é uma API desenvolvida em Python com o framework FastAPI. Ele é responsável por ler o arquivo `professores.json`, processar os dados e expor endpoints (rotas) para o frontend consumir.
 
-3.  **Banco de Dados (Arquivo JSON):** O arquivo `professores.json`, localizado na pasta `data/`, continua atuando como a fonte de verdade (banco de dados). Ele é gerenciado e atualizado exclusivamente pelos scripts no backend.
+-  **Banco de Dados (Arquivo JSON):** O arquivo `professores.json`, localizado na pasta `data/`, continua atuando como a fonte de verdade (banco de dados). Ele é gerenciado e atualizado exclusivamente pelos scripts no backend.
 
-4.  **Mineração de Dados (GitHub Actions + Backend):** A automação é feita via GitHub Actions. Um workflow agendado aciona os scripts de mineração localizados dentro do diretório `backend/`. Esses scripts coletam os dados de fontes externas e atualizam o arquivo `professores.json`.
+-  **Mineração de Dados (GitHub Actions + Backend):** A automação é feita via GitHub Actions. Um workflow agendado aciona os scripts de mineração localizados dentro do diretório `backend/`. Esses scripts coletam os dados de fontes externas e atualizam o arquivo `professores.json`.
 
 ---
 
@@ -135,7 +135,7 @@ Antes de começar, verifique o nosso [**Quadro de Tarefas**](https://github.com/
 | :--: | :-- | :--: |
 | <img src="https://github.com/caiolacerdamt.png" width="80" alt="Caio Lacerda" style="border-radius: 50%;"> | [Caio Lacerda](https://github.com/caiolacerdamt) | [@caiolacerdamt](https://github.com/caiolacerdamt) |
 | <img src="https://github.com/ianpedersoli.png" width="80" alt="Ian Pedersoli" style="border-radius: 50%;"> | [Ian Pedersoli](https://github.com/ianpedersoli) | [@ianpedersoli](https://github.com/ianpedersoli) |
-| <img src="https://github.com/Ascartezini.png" width="80" alt="Arthur Scartezini" style="border-radius: 50%;"> | [Arthur Scartezini](https://github.com/Ascartezini) | [@Ascartezini](https://github.com/Ascartezini) |
+| <img src="https://github.com/Ascartezin.png" width="80" alt="Arthur Scartezini" style="border-radius: 50%;"> | [Arthur Scartezini](https://github.com/Ascartezin) | [@Ascartezin](https://github.com/Ascartezin) |
 | <img src="https://github.com/Paulosrsr.png" width="80" alt="Paulo Sérgio" style="border-radius: 50%;"> | [Paulo Sérgio](https://github.com/Paulosrsr) | [@Paulosrsr](https://github.com/Paulosrsr) |
 | <img src="https://github.com/KaioAmouryUnB.png" width="80" alt="Kaio Amoury" style="border-radius: 50%;"> | [Kaio Amoury](https://github.com/KaioAmouryUnB) | [@KaioAmouryUnB](https://github.com/KaioAmouryUnB) |
 | <img src="https://github.com/brunodantas9.png" width="80" alt="Bruno Augusto" style="border-radius: 50%;"> | [Bruno Augusto](https://github.com/brunodantas9) | [@brunodantas9](https://github.com/brunodantas9) | |
