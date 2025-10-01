@@ -1,8 +1,10 @@
 
 import { Link } from 'react-router-dom';
+import '../styles/home.css'; 
 
 export default function HomePage() {
   return (
+    <main className="main-content">
     <div className="hero-box">
       <h1>Hub Docente UnB</h1>
       <p>
@@ -15,5 +17,6 @@ export default function HomePage() {
       </p>
       <button>Explorar Professores</button>
     </div>
+  </main>
   );
 }

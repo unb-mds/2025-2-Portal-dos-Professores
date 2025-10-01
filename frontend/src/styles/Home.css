@@ -1,0 +1,30 @@
+/* home.css */
+
+.hero-box {
+    box-sizing: border-box; 
+    width: 90%;
+    max-width: none; 
+    margin-left: auto;
+    margin-right: auto;
+    margin:0 6% 0 auto;
+    transition: transform 0.4s ease-out; 
+    background: #ffffff;
+    padding: 3rem;;
+    border-radius: 12px;
+    box-shadow:  0 10px 25px rgba(0, 119, 204, 0.1); 
+}
+.hero-box:hover {
+    transform: translateY(-4px); 
+}
+
+
+@media (max-width: 768px) {
+
+    .hero-box {
+        padding: 2.5rem 1.5rem;
+    }
+    
+    .hero-box h1 {
+        font-size: 2rem; 
+    }
+}

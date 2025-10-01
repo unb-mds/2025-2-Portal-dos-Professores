@@ -70,6 +70,7 @@ export default function App() {
       </main>
 
       <footer className="footer">
+        <div className="footer-content"> 
         <p>Projeto da disciplina de MDS - UnB</p>
         <p>&copy; 2025 Hub Docente UnB</p>
         <div className="social-icons">
@@ -82,6 +83,7 @@ export default function App() {
           <a href="#" aria-label="GitHub">
             <Github size={24} />
           </a>
+        </div>
         </div>
       </footer>
     </div>
