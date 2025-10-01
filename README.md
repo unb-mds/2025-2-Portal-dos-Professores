@@ -47,14 +47,17 @@ O **Portal de Professores** é uma plataforma que centraliza e organiza as infor
 
 ---
 
-
 ## 🏛️ Arquitetura
 
-Este projeto opera sob uma arquitetura **frontend-only**, uma restrição deliberada para garantir simplicidade, segurança e custo zero de hospedagem.
+A arquitetura do projeto é desacoplada, dividida entre um frontend moderno e um backend Python que serve os dados através de uma API.
 
-1.  **Frontend (GitHub Pages):** A interface do usuário é construída como uma aplicação estática (ex: React, Vue, ou HTML/CSS/JS puros) e hospedada diretamente no GitHub Pages. Não há um servidor backend tradicional, o que simplifica o deploy e a manutenção.
-2.  **Banco de Dados (Arquivo JSON):** Todas as informações dos professores, coletadas pelos bots, são consolidadas em um único arquivo `professores.json` no repositório. O frontend carrega e processa este arquivo como sua principal fonte de dados.
-3.  **Mineração de Dados (GitHub Actions):** A atualização dos dados é automatizada. Um workflow do GitHub Actions é configurado para rodar periodicamente (ex: diariamente), executando scripts de web scraping que coletam informações de fontes públicas (Lattes, Scholar, SIGAA), processam os dados e atualizam o arquivo `professores.json` automaticamente.
+1.  **Frontend (Aplicação Estática):** A interface do usuário é construída como uma aplicação estática (React, Vue, etc.). Ela não lê dados diretamente de arquivos, mas sim consome as rotas expostas pelo backend FastAPI, tornando a aplicação mais escalável e segura.
+
+2.  **Backend (API com FastAPI):** O núcleo do projeto é uma API desenvolvida em Python com o framework FastAPI. Ele é responsável por ler o arquivo `professores.json`, processar os dados e expor endpoints (rotas) para o frontend consumir.
+
+3.  **Banco de Dados (Arquivo JSON):** O arquivo `professores.json`, localizado na pasta `data/`, continua atuando como a fonte de verdade (banco de dados). Ele é gerenciado e atualizado exclusivamente pelos scripts no backend.
+
+4.  **Mineração de Dados (GitHub Actions + Backend):** A automação é feita via GitHub Actions. Um workflow agendado aciona os scripts de mineração localizados dentro do diretório `backend/`. Esses scripts coletam os dados de fontes externas e atualizam o arquivo `professores.json`.
 
 ---
 
@@ -85,11 +88,12 @@ O projeto está organizado da seguinte forma para separar responsabilidades:
 
 | Categoria | Tecnologia | Descrição |
 | :--- | :--- | :--- |
-| **Frontend** | `React` / `Vue.js` | Biblioteca/framework SPA  |
-| **Frontend** | `Vite` | Dev server e build rápido |
-| **Estilização** | `Tailwind CSS` |  Utilitários CSS modernos      |
-| **Mineração de Dados** | `Python` | Linguagem para os scripts de scraping. |
-| **Mineração de Dados** | `BeautifulSoup` / `Playwright` | Bibliotecas para extração de dados de páginas web. |
+| **Frontend** | `React` / `Vue.js` | Biblioteca/framework para a interface do usuário. |
+| **Frontend** | `Vite` | Ferramenta de build e servidor de desenvolvimento. |
+| **Backend** | `Python` | Linguagem principal para a API e scripts. |
+| **Backend** | `FastAPI` | Framework web para a criação da API. |
+| **Estilização** | `Tailwind CSS` | Framework CSS para estilização rápida. |
+| **Mineração de Dados** | `BeautifulSoup` / `Playwright`| Bibliotecas para extração de dados web. |
 | **Automação** | `GitHub Actions` | Orquestrador para execução automática dos scripts. |
 
 ---
@@ -100,14 +104,14 @@ O projeto está organizado da seguinte forma para separar responsabilidades:
 
 ## 🤖 Mineração de Dados
 
-Os bots são responsáveis por popular o "banco de dados" (`professores.json`).
+A coleta de dados é automatizada e gerenciada pelo backend.
 
-* **O que eles fazem:** Os scripts em `scripts/` navegam até as páginas de fontes públicas, extraem as informações relevantes de cada professor e as estruturam no formato esperado.
-* **Como executar manualmente:** Para testar ou forçar uma atualização localmente, você pode rodar o script principal de mineração.
+* **O que acontece:** Um workflow do **GitHub Actions** é configurado para rodar periodicamente. Ele aciona os scripts de mineração localizados dentro do diretório `backend/scripts/`. Esses scripts navegam até as fontes públicas (Lattes, Scholar, etc.), extraem as informações e atualizam o arquivo `data/professores.json`.
+* **Como executar manualmente:** Para testar a mineração localmente, você pode executar o script principal a partir da raiz do projeto:
     ```bash
-    python scripts/main_scraper.py
+    python backend/scripts/main_scraper.py
     ```
-    > **Aviso:** A execução pode demorar e consumir recursos. Após a execução, um novo `professores.json` será gerado ou atualizado na raiz do projeto.
+    > **Aviso:** A execução pode demorar e consumir recursos. Após o término, o arquivo `data/prof-professores.json` será atualizado com os novos dados.
 
 ---
 
