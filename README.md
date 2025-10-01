@@ -6,7 +6,7 @@
 Projeto desenvolvido para a disciplina de **Métodos de Desenvolvimento de Software (MDS)** da Universidade de Brasília - Semestre 2025/2.
 
 ---
-📚 [Acesse a documentação completa aqui](https://github.com/unb-mds/2025-2-Portal-dos-Professores)
+📚 [Acesse a documentação completa aqui](https://portal-dos-professores.readthedocs.io/pt/latest/)
 
 
 ## 📖 Sobre o Projeto
