@@ -90,11 +90,10 @@ O projeto está organizado da seguinte forma para separar responsabilidades:
 
 | Categoria | Tecnologia | Descrição |
 | :--- | :--- | :--- |
-| **Frontend** | `React` / `Vue.js` | Biblioteca/framework para a interface do usuário. |
+| **Frontend** | `React` | Biblioteca/framework para a interface do usuário. |
 | **Frontend** | `Vite` | Ferramenta de build e servidor de desenvolvimento. |
 | **Backend** | `Python` | Linguagem principal para a API e scripts. |
 | **Backend** | `FastAPI` | Framework web para a criação da API. |
-| **Estilização** | `Tailwind CSS` | Framework CSS para estilização rápida. |
 | **Mineração de Dados** | `BeautifulSoup` / `Playwright`| Bibliotecas para extração de dados web. |
 | **Automação** | `GitHub Actions` | Orquestrador para execução automática dos scripts. |
 
@@ -102,6 +101,40 @@ O projeto está organizado da seguinte forma para separar responsabilidades:
 
 ## 🚀 Como Rodar Localmente
 
+Siga os passos abaixo para configurar e executar o projeto no seu ambiente de desenvolvimento.
+
+## 📋 Pré-requisitos
+
+Antes de começar, garanta que você tenha as seguintes ferramentas instaladas:
+
+- **[Docker](https://docs.docker.com/get-docker/)**: Essencial para criar e gerenciar os contêineres da aplicação.
+- **[Git](https://git-scm.com/downloads)**: Necessário para clonar o repositório do projeto.
+
+## 📥 Clonando o Repositório
+
+Abra seu terminal e execute os comandos abaixo para baixar o código-fonte e acessar a pasta do projeto:
+```bash
+git clone https://github.com/unb-mds/2025-2-Portal-dos-Professores
+```
+
+## 🐳 Subindo os Contêineres com Docker
+
+Com o Docker em execução, utilize o Docker Compose para construir as imagens e iniciar os serviços da aplicação:
+```bash
+# 1. Build das imagens (só é necessário na primeira vez ou após mudanças no Dockerfile)
+docker-compose build
+
+# 2. Inicia os serviços em background
+docker-compose up 
+```
+
+## 🌐 Acessando a Aplicação
+Após os contêineres subirem, a aplicação estará disponível nos seguintes endereços:
+
+```bash
+Frontend: http://localhost:5173/2025-2-Portal-dos-Professores/
+Backend (API): http://localhost:8000/docs
+```
 ---
 
 ## 🤖 Mineração de Dados
@@ -109,11 +142,37 @@ O projeto está organizado da seguinte forma para separar responsabilidades:
 A coleta de dados é automatizada e gerenciada pelo backend.
 
 * **O que acontece:** Um workflow do **GitHub Actions** é configurado para rodar periodicamente. Ele aciona os scripts de mineração localizados dentro do diretório `backend/scripts/`. Esses scripts navegam até as fontes públicas (Lattes, Scholar, etc.), extraem as informações e atualizam o arquivo `data/professores.json`.
-* **Como executar manualmente:** Para testar a mineração localmente, você pode executar o script principal a partir da raiz do projeto:
-    ```bash
-    python backend/scripts/main_scraper.py
-    ```
-    > **Aviso:** A execução pode demorar e consumir recursos. Após o término, o arquivo `data/prof-professores.json` será atualizado com os novos dados.
+
+## Como Executar a Mineração Manualmente
+- Se precisar forçar uma atualização dos dados localmente, você pode executar o script principal de mineração.
+  
+1. Criar e Ativar o Ambiente Virtual
+Primeiro, crie um ambiente virtual Python para isolar as dependências do projeto:
+```bash
+# Criar o ambiente virtual
+python -m venv venv
+
+# Ativar o ambiente virtual (Linux/Mac)
+source venv/bin/activate
+
+
+# Ativar o ambiente virtual (Windows)
+venv\Scripts\activate
+```
+
+2. Instalar as Dependências
+Com o ambiente virtual ativado, instale todas as dependências necessárias:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Executar o Script de Mineração
+Agora você pode executar o script principal de mineração:
+
+```bash
+python backend/scripts/scraper_runner.py
+```
 
 ---
 
@@ -126,8 +185,6 @@ Agradecemos o seu interesse em contribuir com o Portal de Professores! Para gara
 3.  **Faça o Commit** das suas alterações com uma mensagem clara (`git commit -m 'feat: Adiciona funcionalidade X'`).
 4.  **Faça o Push** para a sua branch (`git push origin feature/sua-feature-incrivel`).
 5.  **Abra um Pull Request** detalhando as mudanças que você fez.
-
-Antes de começar, verifique o nosso [**Quadro de Tarefas**](https://github.com/unb-mds/2025-2-Squad-04/projects/1) para ver as atividades em andamento e evitar trabalho duplicado.
 
 ---
 
