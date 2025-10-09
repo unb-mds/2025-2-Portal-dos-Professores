@@ -1,8 +1,8 @@
-from scrapers.sigaa_scraper import SigaaScraper 
+from scrapers.sigaa_scraper import SigaaScraper
 from database_manager import DatabaseManager
-import json 
+import asyncio 
 
-def main():
+async def main(): 
     print("--- INICIANDO SCRAPER DE PROFESSORES DO SIGAA ---")
     
     depts_para_buscar = [
@@ -16,7 +16,6 @@ def main():
         "INSTITUTO DE FÍSICA - BRASÍLIA",
         "INSTITUTO DE GEOCIÊNCIAS - BRASÍLIA",
         "INSTITUTO DE QUÍMICA - BRASÍLIA",
-        
     ]
 
     print(f"Buscando professores em {len(depts_para_buscar)} departamentos.")
@@ -25,8 +24,7 @@ def main():
     db_manager = DatabaseManager("data/professors.json") 
 
     try:
-
-        professor_data = sigaa_scraper.scrape_professors_by_department(depts_para_buscar)
+        professor_data = await sigaa_scraper.scrape_professors_by_department(depts_para_buscar)
         
         if professor_data:
             print(f"\nTotal de {len(professor_data)} professores únicos coletados para salvar.")
@@ -42,4 +40,4 @@ def main():
     print("\n--- PROCESSO FINALIZADO ---")
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
