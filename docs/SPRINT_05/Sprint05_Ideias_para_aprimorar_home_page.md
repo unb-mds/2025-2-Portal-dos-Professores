@@ -1,12 +1,12 @@
-# 📘 Estudo Dirigido — Ideias para Aprimorar a Home Page do Portal dos Professores
+# Estudo Dirigido — Ideias para Aprimorar a Home Page do Portal dos Professores
 
-## 📖 Introdução
+## Introdução
 Este estudo tem como objetivo analisar e propor melhorias para a **Home Page** do Portal dos Professores da UnB, de modo a torná-la mais intuitiva, informativa e visualmente agradável.  
 A página inicial é a **porta de entrada do sistema**, responsável por apresentar o propósito do projeto e permitir o acesso rápido às principais funcionalidades — como busca de professores, visualização de perfis e exploração de dados minerados.
 
 ---
 
-## 🎯 Objetivos do Estudo
+## Objetivos do Estudo
 - Entender as boas práticas de design aplicáveis a portais acadêmicos e institucionais.  
 - Propor uma estrutura clara e funcional para a Home Page.  
 - Sugerir melhorias visuais e interativas que aumentem a usabilidade.  
@@ -14,7 +14,7 @@ A página inicial é a **porta de entrada do sistema**, responsável por apresen
 
 ---
 
-## 🧭 Contexto do Projeto
+## Contexto do Projeto
 O **Portal dos Professores** busca centralizar e apresentar informações públicas de docentes da UnB, como:
 - Dados de currículo (Lattes, Google Scholar, SIGAA).  
 - Disciplinas ministradas e evolução ao longo do tempo.  
@@ -25,7 +25,7 @@ Como a arquitetura do sistema **não possui backend tradicional** (todo o proces
 
 ---
 
-## 🧩 Estrutura Recomendada da Home Page
+## Estrutura Recomendada da Home Page
 Abaixo está uma proposta de estrutura dividida por seções, respeitando os princípios de UX/UI e a identidade visual da UnB.
 
 ### 1. Cabeçalho (Header)
@@ -61,7 +61,7 @@ Abaixo está uma proposta de estrutura dividida por seções, respeitando os pri
 
 ---
 
-## 💡 Boas Práticas de Design Consideradas
+## Boas Práticas de Design Consideradas
 - **Minimalismo visual:** evitar excesso de informações e focar em clareza.  
 - **Hierarquia visual:** destacar a busca e os professores em destaque.  
 - **Cores institucionais da UnB:** tons de azul, branco e cinza.  
@@ -70,13 +70,13 @@ Abaixo está uma proposta de estrutura dividida por seções, respeitando os pri
 
 ---
 
-## 🧠 Inspirações e Referências
+## Inspirações e Referências
 - [Google Scholar](https://scholar.google.com/)  
 - [Figma Community UI Templates](https://www.figma.com/community/)  
 
 ---
 
-## 📋 Checklist do Estudo
+## Checklist do Estudo
 - [x] Analisar referências visuais.  
 - [x] Definir estrutura base (Header, Hero, Conteúdo, Footer).  
 - [x] Propor melhorias interativas e visuais.  
@@ -85,7 +85,7 @@ Abaixo está uma proposta de estrutura dividida por seções, respeitando os pri
 
 ---
 
-## 🧾 Conclusão
+## Conclusão
 O redesign da Home Page visa **reforçar a identidade e o propósito do portal**, garantindo que o usuário entenda o objetivo do projeto logo ao acessá-lo.  
 Com uma interface simples, organizada e funcional, o Portal dos Professores passa a ser não apenas uma base de dados, mas uma **experiência de descoberta acadêmica**.
 
