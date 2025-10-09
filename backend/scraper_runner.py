@@ -16,6 +16,7 @@ def main():
         "INSTITUTO DE FÍSICA - BRASÍLIA",
         "INSTITUTO DE GEOCIÊNCIAS - BRASÍLIA",
         "INSTITUTO DE QUÍMICA - BRASÍLIA",
+        
     ]
 
     print(f"Buscando professores em {len(depts_para_buscar)} departamentos.")
