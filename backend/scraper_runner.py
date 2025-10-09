@@ -8,6 +8,15 @@ def main():
     depts_para_buscar = [
         "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA - BRASÍLIA",
         "DEPTO CIÊNCIAS DA COMPUTAÇÃO - BRASÍLIA",
+        "DEPARTAMENTO DE MATEMÁTICA - BRASÍLIA",
+        "DEPTO ESTATÍSTICA - BRASÍLIA",
+        "FACULDADE DE ARQUITETURA E URBANISMO - BRASÍLIA",
+        "FACULDADE DE CIÊNCIA DA INFORMAÇÃO - BRASÍLIA",
+        "FACULDADE DE TECNOLOGIA - BRASÍLIA",
+        "INSTITUTO DE FÍSICA - BRASÍLIA",
+        "INSTITUTO DE GEOCIÊNCIAS - BRASÍLIA",
+        "INSTITUTO DE QUÍMICA - BRASÍLIA",
+        
     ]
 
     print(f"Buscando professores em {len(depts_para_buscar)} departamentos.")
