@@ -1,54 +1,37 @@
 import time
 import os
-from playwright.sync_api import sync_playwright, expect, TimeoutError
+from playwright.sync_api import sync_playwright, expect, TimeoutError, Page
 
 PATH_TO_EXTENSION = os.path.join(os.path.dirname(__file__), '..', 'browser_extensions', 'buster_extension')
 
-def scrape_lattes(target_url: str):
+USER_DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'playwright_user_data')
+if not os.path.exists(USER_DATA_DIR):
+    os.makedirs(USER_DATA_DIR)
+
+
+def scrape_lattes(page: Page, target_url: str):
     """
-    Navega até uma URL do Lattes, resolve o reCAPTCHA v2 e submete o formulário.
-
-    Args:
-        target_url: A URL do currículo Lattes a ser raspado.
-
-    Returns:
-        playwright.sync_api.Page: O objeto 'Page' da página de sucesso para raspagem posterior.
-        None: Em caso de falha na automação.
+    Usa uma PÁGINA JÁ ABERTA para navegar até uma URL do Lattes e resolver o CAPTCHA.
     """
-    if not os.path.exists(PATH_TO_EXTENSION):
-        print(f"ERRO CRÍTICO: Pasta da extensão não encontrada em: {PATH_TO_EXTENSION}")
-        return None
-
-    playwright_instance = sync_playwright().start()
-    
     try:
-        browser = playwright_instance.chromium.launch(
-            headless=False, 
-            args=[
-                f'--disable-extensions-except={PATH_TO_EXTENSION}',
-                f'--load-extension={PATH_TO_EXTENSION}',
-            ],
-            slow_mo=250
-        )
-        context = browser.new_context()
-        page = context.new_page()
-
-        print(f"Navegando para: {target_url}")
-        page.goto(target_url)
+        print(f"Navegando na mesma aba para: {target_url}")
+        page.goto(target_url, wait_until="domcontentloaded", timeout=30000)
 
         recaptcha_frame = page.frame_locator('iframe[title="reCAPTCHA"]')
         checkbox = recaptcha_frame.locator("#recaptcha-anchor")
         checkbox.click()
 
-        time.sleep(2) 
+        time.sleep(2)
         is_checked = checkbox.get_attribute("aria-checked")
 
         if is_checked != "true":
             print("Caminho Difícil detectado. Acionando a extensão...")
             challenge_frame = page.frame_locator('iframe[title*="recaptcha challenge"]')
             buster_button = challenge_frame.locator('.help-button-holder')
-            buster_button.wait_for(state="visible", timeout=10000)
+            
+            buster_button.wait_for(state="visible", timeout=15000)
             buster_button.click()
+            print("Extensão acionada.")
 
         print("Aguardando confirmação do CAPTCHA...")
         expect(checkbox).to_have_attribute("aria-checked", "true", timeout=45000)
@@ -61,25 +44,60 @@ def scrape_lattes(target_url: str):
         submit_button.click()
         
         page.wait_for_load_state("domcontentloaded")
-        print("🎉 Formulário enviado com sucesso!")
+        print("🎉 Formulário enviado! Acesso à página do currículo confirmado.")
         
-        return page
+        return True
 
     except Exception as e:
-        print(f"\n❌ Ocorreu um erro na automação do Lattes: {e}")
-        if 'playwright_instance' in locals():
-            playwright_instance.stop() 
-        return None
-
+        print(f"\n❌ Ocorreu um erro ao processar {target_url}: {e}")
+        return False
 
 if __name__ == '__main__':
-    URL_DE_TESTE = "http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4760244T7"
     
-    page_resultado = scrape_lattes(URL_DE_TESTE)
-    
-    if page_resultado:
-        print("\nScraping de teste concluído. A página de resultados está pronta.")
-        time.sleep(5) 
-        page_resultado.context.browser.close()
-    else:
-        print("\nScraping de teste falhou.")
+    URLS_PARA_TESTAR = [
+        "http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4208064D9",
+        "http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4717331H6",
+        "http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4808828H7",
+        "http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4137001Z7",
+        "http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4584071U7",
+    ]
+
+    with sync_playwright() as p:
+        print("--- INICIANDO TESTE EM LOTE (COM CONTEXTO PERSISTENTE) ---")
+        
+        context = p.chromium.launch_persistent_context(
+            USER_DATA_DIR,
+            headless=False,
+            args=[
+                f'--disable-extensions-except={PATH_TO_EXTENSION}',
+                f'--load-extension={PATH_TO_EXTENSION}',
+            ],
+            slow_mo=250
+        )
+        page = context.new_page()
+
+        sucessos, falhas = 0, 0
+        try:
+            for i, url in enumerate(URLS_PARA_TESTAR):
+                print("\n" + "="*50)
+                print(f"Processando URL {i+1}/{len(URLS_PARA_TESTAR)}")
+                
+                sucesso = scrape_lattes(page, url)
+                
+                if sucesso:
+                    sucessos += 1
+                else:
+                    falhas += 1
+                
+                print("Aguardando 5 segundos antes da próxima URL...")
+                time.sleep(5)
+        finally:
+            print("\nFechando o navegador...")
+            context.close()
+
+        print("\n--- RESULTADO FINAL DO TESTE ---")
+        print(f"Total de URLs processadas: {len(URLS_PARA_TESTAR)}")
+        print(f"✅ Sucessos: {sucessos}")
+        print(f"❌ Falhas: {falhas}")
+        print("-----------------------------")
+
