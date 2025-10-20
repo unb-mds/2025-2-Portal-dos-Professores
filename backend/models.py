@@ -1,12 +1,23 @@
-from pydantic import BaseModel
-from typing import Optional
+from pydantic import BaseModel, Field
+from typing import List, Dict, Optional
+
+class Contatos(BaseModel):
+    sala: Optional[str] = None
+    telefone: Optional[str] = None
+    email: Optional[str] = None
 
 class Professor(BaseModel):
-    id: int  
+    id: int
     nome: str
-    departamento: Optional[str] = None
-    foto_url: Optional[str] = None
-    pagina_sigaa_url: Optional[str] = None
+    departamento: str
+    foto_url: str
+    pagina_sigaa_url: str
+
+    descricao_pessoal: Optional[str] = None
+    lattes_url: Optional[str] = None
+    
+    formacao_academica: Dict[str, List[str]] = {}
+    contatos: Contatos = {}
 
     class Config:
         from_attributes = True
