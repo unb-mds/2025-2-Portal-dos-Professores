@@ -3,7 +3,7 @@ from playwright.async_api import async_playwright, Page, Browser
 from urllib.parse import urljoin
 
 class SigaaScraper:
-    def __init__(self, concurrency=5):
+    def __init__(self, concurrency=10):
         self.base_url = "https://sigaa.unb.br"
         self.search_url = "https://sigaa.unb.br/sigaa/public/docente/busca_docentes.jsf"
         self.CONCURRENCY = concurrency 
