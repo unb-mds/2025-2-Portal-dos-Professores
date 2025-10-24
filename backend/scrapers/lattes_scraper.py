@@ -1,6 +1,7 @@
 import time
 import os
 from playwright.sync_api import sync_playwright, expect, TimeoutError, Page
+from scrapers.lattes_parser import parse_lattes_page 
 
 USER_DATA_DIR_BASE = os.path.join(os.path.dirname(__file__), '..', 'playwright_user_data')
 PATH_TO_EXTENSION = os.path.join(os.path.dirname(__file__), '..', 'browser_extensions', 'buster_extension')
@@ -8,10 +9,9 @@ PATH_TO_EXTENSION = os.path.join(os.path.dirname(__file__), '..', 'browser_exten
 
 def scrape_lattes(page: Page, target_url: str, worker_id: int = 1) -> dict:
     """
-    Função de scraping robusta, com logs que identificam o trabalhador.
-    - Timeout de extensão de 12s.
-    - Espera pós-falha de página de 5s.
-    - 3 Tentativas de Página, 4 Tentativas de Desafio (com 'Atualizar').
+    Função "Porteiro".
+    Navega, resolve o CAPTCHA com retentativas, e chama o
+    parser externo para extrair os dados.
     """
     
     MAX_PAGE_ATTEMPTS = 3
@@ -25,7 +25,6 @@ def scrape_lattes(page: Page, target_url: str, worker_id: int = 1) -> dict:
             checkbox = checkbox_frame.locator("#recaptcha-anchor")
             checkbox.click()
             time.sleep(3) 
-
             if checkbox.get_attribute("aria-checked") == "true":
                 print(f"[Trabalhador {worker_id}] Caminho fácil detectado. CAPTCHA resolvido.")
             
@@ -58,7 +57,7 @@ def scrape_lattes(page: Page, target_url: str, worker_id: int = 1) -> dict:
                         expect(checkbox).to_have_attribute("aria-checked", "true", timeout=12000) 
                         print(f"[Trabalhador {worker_id}] Extensão funcionou! CAPTCHA resolvido nesta tentativa.")
                         break
-                    
+
                     except TimeoutError:
                         print(f"[Trabalhador {worker_id}] Extensão falhou ou demorou demais na tentativa {attempt_challenge + 1}.")
                         if attempt_challenge == MAX_CHALLENGE_ATTEMPTS - 1:
@@ -88,13 +87,14 @@ def scrape_lattes(page: Page, target_url: str, worker_id: int = 1) -> dict:
             
             page.wait_for_load_state("domcontentloaded")
             print(f"[Trabalhador {worker_id}] 🎉 Formulário enviado! Acesso à página do currículo confirmado.")
-            
-            dados_extraidos = {
-                "publicacoes": "Exemplo: 10 publicações",
-                "resumo": "Exemplo: Resumo do CV..."     
-            }
+
+            print(f"[Trabalhador {worker_id}] Chamando o parser para extrair os dados...")
+            dados_extraidos = parse_lattes_page(page)
+
+            print(f"[Trabalhador {worker_id}] Dados extraídos com sucesso.")
             
             return {"status": "success", "url": target_url, "dados_lattes": dados_extraidos}
+
 
         except Exception as e:
             print(f"\n[Trabalhador {worker_id}] ❌ Ocorreu um erro na tentativa de PÁGINA {attempt_page + 1}/{MAX_PAGE_ATTEMPTS}: {e}")
@@ -125,7 +125,7 @@ def run_lattes_pipeline(lattes_urls: list, worker_id: int = 1) -> list:
         try:
             context = p.chromium.launch_persistent_context(
                 worker_data_dir, 
-                headless=True, 
+                headless=False, 
                 args=[
                     f'--disable-extensions-except={PATH_TO_EXTENSION}',
                     f'--load-extension={PATH_TO_EXTENSION}',
@@ -147,7 +147,7 @@ def run_lattes_pipeline(lattes_urls: list, worker_id: int = 1) -> list:
                 
                 result_data = scrape_lattes(page, url, worker_id)
                 results.append(result_data)
-
+                
                 if result_data["status"] == "error":
                     print(f"[Trabalhador {worker_id}] Aguardando 5s após falha antes da próxima URL...")
                     time.sleep(5)
@@ -170,11 +170,11 @@ if __name__ == '__main__':
     
     URLS_PARA_TESTAR = [
         "http://lattes.cnpq.br/3721949670501226", 
-        "http://lattes.cnpq.br/8422791585805813", 
+        "http://lattes.cnpq.br/6871745921667698", 
         "http://lattes.cnpq.br/1283620242273104", 
     ]
 
-    print("--- EXECUTANDO TESTE LOCAL DO LATTES (COM TRABALHADOR 99) ---")
+    print("--- EXECUTANDO TESTE LOCAL DO LATTES (COM PARSER SEPARADO) ---")
     resultados_teste = run_lattes_pipeline(URLS_PARA_TESTAR, worker_id=99)
     
     print("\n--- RESULTADO FINAL DO TESTE ---")
@@ -184,3 +184,20 @@ if __name__ == '__main__':
     print(f"✅ Sucessos: {sucessos}")
     print(f"❌ Falhas: {falhas}")
     print("-----------------------------")
+    
+    print("\n--- DADOS EXTRAÍDOS NO TESTE (AMOSTRA) ---")
+    for res in resultados_teste:
+        if res["status"] == "success":
+            print(f"URL: {res['url']}")
+            print(f"  Resumo: {res['dados_lattes'].get('resumo_cv', 'N/A')[:50]}...")
+            print(f"  Formação: {len(res['dados_lattes'].get('formacao_academica', []))} itens")
+            print(f"  Projetos de Pesquisa: {len(res['dados_lattes'].get('projetos_pesquisa', []))} itens")
+            print(f"  Orientações de Mestrado: {len(res['dados_lattes'].get('orientacoes_mestrado', []))} itens")
+            print(f"  Orientações de TCC: {len(res['dados_lattes'].get('orientacoes_tcc', []))} itens")
+            
+            if res['dados_lattes'].get('projetos_pesquisa'):
+                print(f"    - Ex. Projeto: '{res['dados_lattes']['projetos_pesquisa'][0]['titulo']}'")
+            if res['dados_lattes'].get('orientacoes_mestrado'):
+                print(f"    - Ex. Mestrado: '{res['dados_lattes']['orientacoes_mestrado'][0][:50]}...'")
+            print("-" * 20)
+    print("---------------------------------")
