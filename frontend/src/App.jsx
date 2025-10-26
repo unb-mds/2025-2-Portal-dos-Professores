@@ -1,91 +1,39 @@
-// 1. IMPORTE 'useEffect' E 'useNavigate'
-import React, { useState, useEffect } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
-import { Menu, X, Linkedin, Twitter, Github } from "lucide-react";
-import "./App.css";
+// src/App.jsx
 
-export default function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-  const navigate = useNavigate();
+import React from 'react';
+// Importa o componente que define as rotas
+import AppRoutes from './routes/AppRoutes.jsx'; // <--- ADICIONEI .jsx AQUI
 
-  useEffect(() => {
-    const redirectPath = sessionStorage.getItem('redirectPath');
-    if (redirectPath) {
-      sessionStorage.removeItem('redirectPath');
-      
-      const appPath = redirectPath.replace('/2025-2-Portal-dos-Professores', '');
-    
-      navigate(appPath || '/', { replace: true });
-    }
-  }, [navigate]);
+// Componentes de Layout do Chakra
+import { Box, useColorModeValue } from '@chakra-ui/react';
 
+// Importe seus componentes de Header e Footer
+// TODO: Ajuste o caminho se eles estiverem em outro lugar
+import Header from './components/Header.jsx'; // <--- ADICIONEI .jsx AQUI
+import Footer from './components/Footer.jsx'; // <--- ADICIONEI .jsx AQUI
 
-  const NavItem = ({ to, children }) => (
-    <li>
-      <Link to={to} onClick={() => setIsMenuOpen(false)}>
-        {children}
-      </Link>
-    </li>
-  );
+function App() {
+  // Pega a cor de fundo cinza clara (como no design que você gostou)
+  const mainBg = useColorModeValue('gray.50', 'gray.800');
 
   return (
-    <div className="container">
-      {/* Navbar */}
-      <header className="navbar">
-        <div className="navbar-content">
-          <Link to="/" className="navbar-logo">
-            Hub Docente
-          </Link>
+    // Este Box garante que o footer fique no fim da página
+    <Box display="flex" flexDirection="column" minHeight="100vh">
+      
+      {/* 1. O seu Header (que já estava funcionando) */}
+      <Header />
 
-          {/* Menu Desktop */}
-          <nav>
-            <ul>
-              <NavItem to="/">HOME</NavItem>
-              <NavItem to="/professores">PROFESSORES</NavItem>
-              <NavItem to="/sobre-nos">SOBRE NÓS</NavItem>
-            </ul>
-          </nav>
+      {/* 2. O "recheio" da página */}
+      <Box as="main" flex="1" bg={mainBg}>
+        {/* É AQUI QUE AS ROTAS SÃO RENDERIZADAS */}
+        <AppRoutes />
+      </Box>
 
-          <button
-            className="mobile-toggle"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle navigation"
-          >
-            {isMenuOpen ? <X size={24} color="#333" /> : <Menu size={24} color="#333" />}
-          </button>
-        </div>
-
-        {isMenuOpen && (
-          <ul className="mobile-menu-dropdown">
-            <NavItem to="/">HOME</NavItem>
-            <NavItem to="/professores">PROFESSORES</NavItem>
-            <NavItem to="/sobre-nos">SOBRE NÓS</NavItem>
-          </ul>
-        )}
-      </header>
-
-      <main className="main-content">
-        <Outlet />
-      </main>
-
-      <footer className="footer">
-        <div className="footer-content"> 
-        <p>Projeto da disciplina de MDS - UnB</p>
-        <p>&copy; 2025 Hub Docente UnB</p>
-        <div className="social-icons">
-          <a href="#" aria-label="LinkedIn">
-            <Linkedin size={24} />
-          </a>
-          <a href="#" aria-label="Twitter">
-            <Twitter size={24} />
-          </a>
-          <a href="#" aria-label="GitHub">
-            <Github size={24} />
-          </a>
-        </div>
-        </div>
-      </footer>
-    </div>
+      {/* 3. O seu Footer (que já estava funcionando) */}
+      <Footer />
+      
+    </Box>
   );
 }
+
+export default App;
