@@ -7,7 +7,7 @@ from scrapers.lattes_scraper import run_lattes_pipeline
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-WORKER_COUNT = 4
+WORKER_COUNT = 1
 
 def chunk_list(data: list, num_chunks: int):
     """Divide uma lista em 'num_chunks' pacotes de tamanho o mais igual possível."""
@@ -22,8 +22,8 @@ async def main():
     print("--- INICIANDO SCRAPER DE PROFESSORES DO SIGAA ---")
     
     depts_para_buscar = [
-        # "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA - BRASÍLIA",
-        "DEPTO CIÊNCIAS DA COMPUTAÇÃO - BRASÍLIA",
+        "CAMPUS UNB GAMA: FACULDADE DE CIÊNCIAS E TECNOLOGIAS EM ENGENHARIA - BRASÍLIA",
+        #"DEPTO CIÊNCIAS DA COMPUTAÇÃO - BRASÍLIA",
         # "DEPARTAMENTO DE MATEMÁTICA - BRASÍLIA",
         # "DEPTO ESTATÍSTICA - BRASÍLIA",
         # "FACULDADE DE ARQUITETURA E URBANISMO - BRASÍLIA",
