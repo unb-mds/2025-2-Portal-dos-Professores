@@ -19302,6 +19302,1394 @@
                 "email": "terciobrum@gmail.com"
             },
             "dados_lattes": null
+        },
+        {
+            "nome": "ALBA CRISTINA MAGALHAES ALVES DE MELO",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1223368",
+            "descricao_pessoal": "não informada",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1984 - 1986: Tecnólogo Em Processamento de Dados\nUniversidade de Brasília"
+                ],
+                "ESPECIALIZAÇÃO": [
+                    "1988 - 1989: Estágio no Laboratoire de Génie Informatique Equip\nInstitut National Polytechnique de Grenoble"
+                ],
+                "MESTRADO": [
+                    "1988 - 1991: Computação\nUniversidade Federal do Rio Grande do Sul"
+                ],
+                "DOUTORADO": [
+                    "1992 - 1996: Ecole Doctoral En Informatique\nInstitut National Polytechnique de Grenoble"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2008 - 2008: Pós-Doutorado\nUniversity of Ottawa"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "não informado",
+                "email": "não informado"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "ALETEIA PATRICIA FAVACHO DE ARAUJO VON PAUMGARTTEN",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020220162be36204098796d52ba18343/Aleteia.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1706731",
+            "descricao_pessoal": "não informada",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1993 - 1997: Bacharelado em Ciências da Computação\nUniversidade Federal do Pará"
+                ],
+                "MESTRADO": [
+                    "1997 - 1999: Ciências da Computação e Matemática Computacional\nUniversidade de São Paulo"
+                ],
+                "DOUTORADO": [
+                    "2003 - 2008: Informática\nPontifícia Universidade Católica do Rio de Janeiro"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2024 - 2024: Pós-Doutorado\nThe University of Melbourne"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "31073687",
+                "email": "aleteia@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "ANDRE COSTA DRUMMOND",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020172245bd8c20554592740e2bf68c1/foto2-andre.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1866200",
+            "descricao_pessoal": "não informada",
+            "lattes_url": "http://lattes.cnpq.br/8525132522308309",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1996 - 2002: Engenharia da Computação\nPontifícia Universidade Católica de Campinas"
+                ],
+                "MESTRADO": [
+                    "2002 - 2005: Ciência da Computação\nUniversidade Estadual de Campinas"
+                ],
+                "DOUTORADO": [
+                    "2005 - 2010: Ciência da Computação\nUniversidade Estadual de Campinas"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2018 - 2019: Pós-Doutorado\nTechnische Universität Braunschweig"
+                ]
+            },
+            "contatos": {
+                "sala": "A1-10/28",
+                "telefone": "3107-2269",
+                "email": "andred@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "BRUNO LUIGGI MACCHIAVELLO ESPINOZA",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2025129013df1b346978896f66d1e7469/6710169-photo-1-source-small.gif",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1702065",
+            "descricao_pessoal": "não informada",
+            "lattes_url": "https://lattes.cnpq.br/5850453918340560",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1995 - 2001: Engenharia Eletrônica\nPontifica Universidad Católica del Perú"
+                ],
+                "MESTRADO": [
+                    "2003 - 2004: Engenharia Elétrica\nUniversidade de Brasília"
+                ],
+                "DOUTORADO": [
+                    "2005 - 2009: Engenharia Elétrica\nUniversidade de Brasília"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "2226",
+                "email": "bmacchiavello@yahoo.com"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "CAMILO CHANG DOREA",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1702562",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1991 - 1997: Engenharia Eletrica\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "1997 - 1999: Electrical Engineering\nUniversity Of Maryland At College Park",
+                    "2001 - 2005: Teoría de la Señal y Comunicaciones\nUniversitat Politècnica de Catalunya"
+                ],
+                "DOUTORADO": [
+                    "2001 - 2007: Teoría de la Señal y Comunicaciones\nUniversitat Politecnica de Catalunya"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2007 - 2008: Pós-Doutorado\nThomson - Corporate Research (Princeton, NJ, EUA)",
+                    "2009 - 2009: Pós-Doutorado\nUniversidade de Brasília",
+                    "2016 - 2017: Pós-Doutorado\nEcole de Technologie Superieure",
+                    "2023 - 2024: Pós-Doutorado\nEcole de Technologie Superieure"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "61-981325967",
+                "email": "camilodorea@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "CARLA DENISE CASTANHO",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2497584",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1990 - 1994: Ciência da Computação\nUniversidade de Passo Fundo"
+                ],
+                "MESTRADO": [
+                    "1996 - 1998: Ciência da Computação\nNagoya Institute Of Technology"
+                ],
+                "DOUTORADO": [
+                    "1998 - 2001: Ciência da Computação\nNagoya Institute Of Technology"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3662",
+                "email": "carladenisecastanho@gmail.com"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "CARLA MARIA CHAGAS E CAVALCANTE KOIKE",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2025237073b703352245470c6ed023b29/Captura_de_Tela_2025-05-19_a768s_16.11.16.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2314993",
+            "descricao_pessoal": "não informada",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1986 - 1991: Engenharia Elétrica\nUniversidade Federal do Ceará"
+                ],
+                "MESTRADO": [
+                    "1992 - 1994: Engenharia Elétrica\nUniversidade Federal de Santa Catarina"
+                ],
+                "DOUTORADO": [
+                    "2001 - 2005: Imagem, Visao e Robotica\nInstitut National Polytechnique de Grenoble"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2015 - 2015: Pós-Doutorado\nUniversity of Canterbury",
+                    "2006 - Incompleto: Pós-Doutorado\nUniversidade de Brasília"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3684",
+                "email": "carla.koike@gmail.com"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "CLAUDIA NALON",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2281452",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1988 - 1993: Ciência da Computação\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "1995 - 1997: Ciência da Computação\nUniversidade Estadual de Campinas"
+                ],
+                "DOUTORADO": [
+                    "1999 - 2004: Ciência da Computação\nUniversity of Liverpool"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2012 - 2013: Pós-Doutorado\nUniversity Of Liverpool",
+                    "2017 - 2018: Pós-Doutorado\nUniversity Of Liverpool",
+                    "2022 - 2023: Pós-Doutorado\nUniversity of Manchester"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3107 6390",
+                "email": "nalon@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "DANIEL DE PAULA PORTO",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2024180109ffe432001130e6a42d764b5/Avatar2024.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1190473",
+            "descricao_pessoal": "não informada",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2002 - 2006: Bacharelado em Ciência da Computação\nUniversidade Católica de Brasília"
+                ],
+                "MESTRADO": [
+                    "2007 - 2009: Ciência da Computação\nUniversidade Federal de São Carlos"
+                ],
+                "DOUTORADO": [
+                    "2016 - 2021: Ciência da Computação\nUniversidade Federal de São Carlos"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "6740",
+                "email": "daniel.porto@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "DIBIO LEANDRO BORGES",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1122092",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1982 - 1986: Engenharia Ele´trica\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "1989 - 1991: Ciência da Computação\nUniversidade de Brasília"
+                ],
+                "DOUTORADO": [
+                    "1991 - 1995: Ciência da Computação (Philosophy Doctor Ph. D.)\nUniversity of Edinburgh"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2015 - 2016: Pós-Doutorado\nUniversity of Central Florida"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "31073663",
+                "email": "dibio@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "EDISON ISHIKAWA",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/20200261983b222046041edb547f10acc/edison_3x4.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1072256",
+            "descricao_pessoal": "Sou uma pessoa de bem com a vida. Dedicado e ético, procuro ser atencioso com todos.",
+            "lattes_url": "http://lattes.cnpq.br/0765775965717248",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1982 - 1985: Formação de Oficiais de Material Bélico\nAcademia Militar das Agulhas Negras",
+                    "1988 - 1992: Engenharia de Computação\nInstituto Militar de Engenharia"
+                ],
+                "ESPECIALIZAÇÃO": [
+                    "1994 - 1995: Redes de Computadores\nUniversidade Católica de Brasília",
+                    "2001 - 2002: Bases Geo-Históricas para a Formulação Estratégica\nEscola de Comando e Estado Maior do Exército"
+                ],
+                "MESTRADO": [
+                    "1996 - 1998: Informática\nPontifícia Universidade Católica do Rio de Janeiro",
+                    "2008 - 2008: Ciências Militares\nEscola de Comando e Estado Maior do Exército"
+                ],
+                "DOUTORADO": [
+                    "1998 - 2003: Engenharia de Sistemas e Computação\nUniversidade Federal do Rio de Janeiro"
+                ]
+            },
+            "contatos": {
+                "sala": "A1-15-28",
+                "telefone": "2270",
+                "email": "ishikawa@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "EDNA DIAS CANEDO",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/20201211857a6220454747c12dbb9604c/EdnaDiasCanedo.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1780217",
+            "descricao_pessoal": "I’m Professor at University of Brasília – (UnB) since 2010",
+            "lattes_url": "http://lattes.cnpq.br/9554285834432091",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1996 - 1999: Análise de Sistemas\nUniversidade Salgado de Oliveira Goiás"
+                ],
+                "MESTRADO": [
+                    "2000 - 2002: Ciência da Computação\nUniversidade Federal de Campina Grande"
+                ],
+                "DOUTORADO": [
+                    "2008 - 2012: Engenharia Elétrica\nUniversidade de Brasília"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2019 - 2020: Pós-Doutorado\nEindhoven University of Technology"
+                ]
+            },
+            "contatos": {
+                "sala": "A-30/7",
+                "telefone": "61 981140478",
+                "email": "ednacanedo@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "EDUARDO ADILIO PELINSON ALCHIERI",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1923196",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2001 - 2004: Ciências da Computação\nUniversidade Federal de Santa Catarina"
+                ],
+                "MESTRADO": [
+                    "2005 - 2007: Engenharia Elétrica\nUniversidade Federal de Santa Catarina"
+                ],
+                "DOUTORADO": [
+                    "2007 - 2011: Engenharia de Automação e Sistemas\nUniversidade Federal de Santa Catarina"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2019 - 2020: Pós-Doutorado\nUniversidade de Lisboa"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "31072270",
+                "email": "alchieri@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "FERNANDA LIMA",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020116015bfaf2052038714a1989ace3/A_unb_ferlima-2.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1649348",
+            "descricao_pessoal": "não informada",
+            "formacao_academica": {
+                "MESTRADO": [
+                    "1994 - 1996: Engenharia de Sistemas e Computação\nInstituto Alberto Luiz Coimbra de Pós Graduação e Pesquisa de Engenharia"
+                ],
+                "DOUTORADO": [
+                    "1997 - 2003: Informática\nPontifícia Universidade Católica do Rio de Janeiro"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "(61) 3107-3686",
+                "email": "ferlima@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "FERNANDO ANTONIO DE ARAUJO CHACON DE ALBUQUERQUE",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=404541",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1979 - 1984: Engenharia Elétrica\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "2012 - 2014: Ciências da Informação\nUniversidade de Brasília",
+                    "1988 - 1989: Ciência da Computação\nUniversity of London"
+                ],
+                "DOUTORADO": [
+                    "2014 - 2017: Ciências da Informação\nUniversidade de Brasília"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3107-2226",
+                "email": "nando@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "FLAVIO DE BARROS VIDAL",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020164239d9a320416677e95108238e4/profflaviovidal-novo.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2366026",
+            "descricao_pessoal": "Professor Associado no Departamento de Ciência da Computação da Universidade de Brasília. Com experiência na área de Ciência da Computação e Engenharia Elétrica, com ênfase em Visão Computacional e Automação de Sistemas, atuando principalmente nos seguintes temas: visão computacional (rastreamento, análise de movimento e análise/reconhecimento facial), automação de sistemas, arquitetura de computadores e processamento digital de imagens. Dentre as diversas atividades de pesquisa é coordenador e membro fundador do Laboratório de Imagens, Sinais e Acústica (LISA) e líder do Grupo de Pesquisa em Sistemas Biométricos (BiTGroup), ambos cadastrados no Diretório de Grupos de Pesquisa Lattes.",
+            "lattes_url": "http://lattes.cnpq.br/0453892715674953",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1997 - 2002: Engenharia Elétrica\nUniversidade Federal de Juiz de Fora"
+                ],
+                "MESTRADO": [
+                    "2002 - 2005: Engenharia Elétrica\nUniversidade de Brasília"
+                ],
+                "DOUTORADO": [
+                    "2005 - 2009: Engenharia Elétrica\nUniversidade de Brasília"
+                ]
+            },
+            "contatos": {
+                "sala": "Sala A1-46",
+                "telefone": "3685",
+                "email": "fbvidal@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "FLAVIO LEONARDO CAVALCANTI DE MOURA",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020076182c2b92041063ba3ac048137a/flaviomoura.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2315320",
+            "descricao_pessoal": "não informada",
+            "lattes_url": "http://lattes.cnpq.br/4924037693113808",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1992 - 1998: Licenciatura e Bacharelado em Matemática\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "2000 - 2002: Matemática\nUniversidade de Brasília"
+                ],
+                "DOUTORADO": [
+                    "2002 - 2006: Matemática\nUniversidade de Brasília",
+                    "2004 - 2005: Teoria da Computação (Sanduíche)\nHeriot-Watt University"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2010 - 2011: Pós-Doutorado\nUniversité Paris Diderot"
+                ]
+            },
+            "contatos": {
+                "sala": "03",
+                "telefone": "31073676",
+                "email": "flaviomoura@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "GENAINA NUNES RODRIGUES",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/20212281122a3421943766c574a7d6026/Gena2.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1720223",
+            "descricao_pessoal": "não informada",
+            "lattes_url": "http://lattes.cnpq.br/2966913210268454",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1993 - 1999: Ciência da Computação\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "2000 - 2002: Ciências da Computação\nUniversidade Federal de Pernambuco"
+                ],
+                "DOUTORADO": [
+                    "2002 - 2008: Computer Science\nUniversity College of London"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2009 - 2009: Pós-Doutorado\nUniversidade Federal de Minas Gerais"
+                ]
+            },
+            "contatos": {
+                "sala": "A1 35/7",
+                "telefone": "3682",
+                "email": "genaina@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "GERMANA MENEZES DA NOBREGA",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/202023106692ee2054408502779708c87/GERMANA.bmp",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1705601",
+            "descricao_pessoal": "não informada",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1990 - 1995: Bacharelado Em Ciência da Computação\nUniversidade Federal da Paraíba"
+                ],
+                "MESTRADO": [
+                    "1996 - 1998: Ciência da Computação\nUniversidade Federal da Paraíba"
+                ],
+                "DOUTORADO": [
+                    "1998 - 2002: Doctorat En Informatique\nUniversité Montpellier 2 - Sciences et Techniques"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3662",
+                "email": "gmnobrega@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "GUILHERME NOVAES RAMOS",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1848410",
+            "descricao_pessoal": "não informada",
+            "lattes_url": "http://lattes.cnpq.br/7879595143050087",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1997 - 2002: Engenharia Mecatrônica\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "2004 - 2006: Inteligência Computacional e Ciência de Sistemas\nInstituto de Tecnologia de Tóquio"
+                ],
+                "DOUTORADO": [
+                    "2006 - 2009: Inteligência Computacional e Ciência de Sistemas\nInstituto de Tecnologia de Tóquio"
+                ]
+            },
+            "contatos": {
+                "sala": "A1 10/28",
+                "telefone": "2269",
+                "email": "gnramos@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "JACIR LUIZ BORDIM",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020203045c78920398486898eb606480/7ca8c17f-af84-4aa0-8c84-9a9c4d682fe7.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1489499",
+            "descricao_pessoal": "Professor Adjunto IV, lotado no Departamento de Ciência da Computação da Universidade de Brasília. Atuação nas aéreas de rede de computadores, com ênfase em redes móveis e sistemas distribuídos. Atua nos cursos de graduação e pós-graduação (mestrado e doutorado) do Departamento de Ciência da Computação.",
+            "lattes_url": "http://lattes.cnpq.br/8594325955153756",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1990 - 1994: Ciencia da Computacao\nUniversidade de Passo Fundo"
+                ],
+                "MESTRADO": [
+                    "1998 - 2000: Ciencia da Computacao\nNagoya Institute of Technology"
+                ],
+                "DOUTORADO": [
+                    "2000 - 2003: Information Science\nJapan Advanced Institute Of Science And Technology"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2014 - 2015: Pós-Doutorado\nHiroshima University"
+                ]
+            },
+            "contatos": {
+                "sala": "A10-CIC",
+                "telefone": "31070101",
+                "email": "não informado"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "JAN MENDONCA CORREA",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2346359",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1993 - 1999: Ciencia da Computacao\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "1999 - 2001: Informática\nUniversidade de Brasília"
+                ],
+                "DOUTORADO": [
+                    "2003 - 2008: Engenharia Elétrica\nUniversidade de Brasília"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "2226",
+                "email": "jancorrea@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "JONATHAN ROSA MOREIRA",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/20241681434b733186096aeb379a8ee19/Foto_JRM.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3414854",
+            "descricao_pessoal": "não informada",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2004 - 2008: Bacharelado em Sistemas de Informação\nFaculdade Cenecista de Brasília -Campanha Nacional de Escolas da Comunidade",
+                    "2014 - 2016: Licenciatura em Educação Profissional\nInstituto Federal de Brasília",
+                    "2009 - 2011: Licenciatura em Pedagogia\nFaculdades Integradas da Terra de Brasília",
+                    "2017 - 2020: História\nUniversidade Estadual de Goiás",
+                    "2021 - 2024: Segurança da Informação\nUniversidade Católica de Brasília",
+                    "2020 - 2021: Biblioteconomia\nUniversidade de Caxias do Sul",
+                    "2019 - 2020: Licenciatura em Letras - Português e Espanhol\nFaculdade Integrada de Brasília",
+                    "2021 - 2024: Letras Português - Inglês\nUniversidade Católica de Brasília",
+                    "2021 - : Estatística\nUniversidade Anhembi Morumbi"
+                ],
+                "ESPECIALIZAÇÃO": [
+                    "2012 - 2014: Lato Sensu em Gestão de Processos Acadêmicos\nCentro Universitário Projeção",
+                    "2020 - 2020: Educação a Distância\nUniversidade Paulista",
+                    "2010 - 2011: Tecnologias em Ensino a Distância\nUniversidade Cidade de São Paulo",
+                    "2008 - 2009: MBA em Governança de Tecnologia da Informação\nUniversidade Ceuma",
+                    "2014 - 2015: Educação em e para os Direitos Humanos\nUniversidade de Brasília",
+                    "2014 - 2016: Planejamento, Implementação e Gestão da EAD\nUniversidade Federal Fluminense",
+                    "2017 - 2018: Letramento Informacional: educação para a informação\nUniversidade Federal de Goiás",
+                    "2015 - 2016: Gestão de Políticas Públicas de Gênero e Raça\nUniversidade de Brasília",
+                    "2016 - 2017: Psicopedagogia e Educação Especial\nS B I"
+                ],
+                "MESTRADO": [
+                    "2010 - 2011: Gestão do Conhecimento e Tecnologia da Informação\nUniversidade Católica de Brasília"
+                ],
+                "DOUTORADO": [
+                    "2013 - 2017: Ciências da Informação\nUniversidade de Brasília"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2017 - 2018: Pós-Doutorado\nUniversidade Estadual Paulista Júlio de Mesquita Filho"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "(61)31073661",
+                "email": "jonathan.moreira@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "JORGE CARLOS LUCERO",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3228575",
+            "descricao_pessoal": "não informada",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1979 - 1985: Engenharia Eletricista Eletrônica\nUniversidad Nacional de Córdoba - Argentina"
+                ],
+                "ESPECIALIZAÇÃO": [
+                    "1987 - 1988: Engenharia Optoeletrônica Mecânica\nShizuoka University"
+                ],
+                "MESTRADO": [
+                    "1988 - 1990: Engenharia Optoeletrônica Mecânica\nShizuoka University"
+                ],
+                "DOUTORADO": [
+                    "1990 - 1993: Engenharia Eletrônica\nShizuoka University"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3678",
+                "email": "lucero@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "JORGE HENRIQUE CABRAL FERNANDES",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2023093248f3e828672745aacc1339802/361637471_1448059769313111_4830227809700425601_n.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=349953",
+            "descricao_pessoal": "não informada",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1983 - 1986: Ciências Biológicas - Habilitação em Bioquímica\nUniversidade Federal do Rio Grande do Norte"
+                ],
+                "ESPECIALIZAÇÃO": [
+                    "1987 - 1988: Especializacao Em Engenharia de Sistemas\nUniversidade Federal do Rio Grande do Norte"
+                ],
+                "MESTRADO": [
+                    "1990 - 1992: Ciências da Computação\nUniversidade Federal de Pernambuco"
+                ],
+                "DOUTORADO": [
+                    "1995 - 2000: Ciências da Computação\nUniversidade Federal de Pernambuco"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3661",
+                "email": "jorgehcfernandes@gmail.com"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "LETICIA LOPES LEITE",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020030051997e2044814bd9dbdd45c69/foto.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2325777",
+            "descricao_pessoal": "não informada",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1993 - 1997: Bacharelado Em Informática\nPontifícia Universidade Católica do Rio Grande do Sul"
+                ],
+                "ESPECIALIZAÇÃO": [
+                    "2013 - Incompleto: MBA em Gestao de Instituições de Ensino Superior\nUniversidade de Caxias do Sul"
+                ],
+                "MESTRADO": [
+                    "1998 - 2000: Computação\nUniversidade Federal do Rio Grande do Sul"
+                ],
+                "DOUTORADO": [
+                    "2007 - 2012: Ciência da Computação\nPontifícia Universidade Católica do Rio Grande do Sul"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "5827",
+                "email": "llleite@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "LI WEIGANG",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2023158180269a27197568d820797f05b/Li_Weigang_2020.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1220587",
+            "descricao_pessoal": "Professor titular e coordenador do TransLab do do Departamento de Ciência da Computação, e Pesquisador do CNPq.",
+            "lattes_url": "http://lattes.cnpq.br/4218593188956443",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1978 - 1982: Civil Engineering\nHe Hai University"
+                ],
+                "MESTRADO": [
+                    "1985 - 1988: Pesquisa Operacional\nNanjing University"
+                ],
+                "DOUTORADO": [
+                    "1989 - 1994: ITA\nInstituto Tecnológico de Aeronáutica"
+                ],
+                "PÓS-DOUTORADO": [
+                    "1996 - 1997: Pós-Doutorado\nInstituto Nacional de Pesquisas Espaciais",
+                    "2001 - 2002: Pós-Doutorado\nUniversity of Calgary"
+                ]
+            },
+            "contatos": {
+                "sala": "8",
+                "telefone": "3679",
+                "email": "weigang@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "LUIS PAULO FAINA GARCIA",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3128249",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2006 - 2010: Engenharia de Computação\nUniversidade de São Paulo"
+                ],
+                "DOUTORADO": [
+                    "2011 - 2016: Ciências da Computação e Matemática Computacional\nUniversidade de São Paulo"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2017 - 2018: Pós-Doutorado\nUniversität Leipzig",
+                    "2016 - 2017: Pós-Doutorado\nUniversidade de São Paulo",
+                    "2018 - 2019: Pós-Doutorado\nUniversidade de São Paulo"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3688",
+                "email": "luis.garcia@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "MARCELO ANTONIO MAROTTA",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/20201870984eb320452967a3c36119a26/small_me.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1613634",
+            "descricao_pessoal": "não informada",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2006 - 2010: Ciência da Computação\nUniversidade Federal de Itajubá"
+                ],
+                "MESTRADO": [
+                    "2011 - 2013: Computação\nUniversidade Federal do Rio Grande do Sul"
+                ],
+                "DOUTORADO": [
+                    "2014 - 2019: Programa de Pós Graduação em Computação\nUniversidade Federal do Rio Grande do Sul",
+                    "2015 - 2016: Programa de Pós Graduação em Computação\nUniversidade Federal do Rio Grande do Sul"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3107-3687",
+                "email": "marcelo.marotta@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "MARCELO GRANDI MANDELLI",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2332207",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2004 - 2008: Engenharia de Computação\nPontifícia Universidade Católica do Rio Grande do Sul"
+                ],
+                "MESTRADO": [
+                    "2009 - 2011: Ciência da Computação\nPontifícia Universidade Católica do Rio Grande do Sul"
+                ],
+                "DOUTORADO": [
+                    "2011 - 2015: Ciência da Computação\nPontifícia Universidade Católica do Rio Grande do Sul",
+                    "2011 - 2015: Microeletrônica\nUniversité de Montpellier"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3689",
+                "email": "mgmandelli@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "MARCELO LADEIRA",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=402520",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1972 - 1976: Engenharia Mecânica\nUniversidade de Brasília"
+                ],
+                "ESPECIALIZAÇÃO": [
+                    "1981 - 1981: Curso Avançado de Operação de Sistema Hidrotérmico\nUniversidade Federal do Rio de Janeiro"
+                ],
+                "MESTRADO": [
+                    "1977 - 1981: Análise de Sistemas e Aplicações\nInstituto Nacional de Pesquisas Espaciais"
+                ],
+                "DOUTORADO": [
+                    "1995 - 1999: Computação\nUniversidade Federal do Rio Grande do Sul",
+                    "1997 - 1998: Ciência da Computação\nUniversidade de Lisboa"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2004 - 2004: Pós-Doutorado\nUniversidade de Lisboa"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "31073658",
+                "email": "mladeira@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "MARCOS FAGUNDES CAETANO",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/201913008317742026976adb73e535d6b/Caetano.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2518570",
+            "descricao_pessoal": "não informada",
+            "lattes_url": "http://lattes.cnpq.br/4932411097202754",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2000 - 2005: Bacharelado em Ciências da Computação\nUniversidade Federal de Santa Catarina"
+                ],
+                "MESTRADO": [
+                    "2006 - 2008: Ciência da Computação\nUniversidade de Brasília"
+                ],
+                "DOUTORADO": [
+                    "2009 - Incompleto: Engenharia Elétrica\nUniversidade de Brasília",
+                    "2014 - 2017: Informática\nUniversidade de Brasília"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3681",
+                "email": "não informado"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "MARCUS VINICIUS LAMAR",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/20231031799d0e2767029c69e45e1b842/mvlamar-150x150.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1060874",
+            "descricao_pessoal": "Foi professor do curso de Engenharia Elétrica da Universidade Federal do Paraná de 1994 a 2006. Foi pesquisador Associado ao Centro de Formação de Recursos Humanos em Transportes (CEFTRU/UnB). Professor da UnB no Departamento de Ciência da Computação desde 2006.",
+            "lattes_url": "https://wwws.cnpq.br/cvlattesweb/PKG_MENU.menu?f_cod=FB2192F2D48DB660DC8EE084AA9C21D0#",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1987 - 1992: Engenharia Elétrica\nUniversidade Federal do Rio Grande do Sul"
+                ],
+                "MESTRADO": [
+                    "1992 - 1996: Engenharia Elétrica\nUniversidade Federal de Santa Catarina"
+                ],
+                "DOUTORADO": [
+                    "1998 - 2001: Electrical And Computer Engineering\nNagoya Institute Of Technology"
+                ]
+            },
+            "contatos": {
+                "sala": "A1-41/7",
+                "telefone": "3662",
+                "email": "lamar@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "MARIA DE FATIMA RAMOS BRANDAO",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020223165d2942052740818a1907eaec/FotoFatimaPerfil.gif",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=403975",
+            "descricao_pessoal": "não informada",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1976 - 1978: Processamento de Dados\nUniversidade de Brasília"
+                ],
+                "ESPECIALIZAÇÃO": [
+                    "2001 - 2001: The Art of Bussiness Coaching\nUniversidade Católica de Brasília"
+                ],
+                "MESTRADO": [
+                    "1980 - 1984: Computação\nUniversidade Federal do Rio Grande do Sul"
+                ],
+                "DOUTORADO": [
+                    "2003 - 2009: Psicologia Social, do Trabalho e das Organizações (Psto)\nUniversidade de Brasília"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "33072703",
+                "email": "fatimabrandao@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "MARISTELA TERTO DE HOLANDA",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2024034178442730493619940cbd84524/fotoMaristelaTAMU.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1713597",
+            "descricao_pessoal": "não informada",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1992 - 1996: ENGENHARIA ELETRICA\nUniversidade Federal do Rio Grande do Norte"
+                ],
+                "MESTRADO": [
+                    "1996 - 1999: Engenharia Elétrica\nUniversidade de Brasília"
+                ],
+                "DOUTORADO": [
+                    "2003 - 2007: Engenharia Elétrica\nUniversidade Federal do Rio Grande do Norte"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2019 - 2020: Pós-Doutorado\nTexas A & M University"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3107-3662",
+                "email": "mholanda@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "MAURICIO AYALA RINCON",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2025147111535635721668f58af48bb71/FotoMAyalaRincon2025.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2180096",
+            "descricao_pessoal": "Professor Titular em Teoria da Computação\nOrientador de Mestrado e Doutorado nos programas de pós-graduação em Matemática e Informática\nSite personal: https://mayalarincon.github.io",
+            "lattes_url": "http://lattes.cnpq.br/8466420403941522",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1981 - 1987: Matemática\nUniversidad de Los Andes",
+                    "1980 - 1985: Ingeniería de Sistemas y Computación\nUniversidad de Los Andes"
+                ],
+                "DOUTORADO": [
+                    "1989 - 1993: Fachbereich Informatik\nUniversitaet Kaiserslautern"
+                ],
+                "PÓS-DOUTORADO": [
+                    "1999 - 2000: Pós-Doutorado\nHeriot-Watt University",
+                    "1994 - 1994: Pós-Doutorado\nUniversidade de Brasília",
+                    "2024 - 2025: Pós-Doutorado\nResearch Institute for Symbolic Computation / Johannes Kepler Universität"
+                ]
+            },
+            "contatos": {
+                "sala": "A1 15-7",
+                "telefone": "3676",
+                "email": "não informado"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "MURILO SILVA DE CAMARGO",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1159553",
+            "descricao_pessoal": "não informada",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1979 - 1982: Bacharelado Em Matemática\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "1986 - 1988: Engenharia de Produção\nUniversidade Federal de Santa Catarina"
+                ],
+                "DOUTORADO": [
+                    "1988 - 1995: Engenharia Elétrica\nUniversidade Federal de Santa Catarina"
+                ],
+                "PÓS-DOUTORADO": [
+                    "1998 - 1999: Pós-Doutorado\nState University Of New York At Stony Brook"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "5895",
+                "email": "murilo@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "PEDRO GARCIA FREITAS",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2023238124177c26945097683ff434e66/me.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2679452",
+            "descricao_pessoal": "Doutor e Mestre em Informática pelo Departamento de Ciências da Computação da Universidade de Brasília (UnB). Graduou-se em Física também pela UnB. Durante 2014 e 2015, trabalhou na Universidade Técnica de Delft (TU Delft), Holanda. Trabalhou como programador de computadores em projetos do LabRedes(UnB, Brasil), como assistente de pesquisa em projetos de ciência de dados no Instituto de Pesquisa Econômica Aplicada (IPEA) e como técnico de informática no Laboratório de Cálculo Científico (LCC) do Instituto de Física da UnB, onde desenvolveu diversos sistemas para automatizar a administração dos recursos computacionais do laboratório. Atualmente é pesquisador contratado no Samsung Research Institute Brasil (SRBR) em Campinas e pesquisador colaborador do Programa de Pós-Graduação em Informática (PPGI) da UnB. Suas áreas de interesse incluem visão computacional, aprendizado de máquina, métricas de avaliação de qualidade visual e compressão de imagens.",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2004 - 2010: Física Computacional\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "2011 - 2012: Informática\nUniversidade de Brasília"
+                ],
+                "DOUTORADO": [
+                    "2013 - 2017: Informática\nUniversidade de Brasília"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3662",
+                "email": "pedro.freitas@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "PRISCILA AMERICA SOLIS MENDEZ BARRETO",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/20201101535b472050213b808cff0f76c/eu-magic-2.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2496283",
+            "descricao_pessoal": "Professora do Departamento de Ciência da Computação da UnB, área Redes de Computadores",
+            "lattes_url": "http://lattes.cnpq.br/6544098578171957",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1986 - 1991: Ingenieria de Sistemas, Informática y Computación\nUniversidade Francisco Marroquin"
+                ],
+                "ESPECIALIZAÇÃO": [
+                    "1996 - 1997: Redes de Computadores\nPontifícia Universidade Católica de Goiás"
+                ],
+                "MESTRADO": [
+                    "1998 - 2000: Engenharia Elétrica e de Computação\nUniversidade Federal de Goiás"
+                ],
+                "DOUTORADO": [
+                    "2002 - 2007: Engenharia Elétrica\nUniversidade de Brasília"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "981323810",
+                "email": "pris@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "RICARDO LOPES DE QUEIROZ",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/20200070755d4120501619c4b044dc762/snapshot00.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2548225",
+            "descricao_pessoal": "não informada",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1982 - 1987:\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "1988 - 1990:\nUniversidade Estadual de Campinas"
+                ],
+                "DOUTORADO": [
+                    "1992 - 1994:\nThe University of Texas at Arlington"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2015 - 2015: Pós-Doutorado\nUniversity of Washington"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "999680964",
+                "email": "rqueiroz@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "RICARDO PEZZUOL JACOBI",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=356930",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1978 - 1982: Engenharia Eletrica\nUniversidade Federal do Rio Grande do Sul"
+                ],
+                "MESTRADO": [
+                    "1983 - 1986: Computação\nUniversidade Federal do Rio Grande do Sul"
+                ],
+                "DOUTORADO": [
+                    "1988 - 1993: Ciencias Exatas\nUniversité Catholique de Louvain"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2019 - 2020: Pós-Doutorado\nUniversity of York"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "73661",
+                "email": "jacobi@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "ROBERTA BARBOSA OLIVEIRA",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020033136c3872078643cc053540ffee/foto_2.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1038084",
+            "descricao_pessoal": "não informada",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2005 - 2008: Sistemas de Informação\nFundação Educacional de Fernandópolis"
+                ],
+                "MESTRADO": [
+                    "2010 - 2012: Ciência da Computação\nUniversidade Estadual Paulista Júlio de Mesquita Filho"
+                ],
+                "DOUTORADO": [
+                    "2012 - 2017: Engenharia Informática\nFaculdade de Engenharia da Universidade do Porto"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3662",
+                "email": "roberta.oliveira@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "ROBERTO VITO RODRIGUES FILHO",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/202520406824d63530260a126ac044b47/roberto.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1354079",
+            "descricao_pessoal": "Professor Assistente no Departamento de Ciência da Computação (CIC) da Universidade de Brasília (UnB). Atuou como Professor Adjunto no Departamento de Computação (DEC) da Universidade Federal de Santa Catarina (UFSC) entre 2023 e 2025. É doutor em Ciência da Computação pela Universidade de Lancaster, Reino Unido (2018), além de mestre e bacharel pela Universidade Federal de Goiás (INF-UFG, 2013). Realizou estágios pós-doutorais no Instituto de Computação da UNICAMP e no Instituto de Informática da UFG. Na UNICAMP, foi bolsista da Fundação de Desenvolvimento da Unicamp (FUNCAMP) em um projeto financiado pela Ericsson Research, investigando técnicas de computação autonômica e auto-adaptativa para alocação de recursos em infraestruturas de computação contínua. Na UFG, atuou em projeto financiado pela FAPESP sobre composição autonômica de sistemas de software voltados a cidades inteligentes. Entre 2017 e 2020, foi Pesquisador Associado (Postdoctoral Research Associate) na Universidade de Lancaster, no âmbito de um projeto financiado pela Leverhulme Trust (Reino Unido), onde desenvolveu pesquisas sobre \"The Emergent Self-Aware Data Centre: Autonomous Software Landscaping at Scale\". Durante esse período, foi pesquisador visitante no IRISA/INRIA, Universidade de Rennes 1 (França, 2019). Em 2018, participou do renomado ciclo de seminários Schloss Dagstuhl (Alemanha), contribuindo com palestra e discussões no tema Software Engineering for Intelligent and Autonomous Systems (SEfIAS). Seus interesses de pesquisa concentram-se em Computação Autonômica, com foco em sistemas distribuídos emergentes, auto-organizáveis e auto-gerenciáveis.",
+            "lattes_url": "http://lattes.cnpq.br/3150867071308016",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2006 - 2010: Ciência da Computação\nUniversidade Federal de Goiás"
+                ],
+                "MESTRADO": [
+                    "2011 - 2013: Ciência da Computação\nUniversidade Federal de Goiás"
+                ],
+                "DOUTORADO": [
+                    "2014 - 2018: Computer Science\nLancaster University"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2022 - 2022: Pós-Doutorado\nUniversidade Estadual de Campinas",
+                    "2020 - 2022: Pós-Doutorado\nUniversidade Federal de Goiás",
+                    "2017 - 2020: Pós-Doutorado\nLancaster University"
+                ]
+            },
+            "contatos": {
+                "sala": "A1-45/7",
+                "telefone": "+55 (61) 3107-3661",
+                "email": "roberto.filho@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "RODRIGO BONIFACIO DE ALMEIDA",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1848788",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1994 - 1999: Bacharelado em Ciência da Computação\nUniversidade Federal da Paraíba"
+                ],
+                "MESTRADO": [
+                    "1999 - 2001: Ciência da Computação\nUniversidade Federal da Paraíba"
+                ],
+                "DOUTORADO": [
+                    "2006 - 2010: Ciências da Computação\nUniversidade Federal de Pernambuco"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2018 - : Pós-Doutorado\nUniversität Paderborn"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3740",
+                "email": "rbonifacio@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "THIAGO DE PAULO FALEIROS",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/20201572514c95204928737542b2f0bcb/thiago.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1821656",
+            "descricao_pessoal": "não informada",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2004 - 2007: Ciência da Computação\nUniversidade Federal de Goiás"
+                ],
+                "MESTRADO": [
+                    "2008 - 2010: Ciência da Computação\nUniversidade Estadual de Campinas"
+                ],
+                "DOUTORADO": [
+                    "2011 - 2016: Ciencia da Computacao\nUniversidade de São Paulo"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2025 - : Pós-Doutorado\nUniversity of Maryland"
+                ]
+            },
+            "contatos": {
+                "sala": "A1-67-28",
+                "telefone": "2226",
+                "email": "thiagodepaulo@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "VANDER RAMOS ALVES",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/202417819224583133824b2f35e55a3f5/VanderAlves.jpg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1702036",
+            "descricao_pessoal": "não informada",
+            "lattes_url": "http://lattes.cnpq.br/7500979195469357",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1994 - 1997: Ciencia da Computacao\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "1999 - 2000: Ciências da Computação\nUniversidade Federal de Pernambuco"
+                ],
+                "DOUTORADO": [
+                    "2003 - 2007: Ciências da Computação\nUniversidade Federal de Pernambuco"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2017 - 2018: Pós-Doutorado\nUniversität Passau",
+                    "2008 - 2009: Pós-Doutorado\nFraunhofer Institute for Experimental Software Engineering",
+                    "2006 - 2008: Pós-Doutorado\nLancaster University"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3107-3662",
+                "email": "valves@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "VINICIUS RUELA PEREIRA BORGES",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/2020029048c11620461932133ffddded4/codeforces.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1279829",
+            "descricao_pessoal": "Professor adjunto do Departamento de Ciência da Computação (CIC). Coordena o projeto de extensão \"Maratona de Programação\" no âmbito da UnB, além de ser técnico das equipes do CIC/UnB na Maratona SBC de Programação e do International Collegiate Programming Contest (ICPC).\n\nDocente se encontra em afastamento para pós-doutorado no exterior.\n\nPara mais informações, acesse minha página pessoal: https://viniciusrpb.github.io/",
+            "lattes_url": "http://lattes.cnpq.br/1841593572448050",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2005 - 2008: Ciência da Computação\nUniversidade Federal de Uberlândia"
+                ],
+                "MESTRADO": [
+                    "2009 - 2011: Ciência da Computação\nUniversidade Federal de Uberlândia"
+                ],
+                "DOUTORADO": [
+                    "2012 - 2016: Ciências da Computação e Matemática Computacional\nUniversidade de São Paulo"
+                ]
+            },
+            "contatos": {
+                "sala": "67/28",
+                "telefone": "2271",
+                "email": "viniciusrpb@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "WILSON HENRIQUE VENEZIANO",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2218112",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1989 - 1994: Engenharia Elétrica Ênfase Em Eletrônica\nUniversidade Estadual Paulista Júlio de Mesquita Filho",
+                    "2000 - 2001: Programa Especial de Formação Pedagógica\nUniversidade Tecnológica Federal do Paraná"
+                ],
+                "MESTRADO": [
+                    "1995 - 1996: Engenharia Elétrica\nUniversidade Federal de Santa Catarina"
+                ],
+                "DOUTORADO": [
+                    "2002 - 2006: Engenharia Elétrica\nUniversidade de Brasília"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3662",
+                "email": "wilsonhe@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "ELIZA HELENA AREIAS GOMES",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3441260",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2004 - 2008: Sistemas de Informação\nFaculdade do Grupo UNIASSELVI"
+                ],
+                "MESTRADO": [
+                    "2011 - 2013: Ciências da Computação\nUniversidade Federal de Santa Catarina"
+                ],
+                "DOUTORADO": [
+                    "2016 - 2021: Ciências da Computação\nUniversidade Federal de Santa Catarina"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3661",
+                "email": "eliza.gomes@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "LORENA DE SOUZA BEZERRA BORGES",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1441238",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2003 - 2007: Engenharia de Redes de Comunicação\nUniversidade de Brasília"
+                ],
+                "ESPECIALIZAÇÃO": [
+                    "2010 - 2011: Segurança em Redes de Computadores\nFaculdade Integrada da Grande Fortaleza"
+                ],
+                "MESTRADO PROFISSIONALIZANTE": [
+                    "2020 - 2022: Engenharia Elétrica\nUniversidade de Brasília"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "não informado",
+                "email": "lorena.borges@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "MARIA EMILIA MACHADO TELLES WALTER",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=6404802",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1977 - 1980: Matemática\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "1982 - 1986: Matemática\nUniversidade de Brasília"
+                ],
+                "DOUTORADO": [
+                    "1995 - 1999: Ciência da Computação\nUniversidade Estadual de Campinas"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2011 - 2011: Pós-Doutorado\nUniversité Claude Bernard Lyon 1"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "4222",
+                "email": "mariaemilia@unb.br"
+            },
+            "dados_lattes": null
+        },
+        {
+            "nome": "ROBERTO LUIS ROSELLO VALERA",
+            "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO",
+            "foto_url": "https://arquivos.unb.br/arquivos/202225015367b82493536425cefb80720/foto_3x4.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3396968",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2002 - 2007: Ciencias de la Computación\nUniversidad Central Marta Abreu de Las Villas"
+                ],
+                "DOUTORADO": [
+                    "2010 - 2017: Mecánica Computacional\nUniversidad Central Marta Abreu de Las Villas"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2018 - 2018: Pós-Doutorado\nUniversidade de Brasília",
+                    "2019 - 2022: Pós-Doutorado\nUniversidade de Brasília"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "não informado",
+                "email": "roberto.luis@unb.br"
+            },
+            "dados_lattes": null
         }
     ]
 }
