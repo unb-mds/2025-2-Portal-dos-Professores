@@ -3,7 +3,7 @@ from playwright.async_api import async_playwright, Page, Browser
 from urllib.parse import urljoin
 
 class SigaaScraper:
-    def __init__(self, concurrency=1, delay_between_batches=3): 
+    def __init__(self, concurrency=2, delay_between_batches=3): 
         self.base_url = "https://sigaa.unb.br"
         self.search_url = "https://sigaa.unb.br/sigaa/public/docente/busca_docentes.jsf"
         self.CONCURRENCY = concurrency 
@@ -17,7 +17,6 @@ class SigaaScraper:
         professor_data.update({
             "descricao_pessoal": None, "lattes_url": None,
             "formacao_academica": {}, "contatos": {},
-            "sigaa_details_error": None 
         })
 
         context = await browser.new_context()
@@ -33,7 +32,6 @@ class SigaaScraper:
             except Exception as goto_error:
                 error_msg = f"Falha no page.goto: {goto_error}"
                 print(f"    [AVISO] {error_msg} para {professor_data.get('nome')}")
-                professor_data["sigaa_details_error"] = str(goto_error)
                 try: await context.close() 
                 except Exception: pass
                 return professor_data
@@ -79,7 +77,6 @@ class SigaaScraper:
         except Exception as e:
             error_msg = f"Falha inesperada ao extrair detalhes: {e}"
             print(f"    [AVISO] {error_msg} para {professor_data.get('nome', 'Professor Desconhecido')}")
-            professor_data["sigaa_details_error"] = str(e)
         finally:
             try: await context.close()
             except Exception: pass 
@@ -91,7 +88,7 @@ class SigaaScraper:
         Raspa a lista de professores por departamento e depois busca os detalhes.
         """
         async with async_playwright() as p:
-            browser = await p.chromium.launch(headless=False) 
+            browser = await p.chromium.launch(headless=True) 
             page = await browser.new_page()
             
             initial_professor_map = {}
@@ -119,12 +116,13 @@ class SigaaScraper:
 
                         if pagina_publica_url not in initial_professor_map:
                             initial_professor_map[pagina_publica_url] = {
-                                "nome": nome, "departamento": departamento_extraido,
-                                "foto_url": foto_url_absoluta, "pagina_sigaa_url": pagina_publica_url
+                                "nome": nome, 
+                                "departamento": department, 
+                                "foto_url": foto_url_absoluta, 
+                                "pagina_sigaa_url": pagina_publica_url
                             }
                 except Exception as e:
                     print(f"  [ERRO GERAL] Falha ao coletar lista do departamento '{department}'. Erro: {e}")
-
 
             await page.close() 
             initial_professor_list = list(initial_professor_map.values())
