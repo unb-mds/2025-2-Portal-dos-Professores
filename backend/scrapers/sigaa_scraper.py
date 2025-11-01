@@ -3,7 +3,7 @@ from playwright.async_api import async_playwright, Page, Browser
 from urllib.parse import urljoin
 
 class SigaaScraper:
-    def __init__(self, concurrency=2, delay_between_batches=3): 
+    def __init__(self, concurrency=3, delay_between_batches=3): 
         self.base_url = "https://sigaa.unb.br"
         self.search_url = "https://sigaa.unb.br/sigaa/public/docente/busca_docentes.jsf"
         self.CONCURRENCY = concurrency 
@@ -12,7 +12,6 @@ class SigaaScraper:
     async def _scrape_professor_details(self, browser: Browser, professor_data: dict) -> dict:
         """
         Busca os detalhes individuais de um professor.
-        Modificado para usar wait_until="domcontentloaded".
         """
         professor_data.update({
             "descricao_pessoal": None, "lattes_url": None,
@@ -24,18 +23,16 @@ class SigaaScraper:
         try:
             url = professor_data.get("pagina_sigaa_url")
             if not url: 
-                professor_data["sigaa_details_error"] = "URL da página SIGAA não encontrada"
                 return professor_data 
 
             try:
-                await page.goto(url, timeout=30000, wait_until="domcontentloaded") 
+                await page.goto(url, timeout=60000, wait_until="load") 
             except Exception as goto_error:
                 error_msg = f"Falha no page.goto: {goto_error}"
                 print(f"    [AVISO] {error_msg} para {professor_data.get('nome')}")
                 try: await context.close() 
                 except Exception: pass
                 return professor_data
-
             try:
                 desc_locator = page.locator("div#perfil-docente dt:has-text('Descrição pessoal') + dd").first
                 if await desc_locator.is_visible(timeout=2000): 
@@ -43,9 +40,10 @@ class SigaaScraper:
             except Exception: pass 
             try:
                 lattes_locator = page.locator("#endereco-lattes").first
-                if await lattes_locator.is_visible(timeout=2000): 
+                if await lattes_locator.is_visible(timeout=5000): 
                     professor_data["lattes_url"] = await lattes_locator.get_attribute('href')
             except Exception: pass 
+            
             try:
                 all_children_locator = page.locator("div#formacao-academica dl > *")
                 count = await all_children_locator.count()
@@ -62,7 +60,9 @@ class SigaaScraper:
                             detalhes_texto = (await element.inner_text()).strip()
                             formacao_dict[current_nivel].append(detalhes_texto)
                     professor_data["formacao_academica"] = formacao_dict
-            except Exception: pass
+            except Exception as e_formacao:
+                print(f"      [AVISO Menor] Formação Acadêmica não encontrada para {professor_data.get('nome')}. Erro: {e_formacao}")
+                
             try:
                 contatos_dict = {}
                 sala_locator = page.locator("div#contato dt:has-text('Sala') + dd").first
@@ -88,7 +88,7 @@ class SigaaScraper:
         Raspa a lista de professores por departamento e depois busca os detalhes.
         """
         async with async_playwright() as p:
-            browser = await p.chromium.launch(headless=True) 
+            browser = await p.chromium.launch(headless=False) 
             page = await browser.new_page()
             
             initial_professor_map = {}
@@ -117,12 +117,13 @@ class SigaaScraper:
                         if pagina_publica_url not in initial_professor_map:
                             initial_professor_map[pagina_publica_url] = {
                                 "nome": nome, 
-                                "departamento": department, 
+                                "departamento": department,
                                 "foto_url": foto_url_absoluta, 
                                 "pagina_sigaa_url": pagina_publica_url
                             }
                 except Exception as e:
                     print(f"  [ERRO GERAL] Falha ao coletar lista do departamento '{department}'. Erro: {e}")
+
 
             await page.close() 
             initial_professor_list = list(initial_professor_map.values())

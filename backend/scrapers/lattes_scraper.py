@@ -7,7 +7,7 @@ USER_DATA_DIR_BASE = os.path.join(os.path.dirname(__file__), '..', 'playwright_u
 PATH_TO_EXTENSION = os.path.join(os.path.dirname(__file__), '..', 'browser_extensions', 'buster_extension')
 
 
-def scrape_lattes(page: Page, target_url: str, worker_id: int = 1) -> dict:
+def scrape_lattes(page: Page, target_url: str, worker_id: int = 2) -> dict:
     """
     Função "Porteiro".
     Navega, resolve o CAPTCHA com retentativas, e chama o
