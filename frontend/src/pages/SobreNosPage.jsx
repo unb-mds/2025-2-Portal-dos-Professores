@@ -37,7 +37,7 @@ const SobreNosPage = () => {
           </p>
           <p style={{ marginTop: "1.5rem" }}>
             Conheça abaixo a equipe responsável por dar vida a este projeto. Para
-            os interessados nos detalhes técnicos, o código-fonte está inteiramente
+            os interessados nos detalhes técnicos, o código fonte está inteiramente
             disponível em nosso repositório no GitHub.
           </p>
         </div>
@@ -83,3 +83,4 @@ const SobreNosPage = () => {
 };
 
 export default SobreNosPage;
+// Teste de novo Pull Request
