@@ -1,125 +1,236 @@
-
 :root {
-    /* Cores baseadas no seu app.css */
-    --cor-fundo-principal: #f7f7f7;
-    --cor-azul-fundo-secao: #e6f3ff; 
-    --cor-texto-principal: #333;
-    --cor-primaria-azul: #0077cc;
-    --cor-sombra-azul-clara: rgba(0, 119, 204, 0.1);
-    --cor-sombra-azul-foco: rgba(0, 119, 204, 0.4);
-    --largura-maxima-container: 1100px;
+  --color-primary-blue: #007bff;
+  --color-text-dark: #333;
+  --color-text-medium: #666;
+  --color-background-light: #f9f9f9;
+  --color-card-background: #ffffff;
 }
 
-/* --- Seção Principal (Correção do Fundo) --- */
-#quem-somos {
-    width: 100%;
-    padding: 60px 2rem;
-    box-sizing: border-box;
-    background-color: var(--cor-azul-fundo-secao); 
-    min-height: calc(100vh - 80px); 
-    color: var(--cor-texto-principal);
+/* Estrutura Principal */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background-light);
+  font-family: Arial, sans-serif;
+  border-bottom: 8px solid rgba(0, 123, 255, 0.5);
 }
 
-#quem-somos h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #005fa3;
-    margin-bottom: 3rem;
+/* Header */
+.header-nav {
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #eee;
 }
 
-/* 1. ESTILO DA CAIXA DE TEXTO */
-#quem-somos .quem-somos-texto {
-    box-sizing: border-box; 
-    width: 90%;
-    max-width: none; 
-    margin: 0 auto 90px auto; 
-    line-height: 1.7;
-    padding: 3rem; 
-    background: #ffffff; 
-    border-radius: 12px; 
-    box-shadow: 0 10px 25px var(--cor-sombra-azul-clara); 
-    
-    text-align: justify;
-    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out; 
-    color: var(--cor-texto-principal);
-    font-size: 1.1rem;
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  max-width: 1024px;
+  margin: 0 auto;
 }
 
-#quem-somos .quem-somos-texto:hover {
-    transform: translateY(-4px); 
-    box-shadow: 0 15px 35px var(--cor-sombra-azul-foco);
+.header-logo {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--color-text-dark);
 }
 
-
-/* 2. GRADE DE PARTICIPANTES */
-.participantes-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 30px;   
-    max-width: var(--largura-maxima-container);
-    width: 90%; 
-    margin: 0 auto 40px auto; 
-    padding: 0; 
+.header-links a {
+  margin-left: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-medium);
+  text-decoration: none;
+  padding-bottom: 4px;
+  transition: color 0.2s;
 }
 
-/* Estilo Individual do Cartão do Participante */
-.participante-card {
-    background-color: #fff; 
-    border-radius: 12px; 
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); 
-    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+.header-links a:hover {
+  color: var(--color-text-dark);
 }
 
-.participante-card:hover {
-    transform: translateY(-4px); 
-    box-shadow: 0 10px 25px var(--cor-sombra-azul-clara);
+.header-links .active {
+  font-weight: 600;
+  color: var(--color-primary-blue);
+  border-bottom: 2px solid var(--color-primary-blue);
 }
 
-.participante-card .foto {
-    width: 100%;
-    height: 150px; 
-    background-color: #e0e0e0; 
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #777;
-    text-transform: uppercase;
-    border-radius: 8px;
+/* Quem Somos */
+.qs-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.5rem;
 }
 
-.participante-card h4 {
-    margin: 5px 0;
-    font-size: 1.1rem;
-    color: var(--cor-texto-principal);
-}
-
-.participante-card a {
-    color: var(--cor-primaria-azul);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.3s;
-}
-
-.participante-card a:hover {
-    color: #005fa3;
-}
-
-
-/* --- Media Queries (Mantidas) --- */
-@media (max-width: 992px) {
-    .participantes-grid {
-        grid-template-columns: repeat(2, 1fr); 
-    }
+.qs-content-block {
+  background-color: var(--color-card-background);
+  padding: 3rem 4rem;
+  max-width: 1024px;
+  width: 100%;
+  margin: 0;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 @media (max-width: 640px) {
-    #quem-somos .quem-somos-texto {
-        padding: 2.5rem 1.5rem;
-    }
-    .participantes-grid {
-        grid-template-columns: 1fr; 
-    }
+  .qs-content-block {
+    padding: 1.5rem;
+  }
+}
+
+.qs-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-dark);
+}
+
+.qs-text p {
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  color: var(--color-text-dark);
+  font-size: 1rem;
+}
+
+.qs-subtitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  color: var(--color-text-dark);
+}
+
+/* Cards da Equipe */
+.equipe-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .equipe-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.dev-card {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  background-color: var(--color-card-background);
+  box-shadow: none;
+  transition: background-color 0.3s;
+}
+
+.dev-card:hover {
+  background-color: #fcfcfc;
+}
+
+.dev-image {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-primary-blue);
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.dev-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.dev-name {
+  font-weight: 600;
+  color: var(--color-text-dark);
+  font-size: 0.95rem;
+}
+
+.dev-role {
+  font-size: 0.85rem;
+  color: var(--color-text-medium);
+  margin-top: 0.1rem;
+  margin-bottom: 0.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dev-github {
+  font-size: 0.85rem;
+  color: var(--color-text-dark);
+  text-decoration: underline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dev-github:hover {
+  opacity: 0.8;
+}
+
+/* Código-fonte Block */
+.code-source-block {
+  padding: 1.5rem;
+  background-color: var(--color-card-background);
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  box-shadow: none;
+  margin-top: 1rem;
+}
+
+.code-source-text {
+  color: var(--color-text-dark);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.code-source-link {
+  display: block;
+  color: var(--color-text-dark);
+  font-weight: 500;
+  text-decoration: underline;
+  font-size: 0.875rem;
+}
+
+.code-source-link:hover {
+  opacity: 0.8;
+}
+
+/* Footer */
+.footer-container {
+  border-top: 1px solid #eee;
+  background-color: white;
+  margin-top: auto;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  max-width: 1024px;
+  margin: 0 auto;
+  font-size: 0.75rem;
+  color: var(--color-text-medium);
+}
+
+.footer-links a {
+  margin-left: 1rem;
+  color: var(--color-text-medium);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--color-text-dark);
 }

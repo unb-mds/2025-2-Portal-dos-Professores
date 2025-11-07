@@ -4,7 +4,7 @@ from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from .models import Professor
+from models import Professor
 
 app = FastAPI(
     title="API de Dados de Professores",

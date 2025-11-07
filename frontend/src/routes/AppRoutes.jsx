@@ -3,20 +3,18 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-// Importe a página que fizemos
 import HomePage from '../pages/HomePage';
-
-// TODO: Importe as outras páginas quando elas existirem
-// import SobrePage from '../pages/SobrePage';
+import SobreNosPage from '../pages/SobreNosPage';
+import ProfessoresPage from '../pages/ProfessoresPage'; // <--- 1. IMPORTE A PÁGINA AQUI
 
 function AppRoutes() {
   return (
     <Routes>
-      {/* Diz ao router: "Quando a URL for "/", mostre o componente HomePage" */}
       <Route path="/" element={<HomePage />} />
+      <Route path="/sobre" element={<SobreNosPage />} />
       
-      {/* <Route path="/sobre" element={<SobrePage />} /> */}
-      {/* <Route path="/professores" element={<PaginaDeBusca />} /> */}
+      {/* 2. ADICIONE A ROTA CORRETA PARA PROFESSORES */}
+      <Route path="/professores" element={<ProfessoresPage />} />
     </Routes>
   );
 }
