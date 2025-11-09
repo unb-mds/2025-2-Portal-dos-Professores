@@ -1,31 +1,44 @@
-// src/components/ProfessorList.jsx
+// Arquivo: frontend/src/components/Professorlist.jsx
 
-import React from 'react';
-// 'SimpleGrid' cria um grid responsivo automaticamente
-import { SimpleGrid, Box } from '@chakra-ui/react';
-import ProfessorCard from './ProfessorCard'; // O card para cada professor
+import { SimpleGrid, Box, Text, Center, Container } from '@chakra-ui/react';
+// Importa o card que você acabou de criar
+import ProfessorCard from "./professores/ProfessorCard"
+// Importa a lista de dados falsos
+import { professorListMock } from '../data/professorMock';
 
-// Recebe a lista de professores (já filtrada) como propriedade
-function ProfessorList({ professores }) {
-  
-  if (!professores || professores.length === 0) {
-    return <Box>Nenhum professor para exibir.</Box>;
-  }
+function Professorlist() {
+  // Usa a lista mockada. Depois, aqui entrará a lista real vinda da API.
+  const professores = professorListMock;
 
   return (
-    // 'minChildWidth' diz: tente encaixar o máximo de colunas que 
-    // tenham no mínimo 280px de largura. Isso cuida da responsividade.
-    <SimpleGrid minChildWidth="280px" spacing={6} mt={6}>
-      {professores.map(professor => (
-        // Lembre-se de mudar 'id_lattes' para a chave (key) 
-        // única que você tem no seu 'professores.json'
-        <ProfessorCard 
-          key={professor.id_lattes} 
-          professor={professor} 
-        />
-      ))}
-    </SimpleGrid>
+    <Container maxW="container.xl" py={8}>
+      {/* Título da Seção */}
+      <Box mb={6}>
+        <Text fontSize="2xl" fontWeight="bold" color="gray.700">
+           Professores da UnB
+        </Text>
+        <Text color="gray.500">
+          {professores.length} perfis encontrados
+        </Text>
+      </Box>
+
+      {/* Grid de Cards */}
+      {professores.length > 0 ? (
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
+          {professores.map((prof) => (
+            <ProfessorCard key={prof.id} professor={prof} />
+          ))}
+        </SimpleGrid>
+      ) : (
+        // Mensagem caso a lista esteja vazia
+        <Center py={10}>
+          <Text color="gray.500" fontSize="lg">
+            Nenhum professor encontrado.
+          </Text>
+        </Center>
+      )}
+    </Container>
   );
 }
 
-export default ProfessorList;
+export default Professorlist;
