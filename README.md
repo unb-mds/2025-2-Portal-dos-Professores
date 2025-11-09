@@ -2,6 +2,7 @@
 
 ![Status](https://img.shields.io/badge/status-Em%20Desenvolvimento-yellow)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Coverage](coverage.svg)
 
 Projeto desenvolvido para a disciplina de **Métodos de Desenvolvimento de Software (MDS)** da Universidade de Brasília - Semestre 2025/2.
 
