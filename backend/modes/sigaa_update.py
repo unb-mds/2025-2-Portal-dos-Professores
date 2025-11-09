@@ -96,3 +96,5 @@ async def update_sigaa_data_all():
         logger.warning("\nNenhum dado de professor para salvar.")
 
     logger.info(f"--- MODO SIGAA-ONLY FINALIZADO ---")
+
+    # trigger ci
