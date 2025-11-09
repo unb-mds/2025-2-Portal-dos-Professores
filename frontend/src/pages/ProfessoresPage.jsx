@@ -1,17 +1,17 @@
-// (Caminho: frontend/src/pages/ProfessoresPage.jsx)
-
 import { useState, useEffect } from 'react';
+import { SimpleGrid, Box, Text, Center, Spinner, Container } from '@chakra-ui/react';
+import { Search, Filter, ArrowUpDown } from 'lucide-react';
+
+// Importação dos dados mockados e do Card
+import ProfessorCard from '../components/professores/ProfessorCard'; // <-- CONFIRA SE O CAMINHO ESTÁ CERTO
+import { professorListMock } from '../data/professorMock'; // <-- CONFIRA SE O CAMINHO ESTÁ CERTO
+
+// Importação da API (que não vamos usar agora, mas deixamos aqui para o futuro)
 import { 
   getProfessorsData, 
   getDepartmentsData, 
   getAreasData 
 } from '../services/api'; 
-import ProfessorCard from '../components/professores/ProfessorCard';
-
-// IMPORTAÇÃO CORRETA (DA BIBLIOTECA 'lucide-react')
-import { Search, Filter, ArrowUpDown } from 'lucide-react';
-
-// Os estilos estão no seu 'App.css' global
 
 export default function ProfessoresPage() {
   const [professores, setProfessores] = useState([]);
@@ -24,60 +24,59 @@ export default function ProfessoresPage() {
   const [areas, setAreas] = useState([]);
   const [error, setError] = useState(null);
 
+  // Efeito para buscar filtros (mantemos tentando buscar, mas não vai quebrar a página se falhar)
   useEffect(() => {
     const fetchFilterOptions = async () => {
       try {
+        // Tenta buscar do backend, se falhar, usa listas vazias por enquanto
         const [deptsData, areasData] = await Promise.all([
-          getDepartmentsData(),
-          getAreasData(),
+          getDepartmentsData().catch(() => []),
+          getAreasData().catch(() => []),
         ]);
-        
-        setDepartments(deptsData);
-        setAreas(areasData);
-
+        setDepartments(deptsData || []);
+        setAreas(areasData || []);
       } catch (err) {
-        console.error("Erro ao buscar opções de filtro:", err);
+        console.warn("Backend offline: Filtros não carregaram.", err);
       }
     };
-
     fetchFilterOptions();
   }, []); 
 
+  // EFEITO TEMPORÁRIO: Usa dados MOCKADOS em vez da API real
   useEffect(() => {
     setIsLoading(true);
     setError(null);
 
-    const params = {
-      q: query,
-      departamento: selectedDepartamento,
-      area_pesquisa: selectedArea,
-      sort: `nome_${sortOrder}`, 
-    };
-
-    getProfessorsData(params)
-      .then(data => {
-        setProfessores(data);
-      })
-      .catch(error => {
-        console.error("Erro ao buscar dados dos professores:", error);
-        setError("Não foi possível carregar os professores.");
-      })
-      .finally(() => {
+    // Simula um atraso de rede de 500ms
+    const timer = setTimeout(() => {
+        console.log("Usando dados mockados para desenvolvimento.");
+        setProfessores(professorListMock);
         setIsLoading(false);
-      });
+    }, 500);
 
+    return () => clearTimeout(timer);
+  }, [query, selectedDepartamento, selectedArea, sortOrder]); // Recarrega se mudar filtros (mas sempre traz a mesma lista mockada por enquanto)
+
+  /* --- CÓDIGO DA API REAL (COMENTADO TEMPORARIAMENTE) ---
+  useEffect(() => {
+    setIsLoading(true);
+    setError(null);
+    const params = { q: query, departamento: selectedDepartamento, area_pesquisa: selectedArea, sort: `nome_${sortOrder}` };
+    getProfessorsData(params)
+      .then(data => setProfessores(data))
+      .catch(error => {
+        console.error("Erro na API:", error);
+        setError("Backend indisponível. Mostrando dados locais se houver.");
+      })
+      .finally(() => setIsLoading(false));
   }, [query, selectedDepartamento, selectedArea, sortOrder]); 
+  --------------------------------------------------------- */
 
-  
-  const toggleSortOrder = () => {
-    setSortOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'));
-  };
+  const toggleSortOrder = () => setSortOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'));
 
-  
   return (
     <div className="prof-page-container">
-      
-      {/* Títulos */}
+      {/* Cabeçalho e Títulos */}
       <div className="prof-page-header">
         <h1 className="prof-page-title">Professores da UnB</h1>
         <p className="prof-page-subtitle">
@@ -85,99 +84,62 @@ export default function ProfessoresPage() {
         </p>
       </div>
 
-      {/* Container de Filtros */}
+      {/* Filtros (Mantidos do seu código original) */}
       <div className="prof-filters-container">
-        
-        {/* Barra de Busca com Ícone */}
         <div className="search-wrapper">
-          <Search className="search-icon" /> {/* <-- CORRIGIDO */}
+          <Search className="search-icon" />
           <input
             type="text"
-            placeholder="Buscar por nome, departamento ou área de pesquisa..."
+            placeholder="Buscar por nome, departamento ou área..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="search-input" 
           />
         </div>
-
-        {/* Filtros Dropdown e Ordenação */}
         <div className="filters-row">
-          
-          {/* Wrapper para Dropdown de Departamento com Ícone */}
           <div className="filter-select-wrapper">
-            <Filter className="filter-select-icon" /> {/* <-- CORRIGIDO */}
-            <select 
-              value={selectedDepartamento} 
-              onChange={(e) => setSelectedDepartamento(e.target.value)}
-              className="filter-select" 
-            >
+            <Filter className="filter-select-icon" />
+            <select value={selectedDepartamento} onChange={(e) => setSelectedDepartamento(e.target.value)} className="filter-select">
               <option value="">Todos os departamentos</option>
-              {departments.map(dept => (
-                <option key={dept} value={dept}>{dept}</option>
-              ))}
+              {departments.map(dept => <option key={dept} value={dept}>{dept}</option>)}
             </select>
           </div>
-
-          {/* Botão de Ordenação com Ícone */}
           <button onClick={toggleSortOrder} className="filter-button">
-            <ArrowUpDown className="filter-button-icon" /> {/* <-- CORRIGIDO */}
-            Nome {sortOrder === 'asc' ? 'A-Z' : 'Z-A'}
+            <ArrowUpDown className="filter-button-icon" /> Nome {sortOrder === 'asc' ? 'A-Z' : 'Z-A'}
           </button>
         </div>
-
-        {/* Tags de Áreas de Pesquisa */}
-        <div className="tags-areas-container">
-          <h4 className="tags-areas-title">Áreas de Pesquisa:</h4>
-          
-          <div className="tags-wrapper">
-            {/* Botão "Todas" */}
-            <button 
-              onClick={() => setSelectedArea('')}
-              className={`area-tag ${selectedArea === '' ? 'active' : ''}`}
-            >
-              Todas
-            </button>
-            
-            {/* Mapeamento das áreas */}
-            {areas.map(area => (
-              <button
-                key={area}
-                onClick={() => setSelectedArea(area)}
-                className={`area-tag ${selectedArea === area ? 'active' : ''}`}
-              >
-                {area}
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
       
-      {/* Contagem de Resultados */}
-      <div className="results-count">
-        {!isLoading && (
-          <span>{professores.length} {professores.length === 1 ? "resultado" : "resultados"}</span>
+      {/* Área de Resultados (Usando Chakra UI para o Grid de Cards) */}
+      <Box p={8} pt={0} maxWidth="1400px" margin="0 auto">
+        {isLoading ? (
+            <Center py={20}>
+                <Spinner size="xl" color="blue.500" thickness="4px" />
+            </Center>
+        ) : error ? (
+            <Center py={10}>
+                <Text color="red.500">{error}</Text>
+            </Center>
+        ) : (
+            <Box mt={6}>
+                <Text fontSize="lg" fontWeight="semibold" mb={6} color="gray.600">
+                    {professores.length} resultados encontrados (Modo Mock)
+                </Text>
+
+                {professores.length > 0 ? (
+                    <SimpleGrid columns={{ base: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
+                        {professores.map((professor) => (
+                            <ProfessorCard key={professor.id} professor={professor} />
+                        ))}
+                    </SimpleGrid>
+                ) : (
+                    <Center py={10}>
+                        <Text color="gray.500" fontSize="lg">Nenhum professor encontrado.</Text>
+                    </Center>
+                )}
+            </Box>
         )}
-      </div>
-      
-      {/* Loading/Error/Vazio */}
-      {isLoading && <p style={{ textAlign: 'center', padding: '2rem' }}>Carregando professores...</p>}
-      
-      {error && <p style={{ textAlign: 'center', padding: '2rem', color: 'red' }}>{error}</p>}
-
-      {!isLoading && !error && professores.length === 0 && (
-          <p style={{ textAlign: 'center', padding: '2rem' }}>
-            Nenhum professor encontrado com os filtros selecionados.
-          </p>
-      )}
-
-      {/* Lista de cards */}
-      {!isLoading && !error && professores.length > 0 && (
-        <div className="cards-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
-          {professores.map((professor) => (
-            <ProfessorCard key={professor.id} professor={professor} />
-          ))}
-        </div>
-      )}
+      </Box>
     </div>
   );
 }
