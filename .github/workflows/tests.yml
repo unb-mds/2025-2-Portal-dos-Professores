@@ -36,7 +36,7 @@ jobs:
         
     - name: 5. Gerar a badge de cobertura
       run: |
-        coverage-badge -o coverage.svg
+        coverage-badge -f -o coverage.svg
         
     - name: 6. Fazer commit da nova badge
       uses: stefanzweifel/git-auto-commit-action@v5
