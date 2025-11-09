@@ -192,3 +192,170 @@ body {
   transform: scale(1.1);
 }
 
+/* ===============================================
+  INÍCIO: ESTILOS DA PÁGINA DE PROFESSORES
+===============================================
+*/
+
+/* Layout Principal */
+.prof-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.prof-page-header {
+  margin-bottom: 2rem;
+}
+
+.prof-page-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.prof-page-subtitle {
+  font-size: 1.125rem;
+  color: #666;
+}
+
+/* Container de Filtros */
+.prof-filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Barra de Busca com Ícone */
+.search-wrapper {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 1.1rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 0.75rem 0.75rem 2.75rem; /* Padding esquerdo para o ícone */
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box; 
+}
+
+/* Linha de Filtros (Dropdown e Botão) */
+.filters-row {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 0.75rem;
+}
+
+/* Wrapper do Dropdown (para o ícone) */
+.filter-select-wrapper {
+  position: relative;
+  flex: 1 1 250px; /* Cresce e encolhe, com base de 250px */
+}
+
+.filter-select-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  pointer-events: none; /* Permite clicar no select "através" do ícone */
+}
+
+.filter-select {
+  width: 100%;
+  padding: 0.75rem 0.75rem 0.75rem 2.75rem; /* Padding esquerdo para o ícone */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: white;
+  appearance: none; 
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Botão de Ordenação */
+.filter-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  flex: 1 1 auto;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.filter-button:hover {
+  background-color: #f5f5ff; /* Um leve hover */
+}
+
+.filter-button-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Tags de Área de Pesquisa */
+.tags-areas-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.tags-areas-title {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+  font-weight: 600;
+}
+.tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.area-tag {
+  padding: 4px 12px;
+  border: 1px solid #ccc;
+  border-radius: 16px; /* Deixa bem arredondado (estilo "pill") */
+  cursor: pointer;
+  font-size: 12px;
+  background-color: #f0f0f0;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.area-tag:hover {
+  border-color: #999;
+  background-color: #e0e0e0;
+}
+
+/* Estilo da Tag Ativa */
+.area-tag.active {
+  /* Você pode mudar esse azul para a cor primária do seu projeto */
+  background-color: #007bff; 
+  color: white;
+  border-color: #007bff;
+  font-weight: 600;
+}
+
+/* Contagem de Resultados */
+.results-count {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #eee; /* Linha divisória como no modelo */
+}
