@@ -54,3 +54,7 @@ teste-front/
 
 # Ignorar a pasta de perfil de usuário do Playwright do backend
 backend/playwright_user_data/
+
+# Arquivos de cobertura
+coverage.xml
+.coverage

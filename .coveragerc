@@ -1,0 +1,25 @@
+[run]
+source = backend
+
+omit =
+    backend/__init__.py
+    backend/modes/__init__.py
+    backend/scrapers/__init__.py
+    backend/config.py
+    backend/main.py
+    backend/models.py
+    backend/scraper_runner.py
+    backend/utils.py
+
+[report]
+exclude_lines =
+    def run_lattes_pipeline
+    def scrape_lattes
+    def run_scholar_pipeline
+    def find_and_scrape_professor
+    async def scrape_professors_by_department
+
+    if __name__ == '__main__':
+
+    logger\.
+    print\(

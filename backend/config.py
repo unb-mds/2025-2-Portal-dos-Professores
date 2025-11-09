@@ -1,4 +1,4 @@
-# --- Configurações do Scraper ---
+#Configurações do Scraper
 LATTES_WORKER_COUNT = 2 
 JSON_FILE_PATH = "data/professors.json" 
 
