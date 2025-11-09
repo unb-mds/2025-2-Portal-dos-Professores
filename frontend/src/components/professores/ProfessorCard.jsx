@@ -1,78 +1,131 @@
-// src/components/ProfessorCard.jsx
-
-import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from "react-router-dom";
+import { Mail, MapPin, BookOpen, ArrowUpRight } from "lucide-react";
 import {
-  Box,
-  Image,
-  Text,
-  Badge,
-  Heading,
-  LinkBox,
-  LinkOverlay,
-  useColorModeValue, // Hook para modo claro/escuro
-} from '@chakra-ui/react';
+  Box, Flex, Heading, Text, Badge, Avatar,
+  VStack, HStack, Icon, useColorModeValue,
+  LinkBox, LinkOverlay, Divider, Tooltip
+} from "@chakra-ui/react";
 
-// Recebe o objeto 'professor' individual como propriedade
-function ProfessorCard({ professor }) {
+export default function ProfessorCard({ professor }) {
+  const bg = useColorModeValue("white", "gray.800");
+  const borderColor = useColorModeValue("gray.100", "gray.700");
   
-  // Ajuste os nomes das chaves (ex: 'prof.nome') para bater com o seu JSON!
-  const {
-    id_lattes, // ou o que for único
-    nome,
-    departamento,
-    foto, // (Exemplo, se você tiver uma foto no JSON)
-    areas_interesse 
-  } = professor;
+  
+  const accentColor = useColorModeValue("purple.600", "purple.300");
+  const mutedColor = useColorModeValue("gray.500", "gray.400");
+  const hoverBorderColor = useColorModeValue("purple.200", "purple.800");
 
-  // Imagem padrão caso o professor não tenha foto
-  const profileImage = foto || 'https://via.placeholder.com/300x300.png?text=Foto+Professor';
   
-  // Cor de fundo do card
-  const bgColor = useColorModeValue('white', 'gray.700');
+  const initials = professor.nome
+      ? professor.nome.split(" ").filter(n => n.length > 0).map((n) => n[0]).join("").slice(0, 2).toUpperCase()
+      : "UN";
 
   return (
-    // LinkBox permite que o card inteiro seja clicável
-    <LinkBox
-      as="article"
-      borderWidth="1px"
-      borderRadius="lg"
+    <LinkBox 
+      as="article" 
+      height="100%"
+      bg={bg}
+      borderWidth="1px" 
+      borderColor={borderColor}
+      borderRadius="2xl"
+      position="relative"
       overflow="hidden"
-      bg={bgColor}
-      boxShadow="sm"
-      transition="all 0.2s ease-in-out"
-      _hover={{ boxShadow: 'lg', transform: 'translateY(-4px)' }}
+      transition="all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)"
+      _hover={{ 
+        transform: "translateY(-6px)",
+        boxShadow: "xl",
+        borderColor: hoverBorderColor,
+      }}
+      role="group"
     >
-      <Image src={profileImage} alt={`Foto de ${nome}`} objectFit="cover" h="250px" w="100%" />
+      
+      <Box h="4px" bg={accentColor} width="0%" transition="width 0.3s ease" _groupHover={{ width: "100%" }} />
 
-      <Box p={5}>
-        <Box d="flex" alignItems="baseline" mb={2}>
-          {/* Exemplo de Badge - ajuste com dados reais */}
-          <Badge borderRadius="full" px="2" colorScheme="blue">
-            {departamento || 'UnB'}
-          </Badge>
-        </Box>
+      <VStack align="stretch" p={6} spacing={5} height="100%">
         
-        {/* O LinkOverlay faz o Heading ser o link principal */}
-        <LinkOverlay
-          as={RouterLink}
-          // Esta rota '/professor/:id' deve existir no seu AppRoutes.jsx
-          to={`/professor/${id_lattes}`}
-        >
-          <Heading as="h3" size="md" noOfLines={2}>
-            {nome}
-          </Heading>
-        </LinkOverlay>
+        {/* CABEÇALHO */}
+        <Flex align="start" gap={4}>
+          <Avatar
+            size="md"
+            name={professor.nome}
+            src={professor.fotoUrl}
+            
+            bg={useColorModeValue("gray.100", "gray.700")}
+            color={accentColor}
+            fontWeight="bold"
+            borderWidth="2px" borderColor="transparent"
+            _groupHover={{ borderColor: accentColor }}
+            transition="all 0.3s ease"
+          />
+          <VStack align="start" spacing={1} flex={1} minW={0}>
+            <HStack justify="space-between" width="full">
+              <Heading as="h3" size="md" lineHeight="shorter" noOfLines={2} title={professor.nome}>
+                <LinkOverlay as={RouterLink} to={`/professores/${professor.id}`}>
+                  {professor.nome}
+                </LinkOverlay>
+              </Heading>
+              
+              <Icon as={ArrowUpRight} color={accentColor} opacity={0} transform="translate(-10px, 10px)" transition="all 0.3s ease" _groupHover={{ opacity: 1, transform: "translate(0, 0)" }} />
+            </HStack>
+            <Text fontSize="xs" fontWeight="bold" textTransform="uppercase" letterSpacing="wider" color={mutedColor} noOfLines={1}>
+              {professor.departamento}
+            </Text>
+          </VStack>
+        </Flex>
 
-        {/* Exemplo de como mostrar áreas - ajuste com dados reais */}
-        {areas_interesse && (
-          <Text mt={2} noOfLines={2} fontSize="sm" color="gray.600">
-            {areas_interesse.join(', ')}
-          </Text>
+        <Divider borderColor={useColorModeValue("gray.50", "gray.700")} />
+
+        {/* CORPO */}
+        <VStack align="start" spacing={3} flex={1}>
+          {professor.email && (
+            <Flex align="center" gap={3} color={mutedColor} fontSize="sm" _hover={{ color: accentColor }} transition="colors 0.2s">
+               <Icon as={Mail} boxSize={4} />
+               <Text noOfLines={1} title={professor.email}>
+                 {professor.email.toLowerCase()}
+               </Text>
+            </Flex>
+          )}
+          {professor.campus && (
+            <Flex align="center" gap={3} color={mutedColor} fontSize="sm">
+               <Icon as={MapPin} boxSize={4} />
+               <Text noOfLines={1}>{professor.campus}</Text>
+            </Flex>
+          )}
+        </VStack>
+
+        {/* RODAPÉ (TAGS) */}
+        {professor.areasPesquisa?.length > 0 && (
+          <Box>
+            <HStack mb={3} spacing={2} color={mutedColor} fontSize="xs" fontWeight="bold" textTransform="uppercase" letterSpacing="wider">
+              <Icon as={BookOpen} boxSize={3.5} />
+              <Text>Áreas de Pesquisa</Text>
+            </HStack>
+            <Flex flexWrap="wrap" gap={2}>
+              {professor.areasPesquisa.slice(0, 3).map((area, idx) => (
+                <Tooltip key={idx} label="Filtrar por esta área (Em breve)" hasArrow fontSize="xs">
+                  <Badge 
+                    px={3} py={1} 
+                    
+                    bg={useColorModeValue("purple.50", "purple.900")} 
+                    color={accentColor}
+                    fontWeight="semibold" fontSize="0.7rem" borderRadius="full"
+                    textTransform="none" cursor="pointer"
+                    transition="all 0.2s"
+                    _hover={{ bg: accentColor, color: "white", transform: "scale(1.05)" }}
+                  >
+                    {area}
+                  </Badge>
+                </Tooltip>
+              ))}
+              {professor.areasPesquisa.length > 3 && (
+                 <Badge px={2} py={1} variant="ghost" color={mutedColor} fontSize="0.7rem" borderRadius="full">
+                  +{professor.areasPesquisa.length - 3}
+                </Badge>
+              )}
+            </Flex>
+          </Box>
         )}
-      </Box>
+      </VStack>
     </LinkBox>
   );
 }
-
-export default ProfessorCard;
