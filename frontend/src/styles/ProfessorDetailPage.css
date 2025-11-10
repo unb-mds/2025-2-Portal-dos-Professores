@@ -1,0 +1,31 @@
+/* Define espaçamento e visual das abas */
+.chakra-tabs__tab-list {
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 15px;
+}
+
+.chakra-tabs__tab {
+  font-weight: 500;
+  color: #2d3748;
+}
+
+.chakra-tabs__tab[aria-selected="true"] {
+  color: #2b6cb0;
+  border-bottom: 3px solid #2b6cb0;
+}
+
+.chakra-tabs__tab-panels {
+  margin-top: 20px;
+}
+
+.chakra-tabs__tab-panel {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+}
+
+/* Ajuste geral */
+body {
+  background-color: #f9fafb;
+}

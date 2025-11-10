@@ -58,3 +58,12 @@ backend/playwright_user_data/
 # Arquivos de cobertura
 coverage.xml
 .coverage
+
+# Diretórios de dependências
+/node_modules
+
+# Arquivos de build e logs
+/build
+/dist
+npm-debug.log
+.env
