@@ -14,7 +14,7 @@ function AppRoutes() {
       <Route path="/" element={<HomePage />} />
       <Route path="/sobre" element={<SobreNosPage />} />
       <Route path="/professores" element={<ProfessoresPage />} />
-      <Route path="/professor/:id" element={<ProfessorDetailPage />} />
+      <Route path="/professores/:id" element={<ProfessorDetailPage />} />
     </Routes>
   );
 }
