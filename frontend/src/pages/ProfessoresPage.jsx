@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { SimpleGrid, Box, Text, Center, Spinner, Container } from '@chakra-ui/react';
 import { Search, Filter, ArrowUpDown } from 'lucide-react';
+import { Link } from "react-router-dom";
+
 
 // Importação dos dados mockados e do Card
 import ProfessorCard from '../components/professores/ProfessorCard'; // <-- CONFIRA SE O CAMINHO ESTÁ CERTO
@@ -127,16 +129,25 @@ export default function ProfessoresPage() {
                 </Text>
 
                 {professores.length > 0 ? (
-                    <SimpleGrid columns={{ base: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
-                        {professores.map((professor) => (
-                            <ProfessorCard key={professor.id} professor={professor} />
-                        ))}
-                    </SimpleGrid>
-                ) : (
-                    <Center py={10}>
-                        <Text color="gray.500" fontSize="lg">Nenhum professor encontrado.</Text>
-                    </Center>
-                )}
+                  <SimpleGrid columns={{ base: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
+                    {professores.map((professor) => (
+                      <Link
+                        key={professor.id}
+                        to={`/professores/${professor.id}`} // 👈 Navega pra página de detalhe
+                        style={{ textDecoration: "none" }}
+         >
+                       <ProfessorCard professor={professor} />
+                      </Link>
+             ))}
+            </SimpleGrid>
+          ) : (
+             <Center py={10}>
+              <Text color="gray.500" fontSize="lg">
+                Nenhum professor encontrado.
+              </Text>
+            </Center>
+      )}
+
             </Box>
         )}
       </Box>
