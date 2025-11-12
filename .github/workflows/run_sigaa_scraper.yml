@@ -1,0 +1,39 @@
+name: Rodar Scraper do SIGAA (Agendado)
+
+on:
+  workflow_dispatch:
+  
+  schedule:
+
+    - cron: '0 4 1,15 * *'
+
+jobs:
+  scrape-sigaa:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 1. Checkout do código
+      uses: actions/checkout@v4
+
+    - name: 2. Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11' 
+
+    - name: 3. Instalar dependências
+      run: |
+        pip install -r requirements.txt
+        
+    - name: 4. Instalar o Navegador Playwright
+      run: |
+        playwright install chromium
+        
+    - name: 5. Rodar o Scraper do SIGAA
+      run: |
+        # Roda o comando do "pipeline" que descobrimos
+        python backend/scraper_runner.py --sigaa
+        
+    - name: 6. Fazer commit do 'professors.json'
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "CI: Atualiza dados dos professores (Scrape SIGAA)"
+        file_pattern: data/professors.json
