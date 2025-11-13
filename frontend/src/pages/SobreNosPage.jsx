@@ -89,9 +89,8 @@ const SobreNosPage = () => {
           {}
           <Flex 
             wrap="wrap" 
-            spacing={4} 
             gap={6} 
-            justify={{ base: "center", md: "flex-start" }} 
+            justify="center" 
           >
             {participantesData.map((pessoa) => {
               const username = getUsername(pessoa.link);
@@ -101,6 +100,8 @@ const SobreNosPage = () => {
                 <Box 
                   key={pessoa.id} 
                   p={4} 
+                  w={{ base: "250px", md: "250px" }} 
+                  h="110px" 
                   borderWidth="1px" 
                   borderRadius="lg" 
                   boxShadow="md" 
