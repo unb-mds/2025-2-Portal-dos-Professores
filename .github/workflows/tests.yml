@@ -4,14 +4,16 @@ on:
   push:
     branches: [ main, develop ]
     paths:
-      - 'backend/**'    
+      - 'backend/**'       
       - '.github/workflows/**'
       
   pull_request:
     branches: [ main ]
     paths:
-      - 'backend/**'      
+      - 'backend/**'       
       - '.github/workflows/**'
+permissions:
+  contents: write
 
 jobs:
   build-and-test:
