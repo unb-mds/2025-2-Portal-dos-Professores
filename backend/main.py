@@ -15,6 +15,9 @@ app = FastAPI(
 origins = [
     "http://localhost:5173",
     "http://localhost",
+    "https://unb-mds.github.io/2025-2-Portal-dos-Professores",
+    "https://unb-mds.github.io/2025-2-Portal-dos-Professores/professores",
+    "https://unb-mds.github.io/2025-2-Portal-dos-Professores/sobre"
 ]
 
 app.add_middleware(
