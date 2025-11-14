@@ -83,12 +83,12 @@ def search_professors(
     return results
 
 
-@app.get("/professors/{professor_id}", response_model=Professor, summary="Busca um professor por ID")
-def get_professor_by_id(professor_id: int):
-    for professor in professors_db:
-        if professor.get('id') == professor_id:
-            return professor
-    raise HTTPException(status_code=404, detail=f"Professor com ID {professor_id} não encontrado.")
+# @app.get("/professors/{professor_id}", response_model=Professor, summary="Busca um professor por ID")
+# def get_professor_by_id(professor_id: int):
+#     for professor in professors_db:
+#         if professor.get('id') == professor_id:
+#             return professor
+#     raise HTTPException(status_code=404, detail=f"Professor com ID {professor_id} não encontrado.")
 
 
 def get_unique_field_values(field_name: str) -> List[str]:
