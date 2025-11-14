@@ -4,7 +4,7 @@ from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from models import Professor
+from .models import Professor
 
 app = FastAPI(
     title="API de Dados de Professores",
@@ -49,8 +49,8 @@ def load_professors_data() -> List[dict]:
             professors_list = data.get("professors", [])
             
 
-            for i, professor in enumerate(professors_list):
-                professor['id'] = i + 1 
+            # for i, professor in enumerate(professors_list):
+            #     professor['id'] = i + 1 
                 
             return professors_list
     except (FileNotFoundError, json.JSONDecodeError) as e:
