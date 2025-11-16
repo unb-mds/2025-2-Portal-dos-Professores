@@ -14,25 +14,32 @@ export const getProfessorsData = async (params = {}) => {
     const queryParams = new URLSearchParams();
     
     // Adiciona apenas os parâmetros que foram definidos e não são vazios
-    if (params.q) queryParams.append('q', params.q);
+    // O backend espera 'nome' (não 'q'), mas aceitamos ambos para compatibilidade
+    if (params.q) queryParams.append('nome', params.q);
+    if (params.nome) queryParams.append('nome', params.nome);
     if (params.departamento) queryParams.append('departamento', params.departamento);
     // (Parâmetro 'campus' removido)
     if (params.area_pesquisa) queryParams.append('area_pesquisa', params.area_pesquisa);
     if (params.sort) queryParams.append('sort', params.sort);
 
-    // Constrói a URL final: ex: http://localhost:8000/professors?q=ana&departamento=CIC
-    const apiUrl = `${API_BASE_URL}/professors?${queryParams.toString()}`;
+    // Constrói a URL final: se não há parâmetros, não adiciona o '?'
+    const queryString = queryParams.toString();
+    const apiUrl = queryString 
+      ? `${API_BASE_URL}/professors?${queryString}`
+      : `${API_BASE_URL}/professors`;
     
+    console.log('🔗 Buscando professores em:', apiUrl);
     const response = await fetch(apiUrl);
     
     if (!response.ok) {
-      throw new Error(`Erro na rede: ${response.statusText}`);
+      throw new Error(`Erro na rede: ${response.status} ${response.statusText}`);
     }
     
     const data = await response.json();
+    console.log(`✅ Recebidos ${Array.isArray(data) ? data.length : 0} professores`);
     return data; 
   } catch (error) {
-    console.error("Falha ao buscar dados dos professores:", error);
+    console.error("❌ Falha ao buscar dados dos professores:", error);
     return []; // Retorna array vazio em caso de erro
   }
 };
@@ -42,11 +49,15 @@ export const getProfessorsData = async (params = {}) => {
 
 export const getDepartmentsData = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/departamentos`);
-    if (!response.ok) throw new Error('Falha ao buscar departamentos');
-    return await response.json();
+    const apiUrl = `${API_BASE_URL}/departamentos`;
+    console.log('🔗 Buscando departamentos em:', apiUrl);
+    const response = await fetch(apiUrl);
+    if (!response.ok) throw new Error(`Erro na rede: ${response.status} ${response.statusText}`);
+    const data = await response.json();
+    console.log(`✅ Recebidos ${Array.isArray(data) ? data.length : 0} departamentos`);
+    return data;
   } catch (error) {
-    console.error("Falha ao buscar departamentos:", error);
+    console.error("❌ Falha ao buscar departamentos:", error);
     return [];
   }
 };
