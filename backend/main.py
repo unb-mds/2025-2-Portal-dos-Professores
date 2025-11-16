@@ -69,22 +69,18 @@ def read_root():
 
 @app.get("/professors", response_model=List[Professor], summary="Busca e filtra professores")
 def search_professors(
-    # (CORRIGIDO) O seu 'api.js' envia 'nome', então voltamos a usar 'nome'
     nome: Optional[str] = Query(None, description="Busca por parte do nome do professor (case-insensitive)"),
     departamento: Optional[str] = Query(None, description="Busca por parte do nome do departamento"),
-    # (Mantido) Recebe o parâmetro 'sort'
     sort: Optional[str] = Query("asc", description="Ordenação: 'asc' (A-Z) ou 'desc' (Z-A)")
 ):
     results = professors_db
 
-    # (CORRIGIDO) Filtra usando 'nome'
     if nome:
         results = [p for p in results if p.get('nome') and nome.lower() in p.get('nome').lower()]
 
     if departamento:
         results = [p for p in results if p.get('departamento') and departamento.lower() in p.get('departamento').lower()]
     
-    # (Mantido) Lógica de ordenação
     key_func = lambda p: p.get('nome', '') or ''
     
     if sort == "desc":
