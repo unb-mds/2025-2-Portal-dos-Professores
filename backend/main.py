@@ -4,7 +4,7 @@ from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from .models import Professor
+from models import Professor
 
 app = FastAPI(
     title="API de Dados de Professores",
@@ -34,8 +34,6 @@ def load_professors_data() -> List[dict]:
     Carrega os dados dos professores do arquivo JSON de forma inteligente.
     Funciona tanto localmente quanto no Docker.
     """
-    # [Ian] NOTA: Eu ajustei o caminho do 'local_path' para refletir sua estrutura
-    # Onde main.py está em 'backend/' e 'data/' está na raiz.
     docker_path = Path("/app/data/professors.json")
     local_path = Path(__file__).parent.parent / "data" / "professors.json"
 
@@ -51,7 +49,6 @@ def load_professors_data() -> List[dict]:
             
             professors_list = data.get("professors", [])
             
-
             # for i, professor in enumerate(professors_list):
             #     professor['id'] = i + 1 
                 
@@ -72,17 +69,25 @@ def read_root():
 
 @app.get("/professors", response_model=List[Professor], summary="Busca e filtra professores")
 def search_professors(
-    nome: Optional[str] = Query(None, description="Busca por parte do nome do professor (case-insensitive)"),
-    departamento: Optional[str] = Query(None, description="Busca por parte do nome do departamento")
+    q: Optional[str] = Query(None, alias="q", description="Busca por parte do nome do professor (case-insensitive)"),
+    departamento: Optional[str] = Query(None, description="Busca por parte do nome do departamento"),
+    sort: Optional[str] = Query("asc", description="Ordenação: 'asc' (A-Z) ou 'desc' (Z-A)")
 ):
     results = professors_db
 
-    if nome:
-        results = [p for p in results if p.get('nome') and nome.lower() in p.get('nome').lower()]
+    if q:
+        results = [p for p in results if p.get('nome') and q.lower() in p.get('nome').lower()]
 
     if departamento:
         results = [p for p in results if p.get('departamento') and departamento.lower() in p.get('departamento').lower()]
     
+    key_func = lambda p: p.get('nome', '') or ''
+    
+    if sort == "desc":
+        results.sort(key=key_func, reverse=True)
+    else:
+        results.sort(key=key_func) 
+
     return results
 
 

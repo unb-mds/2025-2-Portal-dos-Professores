@@ -4,20 +4,40 @@ import {
   Heading, VStack, HStack, Icon, Input, InputGroup, InputLeftElement,
   Select, Button, IconButton, useColorModeValue
 } from '@chakra-ui/react';
-import { Search, Filter, ArrowUpDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, Filter, ArrowUpDown, ChevronLeft, ChevronRight, AlertCircle } from 'lucide-react'; 
 
 import ProfessorCard from '../components/professores/ProfessorCard';
-import { professorListMock } from '../data/professorMock';
-import { getDepartmentsData, getAreasData } from '../services/api';
+import { getProfessorsData, getDepartmentsData, getAreasData } from '../services/api';
+
+const useDebounce = (value, delay) => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+};
 
 export default function ProfessoresPage() {
   const [professores, setProfessores] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [apiError, setApiError] = useState(null);
+
   const [query, setQuery] = useState('');
   const [selectedDepartamento, setSelectedDepartamento] = useState('');
   const [sortOrder, setSortOrder] = useState('asc');
-  const [departments, setDepartments] = useState([]);
+  
+  const debouncedQuery = useDebounce(query, 400);
 
+  const [departments, setDepartments] = useState([]);
+  
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 21;
 
@@ -30,41 +50,45 @@ export default function ProfessoresPage() {
   useEffect(() => {
     const fetchFilterOptions = async () => {
       try {
-        const [deptsData] = await Promise.all([
+        const [deptsData, areasData] = await Promise.all([
           getDepartmentsData().catch(() => []),
+          getAreasData().catch(() => []),
         ]);
         setDepartments(deptsData || []);
       } catch (err) {
-        console.warn("Backend offline.");
+        console.warn("Backend offline, filtros não puderam ser carregados.");
       }
     };
     fetchFilterOptions();
   }, []);
 
   useEffect(() => {
-    setIsLoading(true);
-    setCurrentPage(1);
+    const fetchProfessores = async () => {
+      setIsLoading(true);
+      setApiError(null);
+      setCurrentPage(1);
 
-    setTimeout(() => {
-      const multipliedData = Array(20).fill(professorListMock).flatMap((x, i) => 
-        x.map(p => ({ ...p, id: `${p.id}-${i}` }))
-      );
-      
-      const filtered = multipliedData.filter(prof => 
-        prof.nome.toLowerCase().includes(query.toLowerCase()) &&
-        (selectedDepartamento === '' || prof.departamento === selectedDepartamento)
-      );
+      const params = {
+        q: debouncedQuery,
+        departamento: selectedDepartamento,
+        sort: sortOrder,
+      };
 
-      const sorted = [...filtered].sort((a, b) => {
-        return sortOrder === 'asc' 
-          ? a.nome.localeCompare(b.nome) 
-          : b.nome.localeCompare(a.nome);
-      });
+      try {
+        const data = await getProfessorsData(params);
+        setProfessores(data); 
+      } catch (err) {
+        console.error("Erro ao buscar professores:", err);
+        setApiError("Não foi possível carregar os professores.");
+        setProfessores([]); 
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-      setProfessores(sorted);
-      setIsLoading(false);
-    }, 600);
-  }, [query, selectedDepartamento, sortOrder]);
+    fetchProfessores();
+
+  }, [debouncedQuery, selectedDepartamento, sortOrder]);
 
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
@@ -111,32 +135,32 @@ export default function ProfessoresPage() {
                 type="text"
                 placeholder="Pesquisar por nome, área de pesquisa..."
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => setQuery(e.target.value)} 
                 bg={useColorModeValue("white", "gray.700")}
                 borderColor={useColorModeValue("gray.300", "gray.600")}
                 _focus={{ borderColor: "blue.500", boxShadow: "0 0 0 1px #3182ce" }}
                 fontSize="md"
               />
-            </InputGroup>
+            </InputGroup> 
 
             <HStack spacing={4} wrap="wrap">
               <InputGroup size="md" maxW={{ base: "full", md: "300px" }}>
                  <InputLeftElement pointerEvents="none">
-                    <Icon as={Filter} color="gray.400" boxSize={4} />
+                   <Icon as={Filter} color="gray.400" boxSize={4} />
                  </InputLeftElement>
-                  <Select
-                    placeholder="Todos os departamentos"
-                    value={selectedDepartamento}
-                    onChange={(e) => setSelectedDepartamento(e.target.value)}
-                    bg={useColorModeValue("white", "gray.700")}
-                    borderColor={useColorModeValue("gray.300", "gray.600")}
-                    borderRadius="md"
-                    pl={10} 
-                  >
-                    {departments.map(dept => (
-                      <option key={dept} value={dept}>{dept}</option>
-                    ))}
-                  </Select>
+                 <Select
+                   placeholder="Todos os departamentos"
+                   value={selectedDepartamento}
+                   onChange={(e) => setSelectedDepartamento(e.target.value)}
+                   bg={useColorModeValue("white", "gray.700")}
+                   borderColor={useColorModeValue("gray.300", "gray.600")}
+                   borderRadius="md"
+                   pl={10} 
+                 >
+                   {Array.isArray(departments) && departments.map(dept => (
+                     <option key={dept} value={dept}>{dept}</option>
+                   ))}
+                 </Select>
               </InputGroup>
 
               <Button
@@ -158,19 +182,29 @@ export default function ProfessoresPage() {
 
       <Container maxW="container.xl" py={8}>
         <HStack justify="space-between" mb={6}>
-             <Text fontSize="md" fontWeight="medium" color={mutedColor}>
-                Mostrando {currentProfessors.length} de {professores.length} resultados
+            <Text fontSize="md" fontWeight="medium" color={mutedColor}>
+              Mostrando {currentProfessors.length} de {professores.length} resultados
             </Text>
             {totalPages > 1 && (
-                <Text fontSize="sm" color={mutedColor}>
-                    Página {currentPage} de {totalPages}
-                </Text>
+              <Text fontSize="sm" color={mutedColor}>
+                Página {currentPage} de {totalPages}
+              </Text>
             )}
         </HStack>
 
         {isLoading ? (
           <Center py={20}>
-             <Text>A carregar...</Text>
+            <Text>A carregar...</Text> 
+          </Center>
+        ) : apiError ? ( 
+          <Center py={20} flexDirection="column" bg={headerBg} borderRadius="xl" borderWidth="1px" borderColor="red.300">
+            <Icon as={AlertCircle} boxSize={10} color="red.400" mb={4} />
+            <Text color="red.400" fontSize="lg" fontWeight="medium">
+              Erro ao carregar dados
+            </Text>
+            <Text color={mutedColor} fontSize="md" mt={2}>
+              {apiError}
+            </Text>
           </Center>
         ) : professores.length > 0 ? (
           <>
@@ -180,55 +214,55 @@ export default function ProfessoresPage() {
               pb={10}
             >
               {currentProfessors.map((professor) => (
-                <ProfessorCard key={professor.id} professor={professor} />
+                <ProfessorCard key={professor.id || professor.nome} professor={professor} />
               ))}
             </SimpleGrid>
-
+            
             {totalPages > 1 && (
-                <HStack justify="center" spacing={4} py={8}>
-                    <IconButton 
-                        icon={<ChevronLeft />} 
-                        onClick={handlePrevPage} 
-                        isDisabled={currentPage === 1}
-                        aria-label="Página anterior"
-                        variant="outline"
-                    />
-                    
-                    <HStack spacing={2}>
-                        {Array.from({ length: totalPages }, (_, i) => i + 1)
-                            .filter(p => p === 1 || p === totalPages || Math.abs(currentPage - p) <= 1)
-                            .map((page, index, array) => (
-                                <Box key={page} display="inline-block">
-                                    {index > 0 && array[index - 1] !== page - 1 && <Text color="gray.400" display="inline" mx={2}>...</Text>}
-                                    <Button
-                                        onClick={() => {
-                                            setCurrentPage(page);
-                                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                                        }}
-                                        variant={currentPage === page ? "solid" : "ghost"}
-                                        colorScheme={currentPage === page ? "blue" : "gray"}
-                                        size="sm"
-                                    >
-                                        {page}
-                                    </Button>
-                                </Box>
-                            ))
-                        }
-                    </HStack>
-
-                    <IconButton 
-                        icon={<ChevronRight />} 
-                        onClick={handleNextPage} 
-                        isDisabled={currentPage === totalPages}
-                        aria-label="Próxima página"
-                        variant="outline"
-                    />
+              <HStack justify="center" spacing={4} py={8}>
+                <IconButton 
+                  icon={<ChevronLeft />} 
+                  onClick={handlePrevPage} 
+                  isDisabled={currentPage === 1}
+                  aria-label="Página anterior"
+                  variant="outline"
+                />
+                
+                <HStack spacing={2}>
+                  {Array.from({ length: totalPages }, (_, i) => i + 1)
+                    .filter(p => p === 1 || p === totalPages || Math.abs(currentPage - p) <= 1)
+                    .map((page, index, array) => (
+                      <Box key={page} display="inline-block">
+                        {index > 0 && array[index - 1] !== page - 1 && <Text color="gray.400" display="inline" mx={2}>...</Text>}
+                        <Button
+                          onClick={() => {
+                            setCurrentPage(page);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }}
+                          variant={currentPage === page ? "solid" : "ghost"}
+                          colorScheme={currentPage === page ? "blue" : "gray"}
+                          size="sm"
+                        >
+                          {page}
+                        </Button>
+                      </Box>
+                    ))
+                  }
                 </HStack>
+
+                <IconButton 
+                  icon={<ChevronRight />} 
+                  onClick={handleNextPage} 
+                  isDisabled={currentPage === totalPages}
+                  aria-label="Próxima página"
+                  variant="outline"
+                />
+              </HStack>
             )}
           </>
         ) : (
           <Center py={20} flexDirection="column" bg={headerBg} borderRadius="xl" borderWidth="1px" borderColor={borderColor}>
-             <Icon as={Search} boxSize={10} color="gray.300" mb={4} />
+            <Icon as={Search} boxSize={10} color="gray.300" mb={4} />
             <Text color={mutedColor} fontSize="lg">
               Nenhum professor encontrado com os filtros selecionados.
             </Text>
