@@ -11,9 +11,9 @@ export default function ProfessorCard({ professor }) {
   const borderColor = useColorModeValue("gray.100", "gray.700");
   
   
-  const accentColor = useColorModeValue("purple.600", "purple.300");
-  const mutedColor = useColorModeValue("gray.500", "gray.400");
-  const hoverBorderColor = useColorModeValue("purple.200", "purple.800");
+  const accentColor = useColorModeValue("blue.600", "blue.300");
+  const mutedColor = useColorModeValue("gray.500", "grya.400");
+  const hoverBorderColor = useColorModeValue("blue.200", "blue.800");
 
   
   const initials = professor.nome
@@ -59,8 +59,13 @@ export default function ProfessorCard({ professor }) {
           />
           <VStack align="start" spacing={1} flex={1} minW={0}>
             <HStack justify="space-between" width="full">
-              <Heading as="h3" size="md" lineHeight="shorter" noOfLines={2} title={professor.nome}>
-                <LinkOverlay as={RouterLink} to={`/professores/${professor.id}`}>
+             <Heading as="h3" size="md" lineHeight="shorter" noOfLines={2} title={professor.nome}>
+                <LinkOverlay 
+                  as={RouterLink} 
+                  to={`/professores/${professor.id}`}
+                  color={accentColor} 
+                  _visited={{ color: accentColor }} 
+                >
                   {professor.nome}
                 </LinkOverlay>
               </Heading>
@@ -106,7 +111,7 @@ export default function ProfessorCard({ professor }) {
                   <Badge 
                     px={3} py={1} 
                     
-                    bg={useColorModeValue("purple.50", "purple.900")} 
+                    bg={useColorModeValue("blue.50", "blue.900")} 
                     color={accentColor}
                     fontWeight="semibold" fontSize="0.7rem" borderRadius="full"
                     textTransform="none" cursor="pointer"

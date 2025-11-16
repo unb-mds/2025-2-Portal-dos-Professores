@@ -1,145 +1,274 @@
 import { useState, useEffect } from 'react';
-import { SimpleGrid, Box, Text, Center, Spinner, Container } from '@chakra-ui/react';
-import { Search, Filter, ArrowUpDown } from 'lucide-react';
+import {
+  SimpleGrid, Box, Text, Center, Container,
+  Heading, VStack, HStack, Icon, Input, InputGroup, InputLeftElement,
+  Select, Button, IconButton, useColorModeValue
+} from '@chakra-ui/react';
+import { Search, Filter, ArrowUpDown, ChevronLeft, ChevronRight, AlertCircle } from 'lucide-react'; 
 
-// Importação dos dados mockados e do Card
-import ProfessorCard from '../components/professores/ProfessorCard'; // <-- CONFIRA SE O CAMINHO ESTÁ CERTO
-import { professorListMock } from '../data/professorMock'; // <-- CONFIRA SE O CAMINHO ESTÁ CERTO
+import ProfessorCard from '../components/professores/ProfessorCard';
+import { getProfessorsData, getDepartmentsData, getAreasData } from '../services/api';
 
-// Importação da API (que não vamos usar agora, mas deixamos aqui para o futuro)
-import { 
-  getProfessorsData, 
-  getDepartmentsData, 
-  getAreasData 
-} from '../services/api'; 
+const useDebounce = (value, delay) => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+};
 
 export default function ProfessoresPage() {
   const [professores, setProfessores] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [apiError, setApiError] = useState(null);
+
   const [query, setQuery] = useState('');
   const [selectedDepartamento, setSelectedDepartamento] = useState('');
-  const [selectedArea, setSelectedArea] = useState('');
-  const [sortOrder, setSortOrder] = useState('asc'); 
-  const [departments, setDepartments] = useState([]);
-  const [areas, setAreas] = useState([]);
-  const [error, setError] = useState(null);
+  const [sortOrder, setSortOrder] = useState('asc');
+  
+  const debouncedQuery = useDebounce(query, 400);
 
-  // Efeito para buscar filtros (mantemos tentando buscar, mas não vai quebrar a página se falhar)
+  const [departments, setDepartments] = useState([]);
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 21;
+
+  const pageBg = useColorModeValue("gray.50", "gray.900");
+  const headerBg = useColorModeValue("white", "gray.800");
+  const borderColor = useColorModeValue("gray.200", "gray.700");
+  const titleColor = useColorModeValue("blue.800", "blue.100");
+  const mutedColor = useColorModeValue("gray.600", "gray.400");
+
   useEffect(() => {
     const fetchFilterOptions = async () => {
       try {
-        // Tenta buscar do backend, se falhar, usa listas vazias por enquanto
         const [deptsData, areasData] = await Promise.all([
           getDepartmentsData().catch(() => []),
           getAreasData().catch(() => []),
         ]);
         setDepartments(deptsData || []);
-        setAreas(areasData || []);
       } catch (err) {
-        console.warn("Backend offline: Filtros não carregaram.", err);
+        console.warn("Backend offline, filtros não puderam ser carregados.");
       }
     };
     fetchFilterOptions();
-  }, []); 
+  }, []);
 
-  // EFEITO TEMPORÁRIO: Usa dados MOCKADOS em vez da API real
   useEffect(() => {
-    setIsLoading(true);
-    setError(null);
+    const fetchProfessores = async () => {
+      setIsLoading(true);
+      setApiError(null);
+      setCurrentPage(1);
 
-    // Simula um atraso de rede de 500ms
-    const timer = setTimeout(() => {
-        console.log("Usando dados mockados para desenvolvimento.");
-        setProfessores(professorListMock);
+      const params = {
+        q: debouncedQuery,
+        departamento: selectedDepartamento,
+        sort: sortOrder,
+      };
+
+      try {
+        const data = await getProfessorsData(params);
+        setProfessores(data); 
+      } catch (err) {
+        console.error("Erro ao buscar professores:", err);
+        setApiError("Não foi possível carregar os professores.");
+        setProfessores([]); 
+      } finally {
         setIsLoading(false);
-    }, 500);
+      }
+    };
 
-    return () => clearTimeout(timer);
-  }, [query, selectedDepartamento, selectedArea, sortOrder]); // Recarrega se mudar filtros (mas sempre traz a mesma lista mockada por enquanto)
+    fetchProfessores();
 
-  /* --- CÓDIGO DA API REAL (COMENTADO TEMPORARIAMENTE) ---
-  useEffect(() => {
-    setIsLoading(true);
-    setError(null);
-    const params = { q: query, departamento: selectedDepartamento, area_pesquisa: selectedArea, sort: `nome_${sortOrder}` };
-    getProfessorsData(params)
-      .then(data => setProfessores(data))
-      .catch(error => {
-        console.error("Erro na API:", error);
-        setError("Backend indisponível. Mostrando dados locais se houver.");
-      })
-      .finally(() => setIsLoading(false));
-  }, [query, selectedDepartamento, selectedArea, sortOrder]); 
-  --------------------------------------------------------- */
+  }, [debouncedQuery, selectedDepartamento, sortOrder]);
 
-  const toggleSortOrder = () => setSortOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'));
+  const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
+  const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
+  const currentProfessors = professores.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(professores.length / ITEMS_PER_PAGE);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(prev => prev + 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(prev => prev - 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const toggleSortOrder = () => {
+    setSortOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'));
+  };
 
   return (
-    <div className="prof-page-container">
-      {/* Cabeçalho e Títulos */}
-      <div className="prof-page-header">
-        <h1 className="prof-page-title">Professores da UnB</h1>
-        <p className="prof-page-subtitle">
-          Explore {isLoading ? '...' : professores.length} perfis de docentes
-        </p>
-      </div>
+    <Box bg={pageBg} minH="calc(100vh - 60px)">
+      <Box bg={headerBg} borderBottom="1px" borderColor={borderColor} py={10} px={4} boxShadow="sm">
+        <Container maxW="container.lg">
+          <VStack spacing={6} align="stretch">
+            <VStack align="start" spacing={1}>
+              <Heading as="h1" size="xl" color={titleColor} letterSpacing="tight">
+                Professores da UnB
+              </Heading>
+              <Text fontSize="lg" color={mutedColor}>
+                Explore o corpo docente, as suas áreas de pesquisa e contactos.
+              </Text>
+            </VStack>
 
-      {/* Filtros (Mantidos do seu código original) */}
-      <div className="prof-filters-container">
-        <div className="search-wrapper">
-          <Search className="search-icon" />
-          <input
-            type="text"
-            placeholder="Buscar por nome, departamento ou área..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className="search-input" 
-          />
-        </div>
-        <div className="filters-row">
-          <div className="filter-select-wrapper">
-            <Filter className="filter-select-icon" />
-            <select value={selectedDepartamento} onChange={(e) => setSelectedDepartamento(e.target.value)} className="filter-select">
-              <option value="">Todos os departamentos</option>
-              {departments.map(dept => <option key={dept} value={dept}>{dept}</option>)}
-            </select>
-          </div>
-          <button onClick={toggleSortOrder} className="filter-button">
-            <ArrowUpDown className="filter-button-icon" /> Nome {sortOrder === 'asc' ? 'A-Z' : 'Z-A'}
-          </button>
-        </div>
-      </div>
-      
-      {/* Área de Resultados (Usando Chakra UI para o Grid de Cards) */}
-      <Box p={8} pt={0} maxWidth="1400px" margin="0 auto">
-        {isLoading ? (
-            <Center py={20}>
-                <Spinner size="xl" color="blue.500" thickness="4px" />
-            </Center>
-        ) : error ? (
-            <Center py={10}>
-                <Text color="red.500">{error}</Text>
-            </Center>
-        ) : (
-            <Box mt={6}>
-                <Text fontSize="lg" fontWeight="semibold" mb={6} color="gray.600">
-                    {professores.length} resultados encontrados (Modo Mock)
-                </Text>
+            <InputGroup size="lg">
+              <InputLeftElement pointerEvents="none">
+                <Icon as={Search} color="gray.400" />
+              </InputLeftElement>
+              <Input
+                type="text"
+                placeholder="Pesquisar por nome, área de pesquisa..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)} 
+                bg={useColorModeValue("white", "gray.700")}
+                borderColor={useColorModeValue("gray.300", "gray.600")}
+                _focus={{ borderColor: "blue.500", boxShadow: "0 0 0 1px #3182ce" }}
+                fontSize="md"
+              />
+            </InputGroup> 
 
-                {professores.length > 0 ? (
-                    <SimpleGrid columns={{ base: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
-                        {professores.map((professor) => (
-                            <ProfessorCard key={professor.id} professor={professor} />
-                        ))}
-                    </SimpleGrid>
-                ) : (
-                    <Center py={10}>
-                        <Text color="gray.500" fontSize="lg">Nenhum professor encontrado.</Text>
-                    </Center>
-                )}
-            </Box>
-        )}
+            <HStack spacing={4} wrap="wrap">
+              <InputGroup size="md" maxW={{ base: "full", md: "300px" }}>
+                 <InputLeftElement pointerEvents="none">
+                   <Icon as={Filter} color="gray.400" boxSize={4} />
+                 </InputLeftElement>
+                 <Select
+                   placeholder="Todos os departamentos"
+                   value={selectedDepartamento}
+                   onChange={(e) => setSelectedDepartamento(e.target.value)}
+                   bg={useColorModeValue("white", "gray.700")}
+                   borderColor={useColorModeValue("gray.300", "gray.600")}
+                   borderRadius="md"
+                   pl={10} 
+                 >
+                   {Array.isArray(departments) && departments.map(dept => (
+                     <option key={dept} value={dept}>{dept}</option>
+                   ))}
+                 </Select>
+              </InputGroup>
+
+              <Button
+                onClick={toggleSortOrder}
+                leftIcon={<Icon as={ArrowUpDown} boxSize={4} />}
+                variant="outline"
+                size="md"
+                bg={useColorModeValue("white", "gray.700")}
+                borderColor={useColorModeValue("gray.300", "gray.600")}
+                color={mutedColor}
+                fontWeight="normal"
+              >
+                Nome {sortOrder === 'asc' ? '(A-Z)' : '(Z-A)'}
+              </Button>
+            </HStack>
+          </VStack>
+        </Container>
       </Box>
-    </div>
+
+      <Container maxW="container.xl" py={8}>
+        <HStack justify="space-between" mb={6}>
+            <Text fontSize="md" fontWeight="medium" color={mutedColor}>
+              Mostrando {currentProfessors.length} de {professores.length} resultados
+            </Text>
+            {totalPages > 1 && (
+              <Text fontSize="sm" color={mutedColor}>
+                Página {currentPage} de {totalPages}
+              </Text>
+            )}
+        </HStack>
+
+        {isLoading ? (
+          <Center py={20}>
+            <Text>A carregar...</Text> 
+          </Center>
+        ) : apiError ? ( 
+          <Center py={20} flexDirection="column" bg={headerBg} borderRadius="xl" borderWidth="1px" borderColor="red.300">
+            <Icon as={AlertCircle} boxSize={10} color="red.400" mb={4} />
+            <Text color="red.400" fontSize="lg" fontWeight="medium">
+              Erro ao carregar dados
+            </Text>
+            <Text color={mutedColor} fontSize="md" mt={2}>
+              {apiError}
+            </Text>
+          </Center>
+        ) : professores.length > 0 ? (
+          <>
+            <SimpleGrid
+              columns={{ base: 1, md: 2, lg: 3, xl: 3 }}
+              spacing={6}
+              pb={10}
+            >
+              {currentProfessors.map((professor) => (
+                <ProfessorCard key={professor.id || professor.nome} professor={professor} />
+              ))}
+            </SimpleGrid>
+            
+            {totalPages > 1 && (
+              <HStack justify="center" spacing={4} py={8}>
+                <IconButton 
+                  icon={<ChevronLeft />} 
+                  onClick={handlePrevPage} 
+                  isDisabled={currentPage === 1}
+                  aria-label="Página anterior"
+                  variant="outline"
+                />
+                
+                <HStack spacing={2}>
+                  {Array.from({ length: totalPages }, (_, i) => i + 1)
+                    .filter(p => p === 1 || p === totalPages || Math.abs(currentPage - p) <= 1)
+                    .map((page, index, array) => (
+                      <Box key={page} display="inline-block">
+                        {index > 0 && array[index - 1] !== page - 1 && <Text color="gray.400" display="inline" mx={2}>...</Text>}
+                        <Button
+                          onClick={() => {
+                            setCurrentPage(page);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }}
+                          variant={currentPage === page ? "solid" : "ghost"}
+                          colorScheme={currentPage === page ? "blue" : "gray"}
+                          size="sm"
+                        >
+                          {page}
+                        </Button>
+                      </Box>
+                    ))
+                  }
+                </HStack>
+
+                <IconButton 
+                  icon={<ChevronRight />} 
+                  onClick={handleNextPage} 
+                  isDisabled={currentPage === totalPages}
+                  aria-label="Próxima página"
+                  variant="outline"
+                />
+              </HStack>
+            )}
+          </>
+        ) : (
+          <Center py={20} flexDirection="column" bg={headerBg} borderRadius="xl" borderWidth="1px" borderColor={borderColor}>
+            <Icon as={Search} boxSize={10} color="gray.300" mb={4} />
+            <Text color={mutedColor} fontSize="lg">
+              Nenhum professor encontrado com os filtros selecionados.
+            </Text>
+          </Center>
+        )}
+      </Container>
+    </Box>
   );
 }
