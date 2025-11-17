@@ -7,7 +7,7 @@ import {
 import { Search, Filter, ArrowUpDown, ChevronLeft, ChevronRight } from 'lucide-react';
 
 import ProfessorCard from '../components/professores/ProfessorCard';
-import { getDepartmentsData, getAreasData, getProfessorsData } from '../services/api';
+import { getDepartmentsData, getProfessorsData } from '../services/api';
 
 function extractSiape(url) {
   if (!url) return Math.random().toString();

@@ -8,9 +8,11 @@ services:
       - /app/node_modules
 
   backend: 
-    build: ./backend 
+    build: 
+      context: .
+      dockerfile: backend/Dockerfile
     ports: 
       - "8000:8000"
     volumes:
-      - ./backend:/app
-      - ./data:/app/data 
+      - ./backend:/app/backend 
+      - ./data:/app/data
