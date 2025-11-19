@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
+import { useProfessorData } from '../context/ProfessorContext'; // ✅ Contexto Global
 import {
   Box,
   Flex,
@@ -12,55 +14,67 @@ import {
   TabPanel,
   Button,
   useToast,
+  Spinner, // Adicionado para o estado de loading
 } from "@chakra-ui/react";
 import "../styles/ProfessorDetailPage.css";
 
 const ProfessorDetailPage = () => {
   const toast = useToast();
+  
+  // 1. ACESSO AOS DADOS DO CONTEXTO (Substitui os useStates e useEffect)
+  const { professorsList, isLoading, error } = useProfessorData(); 
+  
+  // 2. PEGA O ID DA URL
+  const { id } = useParams();
 
-  const professor = {
-    nome: "Prof. André Barros de Sales",
-    foto_url: "https://arquivos.unb.br/arquivos/2023105152024328179026b7493ed0e49/Foto_Andr.jpeg",
-    cargo: "Professor Adjunto · Engenharia de Software",
-    descricao_pessoal:
-      "Professor com experiência em Engenharia de Software, Computação e Inovação Tecnológica. Apaixonado por desenvolvimento ágil, boas práticas de código e ensino aplicado à tecnologia.",
-    formacao_academica: {
-      "Graduação": ["Engenharia de Software — Universidade de Brasília (UnB)"],
-      "Mestrado": ["Engenharia Elétrica — Universidade de São Paulo (USP)"],
-      "Doutorado": ["Computação — Universidade de Brasília (UnB)"],
-    },
-    projetos: [
-      {
-        titulo: "Portal de Professores da UnB",
-        periodo: "2024–2025",
-        situacao: "Em andamento",
-        natureza: "Desenvolvimento Web",
-      },
-      {
-        titulo: "Sistema de Monitoramento Acadêmico",
-        periodo: "2023",
-        situacao: "Concluído",
-        natureza: "Pesquisa aplicada",
-      },
-    ],
-    contatos: {
-      sala: "Bloco D, Sala 102",
-      telefone: "(61) 3107-xxxx",
-      email: "andre.sales@unb.br",
-    },
-  };
+  // 3. ENCONTRA O PROFESSOR NA LISTA JÁ BAIXADA
+  // Se estiver carregando globalmente, o professor será 'null'.
+  let professor = null; 
+  
+  if (!isLoading && professorsList.length > 0) {
+    // Procura na lista pelo ID que está na URL
+    professor = professorsList.find(p => p.pagina_sigaa_url && p.pagina_sigaa_url.includes(id));
+  }
 
+  // 4. Lógica de Erro / Carregamento (Interrompe a renderização JSX)
+  if (isLoading) {
+    return (
+      <Flex direction="column" align="center" p={10} minH="100vh">
+        <Box bg="white" p={8} borderRadius="xl" boxShadow="lg" maxW="900px" w="100%" textAlign="center">
+          <Spinner size="xl" mb={4} color="blue.500" />
+          <Heading size="lg">Carregando dados globais...</Heading>
+        </Box>
+      </Flex>
+    );
+  }
+
+  if (error || !professor) {
+    return (
+      <Flex direction="column" align="center" p={10} minH="100vh">
+        <Box bg="white" p={8} borderRadius="xl" boxShadow="lg" maxW="900px" w="100%" textAlign="center">
+          <Heading color="red.500" size="lg" mb={4}>❌ Erro ao Carregar Perfil</Heading>
+          <Text>O professor com ID "{id}" não foi encontrado na base de dados.</Text>
+        </Box>
+      </Flex>
+    );
+  }
+  
+  // 5. Função de Copiar E-mail (USA O OBJETO 'professor' vindo do Contexto)
   const copiarEmail = () => {
-    navigator.clipboard.writeText(professor.contatos.email);
-    toast({
-      title: "E-mail copiado! 📧",
-      description: "O endereço de e-mail foi copiado para sua área de transferência.",
-      status: "success",
-      duration: 2000,
-      isClosable: true,
-    });
+    // Adicionando encadeamento opcional para evitar quebra se 'contatos' for null
+    if (professor?.contatos?.email) {
+      navigator.clipboard.writeText(professor.contatos.email);
+      toast({
+        title: "E-mail copiado! 📧",
+        description: "O endereço de e-mail foi copiado para sua área de transferência.",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+      });
+    }
   };
-
+  
+  // 6. RENDERIZAÇÃO PRINCIPAL (JSX)
   return (
     <Flex direction="column" align="center" p={10} bg="#f9fafb" minH="100vh">
       <Box
@@ -71,6 +85,7 @@ const ProfessorDetailPage = () => {
         maxW="900px"
         w="100%"
       >
+        {/* === Bloco Superior de Identificação (Foto, Nome) === */}
         <Flex direction={{ base: "column", md: "row" }} align="center">
           <Image
             borderRadius="full"
@@ -85,7 +100,8 @@ const ProfessorDetailPage = () => {
               {professor.nome}
             </Heading>
             <Text color="gray.600" fontSize="md">
-              {professor.cargo}
+              {/* CORRIGIDO: MUDOU DE professor.cargo (MOCK) PARA professor.departamento (API) */}
+              {professor.departamento}
             </Text>
 
             <Button
@@ -100,6 +116,7 @@ const ProfessorDetailPage = () => {
           </Box>
         </Flex>
 
+        {/* === Abas de Conteúdo === */}
         <Tabs variant="enclosed" mt={10}>
           <TabList>
             <Tab>Visão Geral</Tab>
@@ -109,59 +126,65 @@ const ProfessorDetailPage = () => {
           </TabList>
 
           <TabPanels>
+            {/* ABA: Visão Geral */}
             <TabPanel>
-                {/* REMOVIDO: <Box bg="white" p={5} borderRadius="md" boxShadow="md"> */}
-                <Text>{professor.descricao_pessoal}</Text>
-                {/* REMOVIDO: </Box> */}
+              {/* Usando o resumo do Lattes, senão a descrição pessoal. */}
+              <Text>
+                {professor.dados_lattes?.resumo_cv || professor.descricao_pessoal || "Nenhuma descrição detalhada disponível."}
+              </Text>
             </TabPanel>
 
+            {/* ABA: Formação */}
             <TabPanel>
-                {/* REMOVIDO: <Box bg="white" p={5} borderRadius="md" boxShadow="md"> */}
-                {Object.entries(professor.formacao_academica).map(
-                  ([nivel, cursos]) => (
-                    <Box key={nivel} mb={5}>
-                      <Heading as="h3" size="sm" mb={2} color="blue.600">
-                        {nivel}
-                      </Heading>
-                      <ul>
-                        {cursos.map((curso, index) => (
-                          <li key={index}>
-                            <Text fontSize="sm">{curso}</Text>
-                          </li>
-                        ))}
-                      </ul>
-                    </Box>
-                  )
-                )}
-                {/* REMOVIDO: </Box> */}
+              {/* Mapeia a formação acadêmica (ex: GRADUAÇÃO, MESTRADO) */}
+              {Object.entries(professor.formacao_academica || {}).map(
+                ([nivel, cursos]) => (
+                  <Box key={nivel} mb={5}>
+                    <Heading as="h3" size="sm" mb={2} color="blue.600">
+                      {nivel}
+                    </Heading>
+                    <ul>
+                      {cursos.map((curso, index) => (
+                        <li key={index}>
+                          <Text fontSize="sm">{curso}</Text>
+                        </li>
+                      ))}
+                    </ul>
+                  </Box>
+                )
+              )}
             </TabPanel>
 
+            {/* ABA: Projetos */}
             <TabPanel>
-                {/* REMOVIDO: <Box bg="white" p={5} borderRadius="md" boxShadow="md"> */}
-                {professor.projetos.map((projeto, index) => (
+              {/* CORRIGIDO: O mapeamento de projetos agora usa o caminho correto da API: dados_lattes.projetos_pesquisa */}
+              {professor.dados_lattes?.projetos_pesquisa?.length ? (
+                professor.dados_lattes.projetos_pesquisa.map((projeto, index) => (
                   <Box key={index} mb={4}>
                     <Text fontWeight="bold">{projeto.titulo}</Text>
                     <Text fontSize="sm">
-                      {projeto.periodo} — {projeto.situacao} (
-                      {projeto.natureza})
+                      {projeto.ano_periodo} — {projeto.situacao} ({projeto.natureza})
                     </Text>
+                    {projeto.integrantes && <Text fontSize="xs" color="gray.500">Integrantes: {projeto.integrantes}</Text>}
                   </Box>
-                ))}
-                {/* REMOVIDO: </Box> */}
+                ))
+              ) : (
+                <Text>Nenhum projeto de pesquisa encontrado no Lattes.</Text>
+              )}
             </TabPanel>
 
+            {/* ABA: Contatos */}
             <TabPanel>
-                {/* REMOVIDO: <Box bg="white" p={5} borderRadius="md" boxShadow="md"> */}
-                <Text>
-                  <strong>Sala:</strong> {professor.contatos.sala}
-                </Text>
-                <Text>
-                  <strong>Telefone:</strong> {professor.contatos.telefone}
-                </Text>
-                <Text>
-                  <strong>Email:</strong> {professor.contatos.email}
-                </Text>
-                {/* REMOVIDO: </Box> */}
+              {/* Usando encadeamento opcional (?) para evitar quebras se o contato for null */}
+              <Text>
+                <strong>Sala:</strong> {professor.contatos?.sala || 'Não informado'}
+              </Text>
+              <Text>
+                <strong>Telefone:</strong> {professor.contatos?.telefone || 'Não informado'}
+              </Text>
+              <Text>
+                <strong>Email:</strong> {professor.contatos?.email || 'Não informado'}
+              </Text>
             </TabPanel>
           </TabPanels>
         </Tabs>
