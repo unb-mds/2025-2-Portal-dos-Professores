@@ -1,5 +1,5 @@
 import { Link as RouterLink } from "react-router-dom";
-import { Mail, ArrowUpRight, MapPin } from "lucide-react";
+import { Mail, ArrowUpRight, MapPin, FileText } from "lucide-react";
 import {
   Box,
   Flex,
@@ -15,6 +15,7 @@ import {
   Divider,
   Tag,
   TagLabel,
+  Link,
 } from "@chakra-ui/react";
 
 export default function ProfessorCard({ professor }) {
@@ -25,42 +26,29 @@ export default function ProfessorCard({ professor }) {
   const hoverBorderColor = useColorModeValue("blue.200", "blue.800");
 
   const initials = professor.nome
-    ? professor.nome
-        .split(" ")
-        .filter((n) => n.length > 0)
-        .map((n) => n[0])
-        .join("")
-        .slice(0, 2)
-        .toUpperCase()
-    : "UN";
+    ?.split(" ")
+    .filter((n) => n)
+    .map((n) => n[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
 
-  const email = professor.contatos?.email;
-  const foto = professor.foto_url;
+  const email = professor.contatos?.email || null;
 
-  // tenta extrair o "local" do departamento: "... - BRASÍLIA" → "BRASÍLIA"
-  const rawLocal = professor.departamento
-    ? professor.departamento.split("-").slice(-1)[0].trim()
-    : null;
+  const rawLocal = professor.departamento?.split("-").slice(-1)[0].trim();
   const campus = rawLocal ? `CAMPUS UNB ${rawLocal}` : null;
 
-  // deixa preparado caso o backend passe a mandar áreas
-  const areasPesquisa =
-    professor.areas_pesquisa ||
-    professor.areas ||
-    professor.dados_lattes?.areas_pesquisa ||
-    [];
+  const areasInteresse = professor.dados_scholar?.areas_interesse ?? [];
 
   return (
     <LinkBox
       as="article"
-      height="100%"
       bg={bg}
       borderWidth="1px"
       borderColor={borderColor}
       borderRadius="2xl"
-      position="relative"
       overflow="hidden"
-      transition="all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)"
+      transition="all 0.3s"
       _hover={{
         transform: "translateY(-6px)",
         boxShadow: "xl",
@@ -69,113 +57,108 @@ export default function ProfessorCard({ professor }) {
       role="group"
       display="flex"
       flexDirection="column"
+      h="100%" // ocupa toda a célula do grid
     >
+      {/* Barra azul */}
       <Box
         h="4px"
         bg={accentColor}
         width="0%"
-        transition="width 0.3s ease"
         _groupHover={{ width: "100%" }}
+        transition="0.3s"
       />
 
-      <VStack align="stretch" p={6} spacing={4} flex="1">
-        {/* TOPO – avatar + nome + departamento (segue a ideia do 1º card) */}
+      <VStack
+        align="stretch"
+        p={6}
+        spacing={5} // mais respiro entre os blocos
+        flex="1"
+        justify="space-between" // distribui topo / meio / áreas
+      >
+        {/* TOPO */}
         <Flex align="flex-start" gap={4}>
           <Avatar
-            size="md"
+            size="lg" // avatar maiorzinho
+            src={professor.foto_url}
             name={professor.nome}
-            src={foto}
-            bg={useColorModeValue("gray.100", "gray.700")}
+            bg="gray.200"
             color={accentColor}
             fontWeight="bold"
-            borderWidth="2px"
-            borderColor="transparent"
-            _groupHover={{ borderColor: accentColor }}
-            transition="all 0.3s ease"
           >
-            {!foto && initials}
+            {!professor.foto_url && initials}
           </Avatar>
 
-          <VStack align="start" spacing={1} flex={1} minW={0}>
-            <HStack justify="space-between" width="full" align="flex-start">
+          <VStack align="start" spacing={1} flex="1">
+            <HStack justify="space-between" w="full">
               <Heading
                 as="h3"
                 size="sm"
-                lineHeight="shorter"
                 textTransform="uppercase"
-                letterSpacing="wide"
                 noOfLines={1}
+                color={accentColor}
                 title={professor.nome}
               >
-                <LinkOverlay
-                  as={RouterLink}
-                  to={`/professores/${professor.id}`}
-                  color={accentColor}
-                  _visited={{ color: accentColor }}
-                >
+                <LinkOverlay as={RouterLink} to={`/professores/${professor.id}`}>
                   {professor.nome}
                 </LinkOverlay>
               </Heading>
 
-              <Icon
-                as={ArrowUpRight}
-                color={accentColor}
-                opacity={0}
-                transform="translate(-8px, 8px)"
-                transition="all 0.2s ease"
-                _groupHover={{ opacity: 1, transform: "translate(0, 0)" }}
-              />
+              {professor.pagina_sigaa_url && (
+                <Link href={professor.pagina_sigaa_url} isExternal>
+                  <Icon
+                    as={ArrowUpRight}
+                    color={accentColor}
+                    opacity={0}
+                    transition="0.2s"
+                    _groupHover={{ opacity: 1 }}
+                  />
+                </Link>
+              )}
             </HStack>
 
-            {professor.departamento && (
-              <Text
-                fontSize="xs"
-                fontWeight="bold"
-                textTransform="uppercase"
-                letterSpacing="wider"
-                color={mutedColor}
-                noOfLines={1}
-              >
-                {professor.departamento}
-              </Text>
-            )}
+            <Text
+              fontSize="xs"
+              color={mutedColor}
+              textTransform="uppercase"
+              noOfLines={1}
+            >
+              {professor.departamento}
+            </Text>
           </VStack>
         </Flex>
 
-        <Divider borderColor={useColorModeValue("gray.50", "gray.700")} />
+        <Divider />
 
-        {/* MEIO – email + campus (ícones igual ao exemplo) */}
+        {/* CONTATOS (apenas e-mail + campus + Lattes) */}
         <VStack align="start" spacing={2} fontSize="sm">
-          <HStack
-            align="center"
-            gap={3}
-            color={mutedColor}
-            _hover={{ color: accentColor }}
-            transition="color 0.2s"
-          >
+          <HStack color={mutedColor}>
             <Icon as={Mail} boxSize={4} />
-            <Text noOfLines={1} title={email || "não informado"}>
-              {email ? email.toLowerCase() : "não informado"}
-            </Text>
+            <Text noOfLines={1}>{email || "não informado"}</Text>
           </HStack>
 
           {campus && (
-            <HStack align="center" gap={3} color={mutedColor}>
+            <HStack color={mutedColor}>
               <Icon as={MapPin} boxSize={4} />
-              <Text
-                noOfLines={1}
-                textTransform="uppercase"
-                fontSize="xs"
-                fontWeight="medium"
-              >
+              <Text fontSize="xs" textTransform="uppercase">
                 {campus}
               </Text>
             </HStack>
           )}
+
+          {professor.lattes_url && (
+            <HStack color={accentColor}>
+              <Icon as={FileText} boxSize={4} />
+              <Link href={professor.lattes_url} isExternal fontSize="xs">
+                Currículo Lattes
+              </Link>
+            </HStack>
+          )}
         </VStack>
 
-        {/* BASE – ÁREAS DE PESQUISA (chips/pílulas) */}
-        <Box pt={3}>
+        <Divider borderColor={useColorModeValue("gray.100", "gray.700")} />
+
+        {/* ÁREAS DE INTERESSE */}
+        <Box minH="56px">
           <Text
             fontSize="xs"
             fontWeight="bold"
@@ -184,12 +167,12 @@ export default function ProfessorCard({ professor }) {
             color={mutedColor}
             mb={2}
           >
-            Áreas de pesquisa
+            Áreas de interesse
           </Text>
 
-          {areasPesquisa.length > 0 ? (
+          {areasInteresse.length > 0 ? (
             <HStack spacing={2} flexWrap="wrap">
-              {areasPesquisa.slice(0, 4).map((area) => (
+              {areasInteresse.slice(0, 4).map((area) => (
                 <Tag
                   key={area}
                   size="sm"
