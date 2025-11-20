@@ -26,7 +26,7 @@ export default function ProfessoresPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [totalProfessores, setTotalProfessores] = useState(0);
-  const ITEMS_PER_PAGE = 20;
+  const ITEMS_PER_PAGE = 21;
 
   const pageBg = useColorModeValue("gray.50", "gray.900");
   const headerBg = useColorModeValue("white", "gray.800");
@@ -195,11 +195,13 @@ export default function ProfessoresPage() {
               columns={{ base: 1, md: 2, lg: 3, xl: 3 }}
               spacing={6}
               pb={10}
+              sx={{ gridAutoRows: "1fr" }}   
             >
               {currentProfessors.map((professor) => (
-                <ProfessorCard key={professor.id} professor={professor} />
+              <ProfessorCard key={professor.id} professor={professor} />
               ))}
             </SimpleGrid>
+
 
             {totalPages > 1 && (
                 <HStack justify="center" spacing={4} py={8}>
