@@ -18,7 +18,10 @@ function extractSiape(url) {
 export default function ProfessoresPage() {
   const [professores, setProfessores] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [query, setQuery] = useState('');
+
+  const [query, setQuery] = useState(''); 
+  const [debouncedQuery, setDebouncedQuery] = useState(''); 
+
   const [selectedDepartamento, setSelectedDepartamento] = useState('');
   const [sortOrder, setSortOrder] = useState('asc');
   const [departments, setDepartments] = useState([]);
@@ -49,10 +52,18 @@ export default function ProfessoresPage() {
   }, []);
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedQuery(query);
+    }, 500); 
+
+    return () => clearTimeout(timer);
+  }, [query]);
+
+  useEffect(() => {
     setIsLoading(true);
     
     const params = {
-      q: query,
+      q: debouncedQuery, 
       departamento: selectedDepartamento,
       sort: `nome_${sortOrder}`,
     };
@@ -78,11 +89,11 @@ export default function ProfessoresPage() {
         setIsLoading(false);
       });
 
-  }, [query, selectedDepartamento, sortOrder]);
+  }, [debouncedQuery, selectedDepartamento, sortOrder]); 
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [query, selectedDepartamento, sortOrder]);
+  }, [debouncedQuery, selectedDepartamento, sortOrder]);
 
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
