@@ -4,7 +4,6 @@ import {
   Heading, VStack, HStack, Icon, Input, InputGroup, InputLeftElement,
   Button, IconButton, useColorModeValue
 } from '@chakra-ui/react';
-// REMOVI o 'Select' da importação acima, pois vamos usar Input as="select"
 import { Search, Filter, ArrowUpDown, ChevronLeft, ChevronRight } from 'lucide-react';
 
 import ProfessorCard from '../components/professores/ProfessorCard';
@@ -52,6 +51,7 @@ export default function ProfessoresPage() {
     fetchFilterOptions();
   }, []);
 
+  // Atualiza o termo de busca com delay (debounce)
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedQuery(query);
@@ -60,13 +60,15 @@ export default function ProfessoresPage() {
     return () => clearTimeout(timer);
   }, [query]);
 
+  // Busca na API
   useEffect(() => {
     setIsLoading(true);
     
+    // MUDANÇA 1: Não enviamos mais o 'sort' para a API, pois faremos localmente
     const params = {
       q: debouncedQuery,
       departamento: selectedDepartamento,
-      sort: `nome_${sortOrder}`,
+      // sort removido daqui
     };
 
     getProfessorsData(params)
@@ -90,15 +92,32 @@ export default function ProfessoresPage() {
         setIsLoading(false);
       });
 
-  }, [debouncedQuery, selectedDepartamento, sortOrder]);
+  // MUDANÇA 2: Removemos 'sortOrder' das dependências. 
+  // Assim, ao clicar em ordenar, ele NÃO busca tudo de novo na API.
+  }, [debouncedQuery, selectedDepartamento]); 
 
+  // Resetar página quando mudar filtros (sortOrder mantido aqui para voltar p/ pág 1 ao ordenar)
   useEffect(() => {
     setCurrentPage(1);
   }, [debouncedQuery, selectedDepartamento, sortOrder]);
 
+  // --- MUDANÇA 3: Lógica de Ordenação no Front-end ---
+  const sortedProfessors = [...professores].sort((a, b) => {
+    // Tenta pegar 'nome' ou 'name', garantindo que seja string
+    const nomeA = (a.nome || a.name || "").toString();
+    const nomeB = (b.nome || b.name || "").toString();
+
+    if (sortOrder === 'asc') {
+        return nomeA.localeCompare(nomeB);
+    } else {
+        return nomeB.localeCompare(nomeA);
+    }
+  });
+
+  // Paginação agora usa a lista ORDENADA (sortedProfessors) em vez da bruta
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
-  const currentProfessors = professores.slice(indexOfFirstItem, indexOfLastItem);
+  const currentProfessors = sortedProfessors.slice(indexOfFirstItem, indexOfLastItem);
   
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -150,21 +169,19 @@ export default function ProfessoresPage() {
 
             <HStack spacing={4} wrap="wrap">
               
-              {/* --- SOLUÇÃO DEFINITIVA: Input as="select" --- */}
-              {/* Isso trata o select EXATAMENTE como um input, permitindo o ícone sem conflitos */}
               <InputGroup size="md" maxW={{ base: "full", md: "300px" }}>
                  <InputLeftElement pointerEvents="none">
                     <Icon as={Filter} color="gray.500" boxSize={4} />
                  </InputLeftElement>
                  
                  <Input
-                    as="select" // O TRUQUE ESTÁ AQUI
+                    as="select"
                     value={selectedDepartamento}
                     onChange={(e) => setSelectedDepartamento(e.target.value)}
                     bg={useColorModeValue("white", "gray.700")}
                     borderColor={useColorModeValue("gray.300", "gray.600")}
                     borderRadius="md"
-                    pl={10} // Padding na esquerda para o texto não encostar no ícone
+                    pl={10} 
                     cursor="pointer"
                   >
                     <option value="">Todos os departamentos</option>
@@ -173,7 +190,6 @@ export default function ProfessoresPage() {
                     ))}
                   </Input>
               </InputGroup>
-              {/* --------------------------------------------- */}
 
               <Button
                 onClick={toggleSortOrder}
