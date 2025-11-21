@@ -51,7 +51,6 @@ export default function ProfessoresPage() {
     fetchFilterOptions();
   }, []);
 
-  // Atualiza o termo de busca com delay (debounce)
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedQuery(query);
@@ -60,15 +59,12 @@ export default function ProfessoresPage() {
     return () => clearTimeout(timer);
   }, [query]);
 
-  // Busca na API
   useEffect(() => {
     setIsLoading(true);
     
-    // MUDANÇA 1: Não enviamos mais o 'sort' para a API, pois faremos localmente
     const params = {
       q: debouncedQuery,
       departamento: selectedDepartamento,
-      // sort removido daqui
     };
 
     getProfessorsData(params)
@@ -92,18 +88,13 @@ export default function ProfessoresPage() {
         setIsLoading(false);
       });
 
-  // MUDANÇA 2: Removemos 'sortOrder' das dependências. 
-  // Assim, ao clicar em ordenar, ele NÃO busca tudo de novo na API.
   }, [debouncedQuery, selectedDepartamento]); 
 
-  // Resetar página quando mudar filtros (sortOrder mantido aqui para voltar p/ pág 1 ao ordenar)
   useEffect(() => {
     setCurrentPage(1);
   }, [debouncedQuery, selectedDepartamento, sortOrder]);
 
-  // --- MUDANÇA 3: Lógica de Ordenação no Front-end ---
   const sortedProfessors = [...professores].sort((a, b) => {
-    // Tenta pegar 'nome' ou 'name', garantindo que seja string
     const nomeA = (a.nome || a.name || "").toString();
     const nomeB = (b.nome || b.name || "").toString();
 
@@ -114,7 +105,6 @@ export default function ProfessoresPage() {
     }
   });
 
-  // Paginação agora usa a lista ORDENADA (sortedProfessors) em vez da bruta
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
   const currentProfessors = sortedProfessors.slice(indexOfFirstItem, indexOfLastItem);
