@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import {
   SimpleGrid, Box, Text, Center, Container,
   Heading, VStack, HStack, Icon, Input, InputGroup, InputLeftElement,
-  Select, Button, IconButton, useColorModeValue
+  Button, IconButton, useColorModeValue
 } from '@chakra-ui/react';
 import { Search, Filter, ArrowUpDown, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -18,7 +18,10 @@ function extractSiape(url) {
 export default function ProfessoresPage() {
   const [professores, setProfessores] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [query, setQuery] = useState('');
+  
+  const [query, setQuery] = useState(''); 
+  const [debouncedQuery, setDebouncedQuery] = useState(''); 
+
   const [selectedDepartamento, setSelectedDepartamento] = useState('');
   const [sortOrder, setSortOrder] = useState('asc');
   const [departments, setDepartments] = useState([]);
@@ -49,12 +52,19 @@ export default function ProfessoresPage() {
   }, []);
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedQuery(query);
+    }, 500); 
+
+    return () => clearTimeout(timer);
+  }, [query]);
+
+  useEffect(() => {
     setIsLoading(true);
     
     const params = {
-      q: query,
+      q: debouncedQuery,
       departamento: selectedDepartamento,
-      sort: `nome_${sortOrder}`,
     };
 
     getProfessorsData(params)
@@ -78,15 +88,26 @@ export default function ProfessoresPage() {
         setIsLoading(false);
       });
 
-  }, [query, selectedDepartamento, sortOrder]);
+  }, [debouncedQuery, selectedDepartamento]); 
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [query, selectedDepartamento, sortOrder]);
+  }, [debouncedQuery, selectedDepartamento, sortOrder]);
+
+  const sortedProfessors = [...professores].sort((a, b) => {
+    const nomeA = (a.nome || a.name || "").toString();
+    const nomeB = (b.nome || b.name || "").toString();
+
+    if (sortOrder === 'asc') {
+        return nomeA.localeCompare(nomeB);
+    } else {
+        return nomeB.localeCompare(nomeA);
+    }
+  });
 
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
-  const currentProfessors = professores.slice(indexOfFirstItem, indexOfLastItem);
+  const currentProfessors = sortedProfessors.slice(indexOfFirstItem, indexOfLastItem);
   
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -109,7 +130,7 @@ export default function ProfessoresPage() {
   return (
     <Box bg={pageBg} minH="calc(100vh - 60px)">
       <Box bg={headerBg} borderBottom="1px" borderColor={borderColor} py={10} px={4} boxShadow="sm">
-        <Container maxW="container.lg">
+        <Container maxW="container.xl"> 
           <VStack spacing={6} align="stretch">
             <VStack align="start" spacing={1}>
               <Heading as="h1" size="xl" color={titleColor} letterSpacing="tight">
@@ -137,23 +158,27 @@ export default function ProfessoresPage() {
             </InputGroup>
 
             <HStack spacing={4} wrap="wrap">
+              
               <InputGroup size="md" maxW={{ base: "full", md: "300px" }}>
                  <InputLeftElement pointerEvents="none">
-                    <Icon as={Filter} color="gray.400" boxSize={4} />
+                    <Icon as={Filter} color="gray.500" boxSize={4} />
                  </InputLeftElement>
-                  <Select
-                    placeholder="Todos os departamentos"
+                 
+                 <Input
+                    as="select"
                     value={selectedDepartamento}
                     onChange={(e) => setSelectedDepartamento(e.target.value)}
                     bg={useColorModeValue("white", "gray.700")}
                     borderColor={useColorModeValue("gray.300", "gray.600")}
                     borderRadius="md"
                     pl={10} 
+                    cursor="pointer"
                   >
+                    <option value="">Todos os departamentos</option>
                     {departments.map(dept => (
                       <option key={dept} value={dept}>{dept}</option>
                     ))}
-                  </Select>
+                  </Input>
               </InputGroup>
 
               <Button
