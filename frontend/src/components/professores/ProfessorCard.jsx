@@ -155,6 +155,17 @@ export default function ProfessorCard({ professor }) {
           )}
         </VStack>
 
+        {/* PUBLICAÇÕES (dados_scholar) */}
+        {professor.dados_scholar?.publicacoes?.length > 0 && (
+          <HStack color={mutedColor}>
+            <Icon as={FileText} boxSize={4} />
+            <Text fontSize="xs">
+              {professor.dados_scholar.publicacoes.length} publicações
+            </Text>
+          </HStack>
+        )}
+
+
         <Divider borderColor={useColorModeValue("gray.100", "gray.700")} />
 
         {/* ÁREAS DE INTERESSE */}
