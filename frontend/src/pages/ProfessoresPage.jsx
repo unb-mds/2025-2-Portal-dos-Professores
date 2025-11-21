@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import {
   SimpleGrid, Box, Text, Center, Container,
   Heading, VStack, HStack, Icon, Input, InputGroup, InputLeftElement,
-  Select, Button, IconButton, useColorModeValue
+  Button, IconButton, useColorModeValue
 } from '@chakra-ui/react';
+// REMOVI o 'Select' da importação acima, pois vamos usar Input as="select"
 import { Search, Filter, ArrowUpDown, ChevronLeft, ChevronRight } from 'lucide-react';
 
 import ProfessorCard from '../components/professores/ProfessorCard';
@@ -18,7 +19,7 @@ function extractSiape(url) {
 export default function ProfessoresPage() {
   const [professores, setProfessores] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
+  
   const [query, setQuery] = useState(''); 
   const [debouncedQuery, setDebouncedQuery] = useState(''); 
 
@@ -63,7 +64,7 @@ export default function ProfessoresPage() {
     setIsLoading(true);
     
     const params = {
-      q: debouncedQuery, 
+      q: debouncedQuery,
       departamento: selectedDepartamento,
       sort: `nome_${sortOrder}`,
     };
@@ -89,7 +90,7 @@ export default function ProfessoresPage() {
         setIsLoading(false);
       });
 
-  }, [debouncedQuery, selectedDepartamento, sortOrder]); 
+  }, [debouncedQuery, selectedDepartamento, sortOrder]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -120,7 +121,7 @@ export default function ProfessoresPage() {
   return (
     <Box bg={pageBg} minH="calc(100vh - 60px)">
       <Box bg={headerBg} borderBottom="1px" borderColor={borderColor} py={10} px={4} boxShadow="sm">
-        <Container maxW="container.lg">
+        <Container maxW="container.xl"> 
           <VStack spacing={6} align="stretch">
             <VStack align="start" spacing={1}>
               <Heading as="h1" size="xl" color={titleColor} letterSpacing="tight">
@@ -148,24 +149,31 @@ export default function ProfessoresPage() {
             </InputGroup>
 
             <HStack spacing={4} wrap="wrap">
+              
+              {/* --- SOLUÇÃO DEFINITIVA: Input as="select" --- */}
+              {/* Isso trata o select EXATAMENTE como um input, permitindo o ícone sem conflitos */}
               <InputGroup size="md" maxW={{ base: "full", md: "300px" }}>
                  <InputLeftElement pointerEvents="none">
-                    <Icon as={Filter} color="gray.400" boxSize={4} />
+                    <Icon as={Filter} color="gray.500" boxSize={4} />
                  </InputLeftElement>
-                  <Select
-                    placeholder="Todos os departamentos"
+                 
+                 <Input
+                    as="select" // O TRUQUE ESTÁ AQUI
                     value={selectedDepartamento}
                     onChange={(e) => setSelectedDepartamento(e.target.value)}
                     bg={useColorModeValue("white", "gray.700")}
                     borderColor={useColorModeValue("gray.300", "gray.600")}
                     borderRadius="md"
-                    pl={10} 
+                    pl={10} // Padding na esquerda para o texto não encostar no ícone
+                    cursor="pointer"
                   >
+                    <option value="">Todos os departamentos</option>
                     {departments.map(dept => (
                       <option key={dept} value={dept}>{dept}</option>
                     ))}
-                  </Select>
+                  </Input>
               </InputGroup>
+              {/* --------------------------------------------- */}
 
               <Button
                 onClick={toggleSortOrder}
