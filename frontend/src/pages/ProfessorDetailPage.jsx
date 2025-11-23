@@ -104,8 +104,7 @@ const ProfessorDetailPage = () => {
               <Text color="gray.600" fontSize="md" mb={3}>
                   {professor.departamento}
               </Text>
-
-              {/* === NOVO: Metadados e Contatos em Linha === */}
+              
               <Flex direction="column" gap={2} mb={4} align={{ base: "center", md: "flex-start" }}>
                   
                   {/* EMAIL (Botão com Link) */}
