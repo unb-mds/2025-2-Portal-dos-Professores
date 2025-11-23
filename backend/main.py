@@ -1,7 +1,7 @@
 import json
 from typing import List, Optional
 from pathlib import Path 
-
+from .ai_agent import router as agente_router
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from .models import Professor
@@ -20,11 +20,13 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(agente_router.router, prefix="/api/v1")
 
 
 def load_professors_data() -> List[dict]:
