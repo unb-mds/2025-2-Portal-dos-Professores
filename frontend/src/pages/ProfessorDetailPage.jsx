@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
-import { useProfessorData } from '../context/ProfessorContext'; // ✅ Contexto Global
+import { useProfessorData } from '../context/ProfessorContext';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import {
   Box,
   Flex,
@@ -14,7 +15,8 @@ import {
   TabPanel,
   Button,
   useToast,
-  Spinner, // Adicionado para o estado de loading
+  Spinner,
+  Tag,
 } from "@chakra-ui/react";
 import "../styles/ProfessorDetailPage.css";
 
@@ -96,23 +98,54 @@ const ProfessorDetailPage = () => {
             mb={{ base: 6, md: 0 }}
           />
           <Box textAlign={{ base: "center", md: "left" }}>
-            <Heading as="h2" size="lg">
-              {professor.nome}
-            </Heading>
-            <Text color="gray.600" fontSize="md">
-              {/* CORRIGIDO: MUDOU DE professor.cargo (MOCK) PARA professor.departamento (API) */}
-              {professor.departamento}
-            </Text>
+              <Heading as="h2" size="lg" mb={1}>
+                  {professor.nome}
+              </Heading>
+              <Text color="gray.600" fontSize="md" mb={3}>
+                  {professor.departamento}
+              </Text>
 
-            <Button
-              mt={4}
-              colorScheme="blue"
-              onClick={copiarEmail}
-              size="sm"
-              borderRadius="md"
-            >
-              Copiar e-mail
-            </Button>
+              {/* === NOVO: Metadados e Contatos em Linha === */}
+              <Flex direction="column" gap={2} mb={4} align={{ base: "center", md: "flex-start" }}>
+                  
+                  {/* EMAIL (Botão com Link) */}
+                  {professor.contatos?.email && (
+                      <Button
+                          leftIcon={<Mail size={16} />}
+                          colorScheme="blue"
+                          onClick={copiarEmail}
+                          size="sm"
+                          borderRadius="md"
+                      >
+                          Copiar E-mail
+                      </Button>
+                  )}
+
+                  {/* CONTATOS SECUNDÁRIOS */}
+                  <Flex gap={5} color="gray.600" fontSize="sm" mt={2} wrap="wrap" justify={{ base: "center", md: "flex-start" }}>
+                      {professor.contatos?.sala && (
+                          <Flex align="center">
+                              <MapPin size={16} style={{ marginRight: '4px' }} />
+                              <Text>Sala: {professor.contatos.sala}</Text>
+                          </Flex>
+                      )}
+                      {professor.contatos?.telefone && professor.contatos.telefone.length > 5 && (
+                          <Flex align="center">
+                              <Phone size={16} style={{ marginRight: '4px' }} />
+                              <Text>Telefone: {professor.contatos.telefone}</Text>
+                          </Flex>
+                      )}
+                  </Flex>
+              </Flex>
+              
+              {/* === Tags de Pesquisa (Áreas de Interesse) === */}
+              <Flex wrap="wrap" mt={3} gap={2} justify={{ base: "center", md: "flex-start" }}>
+                  {professor.dados_scholar?.areas_interesse?.map((area, index) => (
+                      <Tag size="sm" key={index} colorScheme="purple" variant="solid">
+                          {area}
+                      </Tag>
+                  ))}
+              </Flex>
           </Box>
         </Flex>
 
@@ -122,7 +155,6 @@ const ProfessorDetailPage = () => {
             <Tab>Visão Geral</Tab>
             <Tab>Formação</Tab>
             <Tab>Projetos</Tab>
-            <Tab>Contatos</Tab>
           </TabList>
 
           <TabPanels>
@@ -172,22 +204,30 @@ const ProfessorDetailPage = () => {
                 <Text>Nenhum projeto de pesquisa encontrado no Lattes.</Text>
               )}
             </TabPanel>
-
-            {/* ABA: Contatos */}
-            <TabPanel>
-              {/* Usando encadeamento opcional (?) para evitar quebras se o contato for null */}
-              <Text>
-                <strong>Sala:</strong> {professor.contatos?.sala || 'Não informado'}
-              </Text>
-              <Text>
-                <strong>Telefone:</strong> {professor.contatos?.telefone || 'Não informado'}
-              </Text>
-              <Text>
-                <strong>Email:</strong> {professor.contatos?.email || 'Não informado'}
-              </Text>
-            </TabPanel>
           </TabPanels>
         </Tabs>
+        <Box mt={8} p={6} border="1px solid" borderColor="gray.200" borderRadius="lg" boxShadow="sm">
+            <Heading as="h3" size="md" mb={4}>
+                Contato
+            </Heading>
+            
+            {/* Conteúdo de Contato - Reutilizado do antigo TabPanel */}
+            <Flex direction="column" gap={1} fontSize="sm">
+                <Flex align="center">
+                    {/* Usando o componente de ícone Mail para o Email */}
+                    <Mail size={16} style={{ marginRight: '8px', color: 'gray.600' }} />
+                    <Text>{professor.contatos?.email || 'Não informado'}</Text>
+                </Flex>
+                <Flex align="center">
+                    <Phone size={16} style={{ marginRight: '8px', color: 'gray.600' }} />
+                    <Text>Telefone: {professor.contatos?.telefone && professor.contatos.telefone.length > 5 ? professor.contatos.telefone : 'Não informado'}</Text>
+                </Flex>
+                <Flex align="center">
+                    <MapPin size={16} style={{ marginRight: '8px', color: 'gray.600' }} />
+                    <Text>Sala: {professor.contatos?.sala || 'Não informado'}</Text>
+                </Flex>
+            </Flex>
+        </Box>
       </Box>
     </Flex>
   );
