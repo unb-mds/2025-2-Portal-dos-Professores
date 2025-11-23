@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import List, Dict, Optional, Any
 
 class Contatos(BaseModel):
@@ -15,6 +15,8 @@ class Professor(BaseModel):
     descricao_pessoal: Optional[str] = None
     lattes_url: Optional[str] = None
     
+    areas_interesse: Optional[List[str]] = []
+
     formacao_academica: Optional[Dict[str, List[str]]] = {} 
     contatos: Optional[Contatos] = {} 
 
@@ -26,3 +28,4 @@ class Professor(BaseModel):
 
     class Config:
         from_attributes = True
+        extra = "allow"
