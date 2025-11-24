@@ -236,29 +236,48 @@ export default function HomePage() {
             Encontre o orientador ideal para seu projeto.
           </Text>
           
-          {/* CORREÇÃO AQUI: VSTACK para botões empilhados no Mobile */}
-          <VStack spacing={6} pt={8} w={{ base: '100%', sm: 'auto' }}>
-            <Button
-              as={RouterLink}
-              to="/professores"
-              colorScheme="blue"
-              size="lg"
-              leftIcon={<Icon as={Search} boxSize={5} />}
-              rightIcon={<Icon as={ArrowRight} boxSize={5} />}
-              w={{ base: '100%', sm: 'auto' }} /* Ocupa 100% no mobile */
-            >
-              Buscar Professores
-            </Button>
-            <Button
-              as={RouterLink}
-              to="/sobre"
-              variant="outline"
-              size="lg"
-              w={{ base: '100%', sm: 'auto' }} /* Ocupa 100% no mobile */
-            >
-              Sobre o Projeto
-            </Button>
-          </VStack>
+         {/* --- Botões principais da Hero Section --- */}
+            <VStack spacing={6} pt={8} w={{ base: '100%', sm: 'auto' }}>
+
+              {/* Buscar Professores */}
+              <Button
+                as={RouterLink}
+                to="/professores"
+                colorScheme="blue"
+                size="lg"
+                leftIcon={<Icon as={Search} boxSize={5} />}
+                rightIcon={<Icon as={ArrowRight} boxSize={5} />}
+                w={{ base: '100%', sm: 'auto' }}
+              >
+                Buscar Professores
+              </Button>
+
+              {/* 🔥 NOVO BOTÃO — Orientador Inteligente */}
+              <Button
+                as={RouterLink}
+                to="/orientador"
+                colorScheme="teal"
+                size="lg"
+                leftIcon={<Icon as={GraduationCap} boxSize={5} />}
+                rightIcon={<Icon as={ArrowRight} boxSize={5} />}
+                w={{ base: '100%', sm: 'auto' }}
+              >
+                Orientador Inteligente
+              </Button>
+
+              {/* Sobre o Projeto */}
+              <Button
+                as={RouterLink}
+                to="/sobre"
+                variant="outline"
+                size="lg"
+                w={{ base: '100%', sm: 'auto' }}
+              >
+                Sobre o Projeto
+              </Button>
+
+            </VStack>
+
           {/* FIM DA CORREÇÃO */}
         </VStack>
       </Container>
