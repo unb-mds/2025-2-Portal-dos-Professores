@@ -13,7 +13,6 @@ import {
   VStack,
   HStack,
   Center,
-  Link,
   Wrap,
   WrapItem,
   useColorModeValue,
@@ -25,12 +24,7 @@ import { getProfessorsData, getDepartmentsData } from '../services/api';
 function Feature({ icon, title, children }) {
   return (
     <VStack spacing={5} align={{ base: 'center', md: 'start' }} textAlign={{ base: 'center', md: 'left' }}>
-      <Center
-        bg="blue.500"
-        color="white"
-        boxSize={14}
-        borderRadius="lg"
-      >
+      <Center bg="blue.500" color="white" boxSize={14} borderRadius="lg">
         <Icon as={icon} boxSize={7} />
       </Center>
       <Heading as="h3" size={{ base: 'sm', md: 'md' }}>{title}</Heading>
@@ -58,17 +52,19 @@ export default function HomePage() {
   const sectionBg = useColorModeValue('gray.50', 'gray.700');
   const badgeHoverBg = useColorModeValue('blue.500', 'blue.300');
   const badgeHoverColor = useColorModeValue('white', 'gray.800');
-  
+
   const [stats, setStats] = useState({
     professores: 0,
     departamentos: 0,
     publicacoes: 0,
   });
+
   const [isLoadingStats, setIsLoadingStats] = useState(true);
-  
+
   const [popularDepartments, setPopularDepartments] = useState([]);
   const [isLoadingDepartments, setIsLoadingDepartments] = useState(true);
 
+  /* CARREGA ESTATÍSTICAS */
   useEffect(() => {
     const fetchStats = async () => {
       try {
@@ -109,6 +105,7 @@ export default function HomePage() {
     fetchStats();
   }, []);
 
+  /* CARREGA DEPARTAMENTOS POPULARES */
   useEffect(() => {
     const fetchPopulars = async () => {
       try {
@@ -139,6 +136,7 @@ export default function HomePage() {
 
   return (
     <Box>
+
       {/* HERO */}
       <Container maxW="8xl" py={{ base: 24, md: 40 }} px={{ base: 8, md: 16 }}>
         <VStack spacing={10} textAlign="center" maxW="5xl" mx="auto">
@@ -150,14 +148,18 @@ export default function HomePage() {
             </HStack>
           </Badge>
 
-          <Heading fontSize={{ base: '5xl', md: '6xl', lg: '7xl' }}>Portal dos Professores</Heading>
-          
+          <Heading fontSize={{ base: '5xl', md: '6xl', lg: '7xl' }}>
+            Portal dos Professores
+          </Heading>
+
           <Text fontSize={{ base: 'lg', md: 'xl' }} color="gray.600" maxW="4xl">
             Explore o perfil, pesquisas e disciplinas dos docentes da UnB.
             Encontre o orientador ideal para seu projeto.
           </Text>
 
+          {/* Botões da Hero Section */}
           <VStack spacing={6} pt={8} w={{ base: '100%', sm: 'auto' }}>
+            
             <Button
               as={RouterLink}
               to="/professores"
@@ -172,6 +174,18 @@ export default function HomePage() {
 
             <Button
               as={RouterLink}
+              to="/orientador"
+              colorScheme="teal"
+              size="lg"
+              leftIcon={<Icon as={GraduationCap} boxSize={5} />}
+              rightIcon={<Icon as={ArrowRight} boxSize={5} />}
+              w={{ base: '100%', sm: 'auto' }}
+            >
+              Orientador Inteligente
+            </Button>
+
+            <Button
+              as={RouterLink}
               to="/sobre"
               variant="outline"
               size="lg"
@@ -179,7 +193,9 @@ export default function HomePage() {
             >
               Sobre o Projeto
             </Button>
+
           </VStack>
+
         </VStack>
       </Container>
 
@@ -194,53 +210,53 @@ export default function HomePage() {
         </Container>
       </Box>
 
-      {/* Orientador Ideal */}
-<Container maxW="7xl" mt={20} px={{ base: 6, md: 16 }}>
-  <Box
-    bg="linear-gradient(90deg, #F0F4FF 0%, #ECECFF 100%)"
-    borderRadius="2xl"
-    p={{ base: 6, md: 10 }}
-    boxShadow="0 8px 28px rgba(0, 0, 0, 0.08)"
-    border="1px solid #E3E8F7"
-  >
-    <HStack
-      spacing={{ base: 4, md: 8 }}
-      align="center"
-      flexDir={{ base: "column", md: "row" }}
-    >
-      <Center
-        bg="linear-gradient(135deg, #4C6FFF 0%, #335CFF 100%)"
-        color="white"
-        boxSize={14}
-        borderRadius="full"
-        flexShrink={0}
-      >
-        <Icon as={Search} boxSize={7} />
-      </Center>
+      {/* BOX — Orientador Ideal */}
+      <Container maxW="7xl" mt={20} px={{ base: 6, md: 16 }}>
+        <Box
+          bg="linear-gradient(90deg, #F0F4FF 0%, #ECECFF 100%)"
+          borderRadius="2xl"
+          p={{ base: 6, md: 10 }}
+          boxShadow="0 8px 28px rgba(0, 0, 0, 0.08)"
+          border="1px solid #E3E8F7"
+        >
+          <HStack
+            spacing={{ base: 4, md: 8 }}
+            align="center"
+            flexDir={{ base: "column", md: "row" }}
+          >
+            <Center
+              bg="linear-gradient(135deg, #4C6FFF 0%, #335CFF 100%)"
+              color="white"
+              boxSize={14}
+              borderRadius="full"
+              flexShrink={0}
+            >
+              <Icon as={Search} boxSize={7} />
+            </Center>
 
-      <VStack align="start" spacing={1} flex="1" textAlign={{ base: "center", md: "left" }}>
-        <Heading size="md" fontWeight="600" color="gray.800">
-          Encontre seu Orientador Ideal
-        </Heading>
-        <Text color="gray.600" fontSize="md">
-          Nossa IA analisa seu perfil e recomenda os melhores professores para te orientar.
-        </Text>
-      </VStack>
-      <Button
-        as={RouterLink}
-        to="/orientador"
-        colorScheme="blue"
-        rightIcon={<ArrowRight />}
-        size="lg"
-        px={8}
-        borderRadius="xl"
-      >
-        Começar Agora
-      </Button>
-    </HStack>
-  </Box>
-</Container>
+            <VStack align="start" spacing={1} flex="1" textAlign={{ base: "center", md: "left" }}>
+              <Heading size="md" fontWeight="600" color="gray.800">
+                Encontre seu Orientador Ideal
+              </Heading>
+              <Text color="gray.600" fontSize="md">
+                Nossa IA analisa seu perfil e recomenda os melhores professores para te orientar.
+              </Text>
+            </VStack>
 
+            <Button
+              as={RouterLink}
+              to="/orientador"
+              colorScheme="blue"
+              rightIcon={<ArrowRight />}
+              size="lg"
+              px={8}
+              borderRadius="xl"
+            >
+              Começar Agora
+            </Button>
+          </HStack>
+        </Box>
+      </Container>
 
       {/* DEPARTAMENTOS */}
       <Container maxW="8xl" py={{ base: 24, md: 40 }} px={{ base: 8, md: 16 }}>
@@ -314,9 +330,11 @@ export default function HomePage() {
             <Feature icon={Search} title="Busca Avançada">
               Filtre por departamento, área de pesquisa, campus e muito mais
             </Feature>
+
             <Feature icon={Users} title="Perfis Completos">
               Acesse publicações, disciplinas e informações de contato
             </Feature>
+
             <Feature icon={GraduationCap} title="Orientação TCC">
               Encontre o orientador ideal para seu trabalho de conclusão
             </Feature>
