@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useProfessorData } from '../context/ProfessorContext';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import {
@@ -22,6 +22,7 @@ import "../styles/ProfessorDetailPage.css";
 
 const ProfessorDetailPage = () => {
   const toast = useToast();
+  const navigate = useNavigate();
   
   // 1. ACESSO AOS DADOS DO CONTEXTO (Substitui os useStates e useEffect)
   const { professorsList, isLoading, error } = useProfessorData(); 
@@ -79,12 +80,26 @@ const ProfessorDetailPage = () => {
   // 6. RENDERIZAÇÃO PRINCIPAL (JSX)
   return (
     <Flex direction="column" align="center" p={10} bg="#f9fafb" minH="100vh">
+      <Box maxW="6xl" w="100%" mb={4} textAlign="left">
+          <Button
+              onClick={() => navigate(-1)}
+              variant="ghost"
+              colorScheme="blue"
+              leftIcon="←"
+              _hover={{ bg: 'blue.50' }}
+              fontSize="md"
+              fontWeight="medium"
+              p={3}
+          >
+              Voltar
+          </Button>
+      </Box>
       <Box
         bg="white"
         p={8}
         borderRadius="xl"
         boxShadow="lg"
-        maxW="900px"
+        maxW="6xl"
         w="100%"
       >
         {/* === Bloco Superior de Identificação (Foto, Nome) === */}
@@ -104,7 +119,7 @@ const ProfessorDetailPage = () => {
               <Text color="gray.600" fontSize="md" mb={3}>
                   {professor.departamento}
               </Text>
-              
+
               <Flex direction="column" gap={2} mb={4} align={{ base: "center", md: "flex-start" }}>
                   
                   {/* EMAIL (Botão com Link) */}
@@ -140,71 +155,91 @@ const ProfessorDetailPage = () => {
               {/* === Tags de Pesquisa (Áreas de Interesse) === */}
               <Flex wrap="wrap" mt={3} gap={2} justify={{ base: "center", md: "flex-start" }}>
                   {professor.dados_scholar?.areas_interesse?.map((area, index) => (
-                      <Tag size="sm" key={index} colorScheme="purple" variant="solid">
+                      <Tag size="sm" key={index} colorScheme="gray" variant="subtle">
                           {area}
                       </Tag>
                   ))}
               </Flex>
           </Box>
-        </Flex>
+        </Flex>  
+{/* Bloco Superior de Tags de Pesquisa termina aqui */}
 
-        {/* === Abas de Conteúdo === */}
-        <Tabs variant="enclosed" mt={10}>
-          <TabList>
+{/* === Abas de Conteúdo === */}
+  <Box
+    bg="white"
+    p={8} 
+    borderRadius="xl"
+    boxShadow="lg"
+    maxW="6xl" // Confirme o mesmo maxW que o superior
+    w="100%"
+    mt={6}>
+    <Tabs variant="soft-rounded" colorScheme="gray"> {/* ✅ CONFIRMADO: soft-rounded e cor azul */}
+        <TabList justifyContent="center">
             <Tab>Visão Geral</Tab>
-            <Tab>Formação</Tab>
-            <Tab>Projetos</Tab>
-          </TabList>
 
-          <TabPanels>
+            {/* ✅ NOVO: Contagem de Níveis de Formação (ex: 3 níveis: Graduação, Mestrado, Doutorado) */}
+            <Tab>
+                Formação ({Object.keys(professor.formacao_academica || {}).length})
+            </Tab>
+
+            {/* ✅ NOVO: Contagem de Projetos */}
+            <Tab>
+                Projetos ({professor.dados_lattes?.projetos_pesquisa?.length || 0})
+            </Tab>
+        </TabList>
+
+        <TabPanels>
             {/* ABA: Visão Geral */}
             <TabPanel>
-              {/* Usando o resumo do Lattes, senão a descrição pessoal. */}
-              <Text>
-                {professor.dados_lattes?.resumo_cv || professor.descricao_pessoal || "Nenhuma descrição detalhada disponível."}
-              </Text>
+                {/* Usando o resumo do Lattes, senão a descrição pessoal. */}
+                <Text>
+                    {professor.dados_lattes?.resumo_cv || professor.descricao_pessoal || "Nenhuma descrição detalhada disponível."}
+                </Text>
             </TabPanel>
 
             {/* ABA: Formação */}
             <TabPanel>
-              {/* Mapeia a formação acadêmica (ex: GRADUAÇÃO, MESTRADO) */}
-              {Object.entries(professor.formacao_academica || {}).map(
-                ([nivel, cursos]) => (
-                  <Box key={nivel} mb={5}>
-                    <Heading as="h3" size="sm" mb={2} color="blue.600">
-                      {nivel}
-                    </Heading>
-                    <ul>
-                      {cursos.map((curso, index) => (
-                        <li key={index}>
-                          <Text fontSize="sm">{curso}</Text>
-                        </li>
-                      ))}
-                    </ul>
-                  </Box>
-                )
-              )}
+                {/* Mapeia a formação acadêmica (ex: GRADUAÇÃO, MESTRADO) */}
+                {Object.entries(professor.formacao_academica || {}).map(
+                    ([nivel, cursos]) => (
+                        <Box key={nivel} mb={5}>
+                            <Heading as="h3" size="sm" mb={2} color="blue.600">
+                                {nivel}
+                            </Heading>
+                            <ul>
+                                {cursos.map((curso, index) => (
+                                    <li key={index}>
+                                        <Text fontSize="sm">{curso}</Text>
+                                    </li>
+                                ))}
+                            </ul>
+                        </Box>
+                    )
+                )}
             </TabPanel>
 
             {/* ABA: Projetos */}
             <TabPanel>
-              {/* CORRIGIDO: O mapeamento de projetos agora usa o caminho correto da API: dados_lattes.projetos_pesquisa */}
-              {professor.dados_lattes?.projetos_pesquisa?.length ? (
-                professor.dados_lattes.projetos_pesquisa.map((projeto, index) => (
-                  <Box key={index} mb={4}>
-                    <Text fontWeight="bold">{projeto.titulo}</Text>
-                    <Text fontSize="sm">
-                      {projeto.ano_periodo} — {projeto.situacao} ({projeto.natureza})
-                    </Text>
-                    {projeto.integrantes && <Text fontSize="xs" color="gray.500">Integrantes: {projeto.integrantes}</Text>}
-                  </Box>
-                ))
-              ) : (
-                <Text>Nenhum projeto de pesquisa encontrado no Lattes.</Text>
-              )}
+                {/* CORRIGIDO: O mapeamento de projetos agora usa o caminho correto da API: dados_lattes.projetos_pesquisa */}
+                {professor.dados_lattes?.projetos_pesquisa?.length ? (
+                    professor.dados_lattes.projetos_pesquisa.map((projeto, index) => (
+                        <Box key={index} mb={4}>
+                            <Text fontWeight="bold">{projeto.titulo}</Text>
+                            <Text fontSize="sm">
+                                {projeto.ano_periodo} — {projeto.situacao} ({projeto.natureza})
+                            </Text>
+                            {projeto.integrantes && <Text fontSize="xs" color="gray.500">Integrantes: {projeto.integrantes}</Text>}
+                        </Box>
+                    ))
+                ) : (
+                    <Text>Nenhum projeto de pesquisa encontrado no Lattes.</Text>
+                )}
             </TabPanel>
-          </TabPanels>
-        </Tabs>
+        </TabPanels>
+    </Tabs>
+  </Box>  
+{/* === Fim das Abas de Conteúdo === */}
+
         <Box mt={8} p={6} border="1px solid" borderColor="gray.200" borderRadius="lg" boxShadow="sm">
             <Heading as="h3" size="md" mb={4}>
                 Contato
