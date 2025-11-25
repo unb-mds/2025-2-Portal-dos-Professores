@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import {
   SimpleGrid, Box, Text, Center, Container,
   Heading, VStack, HStack, Icon, Input, InputGroup, InputLeftElement,
@@ -54,6 +55,7 @@ const getAreas = (professor) => {
 };
 
 export default function ProfessoresPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [professores, setProfessores] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   
@@ -73,6 +75,15 @@ export default function ProfessoresPage() {
   const borderColor = useColorModeValue("gray.200", "gray.700");
   const titleColor = useColorModeValue("blue.800", "blue.100");
   const mutedColor = useColorModeValue("gray.600", "gray.400");
+
+  // Lê o parâmetro 'departamento' da URL ao carregar a página
+  useEffect(() => {
+    const departamentoFromUrl = searchParams.get('departamento');
+    if (departamentoFromUrl) {
+      setSelectedDepartamento(decodeURIComponent(departamentoFromUrl));
+      setCurrentPage(1); // Reset para primeira página ao aplicar filtro
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -136,7 +147,17 @@ export default function ProfessoresPage() {
     }
 
     if (selectedDepartamento) {
-      result = result.filter(p => p.departamento === selectedDepartamento);
+      // Comparação flexível: verifica se o departamento do professor contém o nome selecionado ou vice-versa
+      // Isso permite correspondência mesmo com pequenas diferenças de formatação
+      const selectedDeptLower = selectedDepartamento.toLowerCase().trim();
+      result = result.filter(p => {
+        if (!p.departamento) return false;
+        const profDeptLower = p.departamento.toLowerCase().trim();
+        // Verifica correspondência exata ou se um contém o outro
+        return profDeptLower === selectedDeptLower || 
+               profDeptLower.includes(selectedDeptLower) || 
+               selectedDeptLower.includes(profDeptLower);
+      });
     }
 
     if (selectedAreas.length > 0) {
@@ -178,6 +199,19 @@ export default function ProfessoresPage() {
     setSelectedDepartamento('');
     setSelectedAreas([]);
     setCurrentPage(1);
+    // Limpa o parâmetro da URL
+    setSearchParams({});
+  };
+
+  const handleDepartamentoChange = (departamento) => {
+    setSelectedDepartamento(departamento);
+    setCurrentPage(1);
+    // Atualiza a URL com o novo departamento
+    if (departamento) {
+      setSearchParams({ departamento: encodeURIComponent(departamento) });
+    } else {
+      setSearchParams({});
+    }
   };
 
   const hasActiveFilters = query || selectedDepartamento || selectedAreas.length > 0;
@@ -208,7 +242,7 @@ export default function ProfessoresPage() {
             <HStack spacing={3} wrap="wrap" align="start">
               <InputGroup size="md" maxW={{ base: "full", md: "300px" }}>
                  <InputLeftElement pointerEvents="none"><Icon as={Filter} color="gray.500" boxSize={4} /></InputLeftElement>
-                 <Input as="select" value={selectedDepartamento} onChange={(e) => setSelectedDepartamento(e.target.value)} bg={useColorModeValue("white", "gray.700")} borderColor={useColorModeValue("gray.300", "gray.600")} borderRadius="md" pl={10} cursor="pointer">
+                 <Input as="select" value={selectedDepartamento} onChange={(e) => handleDepartamentoChange(e.target.value)} bg={useColorModeValue("white", "gray.700")} borderColor={useColorModeValue("gray.300", "gray.600")} borderRadius="md" pl={10} cursor="pointer">
                     <option value="">Todos os departamentos</option>
                     {departments.map(dept => (<option key={dept} value={dept}>{dept}</option>))}
                   </Input>
