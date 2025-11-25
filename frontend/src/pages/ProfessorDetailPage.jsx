@@ -1,270 +1,427 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import { useProfessorData } from '../context/ProfessorContext';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import {
-  Box,
-  Flex,
-  Image,
-  Heading,
-  Text,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-  Button,
-  useToast,
-  Spinner,
-  Tag,
+    Box,
+    Flex,
+    Image,
+    Heading,
+    Text,
+    Tabs,
+    TabList,
+    TabPanels,
+    Tab,
+    TabPanel,
+    Button,
+    useToast,
+    Spinner,
+    Tag,
+    VStack,
+    HStack,
+    Divider,
+    Alert,
+    AlertIcon,
+    AlertTitle,
+    AlertDescription,
 } from "@chakra-ui/react";
-import "../styles/ProfessorDetailPage.css";
+// import "../styles/ProfessorDetailPage.css"; 
 
-const ProfessorDetailPage = () => {
-  const toast = useToast();
-  const navigate = useNavigate();
-  
-  // 1. ACESSO AOS DADOS DO CONTEXTO (Substitui os useStates e useEffect)
-  const { professorsList, isLoading, error } = useProfessorData(); 
-  
-  // 2. PEGA O ID DA URL
-  const { id } = useParams();
+// =================================================================
+// FUNÇÕES AUXILIARES
+// =================================================================
 
-  // 3. ENCONTRA O PROFESSOR NA LISTA JÁ BAIXADA
-  // Se estiver carregando globalmente, o professor será 'null'.
-  let professor = null; 
-  
-  if (!isLoading && professorsList.length > 0) {
-    // Procura na lista pelo ID que está na URL
-    professor = professorsList.find(p => p.pagina_sigaa_url && p.pagina_sigaa_url.includes(id));
-  }
-
-  // 4. Lógica de Erro / Carregamento (Interrompe a renderização JSX)
-  if (isLoading) {
-    return (
-      <Flex direction="column" align="center" p={10} minH="100vh">
-        <Box bg="white" p={8} borderRadius="xl" boxShadow="lg" maxW="900px" w="100%" textAlign="center">
-          <Spinner size="xl" mb={4} color="blue.500" />
-          <Heading size="lg">Carregando dados globais...</Heading>
-        </Box>
-      </Flex>
-    );
-  }
-
-  if (error || !professor) {
-    return (
-      <Flex direction="column" align="center" p={10} minH="100vh">
-        <Box bg="white" p={8} borderRadius="xl" boxShadow="lg" maxW="900px" w="100%" textAlign="center">
-          <Heading color="red.500" size="lg" mb={4}>❌ Erro ao Carregar Perfil</Heading>
-          <Text>O professor com ID "{id}" não foi encontrado na base de dados.</Text>
-        </Box>
-      </Flex>
-    );
-  }
-  
-  // 5. Função de Copiar E-mail (USA O OBJETO 'professor' vindo do Contexto)
-  const copiarEmail = () => {
-    // Adicionando encadeamento opcional para evitar quebra se 'contatos' for null
-    if (professor?.contatos?.email) {
-      navigator.clipboard.writeText(professor.contatos.email);
-      toast({
-        title: "E-mail copiado! 📧",
-        description: "O endereço de e-mail foi copiado para sua área de transferência.",
-        status: "success",
-        duration: 2000,
-        isClosable: true,
-      });
+/**
+ * Implementa um placeholder mais amigável usando o componente Alert
+ */
+const MissingDataPlaceholder = ({ title, description, label }) => {
+    // Para placeholders internos simples (usado em Formação e Projetos)
+    if (label) {
+        return (
+            <Text color="gray.500" fontStyle="italic" fontSize="sm" py={2}>
+                {label ? `Nenhum(a) ${label} detalhado(a) disponível.` : "Nenhum dado detalhado disponível."}
+            </Text>
+        );
     }
-  };
-  
-  // 6. RENDERIZAÇÃO PRINCIPAL (JSX)
-  return (
-    <Flex direction="column" align="center" p={10} bg="#f9fafb" minH="100vh">
-      <Box maxW="6xl" w="100%" mb={4} textAlign="left">
-          <Button
-              onClick={() => navigate(-1)}
-              variant="ghost"
-              colorScheme="blue"
-              leftIcon="←"
-              _hover={{ bg: 'blue.50' }}
-              fontSize="md"
-              fontWeight="medium"
-              p={3}
-          >
-              Voltar
-          </Button>
-      </Box>
-      <Box
-        bg="white"
-        p={8}
-        borderRadius="xl"
-        boxShadow="lg"
-        maxW="6xl"
-        w="100%"
-      >
-        {/* === Bloco Superior de Identificação (Foto, Nome) === */}
-        <Flex direction={{ base: "column", md: "row" }} align="center">
-          <Image
-            borderRadius="full"
-            boxSize="200px"
-            src={professor.foto_url}
-            alt={professor.nome}
-            mr={{ md: 8 }}
-            mb={{ base: 6, md: 0 }}
-          />
-          <Box textAlign={{ base: "center", md: "left" }}>
-              <Heading as="h2" size="lg" mb={1}>
-                  {professor.nome}
-              </Heading>
-              <Text color="gray.600" fontSize="md" mb={3}>
-                  {professor.departamento}
-              </Text>
+    
+    // Para o placeholder principal (Visão Geral/Sobre)
+    return (
+        <Alert
+            status='info'
+            variant='left-accent'
+            flexDirection='column'
+            alignItems='center'
+            justifyContent='center'
+            textAlign='center'
+            borderRadius='md'
+            py={8}
+            bg='blue.50'
+        >
+            <AlertIcon boxSize='24px' mr={0} color="blue.500" />
+            <AlertTitle mt={4} mb={1} fontSize='lg' fontWeight="bold" color="blue.700">
+                {title || "Dados Pessoais Não Encontrados"}
+            </AlertTitle>
+            <AlertDescription maxWidth='sm' color="blue.700">
+                {description || "O resumo pessoal ou o currículo lattes minerado para este professor não foi encontrado em nossa base de dados."}
+            </AlertDescription>
+        </Alert>
+    );
+};
 
-              <Flex direction="column" gap={2} mb={4} align={{ base: "center", md: "flex-start" }}>
-                  
-                  {/* EMAIL (Botão com Link) */}
-                  {professor.contatos?.email && (
-                      <Button
-                          leftIcon={<Mail size={16} />}
-                          colorScheme="blue"
-                          onClick={copiarEmail}
-                          size="sm"
-                          borderRadius="md"
-                      >
-                          Copiar E-mail
-                      </Button>
-                  )}
+// FUNÇÃO: Componente de Exibição de Projeto
+const ProjectItem = ({ projeto }) => (
+    <Box p={4} borderLeft="4px solid" borderColor="blue.400" bg="gray.50" mb={4} borderRadius="lg">
+        <Text fontWeight="bold" fontSize="md" color="gray.800">{projeto.titulo}</Text>
+        <Text fontSize="sm" color="gray.600" mt={1}>
+            {projeto.ano_periodo} — **{projeto.situacao}** ({projeto.natureza})
+        </Text>
+        {projeto.integrantes && (
+            <Text fontSize="xs" color="gray.500" mt={1} noOfLines={1} textOverflow="ellipsis">
+                Integrantes: {projeto.integrantes}
+            </Text>
+        )}
+    </Box>
+);
 
-                  {/* CONTATOS SECUNDÁRIOS */}
-                  <Flex gap={5} color="gray.600" fontSize="sm" mt={2} wrap="wrap" justify={{ base: "center", md: "flex-start" }}>
-                      {professor.contatos?.sala && (
-                          <Flex align="center">
-                              <MapPin size={16} style={{ marginRight: '4px' }} />
-                              <Text>Sala: {professor.contatos.sala}</Text>
-                          </Flex>
-                      )}
-                      {professor.contatos?.telefone && professor.contatos.telefone.length > 5 && (
-                          <Flex align="center">
-                              <Phone size={16} style={{ marginRight: '4px' }} />
-                              <Text>Telefone: {professor.contatos.telefone}</Text>
-                          </Flex>
-                      )}
-                  </Flex>
-              </Flex>
-              
-              {/* === Tags de Pesquisa (Áreas de Interesse) === */}
-              <Flex wrap="wrap" mt={3} gap={2} justify={{ base: "center", md: "flex-start" }}>
-                  {professor.dados_scholar?.areas_interesse?.map((area, index) => (
-                      <Tag size="sm" key={index} colorScheme="gray" variant="subtle">
-                          {area}
-                      </Tag>
-                  ))}
-              </Flex>
-          </Box>
-        </Flex>  
-{/* Bloco Superior de Tags de Pesquisa termina aqui */}
-
-{/* === Abas de Conteúdo === */}
-  <Box
-    bg="white"
-    p={8} 
-    borderRadius="xl"
-    boxShadow="lg"
-    maxW="6xl" // Confirme o mesmo maxW que o superior
-    w="100%"
-    mt={6}>
-    <Tabs variant="soft-rounded" colorScheme="gray"> {/* ✅ CONFIRMADO: soft-rounded e cor azul */}
-        <TabList justifyContent="center">
-            <Tab>Visão Geral</Tab>
-
-            {/* ✅ NOVO: Contagem de Níveis de Formação (ex: 3 níveis: Graduação, Mestrado, Doutorado) */}
-            <Tab>
-                Formação ({Object.keys(professor.formacao_academica || {}).length})
-            </Tab>
-
-            {/* ✅ NOVO: Contagem de Projetos */}
-            <Tab>
-                Projetos ({professor.dados_lattes?.projetos_pesquisa?.length || 0})
-            </Tab>
-        </TabList>
-
-        <TabPanels>
-            {/* ABA: Visão Geral */}
-            <TabPanel>
-                {/* Usando o resumo do Lattes, senão a descrição pessoal. */}
-                <Text>
-                    {professor.dados_lattes?.resumo_cv || professor.descricao_pessoal || "Nenhuma descrição detalhada disponível."}
-                </Text>
-            </TabPanel>
-
-            {/* ABA: Formação */}
-            <TabPanel>
-                {/* Mapeia a formação acadêmica (ex: GRADUAÇÃO, MESTRADO) */}
-                {Object.entries(professor.formacao_academica || {}).map(
-                    ([nivel, cursos]) => (
-                        <Box key={nivel} mb={5}>
-                            <Heading as="h3" size="sm" mb={2} color="blue.600">
-                                {nivel}
-                            </Heading>
-                            <ul>
-                                {cursos.map((curso, index) => (
-                                    <li key={index}>
-                                        <Text fontSize="sm">{curso}</Text>
-                                    </li>
-                                ))}
-                            </ul>
-                        </Box>
-                    )
-                )}
-            </TabPanel>
-
-            {/* ABA: Projetos */}
-            <TabPanel>
-                {/* CORRIGIDO: O mapeamento de projetos agora usa o caminho correto da API: dados_lattes.projetos_pesquisa */}
-                {professor.dados_lattes?.projetos_pesquisa?.length ? (
-                    professor.dados_lattes.projetos_pesquisa.map((projeto, index) => (
-                        <Box key={index} mb={4}>
-                            <Text fontWeight="bold">{projeto.titulo}</Text>
-                            <Text fontSize="sm">
-                                {projeto.ano_periodo} — {projeto.situacao} ({projeto.natureza})
-                            </Text>
-                            {projeto.integrantes && <Text fontSize="xs" color="gray.500">Integrantes: {projeto.integrantes}</Text>}
-                        </Box>
-                    ))
-                ) : (
-                    <Text>Nenhum projeto de pesquisa encontrado no Lattes.</Text>
-                )}
-            </TabPanel>
-        </TabPanels>
-    </Tabs>
-  </Box>  
-{/* === Fim das Abas de Conteúdo === */}
-
-        <Box mt={8} p={6} border="1px solid" borderColor="gray.200" borderRadius="lg" boxShadow="sm">
-            <Heading as="h3" size="md" mb={4}>
-                Contato
+// FUNÇÃO: Componente de Exibição de Formação
+const FormacaoItem = ({ nivel, cursos }) => (
+    <Box mb={6}>
+        <HStack mb={2} spacing={2} align="center">
+            <Box w="8px" h="8px" bg="blue.500" borderRadius="full" />
+            <Heading as="h4" size="sm" color="blue.700" textTransform="uppercase">
+                {nivel}
             </Heading>
-            
-            {/* Conteúdo de Contato - Reutilizado do antigo TabPanel */}
-            <Flex direction="column" gap={1} fontSize="sm">
-                <Flex align="center">
-                    {/* Usando o componente de ícone Mail para o Email */}
-                    <Mail size={16} style={{ marginRight: '8px', color: 'gray.600' }} />
-                    <Text>{professor.contatos?.email || 'Não informado'}</Text>
-                </Flex>
-                <Flex align="center">
-                    <Phone size={16} style={{ marginRight: '8px', color: 'gray.600' }} />
-                    <Text>Telefone: {professor.contatos?.telefone && professor.contatos.telefone.length > 5 ? professor.contatos.telefone : 'Não informado'}</Text>
-                </Flex>
-                <Flex align="center">
-                    <MapPin size={16} style={{ marginRight: '8px', color: 'gray.600' }} />
-                    <Text>Sala: {professor.contatos?.sala || 'Não informado'}</Text>
-                </Flex>
+        </HStack>
+        <VStack align="start" spacing={1} pl={4} borderLeft="2px solid" borderColor="gray.200">
+            {cursos.map((curso, index) => (
+                <Text key={index} fontSize="sm" color="gray.700">
+                    • {curso}
+                </Text>
+            ))}
+        </VStack>
+    </Box>
+);
+
+// =================================================================
+// COMPONENTE PRINCIPAL
+// =================================================================
+const ProfessorDetailPage = () => {
+    const toast = useToast();
+    const navigate = useNavigate();
+
+    const { professorsList, isLoading, error } = useProfessorData();
+    const { id } = useParams();
+
+    let professor = null;
+
+    if (!isLoading && professorsList.length > 0) {
+        professor = professorsList.find(p => p.pagina_sigaa_url && p.pagina_sigaa_url.includes(id));
+    }
+
+    // Lógica de Erro / Carregamento
+    if (isLoading) {
+        return (
+            <Flex justify="center" align="center" minH="100vh" bg="#f9fafb" p={6}>
+                <VStack spacing={4} bg="white" p={10} borderRadius="xl" boxShadow="lg" maxW="900px" w="100%">
+                    <Spinner size="xl" color="blue.500" />
+                    <Heading size="lg" color="gray.700">Carregando dados globais...</Heading>
+                </VStack>
             </Flex>
-        </Box>
-      </Box>
-    </Flex>
-  );
+        );
+    }
+
+    if (error || !professor) {
+        return (
+            <Flex justify="center" align="center" minH="100vh" bg="#f9fafb" p={6}>
+                <VStack spacing={4} bg="white" p={10} borderRadius="xl" boxShadow="lg" maxW="900px" w="100%">
+                    <Heading color="red.500" size="lg">❌ Erro ao Carregar Perfil</Heading>
+                    <Text>O professor não foi encontrado ou houve um erro na comunicação com a API.</Text>
+                    <Button onClick={() => navigate(-1)} colorScheme="blue">Voltar</Button>
+                </VStack>
+            </Flex>
+        );
+    }
+
+    // Função de Copiar E-mail
+    const copiarEmail = () => {
+        if (professor?.contatos?.email) {
+            navigator.clipboard.writeText(professor.contatos.email);
+            toast({
+                title: "E-mail copiado! 📧",
+                description: "O endereço de e-mail foi copiado para sua área de transferência.",
+                status: "success",
+                duration: 2000,
+                isClosable: true,
+            });
+        }
+    };
+
+    // 🛑 FUNÇÃO getCampus REMOVIDA
+    // 🛑 VARIÁVEL campusName REMOVIDA
+    
+    const hasProjects = professor.dados_lattes?.projetos_pesquisa?.length > 0;
+    const hasFormacao = Object.keys(professor.formacao_academica || {}).length > 0;
+
+
+    // =================================================================
+    // RENDERIZAÇÃO PRINCIPAL (JSX)
+    // =================================================================
+    return (
+        <Flex direction="column" align="center" p={{ base: 4, md: 10 }} bg="#f9fafb" minH="100vh">
+            {/* Botão Voltar */}
+            <Box maxW="1200px" w="100%" mb={4} textAlign="left">
+                <Button
+                    onClick={() => navigate(-1)}
+                    variant="ghost"
+                    colorScheme="blue"
+                    leftIcon="←"
+                    _hover={{ bg: 'blue.50' }}
+                    fontSize="md"
+                    fontWeight="medium"
+                    p={3}
+                >
+                    Voltar
+                </Button>
+            </Box>
+
+            {/* === Bloco Principal do Perfil === */}
+            <Box
+                bg="white"
+                p={{ base: 6, md: 8 }}
+                borderRadius="xl"
+                boxShadow="xl"
+                maxW="1200px" 
+                w="100%"
+            >
+                {/* === Bloco Superior de Identificação (Foto, Nome, Tags) === */}
+                <Flex direction={{ base: "column", md: "row" }} align={{ base: "center", md: "flex-start" }}>
+                    <Image
+                        borderRadius="full"
+                        boxSize={{ base: "150px", md: "180px" }}
+                        src={professor.foto_url}
+                        alt={professor.nome}
+                        mr={{ md: 8 }}
+                        mb={{ base: 6, md: 0 }}
+                        objectFit="cover"
+                        fallbackSrc="https://via.placeholder.com/180/E2E8F0/A0AEC0?text=Foto"
+                    />
+                    <Box textAlign={{ base: "center", md: "left" }} w="100%">
+                        <Heading as="h1" size="xl" mb={1} color="gray.800">
+                            {professor.nome}
+                        </Heading>
+                        {/* Departamento */}
+                        <Text color="gray.600" fontSize="lg" mb={4} fontWeight="medium">
+                            {professor.departamento}
+                        </Text>
+                        
+                        {/* REQ 1 & 5: Botões de Ação */}
+                        <HStack spacing={4} mb={4} justify={{ base: "center", md: "flex-start" }}>
+                            {professor.contatos?.email && (
+                                <Button
+                                    leftIcon={<Mail size={18} />}
+                                    colorScheme="blue"
+                                    onClick={copiarEmail}
+                                    size="md" 
+                                    borderRadius="md"
+                                    fontWeight="semibold"
+                                >
+                                    Copiar E-mail
+                                </Button>
+                            )}
+                            {professor.dados_lattes?.lattes_url && ( 
+                                <Button
+                                    as="a"
+                                    href={professor.dados_lattes.lattes_url || professor.lattes_url}
+                                    target="_blank"
+                                    variant="outline"
+                                    colorScheme="gray"
+                                    size="md" 
+                                    borderRadius="md"
+                                    fontWeight="semibold"
+                                >
+                                    Lattes
+                                </Button>
+                            )}
+                        </HStack>
+
+                        {/* BLOCO: Campus (REMOVIDO), Sala e Telefone (Conforme protótipo) */}
+                        <Flex 
+                            gap={{ base: 3, md: 6 }} 
+                            mt={4} 
+                            mb={6} 
+                            fontSize="md" 
+                            color="gray.600" 
+                            wrap="wrap"
+                            justify={{ base: "center", md: "flex-start" }}
+                        >
+                            {/* 🛑 Campus (REMOVIDO) */}
+
+                            {/* Sala/Location (e.g., ICC Norte, Sala 315) */}
+                            {professor.contatos?.sala && professor.contatos.sala.toLowerCase() !== 'não informado' && (
+                                <HStack spacing={1} title="Localização">
+                                    <MapPin size={18} style={{ color: 'var(--chakra-colors-gray-500)' }} />
+                                    <Text>{professor.contatos.sala}</Text>
+                                </HStack>
+                            )}
+
+                            {/* Telefone (e.g., (61) 3107-0910) */}
+                            {professor.contatos?.telefone && professor.contatos.telefone.length > 5 && (
+                                <HStack spacing={1} title="Telefone">
+                                    <Phone size={18} style={{ color: 'var(--chakra-colors-gray-500)' }} />
+                                    <Text>{professor.contatos.telefone}</Text>
+                                </HStack>
+                            )}
+                        </Flex>
+
+                        {/* === Tags de Pesquisa (Áreas de Interesse) === */}
+                        {professor.dados_scholar?.areas_interesse?.length > 0 && (
+                            <Flex wrap="wrap" mt={3} gap={2} justify={{ base: "center", md: "flex-start" }}>
+                                {professor.dados_scholar.areas_interesse.map((area, index) => (
+                                    <Tag size="md" key={index} colorScheme="gray" variant="solid" bg="gray.100" color="gray.700" borderRadius="full">
+                                        {area}
+                                    </Tag>
+                                ))}
+                            </Flex>
+                        )}
+                    </Box>
+                </Flex>
+
+                <Divider mt={8} mb={6} />
+
+                {/* === Abas de Conteúdo (Estilização replicada) === */}
+                <Tabs 
+                    isFitted 
+                    variant="enclosed" 
+                    colorScheme="blue" 
+                    sx={{
+                        '.chakra-tabs__tab': {
+                            fontWeight: 'semibold',
+                            color: 'gray.600',
+                            border: 'none',
+                            _selected: {
+                                color: 'blue.600',
+                                borderBottom: '3px solid',
+                                borderBottomColor: 'blue.600',
+                                bg: 'white',
+                            },
+                            _focus: {
+                                boxShadow: 'none',
+                            },
+                            _hover: {
+                                bg: 'blue.50',
+                            },
+                            paddingX: { base: 2, md: 4 },
+                            paddingY: { base: 3, md: 4 },
+                            marginRight: { base: 0, md: 4 }
+                        },
+                        '.chakra-tabs__tablist': {
+                            borderBottom: '1px solid',
+                            borderBottomColor: 'gray.200',
+                            marginBottom: '1rem',
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            overflowX: 'auto',
+                            paddingBottom: '2px',
+                        },
+                        '.chakra-tabs__tabpanel': {
+                            paddingX: { base: 0, md: 2 },
+                            paddingTop: 4,
+                        }
+                    }}
+                >
+                    <TabList>
+                        <Tab>Visão Geral</Tab>
+                        <Tab>
+                            Formação ({Object.keys(professor.formacao_academica || {}).length})
+                        </Tab>
+                        <Tab>
+                            Projetos ({professor.dados_lattes?.projetos_pesquisa?.length || 0})
+                        </Tab>
+                    </TabList>
+
+                    <TabPanels>
+                        {/* ABA: Visão Geral */}
+                        <TabPanel>
+                            <Heading as="h3" size="md" mb={4} color="gray.700">Sobre</Heading>
+                            {(() => {
+                                const descriptionSource = professor.dados_lattes?.resumo_cv || professor.descricao_pessoal;
+                                const descriptionContent = (descriptionSource || '').toLowerCase().trim();
+                                const isContentMissing = descriptionContent === '' || descriptionContent === 'não informada';
+
+                                if (isContentMissing) {
+                                    return (
+                                        <MissingDataPlaceholder 
+                                            title="A descrição pessoal não foi encontrada."
+                                            description="Não conseguimos minerar o resumo do currículo Lattes ou a descrição pessoal deste professor. Os dados podem ser atualizados em breve."
+                                        />
+                                    );
+                                } else {
+                                    return (
+                                        <Text lineHeight="taller" color="gray.700">
+                                            {descriptionSource}
+                                        </Text>
+                                    );
+                                }
+                            })()}
+                        </TabPanel>
+
+                        {/* ABA: Formação */}
+                        <TabPanel>
+                            <Heading as="h3" size="md" mb={4} color="gray.700">Formação Acadêmica</Heading>
+                            {hasFormacao ? (
+                                <VStack align="start" spacing={6}>
+                                    {Object.entries(professor.formacao_academica).map(
+                                        ([nivel, cursos]) => (
+                                            <FormacaoItem key={nivel} nivel={nivel} cursos={cursos} />
+                                        )
+                                    )}
+                                </VStack>
+                            ) : (
+                                <MissingDataPlaceholder label="formação acadêmica" />
+                            )}
+                        </TabPanel>
+
+                        {/* ABA: Projetos */}
+                        <TabPanel>
+                             <Heading as="h3" size="md" mb={4} color="gray.700">Projetos de Pesquisa</Heading>
+                            {hasProjects ? (
+                                <VStack align="stretch" spacing={4}>
+                                    {professor.dados_lattes.projetos_pesquisa.map((projeto, index) => (
+                                        <ProjectItem key={index} projeto={projeto} />
+                                    ))}
+                                </VStack>
+                            ) : (
+                                <MissingDataPlaceholder label="projetos de pesquisa do Lattes" />
+                            )}
+                        </TabPanel>
+                    </TabPanels>
+                </Tabs>
+                {/* === Fim das Abas de Conteúdo === */}
+
+                {/* === Bloco de Contato (MANTIDO CONFORME ORIGINAL) === */}
+                <Box mt={8} p={6} border="1px solid" borderColor="gray.200" borderRadius="lg" boxShadow="sm">
+                    <Heading as="h3" size="md" mb={4}>
+                        Contato
+                    </Heading>
+                    
+                    <Flex direction="column" gap={1} fontSize="sm">
+                        <HStack align="center">
+                            <Mail size={16} style={{ marginRight: '8px', color: 'gray.600' }} />
+                            <Text>{professor.contatos?.email || 'Não informado'}</Text>
+                        </HStack>
+                        <HStack align="center">
+                            <Phone size={16} style={{ marginRight: '8px', color: 'gray.600' }} />
+                            <Text>Telefone: {professor.contatos?.telefone && professor.contatos.telefone.length > 5 ? professor.contatos.telefone : 'Não informado'}</Text>
+                        </HStack>
+                        <HStack align="center">
+                            <MapPin size={16} style={{ marginRight: '8px', color: 'gray.600' }} />
+                            <Text>Sala: {professor.contatos?.sala || 'Não informado'}</Text>
+                        </HStack>
+                    </Flex>
+                </Box>
+            </Box>
+        </Flex>
+    );
 };
 
 export default ProfessorDetailPage;
