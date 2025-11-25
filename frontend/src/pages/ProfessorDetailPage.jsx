@@ -25,17 +25,12 @@ import {
     AlertTitle,
     AlertDescription,
 } from "@chakra-ui/react";
-// import "../styles/ProfessorDetailPage.css"; 
 
 // =================================================================
 // FUNÇÕES AUXILIARES
 // =================================================================
 
-/**
- * Implementa um placeholder mais amigável usando o componente Alert
- */
 const MissingDataPlaceholder = ({ title, description, label }) => {
-    // Para placeholders internos simples (usado em Formação e Projetos)
     if (label) {
         return (
             <Text color="gray.500" fontStyle="italic" fontSize="sm" py={2}>
@@ -44,7 +39,6 @@ const MissingDataPlaceholder = ({ title, description, label }) => {
         );
     }
     
-    // Para o placeholder principal (Visão Geral/Sobre)
     return (
         <Alert
             status='info'
@@ -103,7 +97,7 @@ const FormacaoItem = ({ nivel, cursos }) => (
 );
 
 /**
- * 🚀 FUNÇÃO REFINADA: Extrai a atividade de ensino mais recente, filtrando atividades genéricas/programáticas.
+ *função: Extrai a atividade de ensino mais recente, filtrando atividades genéricas/programáticas.
  * @param {object} professor - O objeto completo do professor.
  * @returns {string | null} A descrição da última atividade de ensino formatada ou null.
  */
@@ -120,12 +114,10 @@ const getUltimaDisciplina = (professor) => {
             const detalhes = atividade.detalhes?.toLowerCase() || '';
             const periodo = atividade.periodo || '';
 
-            // 1. Check básico: Deve ser atividade de Ensino
             if (!detalhes.includes('ensino')) {
                 return;
             }
 
-            // 2. FILTRAGEM DE ADMIN/PROGRAMA (Exclui atividades que parecem ser funções permanentes/administrativas)
             const isProgramActivity = 
                 detalhes.includes('mestrado em') || 
                 detalhes.includes('decanato') || 
@@ -134,7 +126,6 @@ const getUltimaDisciplina = (professor) => {
                 detalhes.includes('programa de');
             
             if (isProgramActivity) {
-                // Se a atividade for claramente programática/administrativa, pulamos ela
                 return; 
             }
             
@@ -142,7 +133,7 @@ const getUltimaDisciplina = (professor) => {
             let recencyScore = 0;
             
             if (periodo.toLowerCase().includes('atual')) {
-                recencyScore = 3000; // Pontuação máxima
+                recencyScore = 3000;
             } else {
                 // Tenta encontrar todos os anos de 4 dígitos (Start e End)
                 const anos = periodo.match(/\d{4}/g) || [];
@@ -229,7 +220,6 @@ const ProfessorDetailPage = () => {
     const hasProjects = professor.dados_lattes?.projetos_pesquisa?.length > 0;
     const hasFormacao = Object.keys(professor.formacao_academica || {}).length > 0;
     
-    // 💡 CHAMADA DA NOVA FUNÇÃO
     const ultimaDisciplina = getUltimaDisciplina(professor);
 
 
