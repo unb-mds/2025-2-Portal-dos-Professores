@@ -185,10 +185,10 @@ export default function EncontrarOrientadorPage() {
       <Container maxW="container.md">
         <VStack spacing={6} align="stretch">
           <Box textAlign="center">
-            <Heading size="xl" mb={2} color={titleColor}>
+            <Heading as="h1" size={{ base: '2xl', md: '3xl' }} mb={2} color="blue.800" fontWeight="bold" letterSpacing="tight">
               🎓 Encontre seu Orientador Ideal
             </Heading>
-            <Text color={mutedColor} fontSize="lg">
+            <Text color="gray.600" fontSize={{ base: 'md', md: 'lg' }}>
               Nossa IA analisa seu perfil e sugere os melhores professores para você.
             </Text>
           </Box>

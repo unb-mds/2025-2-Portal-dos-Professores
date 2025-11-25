@@ -13,8 +13,6 @@ import {
   VStack,
   HStack,
   Center,
-  Wrap,
-  WrapItem,
   useColorModeValue,
 } from '@chakra-ui/react';
 
@@ -27,7 +25,7 @@ function Feature({ icon, title, children }) {
       <Center bg="blue.500" color="white" boxSize={14} borderRadius="lg">
         <Icon as={icon} boxSize={7} />
       </Center>
-      <Heading as="h3" size={{ base: 'sm', md: 'md' }}>{title}</Heading>
+      <Heading as="h3" size={{ base: 'xl', md: '2xl' }} color="blue.700" fontWeight="bold" letterSpacing="tight">{title}</Heading>
       <Text fontSize={{ base: 'sm', md: 'md' }} color="gray.600">
         {children}
       </Text>
@@ -38,7 +36,7 @@ function Feature({ icon, title, children }) {
 function Stat({ value, label }) {
   return (
     <VStack spacing={3}>
-      <Text fontSize={{ base: '4xl', md: '5xl' }} fontWeight="bold" color="blue.500">
+      <Text fontSize={{ base: '3xl', md: '4xl' }} fontWeight="bold" color="blue.600">
         {value}
       </Text>
       <Text fontSize={{ base: 'sm', md: 'md' }} color="gray.600">
@@ -73,6 +71,31 @@ export default function HomePage() {
           getDepartmentsData().catch(() => []),
         ]);
 
+        // Log detalhado para debug
+        if (Array.isArray(professoresData) && professoresData.length > 0) {
+          const sample = professoresData[0];
+          console.log('📊 Dados recebidos:', {
+            professoresCount: professoresData.length,
+            departamentosCount: Array.isArray(departamentosData) ? departamentosData.length : 'não é array',
+            sampleProfessor: {
+              nome: sample.nome,
+              temDadosLattes: !!sample.dados_lattes,
+              temDadosScholar: !!sample.dados_scholar,
+              lattesKeys: sample.dados_lattes ? Object.keys(sample.dados_lattes) : [],
+              scholarKeys: sample.dados_scholar ? Object.keys(sample.dados_scholar) : [],
+            }
+          });
+          
+          // Log de exemplo de publicações do primeiro professor
+          if (sample.dados_scholar?.publicacoes) {
+            console.log('📚 Exemplo de publicações Scholar:', sample.dados_scholar.publicacoes.length);
+          }
+          if (sample.dados_lattes?.producao_bibliografica) {
+            console.log('📚 Exemplo de publicações Lattes:', sample.dados_lattes.producao_bibliografica.length);
+          }
+        }
+
+        // Contar professores
         const totalProfessores = Array.isArray(professoresData) ? professoresData.length : 0;
         const totalDepartamentos = Array.isArray(departamentosData) ? departamentosData.length : 0;
 
@@ -80,14 +103,46 @@ export default function HomePage() {
         if (Array.isArray(professoresData)) {
           totalPublicacoes = professoresData.reduce((total, professor) => {
             let count = 0;
-
-            if (Array.isArray(professor.artigos)) count += professor.artigos.length;
-            else if (Array.isArray(professor.publicacoes)) count += professor.publicacoes.length;
-            else if (professor.dados_lattes?.producao_bibliografica)
-              count += professor.dados_lattes.producao_bibliografica.length;
-            else if (professor.dados_scholar?.publicacoes_scholar)
-              count += professor.dados_scholar.publicacoes_scholar.length;
-
+            
+            // 1. Verificar dados_scholar.publicacoes (estrutura do Scholar)
+            if (professor.dados_scholar && typeof professor.dados_scholar === 'object') {
+              if (Array.isArray(professor.dados_scholar.publicacoes)) {
+                count += professor.dados_scholar.publicacoes.length;
+              }
+            }
+            
+            // 2. Verificar dados_lattes - pode ter várias estruturas
+            if (professor.dados_lattes && typeof professor.dados_lattes === 'object') {
+              // Verificar producao_bibliografica
+              if (Array.isArray(professor.dados_lattes.producao_bibliografica)) {
+                count += professor.dados_lattes.producao_bibliografica.length;
+              }
+              // Verificar outras chaves que possam conter publicações
+              const lattesKeys = Object.keys(professor.dados_lattes);
+              for (const key of lattesKeys) {
+                const keyLower = key.toLowerCase();
+                // Buscar por chaves que contenham palavras relacionadas a publicações
+                if ((keyLower.includes('public') || 
+                     keyLower.includes('artigo') || 
+                     keyLower.includes('producao') ||
+                     keyLower.includes('trabalho') ||
+                     keyLower.includes('paper')) && 
+                    key !== 'producao_bibliografica') { // Evitar contar duas vezes
+                  if (Array.isArray(professor.dados_lattes[key])) {
+                    count += professor.dados_lattes[key].length;
+                  }
+                }
+              }
+            }
+            
+            // 3. Verificar arrays diretos no professor
+            if (Array.isArray(professor.artigos)) {
+              count += professor.artigos.length;
+            }
+            if (Array.isArray(professor.publicacoes)) {
+              count += professor.publicacoes.length;
+            }
+            
             return total + count;
           }, 0);
         }
@@ -148,11 +203,11 @@ export default function HomePage() {
             </HStack>
           </Badge>
 
-          <Heading fontSize={{ base: '5xl', md: '6xl', lg: '7xl' }}>
+          <Heading as="h1" size={{ base: '2xl', md: '3xl' }} color="blue.800" fontWeight="bold" letterSpacing="tight">
             Portal dos Professores
           </Heading>
 
-          <Text fontSize={{ base: 'lg', md: 'xl' }} color="gray.600" maxW="4xl">
+          <Text fontSize={{ base: 'md', md: 'lg' }} color="gray.600" maxW="4xl" lineHeight="tall">
             Explore o perfil, pesquisas e disciplinas dos docentes da UnB.
             Encontre o orientador ideal para seu projeto.
           </Text>
@@ -234,11 +289,11 @@ export default function HomePage() {
               <Icon as={Search} boxSize={7} />
             </Center>
 
-            <VStack align="start" spacing={1} flex="1" textAlign={{ base: "center", md: "left" }}>
-              <Heading size="md" fontWeight="600" color="gray.800">
+            <VStack align={{ base: "center", md: "start" }} spacing={1} flex="1" textAlign={{ base: "center", md: "left" }}>
+              <Heading size="md" fontWeight="600" color="gray.800" textAlign={{ base: "center", md: "left" }}>
                 Encontre seu Orientador Ideal
               </Heading>
-              <Text color="gray.600" fontSize="md">
+              <Text color="gray.600" fontSize="md" textAlign={{ base: "center", md: "left" }}>
                 Nossa IA analisa seu perfil e recomenda os melhores professores para te orientar.
               </Text>
             </VStack>
@@ -259,66 +314,84 @@ export default function HomePage() {
       </Container>
 
       {/* DEPARTAMENTOS */}
-      <Container maxW="8xl" py={{ base: 24, md: 40 }} px={{ base: 8, md: 16 }}>
-        <VStack spacing={12} maxW="6xl" mx="auto">
-          <VStack spacing={4} textAlign="center">
-            <Heading size={{ base: 'lg', md: 'xl' }}>Departamentos Populares</Heading>
-            <Text fontSize={{ base: 'md', md: 'lg' }} color="gray.600">
+      <Container maxW="8xl" py={{ base: 16, md: 40 }} px={{ base: 2, md: 16 }}>
+        <VStack spacing={12} maxW="6xl" mx="auto" w="100%">
+          <VStack spacing={4} textAlign="center" px={{ base: 2, md: 0 }} w="100%">
+            <Heading as="h2" size={{ base: 'xl', md: '2xl' }} color="blue.700" fontWeight="bold" letterSpacing="tight">Departamentos Populares</Heading>
+            <Text fontSize={{ base: 'md', md: 'lg' }} color="gray.600" px={{ base: 2, md: 0 }}>
               Navegue por áreas de conhecimento e descubra especialistas
             </Text>
           </VStack>
 
           {isLoadingDepartments ? (
-            <Center py={8}>
-              <Text color="gray.500">Carregando departamentos...</Text>
+            <Center py={8} w="100%">
+              <Text color="gray.600" fontSize={{ base: 'md', md: 'lg' }}>Carregando departamentos...</Text>
             </Center>
-          ) : (
-            <Wrap justify="center" spacing={4}>
+          ) : popularDepartments.length > 0 ? (
+            <VStack spacing={3} w="100%" px={{ base: 2, md: 0 }}>
               {popularDepartments.map((dept) => {
                 const nomeFormatado = dept.nome
                   .replace(/DEPARTAMENTO/gi, 'FACULDADE')
                   .replace(/DEPTO/gi, 'FACULDADE');
 
                 return (
-                  <WrapItem key={dept.nome}>
-                    <Badge
-                      as={RouterLink}
-                      to={`/professores?departamento=${encodeURIComponent(dept.nome)}`}
-                      variant="outline"
-                      px={5}
-                      py={3}
-                      fontSize={{ base: 'sm', md: 'md' }}
-                      fontWeight="semibold"
-                      borderRadius="lg"
-                      cursor="pointer"
-                      borderWidth="2px"
-                      _hover={{
-                        bg: badgeHoverBg,
-                        color: badgeHoverColor,
-                        borderColor: badgeHoverBg,
-                        transform: 'translateY(-2px)',
-                        boxShadow: 'md',
-                      }}
+                  <Badge
+                    key={dept.nome}
+                    as={RouterLink}
+                    to={`/professores?departamento=${encodeURIComponent(dept.nome)}`}
+                    variant="outline"
+                    px={{ base: 3, md: 5 }}
+                    py={{ base: 2.5, md: 3 }}
+                    fontSize={{ base: 'xs', md: 'sm' }}
+                    fontWeight="semibold"
+                    borderRadius="lg"
+                    cursor="pointer"
+                    transition="all 0.3s"
+                    borderWidth="2px"
+                    w="100%"
+                    display="flex"
+                    justifyContent="space-between"
+                    alignItems="center"
+                    minH={{ base: '48px', md: 'auto' }}
+                    _hover={{
+                      bg: badgeHoverBg,
+                      color: badgeHoverColor,
+                      borderColor: badgeHoverBg,
+                      transform: 'translateY(-2px)',
+                      boxShadow: 'md',
+                    }}
+                  >
+                    <Text 
+                      flex="1" 
+                      noOfLines={2}
+                      textAlign="left"
+                      pr={2}
+                      wordBreak="break-word"
                     >
-                      <HStack spacing={2}>
-                        <Text>{nomeFormatado}</Text>
-                        <Text
-                          fontSize="xs"
-                          bg="blue.50"
-                          color="blue.600"
-                          px={2}
-                          py={0.5}
-                          borderRadius="full"
-                          fontWeight="bold"
-                        >
-                          {dept.quantidade}
-                        </Text>
-                      </HStack>
-                    </Badge>
-                  </WrapItem>
+                      {nomeFormatado}
+                    </Text>
+                    <Text 
+                      fontSize={{ base: 'xs', md: 'sm' }}
+                      bg="blue.50" 
+                      color="blue.600" 
+                      px={{ base: 2, md: 2.5 }}
+                      py={0.5} 
+                      borderRadius="full"
+                      fontWeight="bold"
+                      whiteSpace="nowrap"
+                      flexShrink={0}
+                      ml={2}
+                    >
+                      {dept.quantidade}
+                    </Text>
+                  </Badge>
                 );
               })}
-            </Wrap>
+            </VStack>
+          ) : (
+            <Center py={8} w="100%">
+              <Text color="gray.600" fontSize={{ base: 'md', md: 'lg' }}>Nenhum departamento encontrado.</Text>
+            </Center>
           )}
         </VStack>
       </Container>

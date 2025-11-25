@@ -196,8 +196,8 @@ export default function ProfessoresPage() {
         <Container maxW="container.xl"> 
           <VStack spacing={6} align="stretch">
             <VStack align="start" spacing={1} mb={2}>
-              <Heading as="h1" size="xl" color={titleColor} letterSpacing="tight">Professores da UnB</Heading>
-              <Text fontSize="lg" color={mutedColor}>Explore {professores.length > 0 ? professores.length : '...'} perfis de docentes</Text>
+              <Heading as="h1" size={{ base: '2xl', md: '3xl' }} color="blue.800" fontWeight="bold" letterSpacing="tight">Professores da UnB</Heading>
+              <Text fontSize={{ base: 'md', md: 'lg' }} color="gray.600">Explore {professores.length > 0 ? professores.length : '...'} perfis de docentes</Text>
             </VStack>
 
             <InputGroup size="lg">
@@ -220,7 +220,7 @@ export default function ProfessoresPage() {
             {allAreas.length > 0 && (
               <Box pt={4} borderTop="1px dashed" borderColor="gray.200" mt={2}>
                 <HStack justify="space-between" mb={3}>
-                    <Text fontSize="sm" fontWeight="bold" color="gray.500" textTransform="uppercase" letterSpacing="wide">
+                    <Text fontSize={{ base: 'xs', md: 'sm' }} fontWeight="bold" color="gray.600" textTransform="uppercase" letterSpacing="wide">
                       Filtrar por Áreas de Interesse ({allAreas.length}):
                     </Text>
                     
@@ -275,12 +275,12 @@ export default function ProfessoresPage() {
 
       <Container maxW="container.xl" py={8}>
         <HStack justify="space-between" mb={6}>
-             <Text fontSize="md" fontWeight="medium" color={mutedColor}>{isLoading ? <Text>Carregando...</Text> : `Mostrando ${currentProfessors.length} de ${totalProfessores} resultados`}</Text>
-            {totalPages > 1 && (<Text fontSize="sm" color={mutedColor}>Página {currentPage} de {totalPages}</Text>)}
+             <Text fontSize={{ base: 'sm', md: 'md' }} fontWeight="medium" color="gray.600">{isLoading ? <Text>Carregando...</Text> : `Mostrando ${currentProfessors.length} de ${totalProfessores} resultados`}</Text>
+            {totalPages > 1 && (<Text fontSize={{ base: 'xs', md: 'sm' }} color="gray.600">Página {currentPage} de {totalPages}</Text>)}
         </HStack>
 
         {isLoading ? (
-          <Center py={20}><Text fontSize="lg">Carregando perfis...</Text></Center>
+          <Center py={20}><Text fontSize={{ base: 'md', md: 'lg' }} color="gray.600">Carregando perfis...</Text></Center>
         ) : currentProfessors.length > 0 ? (
           <>
             <SimpleGrid columns={{ base: 1, md: 2, lg: 3, xl: 3 }} spacing={6} pb={10}>
@@ -289,7 +289,7 @@ export default function ProfessoresPage() {
             {totalPages > 1 && (
                 <HStack justify="center" spacing={4} py={8}>
                     <IconButton icon={<ChevronLeft />} onClick={handlePrevPage} isDisabled={currentPage === 1} aria-label="Anterior" variant="outline" />
-                    <HStack spacing={2} display={{ base: 'none', md: 'flex' }}><Text fontSize="sm" color="gray.500">Página {currentPage} de {totalPages}</Text></HStack>
+                    <HStack spacing={2} display={{ base: 'none', md: 'flex' }}><Text fontSize={{ base: 'xs', md: 'sm' }} color="gray.600">Página {currentPage} de {totalPages}</Text></HStack>
                     <IconButton icon={<ChevronRight />} onClick={handleNextPage} isDisabled={currentPage === totalPages} aria-label="Próxima" variant="outline" />
                 </HStack>
             )}
@@ -297,7 +297,7 @@ export default function ProfessoresPage() {
         ) : (
           <Center py={20} flexDirection="column" bg={headerBg} borderRadius="xl" borderWidth="1px" borderColor={borderColor}>
              <Icon as={Search} boxSize={10} color="gray.300" mb={4} />
-            <Text color={mutedColor} fontSize="lg">Nenhum professor encontrado com os filtros selecionados.</Text>
+            <Text color="gray.600" fontSize={{ base: 'md', md: 'lg' }}>Nenhum professor encontrado com os filtros selecionados.</Text>
             <Button mt={4} variant="outline" onClick={clearFilters}>Limpar filtros</Button>
           </Center>
         )}
