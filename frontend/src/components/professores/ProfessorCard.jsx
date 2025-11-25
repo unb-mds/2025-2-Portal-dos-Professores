@@ -22,7 +22,7 @@ export default function ProfessorCard({ professor }) {
   const bg = useColorModeValue("white", "gray.800");
   const borderColor = useColorModeValue("gray.100", "gray.700");
   const accentColor = useColorModeValue("blue.600", "blue.400");
-  const mutedColor = useColorModeValue("gray.500", "gray.400");
+  const mutedColor = useColorModeValue("gray.600", "gray.400");
   const hoverBorderColor = useColorModeValue("blue.200", "blue.800");
 
   const initials = professor.nome
@@ -117,8 +117,8 @@ export default function ProfessorCard({ professor }) {
             </HStack>
 
             <Text
-              fontSize="xs"
-              color={mutedColor}
+              fontSize={{ base: 'xs', md: 'sm' }}
+              color="gray.600"
               textTransform="uppercase"
               noOfLines={1}
             >
@@ -130,16 +130,16 @@ export default function ProfessorCard({ professor }) {
         <Divider />
 
         {/* CONTATOS (apenas e-mail + campus + Lattes) */}
-        <VStack align="start" spacing={2} fontSize="sm">
-          <HStack color={mutedColor}>
+        <VStack align="start" spacing={2}>
+          <HStack color="gray.600">
             <Icon as={Mail} boxSize={4} />
-            <Text noOfLines={1}>{email || "não informado"}</Text>
+            <Text fontSize={{ base: 'xs', md: 'sm' }} noOfLines={1} color="gray.600">{email || "não informado"}</Text>
           </HStack>
 
           {campus && (
-            <HStack color={mutedColor}>
+            <HStack color="gray.600">
               <Icon as={MapPin} boxSize={4} />
-              <Text fontSize="xs" textTransform="uppercase">
+              <Text fontSize={{ base: 'xs', md: 'sm' }} textTransform="uppercase" color="gray.600">
                 {campus}
               </Text>
             </HStack>
@@ -148,7 +148,7 @@ export default function ProfessorCard({ professor }) {
           {professor.lattes_url && (
             <HStack color={accentColor}>
               <Icon as={FileText} boxSize={4} />
-              <Link href={professor.lattes_url} isExternal fontSize="xs">
+              <Link href={professor.lattes_url} isExternal fontSize={{ base: 'xs', md: 'sm' }} color={accentColor}>
                 Currículo Lattes
               </Link>
             </HStack>
@@ -157,9 +157,9 @@ export default function ProfessorCard({ professor }) {
 
         {/* PUBLICAÇÕES (dados_scholar) */}
         {professor.dados_scholar?.publicacoes?.length > 0 && (
-          <HStack color={mutedColor}>
+          <HStack color="gray.600">
             <Icon as={FileText} boxSize={4} />
-            <Text fontSize="xs">
+            <Text fontSize={{ base: 'xs', md: 'sm' }} color="gray.600">
               {professor.dados_scholar.publicacoes.length} publicações
             </Text>
           </HStack>
@@ -171,11 +171,11 @@ export default function ProfessorCard({ professor }) {
         {/* ÁREAS DE INTERESSE */}
         <Box minH="56px">
           <Text
-            fontSize="xs"
+            fontSize={{ base: 'xs', md: 'sm' }}
             fontWeight="bold"
             textTransform="uppercase"
             letterSpacing="wider"
-            color={mutedColor}
+            color="gray.600"
             mb={2}
           >
             Áreas de interesse
@@ -195,7 +195,7 @@ export default function ProfessorCard({ professor }) {
               ))}
             </HStack>
           ) : (
-            <Text fontSize="xs" color={mutedColor} fontStyle="italic">
+            <Text fontSize={{ base: 'xs', md: 'sm' }} color="gray.600" fontStyle="italic">
               dados em atualização
             </Text>
           )}

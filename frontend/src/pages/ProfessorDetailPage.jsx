@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import { useProfessorData } from '../context/ProfessorContext';
-import { Mail, Phone, MapPin, BookOpen } from 'lucide-react';
+import { Mail, Phone, MapPin, BookOpen, ArrowLeft } from 'lucide-react';
 import {
     Box,
     Flex,
@@ -33,7 +33,7 @@ import {
 const MissingDataPlaceholder = ({ title, description, label }) => {
     if (label) {
         return (
-            <Text color="gray.500" fontStyle="italic" fontSize="sm" py={2}>
+            <Text color="gray.500" fontStyle="italic" fontSize={{ base: 'sm', md: 'md' }} py={2}>
                 {label ? `Nenhum(a) ${label} detalhado(a) disponível.` : "Nenhum dado detalhado disponível."}
             </Text>
         );
@@ -52,10 +52,10 @@ const MissingDataPlaceholder = ({ title, description, label }) => {
             bg='blue.50'
         >
             <AlertIcon boxSize='24px' mr={0} color="blue.500" />
-            <AlertTitle mt={4} mb={1} fontSize='lg' fontWeight="bold" color="blue.700">
+            <AlertTitle mt={4} mb={1} fontSize={{ base: 'md', md: 'lg' }} fontWeight="bold" color="blue.700">
                 {title || "Dados Pessoais Não Encontrados"}
             </AlertTitle>
-            <AlertDescription maxWidth='sm' color="blue.700">
+            <AlertDescription maxWidth='sm' color="blue.700" fontSize={{ base: 'sm', md: 'md' }}>
                 {description || "O resumo pessoal ou o currículo lattes minerado para este professor não foi encontrado em nossa base de dados."}
             </AlertDescription>
         </Alert>
@@ -65,12 +65,12 @@ const MissingDataPlaceholder = ({ title, description, label }) => {
 // FUNÇÃO: Componente de Exibição de Projeto
 const ProjectItem = ({ projeto }) => (
     <Box p={4} borderLeft="4px solid" borderColor="blue.400" bg="gray.50" mb={4} borderRadius="lg">
-        <Text fontWeight="bold" fontSize="md" color="gray.800">{projeto.titulo}</Text>
-        <Text fontSize="sm" color="gray.600" mt={1}>
-            {projeto.ano_periodo} — **{projeto.situacao}** ({projeto.natureza})
+        <Text fontWeight="bold" fontSize={{ base: 'md', md: 'lg' }} color="gray.800">{projeto.titulo}</Text>
+        <Text fontSize={{ base: 'sm', md: 'md' }} color="gray.600" mt={1}>
+            {projeto.ano_periodo} — {projeto.situacao} ({projeto.natureza})
         </Text>
         {projeto.integrantes && (
-            <Text fontSize="xs" color="gray.500" mt={1} noOfLines={1} textOverflow="ellipsis">
+            <Text fontSize={{ base: 'xs', md: 'sm' }} color="gray.500" mt={1} noOfLines={1} textOverflow="ellipsis">
                 Integrantes: {projeto.integrantes}
             </Text>
         )}
@@ -82,13 +82,13 @@ const FormacaoItem = ({ nivel, cursos }) => (
     <Box mb={6}>
         <HStack mb={2} spacing={2} align="center">
             <Box w="8px" h="8px" bg="blue.500" borderRadius="full" />
-            <Heading as="h4" size="sm" color="blue.700" textTransform="uppercase">
+            <Heading as="h4" size={{ base: 'sm', md: 'md' }} color="blue.700" textTransform="uppercase" fontWeight="bold" letterSpacing="tight">
                 {nivel}
             </Heading>
         </HStack>
         <VStack align="start" spacing={1} pl={4} borderLeft="2px solid" borderColor="gray.200">
             {cursos.map((curso, index) => (
-                <Text key={index} fontSize="sm" color="gray.700">
+                <Text key={index} fontSize={{ base: 'sm', md: 'md' }} color="gray.600">
                     • {curso}
                 </Text>
             ))}
@@ -97,7 +97,7 @@ const FormacaoItem = ({ nivel, cursos }) => (
 );
 
 /**
- *função: Extrai a atividade de ensino mais recente, filtrando atividades genéricas/programáticas.
+ * função: Extrai a atividade de ensino mais recente, filtrando atividades genéricas/programáticas.
  * @param {object} professor - O objeto completo do professor.
  * @returns {string | null} A descrição da última atividade de ensino formatada ou null.
  */
@@ -185,7 +185,7 @@ const ProfessorDetailPage = () => {
             <Flex justify="center" align="center" minH="100vh" bg="#f9fafb" p={6}>
                 <VStack spacing={4} bg="white" p={10} borderRadius="xl" boxShadow="lg" maxW="900px" w="100%">
                     <Spinner size="xl" color="blue.500" />
-                    <Heading size="lg" color="gray.700">Carregando dados globais...</Heading>
+                    <Heading as="h1" size={{ base: '2xl', md: '3xl' }} color="blue.800" fontWeight="bold" letterSpacing="tight">Carregando dados globais...</Heading>
                 </VStack>
             </Flex>
         );
@@ -195,8 +195,8 @@ const ProfessorDetailPage = () => {
         return (
             <Flex justify="center" align="center" minH="100vh" bg="#f9fafb" p={6}>
                 <VStack spacing={4} bg="white" p={10} borderRadius="xl" boxShadow="lg" maxW="900px" w="100%">
-                    <Heading color="red.500" size="lg">❌ Erro ao Carregar Perfil</Heading>
-                    <Text>O professor não foi encontrado ou houve um erro na comunicação com a API.</Text>
+                    <Heading as="h1" color="red.500" size={{ base: '2xl', md: '3xl' }} fontWeight="bold" letterSpacing="tight">❌ Erro ao Carregar Perfil</Heading>
+                    <Text color="gray.600" fontSize={{ base: 'md', md: 'lg' }}>O professor não foi encontrado ou houve um erro na comunicação com a API.</Text>
                     <Button onClick={() => navigate(-1)} colorScheme="blue">Voltar</Button>
                 </VStack>
             </Flex>
@@ -234,9 +234,9 @@ const ProfessorDetailPage = () => {
                     onClick={() => navigate(-1)}
                     variant="ghost"
                     colorScheme="blue"
-                    leftIcon="←"
+                    leftIcon={<ArrowLeft size={18} />}
                     _hover={{ bg: 'blue.50' }}
-                    fontSize="md"
+                    fontSize={{ base: 'sm', md: 'md' }}
                     fontWeight="medium"
                     p={3}
                 >
@@ -266,11 +266,11 @@ const ProfessorDetailPage = () => {
                         fallbackSrc="https://via.placeholder.com/180/E2E8F0/A0AEC0?text=Foto"
                     />
                     <Box textAlign={{ base: "center", md: "left" }} w="100%">
-                        <Heading as="h1" size="xl" mb={1} color="gray.800">
+                        <Heading as="h2" size={{ base: 'xl', md: '2xl' }} mb={1} color="blue.800" fontWeight="bold" letterSpacing="tight">
                             {professor.nome}
                         </Heading>
                         {/* Departamento */}
-                        <Text color="gray.600" fontSize="lg" mb={4} fontWeight="medium">
+                        <Text color="gray.600" fontSize={{ base: 'md', md: 'lg' }} mb={4} fontWeight="medium">
                             {professor.departamento}
                         </Text>
                         
@@ -309,7 +309,7 @@ const ProfessorDetailPage = () => {
                             gap={{ base: 3, md: 6 }} 
                             mt={4} 
                             mb={6} 
-                            fontSize="md" 
+                            fontSize={{ base: 'sm', md: 'md' }}
                             color="gray.600" 
                             wrap="wrap"
                             justify={{ base: "center", md: "flex-start" }}
@@ -352,7 +352,6 @@ const ProfessorDetailPage = () => {
                     variant="enclosed" 
                     colorScheme="blue" 
                     sx={{
-                        // ... estilos de abas mantidos
                         '.chakra-tabs__tab': {
                             fontWeight: 'semibold',
                             color: 'gray.600',
@@ -401,18 +400,18 @@ const ProfessorDetailPage = () => {
                     <TabPanels>
                         {/* ABA: Visão Geral */}
                         <TabPanel>
-                            {/* 💡 EXIBIÇÃO DA ÚLTIMA DISCIPLINA (Lógica Corrigida/Refinada) */}
+                            {/* 📚 EXIBIÇÃO DA ÚLTIMA DISCIPLINA (Lógica Corrigida/Refinada) */}
                             {ultimaDisciplina && (
                                 <Box p={4} bg="blue.50" borderRadius="lg" mb={6} borderLeft="4px solid" borderColor="blue.400">
                                     <HStack spacing={2} mb={1}>
                                         <BookOpen size={18} color="#3182CE" />
-                                        <Text fontWeight="bold" fontSize="sm" color="blue.700">ÚLTIMA ATIVIDADE DE ENSINO (LATTES)</Text>
+                                        <Text fontWeight="bold" fontSize={{ base: 'xs', md: 'sm' }} color="blue.700" textTransform="uppercase">ÚLTIMA ATIVIDADE DE ENSINO (LATTES)</Text>
                                     </HStack>
-                                    <Text fontSize="md" color="gray.700">{ultimaDisciplina}</Text>
+                                    <Text fontSize={{ base: 'sm', md: 'md' }} color="gray.700">{ultimaDisciplina}</Text>
                                 </Box>
                             )}
 
-                            <Heading as="h3" size="md" mb={4} color="gray.700">Sobre</Heading>
+                            <Heading as="h3" size={{ base: 'md', md: 'lg' }} mb={4} color="blue.700" fontWeight="bold" letterSpacing="tight">Sobre</Heading>
                             {/* Lógica para tratar "não informada" */}
                             {(() => {
                                 const descriptionSource = professor.dados_lattes?.resumo_cv || professor.descricao_pessoal;
@@ -428,7 +427,7 @@ const ProfessorDetailPage = () => {
                                     );
                                 } else {
                                     return (
-                                        <Text lineHeight="taller" color="gray.700">
+                                        <Text lineHeight="taller" color="gray.600" fontSize={{ base: 'md', md: 'lg' }}>
                                             {descriptionSource}
                                         </Text>
                                     );
@@ -438,7 +437,7 @@ const ProfessorDetailPage = () => {
 
                         {/* ABA: Formação */}
                         <TabPanel>
-                            <Heading as="h3" size="md" mb={4} color="gray.700">Formação Acadêmica</Heading>
+                            <Heading as="h3" size={{ base: 'md', md: 'lg' }} mb={4} color="blue.700" fontWeight="bold" letterSpacing="tight">Formação Acadêmica</Heading>
                             {hasFormacao ? (
                                 <VStack align="start" spacing={6}>
                                     {Object.entries(professor.formacao_academica).map(
@@ -454,7 +453,7 @@ const ProfessorDetailPage = () => {
 
                         {/* ABA: Projetos */}
                         <TabPanel>
-                             <Heading as="h3" size="md" mb={4} color="gray.700">Projetos de Pesquisa</Heading>
+                             <Heading as="h3" size={{ base: 'md', md: 'lg' }} mb={4} color="blue.700" fontWeight="bold" letterSpacing="tight">Projetos de Pesquisa</Heading>
                             {hasProjects ? (
                                 <VStack align="stretch" spacing={4}>
                                     {professor.dados_lattes.projetos_pesquisa.map((projeto, index) => (
@@ -471,22 +470,22 @@ const ProfessorDetailPage = () => {
 
                 {/* === Bloco de Contato (MANTIDO CONFORME ORIGINAL) === */}
                 <Box mt={8} p={6} border="1px solid" borderColor="gray.200" borderRadius="lg" boxShadow="sm">
-                    <Heading as="h3" size="md" mb={4}>
+                    <Heading as="h3" size={{ base: 'md', md: 'lg' }} mb={4} color="blue.700" fontWeight="bold" letterSpacing="tight">
                         Contato
                     </Heading>
                     
-                    <Flex direction="column" gap={1} fontSize="sm">
+                    <Flex direction="column" gap={1} fontSize={{ base: 'sm', md: 'md' }}>
                         <HStack align="center">
-                            <Mail size={16} style={{ marginRight: '8px', color: 'gray.600' }} />
-                            <Text>{professor.contatos?.email || 'Não informado'}</Text>
+                            <Mail size={16} style={{ marginRight: '8px', color: 'var(--chakra-colors-gray-600)' }} />
+                            <Text color="gray.600">{professor.contatos?.email || 'Não informado'}</Text>
                         </HStack>
                         <HStack align="center">
-                            <Phone size={16} style={{ marginRight: '8px', color: 'gray.600' }} />
-                            <Text>Telefone: {professor.contatos?.telefone && professor.contatos.telefone.length > 5 ? professor.contatos.telefone : 'Não informado'}</Text>
+                            <Phone size={16} style={{ marginRight: '8px', color: 'var(--chakra-colors-gray-600)' }} />
+                            <Text color="gray.600">Telefone: {professor.contatos?.telefone && professor.contatos.telefone.length > 5 ? professor.contatos.telefone : 'Não informado'}</Text>
                         </HStack>
                         <HStack align="center">
-                            <MapPin size={16} style={{ marginRight: '8px', color: 'gray.600' }} />
-                            <Text>Sala: {professor.contatos?.sala || 'Não informado'}</Text>
+                            <MapPin size={16} style={{ marginRight: '8px', color: 'var(--chakra-colors-gray-600)' }} />
+                            <Text color="gray.600">Sala: {professor.contatos?.sala || 'Não informado'}</Text>
                         </HStack>
                     </Flex>
                 </Box>

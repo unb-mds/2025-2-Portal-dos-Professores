@@ -40,19 +40,20 @@ const SobreNosPage = () => {
         {/* TÍTULO PRINCIPAL */}
         <Heading 
           as="h1" 
-          size="2xl" 
-          color="blue.700" 
-          fontWeight="extrabold" 
+          size={{ base: '2xl', md: '3xl' }}
+          color="blue.800" 
+          fontWeight="bold" 
           borderBottom="4px solid" 
           borderColor="blue.500" 
           pb={4}
           textAlign="center"
+          letterSpacing="tight"
         >
           Quem somos?
         </Heading>
 
         {/* BLOCO DE TEXTO  */}
-        <Stack spacing={6} fontSize={{ base: "md", md: "lg" }} color="gray.700">
+        <Stack spacing={6} fontSize={{ base: "md", md: "lg" }} color="gray.600">
           <Text>
             O Hub Docente UnB é um projeto acadêmico idealizado e desenvolvido
             por estudantes de Engenharia de Software da Universidade de Brasília,
@@ -82,7 +83,7 @@ const SobreNosPage = () => {
 
         {/* EQUIPE DE DESENVOLVIMENTO */}
         <VStack align="stretch" spacing={6}>
-          <Heading as="h2" size="xl" color="blue.600" fontWeight="bold" textAlign="center">
+          <Heading as="h2" size={{ base: 'xl', md: '2xl' }} color="blue.700" fontWeight="bold" textAlign="center" letterSpacing="tight">
             Equipe de Desenvolvimento 
           </Heading>
           
@@ -124,7 +125,7 @@ const SobreNosPage = () => {
                     
                     {/* Informações do Desenvolvedor */}
                     <VStack align="flex-start" spacing={1}>
-                      <Text fontWeight="bold" color="gray.800" fontSize="lg">
+                      <Text fontWeight="bold" color="gray.800" fontSize={{ base: 'md', md: 'lg' }}>
                         {pessoa.nome}
                       </Text>
                       <Link
@@ -151,7 +152,7 @@ const SobreNosPage = () => {
 
         {/* CÓDIGO-FONTE */}
         <VStack align="stretch" spacing={4}>
-          <Heading as="h2" size="xl" color="blue.600" fontWeight="bold" textAlign="center">
+          <Heading as="h2" size={{ base: 'xl', md: '2xl' }} color="blue.700" fontWeight="bold" textAlign="center" letterSpacing="tight">
             Código-fonte 
           </Heading>
           <Box 
@@ -162,7 +163,7 @@ const SobreNosPage = () => {
             borderColor="blue.500"
             textAlign="center" 
           >
-            <Text mb={3} color="gray.700">
+            <Text mb={3} color="gray.600" fontSize={{ base: 'md', md: 'lg' }}>
               Acesse o repositório completo no GitHub com documentação de setup,
               arquitetura e trilha de contribuição.
             </Text>
@@ -170,7 +171,7 @@ const SobreNosPage = () => {
               href="https://github.com/unb-mds/2025-2-Portal-dos-Professores"
               isExternal
               fontWeight="bold"
-              fontSize="lg"
+              fontSize={{ base: 'md', md: 'lg' }}
               color="blue.700"
               _hover={{ textDecoration: "underline", color: "blue.900" }}
             >
