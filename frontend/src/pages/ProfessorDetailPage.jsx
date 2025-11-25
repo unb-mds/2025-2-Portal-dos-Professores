@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import { useProfessorData } from '../context/ProfessorContext';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, BookOpen } from 'lucide-react';
 import {
     Box,
     Flex,
@@ -102,6 +102,76 @@ const FormacaoItem = ({ nivel, cursos }) => (
     </Box>
 );
 
+/**
+ * 🚀 FUNÇÃO REFINADA: Extrai a atividade de ensino mais recente, filtrando atividades genéricas/programáticas.
+ * @param {object} professor - O objeto completo do professor.
+ * @returns {string | null} A descrição da última atividade de ensino formatada ou null.
+ */
+const getUltimaDisciplina = (professor) => {
+    if (!professor?.dados_lattes?.atuacao_profissional) {
+        return null;
+    }
+
+    let ultimaAtividadeEnsino = null;
+    let ultimoAnoRecente = 0; 
+
+    professor.dados_lattes.atuacao_profissional.forEach(atuacao => {
+        atuacao.atividades?.forEach(atividade => {
+            const detalhes = atividade.detalhes?.toLowerCase() || '';
+            const periodo = atividade.periodo || '';
+
+            // 1. Check básico: Deve ser atividade de Ensino
+            if (!detalhes.includes('ensino')) {
+                return;
+            }
+
+            // 2. FILTRAGEM DE ADMIN/PROGRAMA (Exclui atividades que parecem ser funções permanentes/administrativas)
+            const isProgramActivity = 
+                detalhes.includes('mestrado em') || 
+                detalhes.includes('decanato') || 
+                detalhes.includes('direção') ||
+                detalhes.includes('coordenação') ||
+                detalhes.includes('programa de');
+            
+            if (isProgramActivity) {
+                // Se a atividade for claramente programática/administrativa, pulamos ela
+                return; 
+            }
+            
+            // 3. Lógica de Recência (Prioriza o ano de FIM ou "Atual")
+            let recencyScore = 0;
+            
+            if (periodo.toLowerCase().includes('atual')) {
+                recencyScore = 3000; // Pontuação máxima
+            } else {
+                // Tenta encontrar todos os anos de 4 dígitos (Start e End)
+                const anos = periodo.match(/\d{4}/g) || [];
+                
+                if (anos.length > 0) {
+                    // Usa o último ano encontrado (o ano de FIM/conclusão)
+                    recencyScore = parseInt(anos[anos.length - 1]);
+                }
+            }
+            
+            // 4. Compara e atualiza
+            if (recencyScore > ultimoAnoRecente) {
+                ultimoAnoRecente = recencyScore;
+                ultimaAtividadeEnsino = {
+                    detalhes: atividade.detalhes,
+                    periodo: atividade.periodo
+                };
+            }
+        });
+    });
+
+    // Retorna a string formatada ou null
+    if (ultimaAtividadeEnsino) {
+        return `${ultimaAtividadeEnsino.detalhes} (${ultimaAtividadeEnsino.periodo})`;
+    }
+    
+    return null;
+};
+
 // =================================================================
 // COMPONENTE PRINCIPAL
 // =================================================================
@@ -156,11 +226,11 @@ const ProfessorDetailPage = () => {
         }
     };
 
-    // 🛑 FUNÇÃO getCampus REMOVIDA
-    // 🛑 VARIÁVEL campusName REMOVIDA
-    
     const hasProjects = professor.dados_lattes?.projetos_pesquisa?.length > 0;
     const hasFormacao = Object.keys(professor.formacao_academica || {}).length > 0;
+    
+    // 💡 CHAMADA DA NOVA FUNÇÃO
+    const ultimaDisciplina = getUltimaDisciplina(professor);
 
 
     // =================================================================
@@ -214,7 +284,7 @@ const ProfessorDetailPage = () => {
                             {professor.departamento}
                         </Text>
                         
-                        {/* REQ 1 & 5: Botões de Ação */}
+                        {/* Botões de Ação */}
                         <HStack spacing={4} mb={4} justify={{ base: "center", md: "flex-start" }}>
                             {professor.contatos?.email && (
                                 <Button
@@ -244,7 +314,7 @@ const ProfessorDetailPage = () => {
                             )}
                         </HStack>
 
-                        {/* BLOCO: Campus (REMOVIDO), Sala e Telefone (Conforme protótipo) */}
+                        {/* BLOCO: Sala e Telefone */}
                         <Flex 
                             gap={{ base: 3, md: 6 }} 
                             mt={4} 
@@ -254,8 +324,6 @@ const ProfessorDetailPage = () => {
                             wrap="wrap"
                             justify={{ base: "center", md: "flex-start" }}
                         >
-                            {/* 🛑 Campus (REMOVIDO) */}
-
                             {/* Sala/Location (e.g., ICC Norte, Sala 315) */}
                             {professor.contatos?.sala && professor.contatos.sala.toLowerCase() !== 'não informado' && (
                                 <HStack spacing={1} title="Localização">
@@ -288,12 +356,13 @@ const ProfessorDetailPage = () => {
 
                 <Divider mt={8} mb={6} />
 
-                {/* === Abas de Conteúdo (Estilização replicada) === */}
+                {/* === Abas de Conteúdo === */}
                 <Tabs 
                     isFitted 
                     variant="enclosed" 
                     colorScheme="blue" 
                     sx={{
+                        // ... estilos de abas mantidos
                         '.chakra-tabs__tab': {
                             fontWeight: 'semibold',
                             color: 'gray.600',
@@ -342,7 +411,19 @@ const ProfessorDetailPage = () => {
                     <TabPanels>
                         {/* ABA: Visão Geral */}
                         <TabPanel>
+                            {/* 💡 EXIBIÇÃO DA ÚLTIMA DISCIPLINA (Lógica Corrigida/Refinada) */}
+                            {ultimaDisciplina && (
+                                <Box p={4} bg="blue.50" borderRadius="lg" mb={6} borderLeft="4px solid" borderColor="blue.400">
+                                    <HStack spacing={2} mb={1}>
+                                        <BookOpen size={18} color="#3182CE" />
+                                        <Text fontWeight="bold" fontSize="sm" color="blue.700">ÚLTIMA ATIVIDADE DE ENSINO (LATTES)</Text>
+                                    </HStack>
+                                    <Text fontSize="md" color="gray.700">{ultimaDisciplina}</Text>
+                                </Box>
+                            )}
+
                             <Heading as="h3" size="md" mb={4} color="gray.700">Sobre</Heading>
+                            {/* Lógica para tratar "não informada" */}
                             {(() => {
                                 const descriptionSource = professor.dados_lattes?.resumo_cv || professor.descricao_pessoal;
                                 const descriptionContent = (descriptionSource || '').toLowerCase().trim();
