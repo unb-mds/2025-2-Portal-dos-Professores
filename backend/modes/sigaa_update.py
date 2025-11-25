@@ -6,95 +6,71 @@ from scrapers.sigaa_scraper import SigaaScraper
 
 logger = logging.getLogger(__name__)
 
-async def update_sigaa_data_all():
+async def _run_sigaa_update_core(target_departments: list):
     """
-    Executa o scraper do SIGAA para TODOS os departamentos.
-    Lê o JSON existente, atualiza os dados do SIGAA para professores existentes,
-    adiciona novos professores e PRESERVA os dados do Lattes ('dados_lattes').
+    Função interna que roda o scraper para uma lista específica de departamentos
+    e faz o merge com o banco de dados.
     """
-    logger.info(f"--- MODO SIGAA-ONLY (COM MERGE INTELIGENTE E SEGURO) ---")
-    
     db_manager = DatabaseManager(config.JSON_FILE_PATH)
     
     existing_data = db_manager.load_data() 
     professors_map = {prof['pagina_sigaa_url']: prof for prof in existing_data if 'pagina_sigaa_url' in prof}
-    logger.info(f"Carregados {len(professors_map)} registros existentes de '{config.JSON_FILE_PATH}'.")
+    logger.info(f"Carregados {len(professors_map)} registros existentes.")
     
-    logger.info(f"Iniciando scraper do SIGAA para TODOS os {len(config.ALL_DEPARTMENTS)} departamentos...")
+    logger.info(f"Iniciando scraper do SIGAA para {len(target_departments)} departamentos...")
     sigaa_scraper = SigaaScraper() 
     sigaa_data_current_run = []
 
     try:
-        sigaa_data_current_run = await sigaa_scraper.scrape_professors_by_department(config.ALL_DEPARTMENTS)
+        sigaa_data_current_run = await sigaa_scraper.scrape_professors_by_department(target_departments)
         if sigaa_data_current_run:
             logger.info(f"SIGAA: Coletados {len(sigaa_data_current_run)} registros nesta execução.")
         else:
             logger.warning("SIGAA: Nenhum professor encontrado nesta execução.")
-            logger.warning("Continuando o processo, o JSON final pode não refletir exclusões.")
+            return 
             
     except Exception as e:
-        logger.error(f"[ERRO CRÍTICO SIGAA] O processo de scraping falhou: {e}")
-        logger.error("Abortando a atualização, o arquivo JSON não será modificado.")
+        logger.error(f"[ERRO CRÍTICO SIGAA] O processo falhou: {e}")
         return 
 
     logger.info("Iniciando merge dos dados do SIGAA...")
-    novos_adicionados = 0
+    novos = 0
     atualizados = 0
     
-    sigaa_field_keys = [
-        "nome", "departamento", "foto_url", "pagina_sigaa_url",
-        "descricao_pessoal", "lattes_url", "formacao_academica", "contatos",
-    ]
+    sigaa_keys = ["nome", "departamento", "foto_url", "pagina_sigaa_url", "descricao_pessoal", "lattes_url", "formacao_academica", "contatos"]
 
-    for prof_sigaa_atual in sigaa_data_current_run:
-        sigaa_url = prof_sigaa_atual.get('pagina_sigaa_url')
-        if not sigaa_url:
-            logger.warning(f"Registro SIGAA sem 'pagina_sigaa_url' encontrado: {prof_sigaa_atual.get('nome')}")
-            continue 
+    for prof_novo in sigaa_data_current_run:
+        url = prof_novo.get('pagina_sigaa_url')
+        if not url: continue 
 
-        professor_existente = professors_map.get(sigaa_url)
+        prof_existente = professors_map.get(url)
 
-        if professor_existente:
-            logger.debug(f"Atualizando dados SIGAA para: {prof_sigaa_atual.get('nome')}")
-            
-            for key in sigaa_field_keys:
-                new_value = prof_sigaa_atual.get(key)
-                
-                if new_value is not None:
-                    professor_existente[key] = new_value
-                else:
-                    if key not in professor_existente:
-                        professor_existente[key] = None 
-
-            if 'dados_lattes' not in professor_existente:
-                 professor_existente['dados_lattes'] = None
-            
+        if prof_existente:
+            for key in sigaa_keys:
+                if prof_novo.get(key) is not None:
+                    prof_existente[key] = prof_novo.get(key)
             atualizados += 1
         else:
-            logger.debug(f"Adicionando novo registro SIGAA para: {prof_sigaa_atual.get('nome')}")
+            logger.info(f"Novo professor encontrado: {prof_novo.get('nome')}")
+            prof_novo['dados_lattes'] = None
+            prof_novo['dados_scholar'] = None
+            professors_map[url] = prof_novo
+            novos += 1
             
-            novo_professor = prof_sigaa_atual.copy()
-            
-            for key in sigaa_field_keys:
-                if key not in novo_professor:
-                    novo_professor[key] = None
-            
-            novo_professor['dados_lattes'] = None 
+    logger.info(f"Merge concluído: {novos} novos, {atualizados} atualizados.")
 
-            professors_map[sigaa_url] = novo_professor
-            novos_adicionados += 1
-            
-    logger.info(f"Merge SIGAA concluído: {novos_adicionados} adicionados, {atualizados} atualizados.")
-
-    final_prof_list = list(professors_map.values())
-    
-    if final_prof_list:
-        logger.info(f"\nSalvando {len(final_prof_list)} registros totais ATUALIZADOS em '{config.JSON_FILE_PATH}'...")
-        db_manager.write_data(final_prof_list)
-        logger.info(f"Dados salvos com sucesso.")
+    if novos > 0 or atualizados > 0:
+        db_manager.write_data(list(professors_map.values()))
     else:
-        logger.warning("\nNenhum dado de professor para salvar.")
+        logger.info("Nenhuma alteração necessária no banco de dados.")
 
-    logger.info(f"--- MODO SIGAA-ONLY FINALIZADO ---")
 
-    # trigger ci
+async def update_sigaa_data_all():
+    """Modo Pipeline: Roda para TODOS os departamentos do config."""
+    logger.info("--- MODO SIGAA (TODOS) ---")
+    await _run_sigaa_update_core(config.ALL_DEPARTMENTS)
+
+async def update_sigaa_data_for_departments(target_departments: list):
+    """Modo Manual: Roda apenas para departamentos específicos."""
+    logger.info(f"--- MODO SIGAA (DEPARTAMENTO) ---")
+    await _run_sigaa_update_core(target_departments)

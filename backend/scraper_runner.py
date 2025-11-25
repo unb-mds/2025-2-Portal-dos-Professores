@@ -5,7 +5,7 @@ import logging
 import argparse 
 from dotenv import load_dotenv 
 
-from modes.sigaa_update import update_sigaa_data_all
+from modes.sigaa_update import update_sigaa_data_all, update_sigaa_data_for_departments
 from modes.lattes_update import update_lattes_data_for_departments, update_lattes_data_missing
 from modes.scholar_update import update_scholar_data_for_departments, update_scholar_data_missing
 
@@ -45,6 +45,12 @@ if __name__ == "__main__":
         help="[PIPELINE] Executa o scraper do SIGAA (fonte da verdade) para TODOS os deptos."
     )
     mode_group.add_argument(
+        "--sigaa-dept", 
+        action='append', 
+        metavar='NOME_DEPARTAMENTO',
+        help="[MANUAL] Atualiza o SIGAA apenas para o(s) depto(s) especificado(s) (busca novos professores)."
+    )
+    mode_group.add_argument(
         "--lattes-missing",
         action="store_true",
         help="[PIPELINE] Executa o Lattes APENAS para professores com 'dados_lattes' nulos."
@@ -78,6 +84,11 @@ if __name__ == "__main__":
     if args.sigaa:
         logger.info("Modo --sigaa selecionado.")
         asyncio.run(update_sigaa_data_all())
+
+    elif args.sigaa_dept:
+        logger.info("Modo --sigaa-dept selecionado.")
+        departments = get_valid_departments(args.sigaa_dept)
+        asyncio.run(update_sigaa_data_for_departments(departments))
         
     elif args.lattes_missing:
         logger.info("Modo --lattes-missing (Global) selecionado.")
