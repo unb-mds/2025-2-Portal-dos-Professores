@@ -128,7 +128,7 @@ const MetricComparison = ({ label, total, recent }) => {
 };
 
 const ScholarTab = ({ data }) => {
-    if (!data) return <MissingDataPlaceholder label="Produção Scholar" />;
+    if (!data) return <MissingDataPlaceholder label="Pesquisas" />;
 
     return (
         <VStack spacing={8} align="stretch">
@@ -584,7 +584,7 @@ const ProfessorDetailPage = () => {
                         <Tab>Formação ({Object.keys(professor.formacao_academica || {}).length})</Tab>
                         <Tab>Projetos ({professor.dados_lattes?.projetos_pesquisa?.length || 0})</Tab>
                         <Tab>Atuação</Tab>
-                        <Tab>Produção Scholar</Tab>
+                        <Tab>Pesquisas</Tab>
                     </TabList>
 
                     <TabPanels>
@@ -659,9 +659,9 @@ const ProfessorDetailPage = () => {
                              <ProfessionalTab data={professor.dados_lattes?.atuacao_profissional} />
                         </TabPanel>
 
-                        {/* ABA: Produção Scholar */}
+                        {/* ABA: Pesquisas */}
                         <TabPanel>
-                             <Heading as="h3" size="md" mb={4} color="gray.700">Produção Scholar</Heading>
+                             <Heading as="h3" size="md" mb={4} color="gray.700">Pesquisas</Heading>
                              <ScholarTab data={professor.dados_scholar} />
                         </TabPanel>
                     </TabPanels>
