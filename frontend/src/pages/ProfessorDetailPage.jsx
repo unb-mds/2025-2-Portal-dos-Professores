@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import { useProfessorData } from '../context/ProfessorContext';
-import { Mail, Phone, MapPin, BookOpen, ArrowLeft } from 'lucide-react';
+import { Mail, Phone, MapPin, BookOpen, ExternalLink, GraduationCap, Briefcase } from 'lucide-react';
 import {
     Box,
     Flex,
@@ -24,18 +24,243 @@ import {
     AlertIcon,
     AlertTitle,
     AlertDescription,
+    Badge,
+    Table,
+    Thead,
+    Tbody,
+    Tr,
+    Th,
+    Td,
+    TableContainer,
+    Progress,
+    Stat,
+    StatLabel,
+    StatNumber,
+    StatHelpText,
+    SimpleGrid
 } from "@chakra-ui/react";
 
 // =================================================================
-// FUNÇÕES AUXILIARES
+// NOVOS COMPONENTES (Atuação Profissional e Scholar)
+// =================================================================
+
+const ProfessionalTab = ({ data }) => {
+    if (!data || data.length === 0) return <MissingDataPlaceholder label="atuação profissional" />;
+    
+    return (
+        <VStack spacing={6} align="stretch">
+            {data.map((atuacao, idx) => (
+                <Box key={idx} borderWidth="1px" borderRadius="lg" overflow="hidden" bg="white" borderColor="gray.200">
+                    <Box bg="gray.50" px={5} py={3} borderBottomWidth="1px" borderColor="gray.200">
+                        <HStack>
+                            <Briefcase size={18} color="#2B6CB0" />
+                            <Heading size="sm" color="blue.800">{atuacao.instituicao}</Heading>
+                        </HStack>
+                    </Box>
+                    <Box p={5}>
+                        {/* Vínculos */}
+                        {atuacao.vinculos && atuacao.vinculos.length > 0 && (
+                            <Box mb={4}>
+                                <Text fontSize="xs" fontWeight="bold" textTransform="uppercase" color="gray.500" mb={2}>Vínculos</Text>
+                                <VStack align="start" spacing={2}>
+                                    {atuacao.vinculos.map((v, i) => (
+                                        <Flex key={i} direction={{ base: "column", sm: "row" }} gap={2} w="100%">
+                                            <Badge colorScheme="blue" variant="subtle" px={2} alignSelf="start" whiteSpace="nowrap">
+                                                {v.periodo}
+                                            </Badge>
+                                            <Text fontSize="sm" color="gray.700">{v.detalhes}</Text>
+                                        </Flex>
+                                    ))}
+                                </VStack>
+                            </Box>
+                        )}
+                        
+                        {/* Atividades */}
+                        {atuacao.atividades && atuacao.atividades.length > 0 && (
+                            <Box>
+                                <Text fontSize="xs" fontWeight="bold" textTransform="uppercase" color="gray.500" mb={2}>Atividades</Text>
+                                <VStack align="start" spacing={3}>
+                                    {atuacao.atividades.map((a, i) => (
+                                        <Flex key={i} direction={{ base: "column", sm: "row" }} gap={2} w="100%">
+                                            <Badge colorScheme="green" variant="outline" px={2} alignSelf="start" whiteSpace="nowrap">
+                                                {a.periodo}
+                                            </Badge>
+                                            <Text fontSize="sm" color="gray.600">{a.detalhes}</Text>
+                                        </Flex>
+                                    ))}
+                                </VStack>
+                            </Box>
+                        )}
+                    </Box>
+                </Box>
+            ))}
+        </VStack>
+    );
+};
+
+// Componente auxiliar para barra de comparação (Substitui o Recharts)
+const MetricComparison = ({ label, total, recent }) => {
+    // Evita divisão por zero
+    const maxVal = Math.max(total, 1);
+    const recentPercent = (recent / maxVal) * 100;
+
+    return (
+        <Box p={4} borderWidth="1px" borderRadius="md" borderColor="gray.100" bg="white">
+            <Text fontSize="sm" fontWeight="bold" color="gray.600" mb={3}>{label}</Text>
+            
+            <Flex align="center" mb={2}>
+                <Box w="60px" fontSize="xs" color="blue.600" fontWeight="bold">Total</Box>
+                <Box flex="1" mx={2}>
+                    <Progress value={100} size="sm" colorScheme="blue" borderRadius="full" />
+                </Box>
+                <Box w="40px" textAlign="right" fontSize="sm" fontWeight="bold">{total}</Box>
+            </Flex>
+
+            <Flex align="center">
+                <Box w="60px" fontSize="xs" color="cyan.500" fontWeight="bold">5 Anos</Box>
+                <Box flex="1" mx={2}>
+                    <Progress value={recentPercent} size="sm" colorScheme="cyan" borderRadius="full" />
+                </Box>
+                <Box w="40px" textAlign="right" fontSize="sm" color="gray.600">{recent}</Box>
+            </Flex>
+        </Box>
+    );
+};
+
+const ScholarTab = ({ data }) => {
+    if (!data) return <MissingDataPlaceholder label="Google Scholar" />;
+
+    return (
+        <VStack spacing={8} align="stretch">
+            {/* Header e Métricas */}
+            <Box>
+                <Flex justify="space-between" align="center" mb={4}>
+                    <Heading size="md" color="gray.700">Métricas Acadêmicas</Heading>
+                    <Button 
+                        as="a" 
+                        href={data.scholar_url} 
+                        target="_blank" 
+                        size="sm" 
+                        colorScheme="blue" 
+                        variant="outline" 
+                        rightIcon={<ExternalLink size={14} />}
+                    >
+                        Ver no Scholar
+                    </Button>
+                </Flex>
+                
+                {/* Visualização de Métricas sem dependência externa */}
+                <SimpleGrid columns={{ base: 1, md: 3 }} spacing={4} mb={6}>
+                    <MetricComparison 
+                        label="Citações" 
+                        total={data.metricas_citacao.total_citacoes} 
+                        recent={data.metricas_citacao.total_citacoes_5anos} 
+                    />
+                    <MetricComparison 
+                        label="Índice h" 
+                        total={data.metricas_citacao.h_index} 
+                        recent={data.metricas_citacao.h_index_5anos} 
+                    />
+                    <MetricComparison 
+                        label="Índice i10" 
+                        total={data.metricas_citacao.i10_index} 
+                        recent={data.metricas_citacao.i10_index_5anos} 
+                    />
+                </SimpleGrid>
+
+                {/* Tabela Detalhada */}
+                <Box borderWidth="1px" borderRadius="lg" overflow="hidden" borderColor="gray.200">
+                    <Box bg="gray.50" px={4} py={2} borderBottomWidth="1px" borderColor="gray.200">
+                        <Text fontSize="sm" fontWeight="bold" color="gray.600">Detalhamento</Text>
+                    </Box>
+                    <TableContainer>
+                        <Table size="sm" variant="simple">
+                            <Thead>
+                                <Tr>
+                                    <Th>Métrica</Th>
+                                    <Th isNumeric>Total</Th>
+                                    <Th isNumeric>Desde 2020</Th>
+                                </Tr>
+                            </Thead>
+                            <Tbody>
+                                <Tr>
+                                    <Td fontWeight="medium">Citações</Td>
+                                    <Td isNumeric>{data.metricas_citacao.total_citacoes}</Td>
+                                    <Td isNumeric color="gray.500">{data.metricas_citacao.total_citacoes_5anos}</Td>
+                                </Tr>
+                                <Tr>
+                                    <Td fontWeight="medium">h-index</Td>
+                                    <Td isNumeric>{data.metricas_citacao.h_index}</Td>
+                                    <Td isNumeric color="gray.500">{data.metricas_citacao.h_index_5anos}</Td>
+                                </Tr>
+                                <Tr>
+                                    <Td fontWeight="medium">i10-index</Td>
+                                    <Td isNumeric>{data.metricas_citacao.i10_index}</Td>
+                                    <Td isNumeric color="gray.500">{data.metricas_citacao.i10_index_5anos}</Td>
+                                </Tr>
+                            </Tbody>
+                        </Table>
+                    </TableContainer>
+                </Box>
+            </Box>
+
+            <Divider />
+
+            {/* Publicações */}
+            <Box>
+                <Heading size="md" mb={4} color="gray.700">Principais Publicações</Heading>
+                <VStack spacing={3} align="stretch">
+                    {data.publicacoes && data.publicacoes.length > 0 ? (
+                        data.publicacoes.map((pub, i) => (
+                            <Box key={i} p={4} bg="white" borderWidth="1px" borderColor="gray.100" borderRadius="md" _hover={{ borderColor: 'blue.200', boxShadow: 'sm' }} transition="all 0.2s">
+                                <Text fontWeight="semibold" fontSize="md" color="blue.600" mb={1}>
+                                    {pub.titulo}
+                                </Text>
+                                <Text fontSize="sm" color="gray.600" mb={2}>
+                                    {pub.autores}
+                                </Text>
+                                <Flex justify="space-between" align="center" wrap="wrap" gap={2}>
+                                    <Text fontSize="xs" color="gray.400" fontStyle="italic">
+                                        {pub.local} {pub.ano ? `• ${pub.ano}` : ''}
+                                    </Text>
+                                    {pub.citacoes_artigo > 0 && (
+                                        <Badge colorScheme="orange" variant="outline" fontSize="xs">
+                                            {pub.citacoes_artigo} citações
+                                        </Badge>
+                                    )}
+                                </Flex>
+                            </Box>
+                        ))
+                    ) : (
+                        <Text color="gray.500" fontStyle="italic">Nenhuma publicação listada.</Text>
+                    )}
+                </VStack>
+            </Box>
+        </VStack>
+    );
+};
+
+// =================================================================
+// FUNÇÕES AUXILIARES EXISTENTES
 // =================================================================
 
 const MissingDataPlaceholder = ({ title, description, label }) => {
     if (label) {
         return (
-            <Text color="gray.500" fontStyle="italic" fontSize={{ base: 'sm', md: 'md' }} py={2}>
-                {label ? `Nenhum(a) ${label} detalhado(a) disponível.` : "Nenhum dado detalhado disponível."}
-            </Text>
+            <Flex 
+                justify="center" 
+                align="center" 
+                direction="column" 
+                p={8} 
+                bg="gray.50" 
+                borderRadius="lg" 
+                borderStyle="dashed" 
+                borderWidth="2px" 
+                borderColor="gray.200"
+            >
+                <Text color="gray.400" fontWeight="medium">Dados indisponíveis</Text>
+                <Text color="gray.400" fontSize="sm">Não encontramos informações de {label}.</Text>
+            </Flex>
         );
     }
     
@@ -52,43 +277,41 @@ const MissingDataPlaceholder = ({ title, description, label }) => {
             bg='blue.50'
         >
             <AlertIcon boxSize='24px' mr={0} color="blue.500" />
-            <AlertTitle mt={4} mb={1} fontSize={{ base: 'md', md: 'lg' }} fontWeight="bold" color="blue.700">
+            <AlertTitle mt={4} mb={1} fontSize='lg' fontWeight="bold" color="blue.700">
                 {title || "Dados Pessoais Não Encontrados"}
             </AlertTitle>
-            <AlertDescription maxWidth='sm' color="blue.700" fontSize={{ base: 'sm', md: 'md' }}>
+            <AlertDescription maxWidth='sm' color="blue.700">
                 {description || "O resumo pessoal ou o currículo lattes minerado para este professor não foi encontrado em nossa base de dados."}
             </AlertDescription>
         </Alert>
     );
 };
 
-// FUNÇÃO: Componente de Exibição de Projeto
 const ProjectItem = ({ projeto }) => (
     <Box p={4} borderLeft="4px solid" borderColor="blue.400" bg="gray.50" mb={4} borderRadius="lg">
-        <Text fontWeight="bold" fontSize={{ base: 'md', md: 'lg' }} color="gray.800">{projeto.titulo}</Text>
-        <Text fontSize={{ base: 'sm', md: 'md' }} color="gray.600" mt={1}>
-            {projeto.ano_periodo} — {projeto.situacao} ({projeto.natureza})
+        <Text fontWeight="bold" fontSize="md" color="gray.800">{projeto.titulo}</Text>
+        <Text fontSize="sm" color="gray.600" mt={1}>
+            {projeto.ano_periodo} — <b>{projeto.situacao}</b> ({projeto.natureza})
         </Text>
         {projeto.integrantes && (
-            <Text fontSize={{ base: 'xs', md: 'sm' }} color="gray.500" mt={1} noOfLines={1} textOverflow="ellipsis">
+            <Text fontSize="xs" color="gray.500" mt={1} noOfLines={1} textOverflow="ellipsis">
                 Integrantes: {projeto.integrantes}
             </Text>
         )}
     </Box>
 );
 
-// FUNÇÃO: Componente de Exibição de Formação
 const FormacaoItem = ({ nivel, cursos }) => (
     <Box mb={6}>
         <HStack mb={2} spacing={2} align="center">
             <Box w="8px" h="8px" bg="blue.500" borderRadius="full" />
-            <Heading as="h4" size={{ base: 'sm', md: 'md' }} color="blue.700" textTransform="uppercase" fontWeight="bold" letterSpacing="tight">
+            <Heading as="h4" size="sm" color="blue.700" textTransform="uppercase">
                 {nivel}
             </Heading>
         </HStack>
         <VStack align="start" spacing={1} pl={4} borderLeft="2px solid" borderColor="gray.200">
             {cursos.map((curso, index) => (
-                <Text key={index} fontSize={{ base: 'sm', md: 'md' }} color="gray.600">
+                <Text key={index} fontSize="sm" color="gray.700">
                     • {curso}
                 </Text>
             ))}
@@ -96,11 +319,6 @@ const FormacaoItem = ({ nivel, cursos }) => (
     </Box>
 );
 
-/**
- * função: Extrai a atividade de ensino mais recente, filtrando atividades genéricas/programáticas.
- * @param {object} professor - O objeto completo do professor.
- * @returns {string | null} A descrição da última atividade de ensino formatada ou null.
- */
 const getUltimaDisciplina = (professor) => {
     if (!professor?.dados_lattes?.atuacao_profissional) {
         return null;
@@ -129,22 +347,17 @@ const getUltimaDisciplina = (professor) => {
                 return; 
             }
             
-            // 3. Lógica de Recência (Prioriza o ano de FIM ou "Atual")
             let recencyScore = 0;
             
             if (periodo.toLowerCase().includes('atual')) {
                 recencyScore = 3000;
             } else {
-                // Tenta encontrar todos os anos de 4 dígitos (Start e End)
                 const anos = periodo.match(/\d{4}/g) || [];
-                
                 if (anos.length > 0) {
-                    // Usa o último ano encontrado (o ano de FIM/conclusão)
                     recencyScore = parseInt(anos[anos.length - 1]);
                 }
             }
             
-            // 4. Compara e atualiza
             if (recencyScore > ultimoAnoRecente) {
                 ultimoAnoRecente = recencyScore;
                 ultimaAtividadeEnsino = {
@@ -155,7 +368,6 @@ const getUltimaDisciplina = (professor) => {
         });
     });
 
-    // Retorna a string formatada ou null
     if (ultimaAtividadeEnsino) {
         return `${ultimaAtividadeEnsino.detalhes} (${ultimaAtividadeEnsino.periodo})`;
     }
@@ -179,13 +391,12 @@ const ProfessorDetailPage = () => {
         professor = professorsList.find(p => p.pagina_sigaa_url && p.pagina_sigaa_url.includes(id));
     }
 
-    // Lógica de Erro / Carregamento
     if (isLoading) {
         return (
             <Flex justify="center" align="center" minH="100vh" bg="#f9fafb" p={6}>
                 <VStack spacing={4} bg="white" p={10} borderRadius="xl" boxShadow="lg" maxW="900px" w="100%">
                     <Spinner size="xl" color="blue.500" />
-                    <Heading as="h1" size={{ base: '2xl', md: '3xl' }} color="blue.800" fontWeight="bold" letterSpacing="tight">Carregando dados globais...</Heading>
+                    <Heading size="lg" color="gray.700">Carregando dados globais...</Heading>
                 </VStack>
             </Flex>
         );
@@ -195,15 +406,14 @@ const ProfessorDetailPage = () => {
         return (
             <Flex justify="center" align="center" minH="100vh" bg="#f9fafb" p={6}>
                 <VStack spacing={4} bg="white" p={10} borderRadius="xl" boxShadow="lg" maxW="900px" w="100%">
-                    <Heading as="h1" color="red.500" size={{ base: '2xl', md: '3xl' }} fontWeight="bold" letterSpacing="tight">❌ Erro ao Carregar Perfil</Heading>
-                    <Text color="gray.600" fontSize={{ base: 'md', md: 'lg' }}>O professor não foi encontrado ou houve um erro na comunicação com a API.</Text>
+                    <Heading color="red.500" size="lg">❌ Erro ao Carregar Perfil</Heading>
+                    <Text>O professor não foi encontrado ou houve um erro na comunicação com a API.</Text>
                     <Button onClick={() => navigate(-1)} colorScheme="blue">Voltar</Button>
                 </VStack>
             </Flex>
         );
     }
 
-    // Função de Copiar E-mail
     const copiarEmail = () => {
         if (professor?.contatos?.email) {
             navigator.clipboard.writeText(professor.contatos.email);
@@ -222,10 +432,6 @@ const ProfessorDetailPage = () => {
     
     const ultimaDisciplina = getUltimaDisciplina(professor);
 
-
-    // =================================================================
-    // RENDERIZAÇÃO PRINCIPAL (JSX)
-    // =================================================================
     return (
         <Flex direction="column" align="center" p={{ base: 4, md: 10 }} bg="#f9fafb" minH="100vh">
             {/* Botão Voltar */}
@@ -234,13 +440,11 @@ const ProfessorDetailPage = () => {
                     onClick={() => navigate(-1)}
                     variant="ghost"
                     colorScheme="blue"
-                    leftIcon={<ArrowLeft size={18} />}
-                    _hover={{ bg: 'blue.50' }}
-                    fontSize={{ base: 'sm', md: 'md' }}
+                    fontSize="md"
                     fontWeight="medium"
                     p={3}
                 >
-                    Voltar
+                    ← Voltar
                 </Button>
             </Box>
 
@@ -253,8 +457,9 @@ const ProfessorDetailPage = () => {
                 maxW="1200px" 
                 w="100%"
             >
-                {/* === Bloco Superior de Identificação (Foto, Nome, Tags) === */}
+                {/* === Bloco Superior de Identificação === */}
                 <Flex direction={{ base: "column", md: "row" }} align={{ base: "center", md: "flex-start" }}>
+                    {/* CORREÇÃO APLICADA: flexShrink={0} evita que o flexbox esmague a imagem e a deixa circular */}
                     <Image
                         borderRadius="full"
                         boxSize={{ base: "150px", md: "180px" }}
@@ -263,18 +468,17 @@ const ProfessorDetailPage = () => {
                         mr={{ md: 8 }}
                         mb={{ base: 6, md: 0 }}
                         objectFit="cover"
+                        flexShrink={0} 
                         fallbackSrc="https://via.placeholder.com/180/E2E8F0/A0AEC0?text=Foto"
                     />
                     <Box textAlign={{ base: "center", md: "left" }} w="100%">
-                        <Heading as="h2" size={{ base: 'xl', md: '2xl' }} mb={1} color="blue.800" fontWeight="bold" letterSpacing="tight">
+                        <Heading as="h1" size="xl" mb={1} color="gray.800">
                             {professor.nome}
                         </Heading>
-                        {/* Departamento */}
-                        <Text color="gray.600" fontSize={{ base: 'md', md: 'lg' }} mb={4} fontWeight="medium">
+                        <Text color="gray.600" fontSize="lg" mb={4} fontWeight="medium">
                             {professor.departamento}
                         </Text>
                         
-                        {/* Botões de Ação */}
                         <HStack spacing={4} mb={4} justify={{ base: "center", md: "flex-start" }}>
                             {professor.contatos?.email && (
                                 <Button
@@ -304,25 +508,21 @@ const ProfessorDetailPage = () => {
                             )}
                         </HStack>
 
-                        {/* BLOCO: Sala e Telefone */}
                         <Flex 
                             gap={{ base: 3, md: 6 }} 
                             mt={4} 
                             mb={6} 
-                            fontSize={{ base: 'sm', md: 'md' }}
+                            fontSize="md" 
                             color="gray.600" 
                             wrap="wrap"
                             justify={{ base: "center", md: "flex-start" }}
                         >
-                            {/* Sala/Location (e.g., ICC Norte, Sala 315) */}
                             {professor.contatos?.sala && professor.contatos.sala.toLowerCase() !== 'não informado' && (
                                 <HStack spacing={1} title="Localização">
                                     <MapPin size={18} style={{ color: 'var(--chakra-colors-gray-500)' }} />
                                     <Text>{professor.contatos.sala}</Text>
                                 </HStack>
                             )}
-
-                            {/* Telefone (e.g., (61) 3107-0910) */}
                             {professor.contatos?.telefone && professor.contatos.telefone.length > 5 && (
                                 <HStack spacing={1} title="Telefone">
                                     <Phone size={18} style={{ color: 'var(--chakra-colors-gray-500)' }} />
@@ -331,7 +531,6 @@ const ProfessorDetailPage = () => {
                             )}
                         </Flex>
 
-                        {/* === Tags de Pesquisa (Áreas de Interesse) === */}
                         {professor.dados_scholar?.areas_interesse?.length > 0 && (
                             <Flex wrap="wrap" mt={3} gap={2} justify={{ base: "center", md: "flex-start" }}>
                                 {professor.dados_scholar.areas_interesse.map((area, index) => (
@@ -351,6 +550,7 @@ const ProfessorDetailPage = () => {
                     isFitted 
                     variant="enclosed" 
                     colorScheme="blue" 
+                    isLazy
                     sx={{
                         '.chakra-tabs__tab': {
                             fontWeight: 'semibold',
@@ -362,22 +562,14 @@ const ProfessorDetailPage = () => {
                                 borderBottomColor: 'blue.600',
                                 bg: 'white',
                             },
-                            _focus: {
-                                boxShadow: 'none',
-                            },
-                            _hover: {
-                                bg: 'blue.50',
-                            },
-                            paddingX: { base: 2, md: 4 },
+                            _focus: { boxShadow: 'none' },
+                            _hover: { bg: 'blue.50' },
                             paddingY: { base: 3, md: 4 },
-                            marginRight: { base: 0, md: 4 }
                         },
                         '.chakra-tabs__tablist': {
                             borderBottom: '1px solid',
                             borderBottomColor: 'gray.200',
                             marginBottom: '1rem',
-                            display: 'flex',
-                            justifyContent: 'flex-start',
                             overflowX: 'auto',
                             paddingBottom: '2px',
                         },
@@ -387,32 +579,28 @@ const ProfessorDetailPage = () => {
                         }
                     }}
                 >
-                    <TabList>
+                    <TabList overflowX="auto" whiteSpace="nowrap">
                         <Tab>Visão Geral</Tab>
-                        <Tab>
-                            Formação ({Object.keys(professor.formacao_academica || {}).length})
-                        </Tab>
-                        <Tab>
-                            Projetos ({professor.dados_lattes?.projetos_pesquisa?.length || 0})
-                        </Tab>
+                        <Tab>Formação ({Object.keys(professor.formacao_academica || {}).length})</Tab>
+                        <Tab>Projetos ({professor.dados_lattes?.projetos_pesquisa?.length || 0})</Tab>
+                        <Tab>Atuação</Tab>
+                        <Tab>Google Scholar</Tab>
                     </TabList>
 
                     <TabPanels>
                         {/* ABA: Visão Geral */}
                         <TabPanel>
-                            {/* 📚 EXIBIÇÃO DA ÚLTIMA DISCIPLINA (Lógica Corrigida/Refinada) */}
                             {ultimaDisciplina && (
                                 <Box p={4} bg="blue.50" borderRadius="lg" mb={6} borderLeft="4px solid" borderColor="blue.400">
                                     <HStack spacing={2} mb={1}>
                                         <BookOpen size={18} color="#3182CE" />
-                                        <Text fontWeight="bold" fontSize={{ base: 'xs', md: 'sm' }} color="blue.700" textTransform="uppercase">ÚLTIMA ATIVIDADE DE ENSINO (LATTES)</Text>
+                                        <Text fontWeight="bold" fontSize="sm" color="blue.700">ÚLTIMA ATIVIDADE DE ENSINO (LATTES)</Text>
                                     </HStack>
-                                    <Text fontSize={{ base: 'sm', md: 'md' }} color="gray.700">{ultimaDisciplina}</Text>
+                                    <Text fontSize="md" color="gray.700">{ultimaDisciplina}</Text>
                                 </Box>
                             )}
 
-                            <Heading as="h3" size={{ base: 'md', md: 'lg' }} mb={4} color="blue.700" fontWeight="bold" letterSpacing="tight">Sobre</Heading>
-                            {/* Lógica para tratar "não informada" */}
+                            <Heading as="h3" size="md" mb={4} color="gray.700">Sobre</Heading>
                             {(() => {
                                 const descriptionSource = professor.dados_lattes?.resumo_cv || professor.descricao_pessoal;
                                 const descriptionContent = (descriptionSource || '').toLowerCase().trim();
@@ -427,7 +615,7 @@ const ProfessorDetailPage = () => {
                                     );
                                 } else {
                                     return (
-                                        <Text lineHeight="taller" color="gray.600" fontSize={{ base: 'md', md: 'lg' }}>
+                                        <Text lineHeight="taller" color="gray.700" textAlign="justify">
                                             {descriptionSource}
                                         </Text>
                                     );
@@ -437,7 +625,7 @@ const ProfessorDetailPage = () => {
 
                         {/* ABA: Formação */}
                         <TabPanel>
-                            <Heading as="h3" size={{ base: 'md', md: 'lg' }} mb={4} color="blue.700" fontWeight="bold" letterSpacing="tight">Formação Acadêmica</Heading>
+                            <Heading as="h3" size="md" mb={4} color="gray.700">Formação Acadêmica</Heading>
                             {hasFormacao ? (
                                 <VStack align="start" spacing={6}>
                                     {Object.entries(professor.formacao_academica).map(
@@ -453,7 +641,7 @@ const ProfessorDetailPage = () => {
 
                         {/* ABA: Projetos */}
                         <TabPanel>
-                             <Heading as="h3" size={{ base: 'md', md: 'lg' }} mb={4} color="blue.700" fontWeight="bold" letterSpacing="tight">Projetos de Pesquisa</Heading>
+                             <Heading as="h3" size="md" mb={4} color="gray.700">Projetos de Pesquisa</Heading>
                             {hasProjects ? (
                                 <VStack align="stretch" spacing={4}>
                                     {professor.dados_lattes.projetos_pesquisa.map((projeto, index) => (
@@ -464,28 +652,36 @@ const ProfessorDetailPage = () => {
                                 <MissingDataPlaceholder label="projetos de pesquisa do Lattes" />
                             )}
                         </TabPanel>
+
+                        {/* ABA: Atuação Profissional */}
+                        <TabPanel>
+                             <Heading as="h3" size="md" mb={4} color="gray.700">Atuação Profissional</Heading>
+                             <ProfessionalTab data={professor.dados_lattes?.atuacao_profissional} />
+                        </TabPanel>
+
+                        {/* ABA: Google Scholar */}
+                        <TabPanel>
+                             <Heading as="h3" size="md" mb={4} color="gray.700">Google Scholar</Heading>
+                             <ScholarTab data={professor.dados_scholar} />
+                        </TabPanel>
                     </TabPanels>
                 </Tabs>
-                {/* === Fim das Abas de Conteúdo === */}
 
-                {/* === Bloco de Contato (MANTIDO CONFORME ORIGINAL) === */}
+                {/* === Bloco de Contato === */}
                 <Box mt={8} p={6} border="1px solid" borderColor="gray.200" borderRadius="lg" boxShadow="sm">
-                    <Heading as="h3" size={{ base: 'md', md: 'lg' }} mb={4} color="blue.700" fontWeight="bold" letterSpacing="tight">
-                        Contato
-                    </Heading>
-                    
-                    <Flex direction="column" gap={1} fontSize={{ base: 'sm', md: 'md' }}>
+                    <Heading as="h3" size="md" mb={4}>Contato</Heading>
+                    <Flex direction="column" gap={2} fontSize="sm">
                         <HStack align="center">
-                            <Mail size={16} style={{ marginRight: '8px', color: 'var(--chakra-colors-gray-600)' }} />
-                            <Text color="gray.600">{professor.contatos?.email || 'Não informado'}</Text>
+                            <Mail size={16} style={{ marginRight: '8px', color: 'gray.600' }} />
+                            <Text>{professor.contatos?.email || 'Não informado'}</Text>
                         </HStack>
                         <HStack align="center">
-                            <Phone size={16} style={{ marginRight: '8px', color: 'var(--chakra-colors-gray-600)' }} />
-                            <Text color="gray.600">Telefone: {professor.contatos?.telefone && professor.contatos.telefone.length > 5 ? professor.contatos.telefone : 'Não informado'}</Text>
+                            <Phone size={16} style={{ marginRight: '8px', color: 'gray.600' }} />
+                            <Text>Telefone: {professor.contatos?.telefone && professor.contatos.telefone.length > 5 ? professor.contatos.telefone : 'Não informado'}</Text>
                         </HStack>
                         <HStack align="center">
-                            <MapPin size={16} style={{ marginRight: '8px', color: 'var(--chakra-colors-gray-600)' }} />
-                            <Text color="gray.600">Sala: {professor.contatos?.sala || 'Não informado'}</Text>
+                            <MapPin size={16} style={{ marginRight: '8px', color: 'gray.600' }} />
+                            <Text>Sala: {professor.contatos?.sala || 'Não informado'}</Text>
                         </HStack>
                     </Flex>
                 </Box>
