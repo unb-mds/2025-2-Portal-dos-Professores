@@ -10,15 +10,18 @@ nav:
   - 'Arquitetura': 'arquitetura.md'
   - 'Guias de Uso': 'guias-de-uso.md'
   - 'Desenvolvimento': 'desenvolvimento.md'
+  - 'Testes e Qualidade': 'qa.md'
   - 'Documento de Visão': 'documento_de_visao.md'
-  - 'Atas': 'atas.md'
+  - 'Sprints': 'atas.md'
+  - 'Resultados e Entregas': 'results.md'
+
 
 
 theme:
   name: material
   language: pt
-  logo: assets/logo.png 
-  favicon: assets/favicon.png
+  logo: images/corujaa-removebg-preview.png 
+  favicon: images/corujaa-removebg-preview.png 
 
   features:
     - navigation.tabs           
