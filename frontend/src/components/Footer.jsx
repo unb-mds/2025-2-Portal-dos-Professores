@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Box, Text, HStack, VStack, Link, Icon } from '@chakra-ui/react';
-import { Linkedin, Twitter, Github } from 'lucide-react'; // Seu package.json tem esses ícones
+import { Github, BookOpen } from 'lucide-react';
 
 // Este é o Footer que você já tinha, agora como um componente
 function Footer() {
@@ -14,14 +14,19 @@ function Footer() {
           © 2025 Hub Docente UnB
         </Text>
         <HStack spacing={5}>
-          <Link href="#" isExternal _hover={{ color: 'white' }}>
-            <Icon as={Linkedin} boxSize={5} />
-          </Link>
-          <Link href="#" isExternal _hover={{ color: 'white' }}>
-            <Icon as={Twitter} boxSize={5} />
-          </Link>
-          <Link href="#" isExternal _hover={{ color: 'white' }}>
+          <Link 
+            href="https://github.com/unb-mds/2025-2-Portal-dos-Professores" 
+            isExternal 
+            _hover={{ color: 'white' }}
+          >
             <Icon as={Github} boxSize={5} />
+          </Link>
+          <Link 
+            href="https://portal-dos-professores.readthedocs.io/pt/latest/" 
+            isExternal 
+            _hover={{ color: 'white' }}
+          >
+            <Icon as={BookOpen} boxSize={5} />
           </Link>
         </HStack>
       </VStack>

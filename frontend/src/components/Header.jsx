@@ -41,7 +41,8 @@ function Header() {
   const NavLinks = [
     { name: 'HOME', path: '/' },
     { name: 'PROFESSORES', path: '/professores' },
-    { name: 'SOBRE NÓS', path: '/sobre' },
+    { name: 'ORIENTADOR INTELIGENTE', path: '/orientador' },
+    { name: 'SOBRE NÓS', path: '/sobre-nos' },
   ];
 
   const isActive = (path) => {
@@ -60,35 +61,25 @@ function Header() {
             as={RouterLink}
             to={link.path}
             key={link.name}
-            fontSize={{ base: 'md', md: 'lg' }}
-            fontWeight={active ? 'bold' : 'semibold'}
-            color={active ? 'blue.600' : 'gray.700'}
+            fontSize={{ base: 'sm', md: 'md' }}
+            fontWeight={active ? '600' : '500'}
+            color={active ? '#3b82f6' : '#000000'}
+            letterSpacing="tight"
             position="relative"
             px={3}
             py={2}
-            borderRadius="md"
             transition="all 0.2s"
+            borderBottom="2px solid"
+            borderColor={active ? '#3b82f6' : 'transparent'}
             _hover={{
-              color: 'blue.600',
-              bg: 'blue.50',
+              color: '#3b82f6',
+              borderColor: '#3b82f6',
             }}
             _active={{
-              color: 'blue.700',
+              color: '#3b82f6',
             }}
           >
             {link.name}
-            {active && (
-              <Box
-                position="absolute"
-                bottom={0}
-                left="50%"
-                transform="translateX(-50%)"
-                width="80%"
-                height="3px"
-                bg="blue.600"
-                borderRadius="full"
-              />
-            )}
           </Link>
         );
       })}
@@ -108,20 +99,18 @@ function Header() {
             as={RouterLink}
             to={link.path}
             key={link.name}
-            fontSize="lg"
-            fontWeight={active ? 'bold' : 'medium'}
-            color={active ? 'blue.600' : 'gray.700'}
+            fontSize="md"
+            fontWeight={active ? '600' : '500'}
+            color={active ? '#3b82f6' : '#000000'}
+            letterSpacing="tight"
             px={4}
             py={3}
-            borderRadius="md"
-            bg={active ? 'blue.50' : 'transparent'}
-            borderLeft={active ? '4px solid' : '4px solid transparent'}
-            borderColor={active ? 'blue.600' : 'transparent'}
+            borderLeft="2px solid"
+            borderColor={active ? '#3b82f6' : 'transparent'}
             transition="all 0.2s"
             _hover={{
-              color: 'blue.600',
-              bg: 'blue.50',
-              borderColor: 'blue.300',
+              color: '#3b82f6',
+              borderColor: '#3b82f6',
             }}
           >
             {link.name}
@@ -135,10 +124,9 @@ function Header() {
   return (
     <Box 
       as="header" 
-      bg={headerBg} 
-      boxShadow="md" 
+      bg="white"
       borderBottomWidth="1px"
-      borderColor={borderColor}
+      borderColor="#e2e8f0"
       position="sticky"
       top={0}
       zIndex={1000}
@@ -174,7 +162,7 @@ function Header() {
                 letterSpacing="tight"
                 fontWeight="semibold"
               >
-                Hub Docente
+                Portal dos Professores
               </Heading>
             </HStack>
           </Link>

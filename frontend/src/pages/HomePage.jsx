@@ -178,7 +178,7 @@ export default function HomePage() {
         const top = Object.entries(departmentCount)
           .map(([nome, quantidade]) => ({ nome, quantidade }))
           .sort((a, b) => b.quantidade - a.quantidade)
-          .slice(0, 6);
+          .slice(0, 5);
 
         setPopularDepartments(top);
       } finally {
@@ -208,7 +208,7 @@ export default function HomePage() {
           </Heading>
 
           <Text fontSize={{ base: 'md', md: 'lg' }} color="gray.600" maxW="4xl" lineHeight="tall">
-            Explore o perfil, pesquisas e disciplinas dos docentes da UnB.
+            Explore o perfil e pesquisas dos docentes da UnB.
             Encontre o orientador ideal para seu projeto.
           </Text>
 
@@ -223,6 +223,10 @@ export default function HomePage() {
               leftIcon={<Icon as={Search} boxSize={5} />}
               rightIcon={<Icon as={ArrowRight} boxSize={5} />}
               w={{ base: '100%', sm: 'auto' }}
+              _hover={{
+                bg: "blue.700",
+                color: "white",
+              }}
             >
               Buscar Professores
             </Button>
@@ -235,16 +239,24 @@ export default function HomePage() {
               leftIcon={<Icon as={GraduationCap} boxSize={5} />}
               rightIcon={<Icon as={ArrowRight} boxSize={5} />}
               w={{ base: '100%', sm: 'auto' }}
+              _hover={{
+                bg: "teal.700",
+                color: "white",
+              }}
             >
               Orientador Inteligente
             </Button>
 
             <Button
               as={RouterLink}
-              to="/sobre"
+              to="/sobre-nos"
               variant="outline"
               size="lg"
               w={{ base: '100%', sm: 'auto' }}
+              _hover={{
+                bg: "gray.100",
+                color: "gray.800",
+              }}
             >
               Sobre o Projeto
             </Button>
@@ -268,11 +280,17 @@ export default function HomePage() {
       {/* BOX — Orientador Ideal */}
       <Container maxW="7xl" mt={20} px={{ base: 6, md: 16 }}>
         <Box
-          bg="linear-gradient(90deg, #F0F4FF 0%, #ECECFF 100%)"
+          bg="linear-gradient(90deg, #F0F4FF 0%, #F0F4FF 100%)"
           borderRadius="2xl"
           p={{ base: 6, md: 10 }}
           boxShadow="0 8px 28px rgba(0, 0, 0, 0.08)"
           border="1px solid #E3E8F7"
+          transition="all 0.3s ease"
+          cursor="pointer"
+          _hover={{
+            bg: "#FFFFFF",
+            background: "#FFFFFF",
+          }}
         >
           <HStack
             spacing={{ base: 4, md: 8 }}
@@ -306,6 +324,10 @@ export default function HomePage() {
               size="lg"
               px={8}
               borderRadius="xl"
+              _hover={{
+                bg: "blue.700",
+                color: "white",
+              }}
             >
               Começar Agora
             </Button>
@@ -332,7 +354,8 @@ export default function HomePage() {
               {popularDepartments.map((dept) => {
                 const nomeFormatado = dept.nome
                   .replace(/DEPARTAMENTO/gi, 'FACULDADE')
-                  .replace(/DEPTO/gi, 'FACULDADE');
+                  .replace(/DEPTO/gi, 'FACULDADE')
+                  .replace(/INSTITUTO/gi, 'FACULDADE');
 
                 return (
                   <Badge
@@ -405,7 +428,7 @@ export default function HomePage() {
             </Feature>
 
             <Feature icon={Users} title="Perfis Completos">
-              Acesse publicações, disciplinas e informações de contato
+              Acesse publicações e informações de contato
             </Feature>
 
             <Feature icon={GraduationCap} title="Orientação TCC">
@@ -431,8 +454,12 @@ export default function HomePage() {
           p={6}
           rightIcon={<ArrowRight />}
           boxShadow="lg"
+          _hover={{
+            bg: "blue.700",
+            color: "white",
+          }}
         >
-          Orientador Ideal
+          Orientador Inteligente
         </Button>
       </Box>
 

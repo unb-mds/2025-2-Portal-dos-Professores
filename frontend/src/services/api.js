@@ -1,4 +1,7 @@
-const API_BASE_URL = 'https://api-portal-dos-professores.onrender.com';
+// Usa o backend local em desenvolvimento, produção em deploy
+const API_BASE_URL = import.meta.env.DEV 
+  ? 'http://localhost:8000' 
+  : 'https://api-portal-dos-professores.onrender.com';
 
 export const getProfessorsData = async (params = {}) => {
   try {
