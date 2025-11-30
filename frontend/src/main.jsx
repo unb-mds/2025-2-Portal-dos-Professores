@@ -5,9 +5,10 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
 import './App.css';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { ProfessorProvider } from './context/ProfessorContext.jsx';
+import { ScrollToTop } from './components/ScrollToTop.jsx';
 
 const theme = extendTheme({
   fonts: {
@@ -55,13 +56,13 @@ const theme = extendTheme({
 });
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter
-    basename="/2025-2-Portal-dos-Professores"
-  >
+  <HashRouter>
+    <ScrollToTop />
     <ChakraProvider theme={theme}>
       <ProfessorProvider>
         <App />
       </ProfessorProvider>
     </ChakraProvider>
-  </BrowserRouter>
+  </HashRouter>
 );
+
