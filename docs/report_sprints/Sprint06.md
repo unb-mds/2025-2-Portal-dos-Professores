@@ -1,71 +1,91 @@
-# 📊 Relatório da Sprint — Portal dos Professores
+# Relatório da Sprint 06 — Portal dos Professores — Squad 04
 
-## 🗓️ Sprint 6 — 21/09 a 28/09
-**Product Owner:** Arthur Scartezini  
-**Scrum Master:** Kaio Amoury Sasaki Acacio  
-**Time de Desenvolvimento:** Caio Lacerda, Ian Pedersoli, Bruno Augusto, Paulo Sérgio  
+## 1. Informações Gerais
 
----
-
-## 🎯 Objetivos da Sprint
-- Validar as fontes de dados utilizadas pelo projeto.  
-- Realizar uma POC para contornar o ReCaptcha V2 do Google no Lattes.  
-- Continuar os estudos de responsividade e aprimoramento da Home Page.  
+* **Sprint:** 06  
+* **Duração:** 14 de setembro de 2025 a 21 de setembro de 2025  
+* **Product Owner:** Arthur Scartezini  
+* **Scrum Master:** Kaio Amoury  
+* **Time de Desenvolvimento:** Caio Lacerda, Ian Pedersoli, Bruno Augusto, Paulo Sérgio  
 
 ---
 
-## 📋 Backlog da Sprint
+## 2. Objetivos da Sprint
 
-| Item | História de Usuário                                                             | Critério de Aceite                                                | Status       |
-| ---- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------- | ------------ |
-| 1    | Como desenvolvedor, quero validar as fontes de dados do sistema                 | Fontes verificadas e aprovadas pela equipe                        | Concluído    |
-| 2    | Como equipe, queremos realizar POC para contornar o ReCaptcha V2 no Lattes      | POC funcional em Python com Playwright                            | Concluído    |
-| 3    | Como desenvolvedor, quero estudar técnicas de responsividade no React + Vite    | Layout responsivo testado e documentado                           | Em andamento |
-| 4    | Como designer, quero finalizar o protótipo de alta fidelidade                   | Protótipo completo e apresentado na review                        | Concluído    |
-| 5    | Como pesquisador, quero aprimorar a Home Page com base em estudos anteriores    | Ideias revisadas e documentadas                                   | Concluído    |
+* Validar as fontes de dados utilizadas no projeto.  
+* Estudar e desenvolver uma prova de conceito (POC) para contornar o ReCAPTCHA V2 do Google no Lattes.  
+* Evoluir o protótipo de alta fidelidade.  
+* Avançar nos estudos de responsividade e melhorias da Home Page.  
 
 ---
 
-## 🚀 Entregas (Review)
-- POC implementada em Python com Playwright e extensão do Google para contornar o Captcha do Lattes.  
-- Validação das fontes de dados finalizada.  
-- Protótipo de alta fidelidade concluído e apresentado.  
-- Estudos de responsividade e melhorias na Home Page documentados.  
+## 3. Backlog da Sprint
+
+| Item | História de Usuário | Critério de Aceite | Status |
+| ---- | ------------------- | ------------------ | ------ |
+| 1 | Como equipe, queremos validar a consistência das fontes de dados | Fontes validadas e documentadas | Concluído |
+| 2 | Como desenvolvedor, quero criar uma POC para bypass do ReCAPTCHA | POC funcional utilizando Playwright | Concluído |
+| 3 | Como equipe de design, quero finalizar o protótipo de alta fidelidade | Protótipo finalizado e apresentado | Concluído |
+| 4 | Como frontend, quero estudar responsividade | Estudo documentado e aplicado no projeto | Concluído |
+| 5 | Como integrante, quero aprimorar a Home Page | Melhoria contínua documentada | Concluído |
 
 ---
 
-## 📎 Evidências e Links
-- **Documentos:** Issues Sprint 6  
-- **Protótipo/Design:** Figma (Alta fidelidade)  
-- **PRs/MRs:** N/A  
-- **Prints/Imagens:** N/A  
+## 4. Entregas (Review)
+
+* Prova de conceito funcional para contornar o ReCAPTCHA do Lattes.  
+* Protótipo de alta fidelidade finalizado e apresentado na review.  
+* Estudos de responsividade com React + Vite.  
+* Home Page com primeiras melhorias aplicadas.  
 
 ---
 
-## 👥 Contribuições por Integrante
-- **Caio Lacerda:** Desenvolveu a POC em Python utilizando Playwright e extensão do Google para bypass do Captcha do Lattes.  
-- **Ian Pedersoli:** Estudou responsividade utilizando React + Vite.  
-- **Bruno Augusto:** Pesquisou técnicas para contornar Captchas em processos de Web Scraping.  
-- **Arthur Scartezini:** Finalizou o protótipo de alta fidelidade e apresentou à equipe durante a review.  
-- **Paulo Sérgio:** Apoio no acompanhamento técnico e validação da arquitetura.  
-- **Kaio Amoury:** Deu continuidade ao estudo da Sprint 5 sobre melhorias da Home Page e documentou o andamento da equipe.  
+## 5. Métricas da Sprint
+
+* **Velocity (story points concluídos):** 5  
+* **Burn-down Chart:** N/A  
+* **Qtd. de histórias concluídas / planejadas:** 5 / 5  
 
 ---
 
-## 🔍 Retrospectiva
+## 6. Retrospectiva
 
-### ✅ O que funcionou bem
-- Muito aprendizado técnico e evolução no uso de novas ferramentas.  
+### O que funcionou bem
+* Muito aprendizado coletivo e evolução técnica significativa.  
+* POC do Lattes avançou bem mais rápido do que o previsto.  
 
-### ⚠️ O que precisa melhorar
-- Comunicação entre os membros.  
+### O que pode melhorar
+* Comunicação interna ainda precisa melhorar.  
 
-### 💡 Ações de melhoria
-- Reforçar dailys e momentos de alinhamento durante a semana.  
+### Ações de melhoria
+* Reforçar a realização de dailys e revisões mais estruturadas.  
 
 ---
 
-## 🔜 Próximos Passos
-- Iniciar o webscraping dos dados do Lattes.  
-- Integrar os dados minerados ao formato JSON.  
-- Preparar os dados para exibição na Home Page.  
+## 7. Evidências e Links
+
+* **Documentos:** Issues Sprint 6  
+* **Protótipo/Design:** N/A  
+* **PRs/MRs:** N/A  
+* **Prints/Imagens:** N/A  
+
+---
+
+## 8. Contribuições por Integrante
+
+- **Caio Lacerda** — Desenvolveu uma POC em Python utilizando Playwright e uma extensão do Google para contornar o ReCAPTCHA do Lattes.  
+- **Ian Pedersoli** — Estudou responsividade com React + Vite e aplicou ao projeto.  
+- **Bruno Augusto** — Aprendeu e documentou técnicas para contornar captchas em Web Scraping.  
+- **Arthur Scartezini** — Finalizou o protótipo de alta fidelidade e apresentou para a equipe.  
+- **Paulo Sérgio** — (Sem registro de atividades nesta sprint).  
+- **Kaio Amoury** — Continuou o estudo da sprint anterior focado em melhorias da Home Page.  
+
+---
+
+## 9. Próximos Passos (prévia da próxima semana)
+
+- Iniciar o webscraping dos dados do Lattes utilizando a POC criada.  
+- Avançar na integração inicial dos dados no frontend.  
+- Revisar Story Map com base no novo fluxo de dados.  
+
+---
