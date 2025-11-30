@@ -1,5 +1,5 @@
 import os
-from typing import List
+from typing import List, Optional
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 from langchain_core.prompts import PromptTemplate
@@ -10,8 +10,27 @@ from langchain_postgres import PGVector
 
 load_dotenv()
 
-embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
-llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.3) 
+# Inicialização lazy das credenciais
+_embeddings = None
+_llm = None
+
+def _get_embeddings():
+    global _embeddings
+    if _embeddings is None:
+        try:
+            _embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
+        except Exception as e:
+            raise ValueError(f"Erro ao inicializar embeddings do Google: {e}. Verifique as credenciais GOOGLE_API_KEY no .env")
+    return _embeddings
+
+def _get_llm():
+    global _llm
+    if _llm is None:
+        try:
+            _llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.3)
+        except Exception as e:
+            raise ValueError(f"Erro ao inicializar LLM do Google: {e}. Verifique as credenciais GOOGLE_API_KEY no .env")
+    return _llm 
 
 class RecomendacaoProfessor(BaseModel):
     nome: str = Field(description="Nome exato do professor como encontrado no banco (GERALMENTE EM MAIÚSCULO). Mantenha assim.")
@@ -60,6 +79,9 @@ def get_rag_chain():
     db_url = os.getenv("DATABASE_URL")
     if not db_url:
         raise ValueError("DATABASE_URL não configurada no .env")
+
+    embeddings = _get_embeddings()
+    llm = _get_llm()
 
     vector_store = PGVector(
         embeddings=embeddings,
