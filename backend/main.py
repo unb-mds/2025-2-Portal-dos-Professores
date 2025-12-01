@@ -128,3 +128,24 @@ def get_unique_departments():
     É usado pelo frontend para preencher os botões de filtro.
     """
     return get_unique_field_values("departamento")
+
+@app.get("/professors/ranking/top-citations", response_model=List[Professor], summary="Top professores por total de citações")
+def get_top_cited_professors(limit: int = Query(6, description="Quantidade de professores para retornar")):
+    """
+    Retorna os professores com maior número de citações no Google Scholar.
+    Ignora professores que não possuem dados do Scholar.
+    """
+
+    professores_com_scholar = [
+        p for p in professors_db 
+        if p.get("dados_scholar") 
+        and p["dados_scholar"].get("metricas_citacao")
+        and p["dados_scholar"]["metricas_citacao"].get("total_citacoes") is not None
+    ]
+
+    professores_com_scholar.sort(
+        key=lambda p: p["dados_scholar"]["metricas_citacao"]["total_citacoes"],
+        reverse=True
+    )
+
+    return professores_com_scholar[:limit]

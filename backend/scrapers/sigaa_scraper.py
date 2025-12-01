@@ -88,7 +88,7 @@ class SigaaScraper:
         Raspa a lista de professores por departamento e depois busca os detalhes.
         """
         async with async_playwright() as p:
-            browser = await p.chromium.launch(headless=False) 
+            browser = await p.chromium.launch(headless=True) 
             page = await browser.new_page()
             
             initial_professor_map = {}
