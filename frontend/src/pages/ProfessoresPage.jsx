@@ -2,13 +2,26 @@ import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
   SimpleGrid, Box, Text, Center, Container,
-  Heading, VStack, HStack, Icon, Input, InputGroup, InputLeftElement,
-  Button, IconButton, useColorModeValue, Wrap, WrapItem, Tag, TagLabel, TagCloseButton
+  Heading, VStack, HStack, Icon, Input, InputGroup, InputLeftElement, InputRightElement,
+  Button, IconButton, useColorModeValue, Wrap, WrapItem, Tag, TagLabel, TagCloseButton,
+  List, ListItem, Flex
 } from '@chakra-ui/react';
-import { Search, Filter, ArrowUpDown, ChevronLeft, ChevronRight, X, ChevronDown, ChevronUp } from 'lucide-react';
+import { Search, Filter, ArrowUpDown, ChevronLeft, ChevronRight, X, Sparkles } from 'lucide-react';
 
 import ProfessorCard from '../components/professores/ProfessorCard';
-import { getDepartmentsData, getProfessorsData } from '../services/api';
+import { getProfessorsData } from '../services/api';
+
+const SUGGESTED_AREAS = [
+  "Inteligência Artificial",
+  "Engenharia de Software",
+  "Ciência de Dados",
+  "Segurança da Informação",
+  "Redes de Computadores",
+  "Educação",
+  "Robótica",
+  "Sustentabilidade",
+  "Gestão de Projetos"
+];
 
 function extractSiape(url) {
   if (!url) return Math.random().toString();
@@ -16,41 +29,80 @@ function extractSiape(url) {
   return match ? match[1] : url;
 }
 
-const normalizeString = (str) => {
+const removeAccents = (str) => {
   if (!str) return "";
-  return str
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, ' ') 
-    .replace(/\b\w/g, l => l.toUpperCase()); 
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+};
+
+const AREA_MAPPINGS = {
+  // QUÍMICA & BIOLOGIA
+  "chemistry": "Química", "chemical": "Química", "quimica": "Química",
+  "organic chemistry": "Química Orgânica",
+  "analytical chemistry": "Química Analítica",
+  "biology": "Biologia", "biologia": "Biologia",
+  "bioinformatics": "Bioinformática",
+
+  // COMPUTAÇÃO
+  "computer science": "Ciência da Computação", "ciencia da computacao": "Ciência da Computação",
+  "software engineering": "Engenharia de Software", "engenharia de software": "Engenharia de Software",
+  "artificial intelligence": "Inteligência Artificial", "ai": "Inteligência Artificial", "ia": "Inteligência Artificial",
+  "machine learning": "Aprendizado de Máquina", "ml": "Aprendizado de Máquina",
+  "deep learning": "Aprendizado Profundo",
+  "data science": "Ciência de Dados", "ciencia de dados": "Ciência de Dados",
+  "computer networks": "Redes de Computadores", "redes de computadores": "Redes de Computadores",
+  "information security": "Segurança da Informação", "cybersecurity": "Segurança da Informação",
+  "cloud computing": "Computação em Nuvem",
+  "human-computer interaction": "Interação Humano-Computador", "hci": "Interação Humano-Computador",
+  "database": "Banco de Dados", "databases": "Banco de Dados",
+  "image processing": "Processamento de Imagens",
+  "algorithms": "Algoritmos",
+
+  // MATEMÁTICA E FÍSICA
+  "mathematics": "Matemática", "math": "Matemática",
+  "applied mathematics": "Matemática Aplicada",
+  "physics": "Física", "fisica": "Física",
+  "algebra": "Álgebra",
+  "analysis": "Análise",
+  "optimization": "Otimização",
+  "logic": "Lógica", "logica": "Lógica",
+  "statistics": "Estatística",
+  "probability": "Probabilidade",
+
+  // ENGENHARIAS E GERAL
+  "robotics": "Robótica", "robotica": "Robótica",
+  "education": "Educação", "educacao": "Educação",
+  "project management": "Gestão de Projetos",
+  "sustainability": "Sustentabilidade"
+};
+
+const normalizeAndTranslate = (str) => {
+  if (!str) return "";
+  const cleanRaw = str.replace(/[\[\]"']/g, '').trim();
+  if (cleanRaw.length <= 2) return ""; 
+
+  const searchKey = removeAccents(cleanRaw);
+  
+  if (AREA_MAPPINGS[searchKey]) {
+    return AREA_MAPPINGS[searchKey];
+  }
+
+  return cleanRaw.toLowerCase().replace(/(?:^|\s)\S/g, (a) => a.toUpperCase());
 };
 
 const getAreas = (professor) => {
   if (!professor) return [];
-
   const candidates = [
-    professor.dados_scholar?.areas_interesse, 
-    professor.areas_interesse,
-    professor.areas_de_interesse,
-    professor.areasPesquisa,
-    professor.areas_pesquisa,
-    professor.area_atuacao,
-    professor.keywords,
-    professor.dados_lattes?.areas_de_atuacao,
-    professor.dados_lattes?.areas_interesse,
-    professor.dados_lattes?.areas
+    professor.dados_scholar?.areas_interesse, professor.areas_interesse,
+    professor.areas_de_interesse, professor.areasPesquisa, professor.areas_pesquisa,
+    professor.area_atuacao, professor.keywords, professor.dados_lattes?.areas_de_atuacao,
+    professor.dados_lattes?.areas_interesse, professor.dados_lattes?.areas
   ];
-
   const found = candidates.find(val => val !== undefined && val !== null);
-
   if (!found) return [];
   if (Array.isArray(found)) return found;
-  
   if (typeof found === 'string') {
-    let clean = found.replace(/[\[\]"']/g, ''); 
-    return clean.split(/[;,]+/).map(a => a.trim()).filter(a => a.length > 0);
+    return found.replace(/[\[\]"']/g, '').split(/[;,]+/).map(a => a.trim()).filter(a => a.length > 0);
   }
-  
   return [];
 };
 
@@ -65,7 +117,8 @@ export default function ProfessoresPage() {
   const [selectedAreas, setSelectedAreas] = useState([]); 
   const [sortOrder, setSortOrder] = useState('asc');
   
-  const [showAllAreas, setShowAllAreas] = useState(false);
+  const [areaInput, setAreaInput] = useState('');
+  const [isAreaListOpen, setIsAreaListOpen] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 12; 
@@ -73,15 +126,16 @@ export default function ProfessoresPage() {
   const pageBg = useColorModeValue("gray.50", "gray.900");
   const headerBg = useColorModeValue("white", "gray.800");
   const borderColor = useColorModeValue("gray.200", "gray.700");
-  const titleColor = useColorModeValue("blue.800", "blue.100");
   const mutedColor = useColorModeValue("gray.600", "gray.400");
+  const dropdownBg = useColorModeValue("white", "gray.800");
+  const filterBlockBg = useColorModeValue("gray.50", "gray.700");
+  const inputBg = useColorModeValue("white", "gray.800");
 
-  // Lê o parâmetro 'departamento' da URL ao carregar a página
   useEffect(() => {
     const departamentoFromUrl = searchParams.get('departamento');
     if (departamentoFromUrl) {
       setSelectedDepartamento(decodeURIComponent(departamentoFromUrl));
-      setCurrentPage(1); // Reset para primeira página ao aplicar filtro
+      setCurrentPage(1);
     }
   }, [searchParams]);
 
@@ -89,50 +143,62 @@ export default function ProfessoresPage() {
     setIsLoading(true);
     getProfessorsData({}) 
       .then(data => {
-        const dataWithId = data.map(prof => ({
-          ...prof,
-          id: extractSiape(prof.pagina_sigaa_url) 
-        }));
+        const dataWithId = data.map(prof => ({ ...prof, id: extractSiape(prof.pagina_sigaa_url) }));
         setProfessores(dataWithId);
       })
       .catch(error => {
-        console.error("Falha ao buscar professores:", error);
+        console.error("Erro:", error);
         setProfessores([]);
       })
-      .finally(() => {
-        setIsLoading(false);
-      });
+      .finally(() => setIsLoading(false));
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedQuery(query);
-      setCurrentPage(1);
-    }, 300);
+    const timer = setTimeout(() => { setDebouncedQuery(query); setCurrentPage(1); }, 300);
     return () => clearTimeout(timer);
   }, [query]);
 
   const { departments, allAreas } = useMemo(() => {
     const depsSet = new Set();
-    const areasSet = new Set();
-
+    const areasMap = new Map(); 
     professores.forEach(prof => {
       if (prof.departamento) depsSet.add(prof.departamento);
-      
       const profAreas = getAreas(prof);
-      profAreas.forEach(a => {
-        const cleanArea = normalizeString(a);
-        if (cleanArea.length > 2) { 
-            areasSet.add(cleanArea);
+      profAreas.forEach(rawArea => {
+        const niceName = normalizeAndTranslate(rawArea);
+        if (niceName) {
+            const key = removeAccents(niceName);
+            if (!areasMap.has(key)) areasMap.set(key, niceName);
         }
       });
     });
-
     return {
       departments: Array.from(depsSet).sort(),
-      allAreas: Array.from(areasSet).sort((a, b) => a.localeCompare(b))
+      allAreas: Array.from(areasMap.values()).sort((a, b) => a.localeCompare(b))
     };
   }, [professores]);
+
+  const activeSuggestions = useMemo(() => {
+    return SUGGESTED_AREAS.filter(s => allAreas.some(area => area === s) && !selectedAreas.includes(s));
+  }, [allAreas, selectedAreas]);
+
+  const filteredAreaSuggestions = useMemo(() => {
+    if (!areaInput) return [];
+    const term = removeAccents(areaInput);
+    
+    return allAreas.filter(area => { 
+        if (selectedAreas.includes(area)) return false;
+        const normArea = removeAccents(area); 
+        if (normArea.includes(term)) return true;
+        const dictionaryMatch = Object.keys(AREA_MAPPINGS).some(mappingKey => {
+            const isRelatedToCurrentArea = AREA_MAPPINGS[mappingKey] === area;
+            const keyMatchesTerm = mappingKey.includes(term);
+            return isRelatedToCurrentArea && keyMatchesTerm;
+        });
+        
+        return dictionaryMatch;
+    }).slice(0, 10);
+  }, [areaInput, allAreas, selectedAreas]);
 
   const filteredAndSortedProfessors = useMemo(() => {
     let result = [...professores];
@@ -147,16 +213,11 @@ export default function ProfessoresPage() {
     }
 
     if (selectedDepartamento) {
-      // Comparação flexível: verifica se o departamento do professor contém o nome selecionado ou vice-versa
-      // Isso permite correspondência mesmo com pequenas diferenças de formatação
       const selectedDeptLower = selectedDepartamento.toLowerCase().trim();
       result = result.filter(p => {
         if (!p.departamento) return false;
         const profDeptLower = p.departamento.toLowerCase().trim();
-        // Verifica correspondência exata ou se um contém o outro
-        return profDeptLower === selectedDeptLower || 
-               profDeptLower.includes(selectedDeptLower) || 
-               selectedDeptLower.includes(profDeptLower);
+        return profDeptLower === selectedDeptLower || profDeptLower.includes(selectedDeptLower) || selectedDeptLower.includes(profDeptLower);
       });
     }
 
@@ -164,7 +225,10 @@ export default function ProfessoresPage() {
       result = result.filter(p => {
         const pAreas = getAreas(p);
         return selectedAreas.some(selected => 
-            pAreas.some(profArea => normalizeString(profArea) === selected)
+            pAreas.some(profArea => {
+                const translated = normalizeAndTranslate(profArea);
+                return translated === selected;
+            })
         );
       });
     }
@@ -172,9 +236,7 @@ export default function ProfessoresPage() {
     result.sort((a, b) => {
       const nomeA = (a.nome || "").toString();
       const nomeB = (b.nome || "").toString();
-      return sortOrder === 'asc' 
-        ? nomeA.localeCompare(nomeB) 
-        : nomeB.localeCompare(nomeA);
+      return sortOrder === 'asc' ? nomeA.localeCompare(nomeB) : nomeB.localeCompare(nomeA);
     });
 
     return result;
@@ -182,47 +244,26 @@ export default function ProfessoresPage() {
 
   const totalProfessores = filteredAndSortedProfessors.length;
   const totalPages = Math.ceil(totalProfessores / ITEMS_PER_PAGE) || 1;
-  const currentProfessors = filteredAndSortedProfessors.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE, 
-    currentPage * ITEMS_PER_PAGE
-  );
+  const currentProfessors = filteredAndSortedProfessors.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
   const toggleArea = (area) => {
-    setSelectedAreas(prev => 
-      prev.includes(area) ? prev.filter(a => a !== area) : [...prev, area]
-    );
-    setCurrentPage(1);
+    setSelectedAreas(prev => prev.includes(area) ? prev.filter(a => a !== area) : [...prev, area]);
+    setCurrentPage(1); setAreaInput(''); setIsAreaListOpen(false);
   };
 
   const clearFilters = () => {
-    setQuery('');
-    setSelectedDepartamento('');
-    setSelectedAreas([]);
-    setCurrentPage(1);
-    // Limpa o parâmetro da URL
-    setSearchParams({});
+    setQuery(''); setSelectedDepartamento(''); setSelectedAreas([]); setAreaInput(''); setCurrentPage(1); setSearchParams({});
   };
 
-  const handleDepartamentoChange = (departamento) => {
-    setSelectedDepartamento(departamento);
-    setCurrentPage(1);
-    // Atualiza a URL com o novo departamento
-    if (departamento) {
-      setSearchParams({ departamento: encodeURIComponent(departamento) });
-    } else {
-      setSearchParams({});
-    }
+  const handleDepartamentoChange = (dept) => {
+    setSelectedDepartamento(dept); setCurrentPage(1);
+    setSearchParams(dept ? { departamento: encodeURIComponent(dept) } : {});
   };
 
   const hasActiveFilters = query || selectedDepartamento || selectedAreas.length > 0;
   const handleNextPage = () => setCurrentPage(p => Math.min(totalPages, p + 1));
   const handlePrevPage = () => setCurrentPage(p => Math.max(1, p - 1));
   const toggleSortOrder = () => setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc');
-
-  const VISIBLE_TAGS = 40;
-  const displayedAreas = (showAllAreas || selectedAreas.length > 0) 
-    ? allAreas 
-    : allAreas.slice(0, VISIBLE_TAGS);
 
   return (
     <Box bg={pageBg} minH="calc(100vh - 60px)">
@@ -236,7 +277,7 @@ export default function ProfessoresPage() {
 
             <InputGroup size="lg">
               <InputLeftElement pointerEvents="none"><Icon as={Search} color="gray.400" /></InputLeftElement>
-              <Input type="text" placeholder="Buscar por nome, departamento ou área de pesquisa..." value={query} onChange={(e) => setQuery(e.target.value)} bg={useColorModeValue("white", "gray.700")} borderColor={useColorModeValue("gray.300", "gray.600")} _focus={{ borderColor: "blue.500", boxShadow: "0 0 0 1px #3182ce" }} />
+              <Input type="text" placeholder="Buscar por nome ou termo geral..." value={query} onChange={(e) => setQuery(e.target.value)} bg={useColorModeValue("white", "gray.700")} borderColor={useColorModeValue("gray.300", "gray.600")} _focus={{ borderColor: "blue.500", boxShadow: "0 0 0 1px #3182ce" }} />
             </InputGroup>
 
             <HStack spacing={3} wrap="wrap" align="start">
@@ -245,64 +286,88 @@ export default function ProfessoresPage() {
                  <Input as="select" value={selectedDepartamento} onChange={(e) => handleDepartamentoChange(e.target.value)} bg={useColorModeValue("white", "gray.700")} borderColor={useColorModeValue("gray.300", "gray.600")} borderRadius="md" pl={10} cursor="pointer">
                     <option value="">Todos os departamentos</option>
                     {departments.map(dept => (<option key={dept} value={dept}>{dept}</option>))}
-                  </Input>
+                 </Input>
               </InputGroup>
               <Button onClick={toggleSortOrder} leftIcon={<Icon as={ArrowUpDown} boxSize={4} />} variant="outline" bg={useColorModeValue("white", "gray.700")} color={mutedColor} fontWeight="normal" minW="140px">Nome {sortOrder === 'asc' ? '(A-Z)' : '(Z-A)'}</Button>
               {hasActiveFilters && (<Button variant="ghost" colorScheme="red" onClick={clearFilters} leftIcon={<Icon as={X} boxSize={4} />}>Limpar filtros</Button>)}
             </HStack>
 
-            {allAreas.length > 0 && (
-              <Box pt={4} borderTop="1px dashed" borderColor="gray.200" mt={2}>
-                <HStack justify="space-between" mb={3}>
-                    <Text fontSize={{ base: 'xs', md: 'sm' }} fontWeight="bold" color="gray.600" textTransform="uppercase" letterSpacing="wide">
-                      Filtrar por Áreas de Interesse ({allAreas.length}):
-                    </Text>
+            {/* --- ÁREA DE FILTRO CINZA --- */}
+            <Box mt={6} p={6} bg={filterBlockBg} borderRadius="xl" border="1px solid" borderColor={useColorModeValue("gray.100", "gray.600")}>
+                <Flex gap={8} direction={{ base: 'column', lg: 'row' }} align="flex-start">
                     
-                    {allAreas.length > VISIBLE_TAGS && selectedAreas.length === 0 && (
-                        <Button 
-                            size="xs" 
-                            variant="ghost" 
-                            color="blue.500" 
-                            rightIcon={showAllAreas ? <Icon as={ChevronUp} /> : <Icon as={ChevronDown} />}
-                            onClick={() => setShowAllAreas(!showAllAreas)}
-                        >
-                            {showAllAreas ? "Ver menos" : `Ver todas (+${allAreas.length - VISIBLE_TAGS})`}
-                        </Button>
-                    )}
-                </HStack>
-                
-                <Wrap spacing={2}>
-                    {displayedAreas.map((area) => {
-                        const isSelected = selectedAreas.includes(area);
-                        return (
-                        <WrapItem key={area}>
-                            <Tag
-                            size="md"
-                            borderRadius="full"
-                            variant={isSelected ? "solid" : "outline"}
-                            colorScheme={isSelected ? "blue" : "gray"}
-                            cursor="pointer"
-                            onClick={() => toggleArea(area)}
-                            _hover={{ bg: isSelected ? "blue.600" : "gray.100" }}
-                            transition="all 0.2s"
-                            >
-                            <TagLabel>{area}</TagLabel>
-                            {isSelected && <TagCloseButton onClick={(e) => { e.stopPropagation(); toggleArea(area); }} />}
-                            </Tag>
-                        </WrapItem>
-                        );
-                    })}
-                    {!showAllAreas && allAreas.length > VISIBLE_TAGS && selectedAreas.length === 0 && (
-                        <WrapItem>
-                            <Tag size="md" borderRadius="full" variant="ghost" color="blue.500" cursor="pointer" onClick={() => setShowAllAreas(true)}>
-                                ...
-                            </Tag>
-                        </WrapItem>
-                    )}
-                </Wrap>
-              </Box>
-            )}
+                    {/* INPUT COM DROPDOWN */}
+                    <Box flex={{ base: "1", lg: "0 0 450px" }} w="full" position="relative" zIndex={20}>
+                        <HStack mb={3} spacing={2}>
+                           <Icon as={Search} size={16} color="blue.500"/>
+                           <Text fontSize="xs" fontWeight="bold" color="gray.500" textTransform="uppercase" letterSpacing="wider">FILTRAR POR ÁREA DE INTERESSE</Text>
+                        </HStack>
+                        
+                        <InputGroup size="md">
+                            <Input 
+                                placeholder="Digite para buscar (ex: Inteligência Artificial...)" 
+                                value={areaInput}
+                                onChange={(e) => { setAreaInput(e.target.value); setIsAreaListOpen(true); }}
+                                onFocus={() => setIsAreaListOpen(true)}
+                                bg={inputBg}
+                                pr="2.5rem"
+                                borderColor={useColorModeValue("gray.300", "gray.600")}
+                                borderRadius="md" 
+                                shadow="sm"
+                                _focus={{ borderColor: "blue.500", shadow: "md", ring: 1, ringColor: "blue.200" }}
+                            />
+                             {areaInput && (<InputRightElement><IconButton size="sm" icon={<X size={14}/>} onClick={() => {setAreaInput(''); setIsAreaListOpen(false)}} variant="ghost" color="gray.500" aria-label="Limpar" /></InputRightElement>)}
+                        </InputGroup>
 
+                        {isAreaListOpen && areaInput && filteredAreaSuggestions.length > 0 && (
+                            <List bg={dropdownBg} border="1px solid" borderColor={borderColor} borderRadius="md" position="absolute" w="full" mt={1} maxH="250px" overflowY="auto" boxShadow="xl">
+                                {filteredAreaSuggestions.map((area, idx) => (
+                                    <ListItem key={idx} px={4} py={3} cursor="pointer" transition="all 0.2s" _hover={{ bg: useColorModeValue("blue.50", "blue.900"), color: "blue.700", pl: 6 }} onClick={() => toggleArea(area)} borderBottomWidth={idx !== filteredAreaSuggestions.length - 1 ? "1px" : "0"} borderColor={borderColor}>
+                                        <HStack><Icon as={Search} size={14} color="gray.400"/><Text fontSize="sm">{area}</Text></HStack>
+                                    </ListItem>
+                                ))}
+                            </List>
+                        )}
+                    </Box>
+
+                    {/* SUGESTÕES POPULARES */}
+                    {activeSuggestions.length > 0 && !areaInput && (
+                        <Box flex="1" w="full">
+                           <HStack mb={3} spacing={2} align="center">
+                             <Icon as={Sparkles} color="blue.500" size={16} fill="currentColor"/>
+                             <Text fontSize="xs" fontWeight="bold" color="gray.500" textTransform="uppercase" letterSpacing="wider">SUGESTÕES POPULARES</Text>
+                           </HStack>
+                           
+                           <Wrap spacing={3}>
+                              {activeSuggestions.map(sug => (
+                                <WrapItem key={sug}>
+                                  <Tag size="md" variant="outline" colorScheme="blue" cursor="pointer" onClick={() => toggleArea(sug)} borderRadius="full" px={3} py={1} bg={useColorModeValue("white", "gray.800")} border="1px solid" borderColor="blue.100" transition="all 0.2s" _hover={{ transform: "translateY(-2px)", shadow: "md", bg: "blue.50", borderColor: "blue.300", color: "blue.700" }}>
+                                    <TagLabel fontWeight="medium" fontSize="sm">{sug}</TagLabel>
+                                  </Tag>
+                                </WrapItem>
+                              ))}
+                           </Wrap>
+                        </Box>
+                    )}
+                </Flex>
+
+                {/* FILTROS ATIVOS */}
+                {selectedAreas.length > 0 && (
+                    <Box mt={5} pt={4} borderTop="1px dashed" borderColor="gray.300">
+                        <Text fontSize="xs" fontWeight="bold" color="gray.500" mb={2}>FILTROS ATIVOS:</Text>
+                        <Wrap spacing={2}>
+                            {selectedAreas.map((area) => (
+                                <WrapItem key={area}>
+                                    <Tag size="md" borderRadius="full" variant="solid" colorScheme="blue" boxShadow="sm">
+                                        <TagLabel pl={1}>{area}</TagLabel>
+                                        <TagCloseButton onClick={() => toggleArea(area)} />
+                                    </Tag>
+                                </WrapItem>
+                            ))}
+                        </Wrap>
+                    </Box>
+                )}
+            </Box>
           </VStack>
         </Container>
       </Box>
@@ -312,21 +377,12 @@ export default function ProfessoresPage() {
              <Text fontSize={{ base: 'sm', md: 'md' }} fontWeight="medium" color="gray.600">{isLoading ? <Text>Carregando...</Text> : `Mostrando ${currentProfessors.length} de ${totalProfessores} resultados`}</Text>
             {totalPages > 1 && (<Text fontSize={{ base: 'xs', md: 'sm' }} color="gray.600">Página {currentPage} de {totalPages}</Text>)}
         </HStack>
-
-        {isLoading ? (
-          <Center py={20}><Text fontSize={{ base: 'md', md: 'lg' }} color="gray.600">Carregando perfis...</Text></Center>
-        ) : currentProfessors.length > 0 ? (
+        {isLoading ? (<Center py={20}><Text fontSize={{ base: 'md', md: 'lg' }} color="gray.600">Carregando perfis...</Text></Center>) : currentProfessors.length > 0 ? (
           <>
             <SimpleGrid columns={{ base: 1, md: 2, lg: 3, xl: 3 }} spacing={6} pb={10}>
               {currentProfessors.map((professor) => (<ProfessorCard key={professor.id} professor={professor} />))}
             </SimpleGrid>
-            {totalPages > 1 && (
-                <HStack justify="center" spacing={4} py={8}>
-                    <IconButton icon={<ChevronLeft />} onClick={handlePrevPage} isDisabled={currentPage === 1} aria-label="Anterior" variant="outline" />
-                    <HStack spacing={2} display={{ base: 'none', md: 'flex' }}><Text fontSize={{ base: 'xs', md: 'sm' }} color="gray.600">Página {currentPage} de {totalPages}</Text></HStack>
-                    <IconButton icon={<ChevronRight />} onClick={handleNextPage} isDisabled={currentPage === totalPages} aria-label="Próxima" variant="outline" />
-                </HStack>
-            )}
+            {totalPages > 1 && (<HStack justify="center" spacing={4} py={8}><IconButton icon={<ChevronLeft />} onClick={handlePrevPage} isDisabled={currentPage === 1} aria-label="Anterior" variant="outline" /><HStack spacing={2} display={{ base: 'none', md: 'flex' }}><Text fontSize={{ base: 'xs', md: 'sm' }} color="gray.600">Página {currentPage} de {totalPages}</Text></HStack><IconButton icon={<ChevronRight />} onClick={handleNextPage} isDisabled={currentPage === totalPages} aria-label="Próxima" variant="outline" /></HStack>)}
           </>
         ) : (
           <Center py={20} flexDirection="column" bg={headerBg} borderRadius="xl" borderWidth="1px" borderColor={borderColor}>
