@@ -1,10 +1,18 @@
 import json
 from typing import List, Optional
 from pathlib import Path 
-from .ai_agent import router as agente_router
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from .models import Professor
+
+# Importação opcional do router do agente de IA
+try:
+    from .ai_agent import router as agente_router
+    AGENTE_IA_DISPONIVEL = True
+except Exception as e:
+    print(f"AVISO: Agente de IA não disponível: {e}")
+    AGENTE_IA_DISPONIVEL = False
+    agente_router = None
 
 app = FastAPI(
     title="API de Dados de Professores",
@@ -26,7 +34,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(agente_router.router, prefix="/api/v1")
+# Incluir router do agente de IA apenas se disponível
+if AGENTE_IA_DISPONIVEL and agente_router:
+    app.include_router(agente_router.router, prefix="/api/v1")
 
 
 def load_professors_data() -> List[dict]:

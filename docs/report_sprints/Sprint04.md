@@ -1,74 +1,94 @@
-# 📊 Relatório da Sprint — Portal dos Professores
+# Relatório da Sprint 04 — Portal dos Professores — Squad 04
 
-## 🗓️ Sprint 4 — 14/09 a 21/09
-**Product Owner:** Arthur Scartezini  
-**Scrum Master:** Kaio Amoury Sasaki Acacio  
-**Time de Desenvolvimento:** Caio Lacerda, Ian Pedersoli, Bruno Augusto, Paulo Sérgio  
+## 1. Informações Gerais
 
----
-
-## 🎯 Objetivos da Sprint
-- Implementar o webscraping básico dos professores no SIGAA.  
-- Criar a estrutura de arquitetura Double Diamond.  
-- Desenvolver o protótipo de baixa fidelidade.  
-- Aprimorar o Story Map.  
-- Criar a estrutura inicial do JSON.  
+* **Sprint:** 04  
+* **Duração:** 14 de setembro de 2025 a 21 de setembro de 2025  
+* **Product Owner:** Arthur Scartezini  
+* **Scrum Master:** Kaio Amoury  
+* **Time de Desenvolvimento:** Caio Lacerda, Ian Pedersoli, Bruno Augusto, Paulo Sérgio  
 
 ---
 
-## 📋 Backlog da Sprint
+## 2. Objetivos da Sprint
 
-| Item | História de Usuário                                                        | Critério de Aceite                                              | Status       |
-| ---- | -------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------ |
-| 1    | Como visitante, quero visualizar dados dos professores                     | Webscraping funcionando e salvando em JSON                      | Em andamento |
-| 2    | Como equipe, queremos mapear a estrutura do projeto (Double Diamond)       | Documento criado e validado                                     | Concluído    |
-| 3    | Como designer, quero desenvolver o protótipo inicial                       | Protótipo de baixa fidelidade pronto no Figma                   | Concluído    |
-| 4    | Como equipe, queremos aprimorar o Story Map                                | Story Map atualizado e coerente com o escopo                    | Concluído    |
-| 5    | Como desenvolvedor, quero definir formato base de dados                    | JSON inicial criado e documentado                               | Concluído    |
+* Iniciar o webscraping básico dos professores utilizando SIGAA.  
+* Criar a estrutura do Double Diamond para orientar decisões do projeto.  
+* Desenvolver e finalizar o protótipo de baixa fidelidade.  
+* Melhorar os Story Maps do portal.  
+* Definir a estrutura inicial do JSON para armazenamento dos dados.  
 
 ---
 
-## 🚀 Entregas (Review)
-- Webscraping básico do SIGAA iniciado.  
-- Estrutura Double Diamond concluída.  
-- Protótipo de baixa fidelidade finalizado e navegável.  
-- Story Map revisado e atualizado.  
-- Estrutura inicial do JSON criada.  
+## 3. Backlog da Sprint
+
+| Item | História de Usuário | Critério de Aceite | Status |
+| ---- | ------------------- | ------------------ | ------ |
+| 1 | Como integrante, desejo iniciar o scraping para coletar dados reais | Script funcionando com saída em JSON | Concluído |
+| 2 | Como equipe, queremos organizar a visão do produto via Double Diamond | Double Diamond completo no Figma | Concluído |
+| 3 | Como usuário, desejo visualizar o protótipo inicial do portal | Protótipo navegável de baixa fidelidade | Concluído |
+| 4 | Como equipe, queremos melhorar o Story Map | Story Map revisado e ampliado | Concluído |
+| 5 | Como backend, quero estruturar o arquivo JSON | Base JSON inicial criada | Concluído |
 
 ---
 
-## 📎 Evidências e Links
-- **Documentos:** Issues Sprint 4  
-- **Protótipo/Design:** Figma (Protótipo de baixa fidelidade)  
-- **PRs/MRs:** N/A  
-- **Prints/Imagens:** N/A  
+## 4. Entregas (Review)
+
+* Webscraping básico do SIGAA iniciado, com dados sendo salvos no JSON.  
+* Double Diamond totalmente preenchido no Figma.  
+* Protótipo de baixa fidelidade finalizado e navegável.  
+* Story Maps revisados e aprimorados.  
+* Estrutura inicial do JSON criada.  
 
 ---
 
-## 👥 Contribuições por Integrante
-- **Caio Lacerda:** Desenvolveu o webscraping e salvou dados no JSON.  
-- **Ian Pedersoli:** Trabalhou no frontend e na atualização do README.  
-- **Bruno Augusto:** Preencheu o Double Diamond e o Story Map; iniciou o protótipo.  
-- **Arthur Scartezini:** Lapidou e finalizou o protótipo de baixa fidelidade.  
-- **Paulo Sérgio:** Criou a estrutura do JSON e auxiliou no protótipo.  
-- **Kaio Amoury:** Criou os Story Maps, subiu estudos e documentou as reuniões.  
+## 5. Métricas da Sprint
+
+* **Velocity (story points concluídos):** 5  
+* **Burn-down Chart:** N/A  
+* **Qtd. de histórias concluídas / planejadas:** 5 / 5  
 
 ---
 
-## 🔍 Retrospectiva
+## 6. Retrospectiva
 
-### ✅ O que funcionou bem
-- Melhoria significativa do Story Map.  
+### O que funcionou bem
+* Avanço significativo no Story Map e no protótipo.  
+* Evolução do processo de design e alinhamento da visão do produto.  
 
-### ⚠️ O que precisa melhorar
-- Comunicação entre os membros.  
+### O que pode melhorar
+* Comunicação entre as áreas.  
 
-### 💡 Ações de melhoria
-- Realização de *dailys* e retrospectivas mais consistentes.  
+### Ações de melhoria
+* Daily meetings mais consistentes e retrospectivas mais detalhadas.  
 
 ---
 
-## 🔜 Próximos Passos
+## 7. Evidências e Links
+
+* **Documentos:** Issues Sprint 4  
+* **Protótipo/Design:** N/A  
+* **PRs/MRs:** N/A  
+* **Prints/Imagens:** N/A  
+
+---
+
+## 8. Contribuições por Integrante
+
+- **Caio Lacerda** — Iniciou o webscraping da página do SIGAA, salvou dados no JSON e disponibilizou a API.  
+- **Ian Pedersoli** — Trabalhou na implementação do frontend e contribuiu para o README do projeto.  
+- **Bruno Augusto** — Preencheu o Double Diamond e Story Map no Figma, além de iniciar o protótipo.  
+- **Arthur Scartezini** — Refinou o protótipo de baixa fidelidade, finalizando e tornando-o navegável para a Release 1.  
+- **Paulo Sérgio** — Iniciou a estrutura do JSON e trabalhou no protótipo de baixa fidelidade.  
+- **Kaio Amoury** — Criou e refinou os Story Maps no Figma, produziu documentação e manteve as atas semanais atualizadas.  
+
+---
+
+## 9. Próximos Passos (prévia da próxima semana)
+
 - Definir o escopo dos professores.  
-- Documentar todas as fontes de dados.  
+- Documentar a fonte de dados completa do projeto.  
+- Refinar backlog e preparar início do scraping avançado.  
+
+---
 

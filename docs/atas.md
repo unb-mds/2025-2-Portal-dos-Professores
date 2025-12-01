@@ -10,6 +10,11 @@ Documentação do planejamento, execução e revisão de cada ciclo de desenvolv
 
 | Sprint | Status | Artefato | Foco Principal (Resumo) |
 | :---: | :---: | :---: | :--- |
+| **12** | ✅ Concluída | [📄 Ver Relatório](report_sprints/Sprint12.md) | Agente de IA RAG para recomendação de orientadores |
+| **11** | ✅ Concluída | [📄 Ver Relatório](report_sprints/Sprint11.md) | Deploy da API na nuvem |
+| **10** | ✅ Concluída | [📄 Ver Relatório](report_sprints/Sprint10.md) | Webscraping do Google Scholar |
+| **09** | ✅ Concluída | [📄 Ver Relatório](report_sprints/Sprint09.md) | Página de busca com filtros funcionais |
+| **08** | ✅ Concluída | [📄 Ver Relatório](report_sprints/Sprint08.md) | Scraping dos dados do Lattes |
 | **07** | ✅ Concluída | [📄 Ver Relatório](report_sprints/Sprint07.md) | Entrega Final, Documentação e Polimento |
 | **06** | ✅ Concluída | [📄 Ver Relatório](report_sprints/Sprint06.md) | Integração final da IA e Testes |
 | **05** | ✅ Concluída | [📄 Ver Relatório](report_sprints/Sprint05.md) | Agente Inteligente e Lógica de Recomendação |
