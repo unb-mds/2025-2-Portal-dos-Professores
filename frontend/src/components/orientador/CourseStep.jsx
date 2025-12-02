@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Box,
   Button,
@@ -5,6 +6,8 @@ import {
   Text,
   VStack,
   SimpleGrid,
+  Input,
+  Collapse,
   useColorModeValue,
 } from "@chakra-ui/react";
 
@@ -16,7 +19,7 @@ export default function CourseStep({ value, onChange, onNext, onBack }) {
   const titleColor = useColorModeValue("gray.800", "white");
   const mutedColor = useColorModeValue("gray.600", "gray.400");
 
-  const cursos = [
+  const cursosPredefinidos = [
     "Engenharia de Software (FGA)",
     "Engenharia Aeroespacial (FGA)",
     "Engenharia Automotiva (FGA)",
@@ -25,8 +28,26 @@ export default function CourseStep({ value, onChange, onNext, onBack }) {
     "Engenharia Civil (FT)",
     "Ciência da Computação (CIC)",
     "Estatística (EST)",
-    "Outro"
   ];
+
+  // Verifica se o valor atual é "Outro" ou algo que não está na lista padrão
+  const [isOtherSelected, setIsOtherSelected] = useState(
+    value && !cursosPredefinidos.includes(value)
+  );
+
+  const handleSelection = (curso) => {
+    if (curso === "Outro") {
+      setIsOtherSelected(true);
+      onChange(""); // Limpa o valor para o usuário digitar
+    } else {
+      setIsOtherSelected(false);
+      onChange(curso);
+    }
+  };
+
+  const handleManualInput = (e) => {
+    onChange(e.target.value);
+  };
 
   return (
     <VStack spacing={8} align="stretch">
@@ -40,10 +61,10 @@ export default function CourseStep({ value, onChange, onNext, onBack }) {
         </Text>
       </VStack>
 
-      {/* Cards */}
+      {/* Grid de Opções */}
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
-        {cursos.map((curso) => {
-          const isSelected = value === curso;
+        {cursosPredefinidos.map((curso) => {
+          const isSelected = value === curso && !isOtherSelected;
           return (
             <Box
               key={curso}
@@ -58,7 +79,7 @@ export default function CourseStep({ value, onChange, onNext, onBack }) {
                 borderColor: borderSelected,
                 transform: "translateY(-3px)",
               }}
-              onClick={() => onChange(curso)}
+              onClick={() => handleSelection(curso)}
             >
               <Text
                 fontWeight="semibold"
@@ -70,17 +91,72 @@ export default function CourseStep({ value, onChange, onNext, onBack }) {
             </Box>
           );
         })}
+
+        {/* Card "Outro" */}
+        <Box
+          p={5}
+          borderRadius="xl"
+          borderWidth="2px"
+          cursor="pointer"
+          bg={isOtherSelected ? selectedBg : cardBg}
+          borderColor={isOtherSelected ? borderSelected : borderDefault}
+          transition="0.2s"
+          _hover={{
+            borderColor: borderSelected,
+            transform: "translateY(-3px)",
+          }}
+          onClick={() => handleSelection("Outro")}
+        >
+          <Text
+            fontWeight="semibold"
+            fontSize="md"
+            color={isOtherSelected ? "blue.600" : titleColor}
+          >
+            Outro
+          </Text>
+        </Box>
       </SimpleGrid>
 
-      {/* Botões */}
+      {/* Campo de Input que aparece suavemente quando "Outro" é selecionado */}
+      <Collapse in={isOtherSelected} animateOpacity>
+        <Box 
+          p={4} 
+          bg={useColorModeValue("gray.50", "gray.700")} 
+          borderRadius="lg" 
+          borderWidth="1px" 
+          borderColor={borderSelected}
+        >
+          <Text mb={2} fontWeight="medium" fontSize="sm" color={mutedColor}>
+            Digite o nome do seu curso:
+          </Text>
+          <Input
+            placeholder="Ex: Arquitetura, Direito, Medicina..."
+            value={value}
+            onChange={handleManualInput}
+            bg={cardBg}
+            autoFocus
+            
+            maxLength={100}
+
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && value && value.trim().length > 0) {
+                onNext();
+              }
+            }}
+          />
+        </Box>
+      </Collapse>
+
+      {/* Botões de Navegação */}
       <VStack spacing={4} pt={2}>
         <Button
           size="lg"
           colorScheme="blue"
           w="100%"
           borderRadius="lg"
-          onClick={onNext}
-          isDisabled={!value}
+          onClick={onNext} 
+          // Desabilita se estiver vazio OU se for "Outro" mas o texto for muito curto
+          isDisabled={!value || (isOtherSelected && value.trim().length === 0)}
         >
           Continuar →
         </Button>
