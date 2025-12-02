@@ -4,6 +4,7 @@ import {
   Box,
   VStack,
   HStack,
+  Stack,
   SimpleGrid,
   Text,
   Heading,
@@ -33,15 +34,13 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
   const soft = useColorModeValue("gray.50", "gray.700");
   const border = useColorModeValue("gray.200", "gray.700");
 
-  // Estado para controlar a mensagem de loading atual
   const [messageIndex, setMessageIndex] = useState(0);
 
-  // Efeito para rotacionar as mensagens enquanto carrega
   useEffect(() => {
     if (isLoading) {
       const interval = setInterval(() => {
         setMessageIndex((prev) => (prev + 1) % loadingMessages.length);
-      }, 2500); // Troca a cada 2.5 segundos
+      }, 2500);
       return () => clearInterval(interval);
     } else {
       setMessageIndex(0);
@@ -52,11 +51,9 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
   const count = professores.length;
 
   const content = useMemo(() => {
-    // --- ESTADO DE LOADING (NOVO) ---
     if (isLoading) {
       return (
         <VStack py={12} spacing={8} justify="center" minH="300px">
-          {/* Spinner Customizado */}
           <Box position="relative">
             <Spinner
               thickness="4px"
@@ -67,7 +64,6 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
             />
           </Box>
 
-          {/* Mensagens Animadas */}
           <VStack spacing={3} w="100%">
             <Fade in={true} key={messageIndex}>
               <Heading size="md" color="blue.600" textAlign="center" minH="1.5em">
@@ -79,7 +75,6 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
             </Text>
           </VStack>
 
-          {/* Barra de Progresso Decorativa */}
           <Box w="100%" maxW="300px">
             <Progress 
               size="xs" 
@@ -92,7 +87,6 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
       );
     }
 
-    // --- ESTADO DE ERRO ---
     if (!results || results.error) {
       return (
         <VStack py={12} spacing={4}>
@@ -107,10 +101,8 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
       );
     }
 
-    // --- ESTADO DE RESULTADOS ---
     return (
       <VStack spacing={8} align="stretch">
-        {/* GRID DE CARDS */}
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
           {professores.map((p) => (
             <Box
@@ -172,7 +164,6 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
                   </Text>
                 )}
 
-                {/* Rodapé de métricas */}
                 {(p.artigos || p.disciplinas) && (
                   <HStack pt={3} spacing={4} color={muted} fontSize="xs">
                     {p.artigos && <Text>{Array.isArray(p.artigos) ? p.artigos.length : p.artigos} artigos</Text>}
@@ -186,10 +177,10 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
           ))}
         </SimpleGrid>
 
-        {/* BOTÕES DE AÇÃO */}
-        <HStack spacing={3} pt={2}>
+        <Stack spacing={3} pt={2} direction={{ base: "column", md: "row" }} w="100%">
           <Button
             variant="outline"
+            w={{ base: "100%", md: "auto" }}
             flex="1"
             leftIcon={<Icon as={RotateCcw} />}
             onClick={onReset}
@@ -199,13 +190,14 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
 
           <Button
             colorScheme="blue"
+            w={{ base: "100%", md: "auto" }}
             flex="1"
             rightIcon={<Icon as={ArrowRight} />}
             onClick={onBack}
           >
             Ver Todos os Professores
           </Button>
-        </HStack>
+        </Stack>
 
         <Text fontSize="xs" color={muted} textAlign="center">
           💡 Dica: Entre em contato com os professores para discutir seu projeto
@@ -216,7 +208,6 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
 
   return (
     <Box bg={cardBg} borderRadius="2xl" p={{ base: 5, md: 8 }} boxShadow="md">
-      {/* CABEÇALHO (Só aparece se NÃO estiver carregando) */}
       {!isLoading && (
         <VStack spacing={2} mb={8} textAlign="center">
           <Box
