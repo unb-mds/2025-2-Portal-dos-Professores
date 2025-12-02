@@ -26,14 +26,8 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
   const professores = results?.professores ?? [];
   const count = professores.length;
 
-  const formatInitials = (nome = "") =>
-    nome
-      .split(" ")
-      .filter(Boolean)
-      .map((n) => n[0])
-      .join("")
-      .slice(0, 2)
-      .toUpperCase();
+  // Não precisamos mais dessa função manual, o Chakra faz isso sozinho
+  // mas se quiser manter a lógica personalizada, basta passar no prop 'name'
 
   const content = useMemo(() => {
     if (isLoading) {
@@ -75,14 +69,17 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
               transition="all 0.2s"
             >
               <HStack align="start" spacing={4}>
+                {/* CORREÇÃO AQUI: Removemos o conteúdo de dentro da tag Avatar */}
                 <Avatar
+                  src={p.foto || p.foto_url || p.image} 
                   name={p.nome}
                   size="md"
                   bg={accent}
                   color="white"
-                >
-                  {formatInitials(p.nome)}
-                </Avatar>
+                  // O Chakra UI gerencia automaticamente:
+                  // Se src funcionar -> Mostra Foto
+                  // Se src falhar -> Mostra Iniciais baseadas no 'name'
+                />
 
                 <VStack align="start" spacing={1} flex="1" minW={0}>
                   <Heading size="sm" noOfLines={1}>
@@ -123,12 +120,12 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
                   </Text>
                 )}
 
-                {/* Rodapé de métricas (opcional) */}
+                {/* Rodapé de métricas */}
                 {(p.artigos || p.disciplinas) && (
                   <HStack pt={3} spacing={4} color={muted} fontSize="xs">
-                    {p.artigos && <Text>{p.artigos.length} artigos</Text>}
+                    {p.artigos && <Text>{Array.isArray(p.artigos) ? p.artigos.length : p.artigos} artigos</Text>}
                     {p.disciplinas && (
-                      <Text>{p.disciplinas.length} disciplinas</Text>
+                      <Text>{Array.isArray(p.disciplinas) ? p.disciplinas.length : p.disciplinas} disciplinas</Text>
                     )}
                   </HStack>
                 )}
