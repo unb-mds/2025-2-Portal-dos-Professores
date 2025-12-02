@@ -5,6 +5,7 @@ import {
   Flex,
   Heading,
   HStack,
+  Stack,
   Icon,
   Tag,
   TagLabel,
@@ -108,7 +109,6 @@ export default function ReviewStep({ formData, onEdit, onSubmit, onBack }) {
 
   return (
     <VStack spacing={8} align="stretch">
-      {/* Cabeçalho */}
       <VStack spacing={2} textAlign="center">
         <Heading size="lg" color={titleColor}>
           Revise suas informações 📋
@@ -118,7 +118,6 @@ export default function ReviewStep({ formData, onEdit, onSubmit, onBack }) {
         </Text>
       </VStack>
 
-      {/* Bloco principal */}
       <Box bg={cardBg} borderWidth="1px" borderColor={border} borderRadius="2xl" p={5}>
         <VStack spacing={3} align="stretch">
           <Row
@@ -157,7 +156,6 @@ export default function ReviewStep({ formData, onEdit, onSubmit, onBack }) {
 
         <Divider my={5} />
 
-        {/* Caixa "Tudo pronto" */}
         <Box
           bg={ctaBg}
           borderWidth="1px"
@@ -179,12 +177,17 @@ export default function ReviewStep({ formData, onEdit, onSubmit, onBack }) {
           </Text>
         </Box>
 
-        {/* Botões */}
-        <HStack pt={5} spacing={4}>
+        <Stack 
+          pt={5} 
+          spacing={4} 
+          direction={{ base: 'column', md: 'row' }}
+          w="100%"
+        >
           <Button
             variant="outline"
             size="lg"
-            w="100%"
+            w={{ base: "100%", md: "auto" }}
+            flex={1}
             borderRadius="lg"
             onClick={onBack}
           >
@@ -194,14 +197,15 @@ export default function ReviewStep({ formData, onEdit, onSubmit, onBack }) {
           <Button
             size="lg"
             colorScheme="blue"
-            w="100%"
+            w={{ base: "100%", md: "auto" }}
+            flex={1}
             borderRadius="lg"
             onClick={onSubmit}
             rightIcon={<Icon as={Sparkles} />}
           >
             Buscar Orientadores Ideais 🎯
           </Button>
-        </HStack>
+        </Stack>
       </Box>
     </VStack>
   );
