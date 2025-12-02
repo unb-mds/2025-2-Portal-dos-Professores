@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { ArrowRight, RotateCcw, Sparkles } from "lucide-react";
 import {
   Box,
@@ -14,7 +14,17 @@ import {
   Icon,
   useColorModeValue,
   Divider,
+  Spinner,
+  Progress,
+  Fade
 } from "@chakra-ui/react";
+
+const loadingMessages = [
+  "🤖 Analisando seu perfil...",
+  "🔍 Buscando os melhores orientadores...",
+  "📊 Comparando áreas de pesquisa...",
+  "✨ Quase lá...",
+];
 
 export default function ResultsStep({ isLoading, results, onReset, onBack }) {
   const cardBg = useColorModeValue("white", "gray.800");
@@ -23,27 +33,72 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
   const soft = useColorModeValue("gray.50", "gray.700");
   const border = useColorModeValue("gray.200", "gray.700");
 
+  // Estado para controlar a mensagem de loading atual
+  const [messageIndex, setMessageIndex] = useState(0);
+
+  // Efeito para rotacionar as mensagens enquanto carrega
+  useEffect(() => {
+    if (isLoading) {
+      const interval = setInterval(() => {
+        setMessageIndex((prev) => (prev + 1) % loadingMessages.length);
+      }, 2500); // Troca a cada 2.5 segundos
+      return () => clearInterval(interval);
+    } else {
+      setMessageIndex(0);
+    }
+  }, [isLoading]);
+
   const professores = results?.professores ?? [];
   const count = professores.length;
 
-  // Não precisamos mais dessa função manual, o Chakra faz isso sozinho
-  // mas se quiser manter a lógica personalizada, basta passar no prop 'name'
-
   const content = useMemo(() => {
+    // --- ESTADO DE LOADING (NOVO) ---
     if (isLoading) {
       return (
-        <VStack py={12}>
-          <Text color={muted}>Buscando orientadores ideais...</Text>
+        <VStack py={12} spacing={8} justify="center" minH="300px">
+          {/* Spinner Customizado */}
+          <Box position="relative">
+            <Spinner
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="blue.500"
+              size="xl"
+            />
+          </Box>
+
+          {/* Mensagens Animadas */}
+          <VStack spacing={3} w="100%">
+            <Fade in={true} key={messageIndex}>
+              <Heading size="md" color="blue.600" textAlign="center" minH="1.5em">
+                {loadingMessages[messageIndex]}
+              </Heading>
+            </Fade>
+            <Text fontSize="sm" color={muted}>
+              Isso pode levar alguns segundos...
+            </Text>
+          </VStack>
+
+          {/* Barra de Progresso Decorativa */}
+          <Box w="100%" maxW="300px">
+            <Progress 
+              size="xs" 
+              isIndeterminate 
+              colorScheme="blue" 
+              borderRadius="full" 
+            />
+          </Box>
         </VStack>
       );
     }
 
+    // --- ESTADO DE ERRO ---
     if (!results || results.error) {
       return (
-        <VStack py={12} spacing={3}>
-          <Heading size="md">Ops!</Heading>
-          <Text color={muted}>
-            Não conseguimos buscar orientadores agora.
+        <VStack py={12} spacing={4}>
+          <Heading size="md" color="red.500">Ops! Algo deu errado.</Heading>
+          <Text color={muted} textAlign="center">
+            {results?.message || "Não conseguimos buscar orientadores agora."}
           </Text>
           <Button onClick={onReset} leftIcon={<Icon as={RotateCcw} />}>
             Tentar novamente
@@ -52,9 +107,10 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
       );
     }
 
+    // --- ESTADO DE RESULTADOS ---
     return (
       <VStack spacing={8} align="stretch">
-        {/* GRID */}
+        {/* GRID DE CARDS */}
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
           {professores.map((p) => (
             <Box
@@ -69,20 +125,16 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
               transition="all 0.2s"
             >
               <HStack align="start" spacing={4}>
-                {/* CORREÇÃO AQUI: Removemos o conteúdo de dentro da tag Avatar */}
                 <Avatar
                   src={p.foto || p.foto_url || p.image} 
                   name={p.nome}
                   size="md"
                   bg={accent}
                   color="white"
-                  // O Chakra UI gerencia automaticamente:
-                  // Se src funcionar -> Mostra Foto
-                  // Se src falhar -> Mostra Iniciais baseadas no 'name'
                 />
 
                 <VStack align="start" spacing={1} flex="1" minW={0}>
-                  <Heading size="sm" noOfLines={1}>
+                  <Heading size="sm" noOfLines={2}>
                     {p.nome}
                   </Heading>
                   <Text fontSize="sm" color={muted} noOfLines={1}>
@@ -134,7 +186,7 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
           ))}
         </SimpleGrid>
 
-        {/* BOTÕES */}
+        {/* BOTÕES DE AÇÃO */}
         <HStack spacing={3} pt={2}>
           <Button
             variant="outline"
@@ -160,31 +212,37 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
         </Text>
       </VStack>
     );
-  }, [isLoading, results, professores, muted, cardBg, border, soft, accent, onReset, onBack]);
+  }, [isLoading, results, professores, muted, cardBg, border, soft, accent, onReset, onBack, messageIndex]);
 
   return (
     <Box bg={cardBg} borderRadius="2xl" p={{ base: 5, md: 8 }} boxShadow="md">
-      {/* CABEÇALHO */}
-      <VStack spacing={2} mb={8} textAlign="center">
-        <Box
-          w="40px"
-          h="40px"
-          borderRadius="full"
-          bg={soft}
-          display="grid"
-          placeItems="center"
-          mx="auto"
-        >
-          <Icon as={Sparkles} color={accent} />
-        </Box>
+      {/* CABEÇALHO (Só aparece se NÃO estiver carregando) */}
+      {!isLoading && (
+        <VStack spacing={2} mb={8} textAlign="center">
+          <Box
+            w="40px"
+            h="40px"
+            borderRadius="full"
+            bg={soft}
+            display="grid"
+            placeItems="center"
+            mx="auto"
+          >
+            <Icon as={Sparkles} color={accent} />
+          </Box>
 
-        <Heading size="lg">
-          Encontramos {count} orientadores ideais! 🎉
-        </Heading>
-        <Text color={muted}>
-          Encontramos os melhores orientadores para você!
-        </Text>
-      </VStack>
+          <Heading size="lg">
+            {professores.length > 0 
+              ? `Encontramos ${count} orientadores ideais! 🎉`
+              : "Nenhum resultado encontrado"}
+          </Heading>
+          <Text color={muted}>
+            {professores.length > 0 
+              ? "Encontramos os melhores orientadores para você!"
+              : "Tente ajustar seus interesses e tente novamente."}
+          </Text>
+        </VStack>
+      )}
 
       {content}
     </Box>

@@ -6,6 +6,7 @@ import {
   Text,
   VStack,
   useColorModeValue,
+  HStack,
 } from "@chakra-ui/react";
 
 export default function WelcomeStep({ value, onChange, onNext }) {
@@ -15,6 +16,12 @@ export default function WelcomeStep({ value, onChange, onNext }) {
   const inputBg = useColorModeValue("gray.50", "gray.700");
 
   const canContinue = value?.trim().length > 0;
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && canContinue) {
+      onNext();
+    }
+  };
 
   return (
     <VStack spacing={8} align="stretch">
@@ -38,17 +45,24 @@ export default function WelcomeStep({ value, onChange, onNext }) {
         boxShadow="sm"
       >
         <VStack spacing={4} align="stretch">
-          <Text fontSize="sm" color={mutedColor} fontWeight="medium">
-            Seu nome
-          </Text>
+          <HStack justify="space-between">
+            <Text fontSize="sm" color={mutedColor} fontWeight="medium">
+              Seu nome
+            </Text>
+            <Text fontSize="xs" color={mutedColor}>
+              {value?.length || 0}/50
+            </Text>
+          </HStack>
 
           <Input
             value={value}
             onChange={(e) => onChange(e.target.value)}
+            onKeyDown={handleKeyDown}
             placeholder="Ex.: Maria, João, Ana..."
             size="lg"
             bg={inputBg}
             borderRadius="lg"
+            maxLength={50}
             borderColor={useColorModeValue("gray.200", "gray.600")}
             _focus={{
               borderColor: "blue.500",
