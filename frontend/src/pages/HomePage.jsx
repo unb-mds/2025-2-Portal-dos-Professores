@@ -14,10 +14,60 @@ import {
   HStack,
   Center,
   useColorModeValue,
+  IconButton,
 } from '@chakra-ui/react';
 
-import { ArrowRight, Search, Users, GraduationCap } from 'lucide-react';
+import { ArrowRight, Search, Users, GraduationCap, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getProfessorsData, getDepartmentsData } from '../services/api';
+import ProfessorCard from '../components/professores/ProfessorCard';
+
+function extractSiape(url) {
+  if (!url) return Math.random().toString();
+  const match = url.match(/siape=(\d+)/);
+  return match ? match[1] : url;
+}
+
+function countPublications(professor) {
+  let count = 0;
+  
+  // 1. Verificar dados_scholar.publicacoes
+  if (professor.dados_scholar && typeof professor.dados_scholar === 'object') {
+    if (Array.isArray(professor.dados_scholar.publicacoes)) {
+      count += professor.dados_scholar.publicacoes.length;
+    }
+  }
+  
+  // 2. Verificar dados_lattes
+  if (professor.dados_lattes && typeof professor.dados_lattes === 'object') {
+    if (Array.isArray(professor.dados_lattes.producao_bibliografica)) {
+      count += professor.dados_lattes.producao_bibliografica.length;
+    }
+    const lattesKeys = Object.keys(professor.dados_lattes);
+    for (const key of lattesKeys) {
+      const keyLower = key.toLowerCase();
+      if ((keyLower.includes('public') || 
+           keyLower.includes('artigo') || 
+           keyLower.includes('producao') ||
+           keyLower.includes('trabalho') || 
+           keyLower.includes('paper')) && 
+          key !== 'producao_bibliografica') {
+        if (Array.isArray(professor.dados_lattes[key])) {
+          count += professor.dados_lattes[key].length;
+        }
+      }
+    }
+  }
+  
+  // 3. Verificar arrays diretos
+  if (Array.isArray(professor.artigos)) {
+    count += professor.artigos.length;
+  }
+  if (Array.isArray(professor.publicacoes)) {
+    count += professor.publicacoes.length;
+  }
+  
+  return count;
+}
 
 function Feature({ icon, title, children }) {
   return (
@@ -61,6 +111,10 @@ export default function HomePage() {
 
   const [popularDepartments, setPopularDepartments] = useState([]);
   const [isLoadingDepartments, setIsLoadingDepartments] = useState(true);
+
+  const [featuredProfessors, setFeaturedProfessors] = useState([]);
+  const [isLoadingFeatured, setIsLoadingFeatured] = useState(true);
+  const [currentPage, setCurrentPage] = useState(0);
 
   /* CARREGA ESTATÍSTICAS */
   useEffect(() => {
@@ -189,6 +243,62 @@ export default function HomePage() {
     fetchPopulars();
   }, []);
 
+  /* CARREGA PROFESSORES EM DESTAQUE */
+  useEffect(() => {
+    const fetchFeatured = async () => {
+      try {
+        const professores = await getProfessorsData().catch(() => []);
+
+        if (!Array.isArray(professores) || professores.length === 0) {
+          setFeaturedProfessors([]);
+          return;
+        }
+
+        // Adicionar ID e contar publicações
+        const professoresComPublicacoes = professores.map(prof => ({
+          ...prof,
+          id: extractSiape(prof.pagina_sigaa_url),
+          totalPublicacoes: countPublications(prof)
+        }));
+
+        // Filtrar e ordenar professores
+        const professoresFiltrados = professoresComPublicacoes
+          .filter(prof => {
+            // Excluir Adriana Pereira Ibaldo
+            const nome = prof.nome?.toUpperCase() || '';
+            return prof.totalPublicacoes > 0 && !nome.includes('ADRIANA PEREIRA IBALDO');
+          })
+          .sort((a, b) => b.totalPublicacoes - a.totalPublicacoes);
+
+        // Pegar os top 6
+        let top6 = professoresFiltrados.slice(0, 6);
+
+        // Garantir que Renato Vilela Lopes esteja incluído
+        const renato = professoresFiltrados.find(prof => {
+          const nome = prof.nome?.toUpperCase() || '';
+          return nome.includes('RENATO VILELA LOPES');
+        });
+
+        if (renato && !top6.some(prof => {
+          const nome = prof.nome?.toUpperCase() || '';
+          return nome.includes('RENATO VILELA LOPES');
+        })) {
+          // Se Renato não está no top 6, substituir o último
+          top6 = [...top6.slice(0, 5), renato];
+        }
+
+        setFeaturedProfessors(top6);
+      } catch (error) {
+        console.error("Erro ao buscar professores em destaque:", error);
+        setFeaturedProfessors([]);
+      } finally {
+        setIsLoadingFeatured(false);
+      }
+    };
+
+    fetchFeatured();
+  }, []);
+
   return (
     <Box>
 
@@ -276,6 +386,78 @@ export default function HomePage() {
           </SimpleGrid>
         </Container>
       </Box>
+
+      {/* PROFESSORES EM DESTAQUE */}
+      <Container maxW="8xl" py={{ base: 16, md: 24 }} px={{ base: 8, md: 16 }}>
+        <VStack spacing={8} align="stretch">
+          <VStack spacing={4} textAlign="center">
+            <Heading as="h2" size={{ base: 'xl', md: '2xl' }} color="blue.700" fontWeight="bold" letterSpacing="tight">
+              Professores em Destaque
+            </Heading>
+            <Text fontSize={{ base: 'md', md: 'lg' }} color="gray.600" maxW="2xl" mx="auto">
+              Conheça os professores com maior produção acadêmica e contribuições para a pesquisa
+            </Text>
+          </VStack>
+
+          {isLoadingFeatured ? (
+            <Center py={8}>
+              <Text color="gray.600" fontSize={{ base: 'md', md: 'lg' }}>Carregando professores em destaque...</Text>
+            </Center>
+          ) : featuredProfessors.length > 0 ? (
+            <Box position="relative">
+              <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
+                {featuredProfessors
+                  .slice(currentPage * 3, (currentPage + 1) * 3)
+                  .map((professor) => (
+                    <ProfessorCard key={professor.id} professor={professor} />
+                  ))}
+              </SimpleGrid>
+              
+              {featuredProfessors.length > 3 && (
+                <HStack justify="center" spacing={4} mt={6}>
+                  <IconButton
+                    icon={<Icon as={ChevronLeft} boxSize={5} />}
+                    aria-label="Anterior"
+                    onClick={() => setCurrentPage(prev => Math.max(0, prev - 1))}
+                    isDisabled={currentPage === 0}
+                    variant="outline"
+                    borderRadius="full"
+                    size="md"
+                  />
+                  <HStack spacing={2}>
+                    {Array.from({ length: Math.ceil(featuredProfessors.length / 3) }).map((_, i) => (
+                      <Box
+                        key={i}
+                        w={2}
+                        h={2}
+                        borderRadius="full"
+                        bg={currentPage === i ? 'blue.600' : 'gray.300'}
+                        cursor="pointer"
+                        onClick={() => setCurrentPage(i)}
+                        transition="all 0.2s"
+                        _hover={{ bg: currentPage === i ? 'blue.700' : 'gray.400' }}
+                      />
+                    ))}
+                  </HStack>
+                  <IconButton
+                    icon={<Icon as={ChevronRight} boxSize={5} />}
+                    aria-label="Próximo"
+                    onClick={() => setCurrentPage(prev => Math.min(Math.ceil(featuredProfessors.length / 3) - 1, prev + 1))}
+                    isDisabled={currentPage >= Math.ceil(featuredProfessors.length / 3) - 1}
+                    variant="outline"
+                    borderRadius="full"
+                    size="md"
+                  />
+                </HStack>
+              )}
+            </Box>
+          ) : (
+            <Center py={8}>
+              <Text color="gray.600" fontSize={{ base: 'md', md: 'lg' }}>Nenhum professor em destaque encontrado.</Text>
+            </Center>
+          )}
+        </VStack>
+      </Container>
 
       {/* BOX — Orientador Ideal */}
       <Container maxW="7xl" mt={20} px={{ base: 6, md: 16 }}>
@@ -436,31 +618,6 @@ export default function HomePage() {
             </Feature>
           </SimpleGrid>
         </Container>
-      </Box>
-
-      {/* BOTÃO FLUTUANTE */}
-      <Box
-        position="fixed"
-        bottom={{ base: 6, md: 10 }}
-        right={{ base: 6, md: 10 }}
-        zIndex={1000}
-      >
-        <Button
-          as={RouterLink}
-          to="/orientador"
-          colorScheme="blue"
-          size="lg"
-          borderRadius="full"
-          p={6}
-          rightIcon={<ArrowRight />}
-          boxShadow="lg"
-          _hover={{
-            bg: "blue.700",
-            color: "white",
-          }}
-        >
-          Orientador Inteligente
-        </Button>
       </Box>
 
     </Box>

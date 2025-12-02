@@ -152,6 +152,7 @@ function Header() {
                 as={GraduationCap} 
                 boxSize={{ base: 7, md: 8 }} 
                 color="blue.600"
+                bg="transparent"
                 transition="transform 0.2s"
                 _groupHover={{ transform: 'scale(1.1)' }}
               />
@@ -190,7 +191,7 @@ function Header() {
             pb={4}
           >
             <HStack spacing={3}>
-              <Icon as={GraduationCap} boxSize={6} color="blue.600" />
+              <Icon as={GraduationCap} boxSize={6} color="blue.600" bg="transparent" />
               <Text fontSize="xl" fontWeight="bold" color="blue.800">
                 Menu de Navegação
               </Text>

@@ -122,7 +122,10 @@ export default function ProfessorCard({ professor }) {
               textTransform="uppercase"
               noOfLines={1}
             >
-              {professor.departamento}
+              {professor.departamento
+                ?.replace(/DEPARTAMENTO/gi, 'FACULDADE')
+                .replace(/DEPTO/gi, 'FACULDADE')
+                .replace(/INSTITUTO/gi, 'FACULDADE')}
             </Text>
           </VStack>
         </Flex>
