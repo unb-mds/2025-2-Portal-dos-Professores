@@ -1,4 +1,5 @@
 import { useMemo, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Hook de navegação
 import { ArrowRight, RotateCcw, Sparkles } from "lucide-react";
 import {
   Box,
@@ -17,7 +18,8 @@ import {
   Divider,
   Spinner,
   Progress,
-  Fade
+  Fade,
+  useToast // Para avisos
 } from "@chakra-ui/react";
 
 const loadingMessages = [
@@ -28,6 +30,9 @@ const loadingMessages = [
 ];
 
 export default function ResultsStep({ isLoading, results, onReset, onBack }) {
+  const navigate = useNavigate(); // Inicializa a navegação
+  const toast = useToast();
+
   const cardBg = useColorModeValue("white", "gray.800");
   const muted = useColorModeValue("gray.600", "gray.400");
   const accent = useColorModeValue("blue.700", "blue.300");
@@ -50,38 +55,48 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
   const professores = results?.professores ?? [];
   const count = professores.length;
 
+  // --- FUNÇÃO DE NAVEGAÇÃO ---
+  const handleCardClick = (professor) => {
+    const idString = String(professor.id);
+    
+    // Verifica se é um ID temporário (gerado pelo front)
+    const isTempId = idString.startsWith("ai-") || idString.startsWith("fallback-");
+    
+    // Verifica a flag que definimos na página anterior
+    const existsInDb = professor.encontradoNoBanco;
+
+    if (isTempId || !existsInDb) {
+      toast({
+        title: "Perfil indisponível",
+        description: "Este professor foi sugerido pela IA, mas a página detalhada não está disponível no sistema.",
+        status: "info",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+    } else {
+      // Se tiver ID real, navega!
+      navigate(`/professores/${professor.id}`);
+    }
+  };
+
   const content = useMemo(() => {
     if (isLoading) {
       return (
         <VStack py={12} spacing={8} justify="center" minH="300px">
           <Box position="relative">
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="blue.500"
-              size="xl"
-            />
+            <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="blue.500" size="xl" />
           </Box>
-
           <VStack spacing={3} w="100%">
             <Fade in={true} key={messageIndex}>
               <Heading size="md" color="blue.600" textAlign="center" minH="1.5em">
                 {loadingMessages[messageIndex]}
               </Heading>
             </Fade>
-            <Text fontSize="sm" color={muted}>
-              Isso pode levar alguns segundos...
-            </Text>
+            <Text fontSize="sm" color={muted}>Isso pode levar alguns segundos...</Text>
           </VStack>
-
           <Box w="100%" maxW="300px">
-            <Progress 
-              size="xs" 
-              isIndeterminate 
-              colorScheme="blue" 
-              borderRadius="full" 
-            />
+            <Progress size="xs" isIndeterminate colorScheme="blue" borderRadius="full" />
           </Box>
         </VStack>
       );
@@ -91,12 +106,8 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
       return (
         <VStack py={12} spacing={4}>
           <Heading size="md" color="red.500">Ops! Algo deu errado.</Heading>
-          <Text color={muted} textAlign="center">
-            {results?.message || "Não conseguimos buscar orientadores agora."}
-          </Text>
-          <Button onClick={onReset} leftIcon={<Icon as={RotateCcw} />}>
-            Tentar novamente
-          </Button>
+          <Text color={muted} textAlign="center">{results?.message || "Erro desconhecido."}</Text>
+          <Button onClick={onReset} leftIcon={<Icon as={RotateCcw} />}>Tentar novamente</Button>
         </VStack>
       );
     }
@@ -113,8 +124,10 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
               borderRadius="xl"
               p={5}
               boxShadow="sm"
-              _hover={{ boxShadow: "md", transform: "translateY(-2px)" }}
+              cursor="pointer" // Indica que é clicável
+              _hover={{ boxShadow: "md", transform: "translateY(-2px)", borderColor: "blue.300" }}
               transition="all 0.2s"
+              onClick={() => handleCardClick(p)} // Ação de clique
             >
               <HStack align="start" spacing={4}>
                 <Avatar
@@ -124,14 +137,9 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
                   bg={accent}
                   color="white"
                 />
-
                 <VStack align="start" spacing={1} flex="1" minW={0}>
-                  <Heading size="sm" noOfLines={2}>
-                    {p.nome}
-                  </Heading>
-                  <Text fontSize="sm" color={muted} noOfLines={1}>
-                    {p.departamento}
-                  </Text>
+                  <Heading size="sm" noOfLines={2}>{p.nome}</Heading>
+                  <Text fontSize="sm" color={muted} noOfLines={1}>{p.departamento}</Text>
                 </VStack>
               </HStack>
 
@@ -200,11 +208,11 @@ export default function ResultsStep({ isLoading, results, onReset, onBack }) {
         </Stack>
 
         <Text fontSize="xs" color={muted} textAlign="center">
-          💡 Dica: Entre em contato com os professores para discutir seu projeto
+          💡 Dica: Clique no card para ver o perfil completo do professor
         </Text>
       </VStack>
     );
-  }, [isLoading, results, professores, muted, cardBg, border, soft, accent, onReset, onBack, messageIndex]);
+  }, [isLoading, results, professores, muted, cardBg, border, soft, accent, onReset, onBack, messageIndex, navigate, toast]);
 
   return (
     <Box bg={cardBg} borderRadius="2xl" p={{ base: 5, md: 8 }} boxShadow="md">

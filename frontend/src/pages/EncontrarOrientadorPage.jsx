@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -18,57 +18,66 @@ import SkillsStep from "../components/orientador/SkillsStep";
 import ReviewStep from "../components/orientador/ReviewStep";
 import ResultsStep from "../components/orientador/ResultsStep";
 
-// Importando as funções da API
 import { askAgentForRecommendations, getProfessorsData } from "../services/api";
+
+// Chaves para salvar no navegador
+const STORAGE_KEY_STEP = "advisor_step";
+const STORAGE_KEY_RESULTS = "advisor_results";
+const STORAGE_KEY_FORM = "advisor_form";
 
 export default function EncontrarOrientadorPage() {
   const navigate = useNavigate();
-
-  const [currentStep, setCurrentStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
-  const [results, setResults] = useState(null);
 
-  const [formData, setFormData] = useState({
-    nome: "",
-    curso: "",
-    tipoProjeto: "",
-    topicosInteresse: [],
-    habilidadesTecnicas: [],
+  // 1. INICIALIZAÇÃO COM MEMÓRIA (Lê do storage se existir)
+  const [currentStep, setCurrentStep] = useState(() => {
+    const saved = sessionStorage.getItem(STORAGE_KEY_STEP);
+    return saved ? parseInt(saved) : 1;
   });
+
+  const [results, setResults] = useState(() => {
+    const saved = sessionStorage.getItem(STORAGE_KEY_RESULTS);
+    return saved ? JSON.parse(saved) : null;
+  });
+
+  const [formData, setFormData] = useState(() => {
+    const saved = sessionStorage.getItem(STORAGE_KEY_FORM);
+    return saved ? JSON.parse(saved) : {
+      nome: "",
+      curso: "",
+      tipoProjeto: "",
+      topicosInteresse: [],
+      habilidadesTecnicas: [],
+    };
+  });
+
+  // 2. EFEITO PARA SALVAR AUTOMATICAMENTE (Sempre que mudar, salva)
+  useEffect(() => {
+    sessionStorage.setItem(STORAGE_KEY_STEP, currentStep);
+    sessionStorage.setItem(STORAGE_KEY_RESULTS, JSON.stringify(results));
+    sessionStorage.setItem(STORAGE_KEY_FORM, JSON.stringify(formData));
+  }, [currentStep, results, formData]);
 
   const totalSteps = 7;
 
-  // --- HELPER 1: Formata o nome (Title Case) ---
+  // --- HELPERS (Mesma lógica anterior) ---
   const formatName = (name) => {
     if (!name) return "";
-    return name
-      .toLowerCase()
-      .split(' ')
-      .map(word => {
-        if (["de", "da", "do", "dos", "das", "e"].includes(word)) return word;
-        return word.charAt(0).toUpperCase() + word.slice(1);
-      })
-      .join(' ');
+    return name.toLowerCase().split(' ').map(word => 
+      ["de", "da", "do", "dos", "das", "e"].includes(word) ? word : word.charAt(0).toUpperCase() + word.slice(1)
+    ).join(' ');
   };
 
-  // --- HELPER 2: Normaliza strings para busca ---
-  const normalize = (str) => {
-    return str ? str.toString().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim() : "";
-  };
+  const normalize = (str) => str ? str.toString().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim() : "";
 
-  // --- HELPER 3: Extrai email com segurança ---
   const extractEmail = (contatos) => {
     if (!contatos) return "Email não disponível";
     if (typeof contatos === 'object' && contatos.email) return contatos.email;
     if (typeof contatos === 'string') return contatos;
-    if (Array.isArray(contatos)) {
-        const found = contatos.find(c => typeof c === 'string' && c.includes('@'));
-        return found || contatos[0] || "Email não disponível";
-    }
+    if (Array.isArray(contatos)) return contatos.find(c => typeof c === 'string' && c.includes('@')) || contatos[0];
     return "Email não disponível";
   };
 
-  // --- HELPER 4: Detecta o Campus ---
   const getCampus = (departamento) => {
     if (!departamento) return "UnB - Brasília";
     const dep = departamento.toUpperCase();
@@ -78,38 +87,25 @@ export default function EncontrarOrientadorPage() {
     return "UnB - Darcy Ribeiro"; 
   };
 
-  // --- HELPER 5: Busca Áreas de Interesse ---
   const extractAreas = (match) => {
-    let areas = [];
-    if (match.dados_scholar && match.dados_scholar.areas_interesse) {
-        areas = match.dados_scholar.areas_interesse;
-    } else if (match.areas_interesse) {
-        areas = match.areas_interesse;
-    } else if (match.areasPesquisa) {
-        areas = match.areasPesquisa;
-    } else {
-        return ["Área sugerida pela IA"];
-    }
-
-    // Garante que é array de strings
+    let areas = match.dados_scholar?.areas_interesse || match.areas_interesse || match.areasPesquisa || ["Área sugerida pela IA"];
     if (typeof areas === 'string') return [areas];
     if (Array.isArray(areas)) return areas.filter(a => typeof a === 'string');
     return ["Área sugerida pela IA"];
   };
 
-  const updateFormData = (field, value) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+  // Tenta extrair ID da URL do Sigaa
+  const extractIdFromUrl = (url) => {
+    if (!url) return null;
+    const match = url.match(/siape=(\d+)/) || url.match(/\/(\d+)$/);
+    return match ? match[1] : null;
   };
 
-  const handleNext = () => {
-    if (currentStep < totalSteps) setCurrentStep((prev) => prev + 1);
-  };
+  const updateFormData = (field, value) => setFormData((prev) => ({ ...prev, [field]: value }));
+  const handleNext = () => setCurrentStep((prev) => prev + 1);
+  const handleBack = () => setCurrentStep((prev) => prev - 1);
 
-  const handleBack = () => {
-    if (currentStep > 1 && currentStep < totalSteps) setCurrentStep((prev) => prev - 1);
-  };
-
-  // --- LÓGICA DE INTEGRAÇÃO ---
+  // --- SUBMIT ---
   const handleSubmit = async () => {
     setIsLoading(true);
     setCurrentStep(7); 
@@ -125,42 +121,32 @@ export default function EncontrarOrientadorPage() {
           try {
             const nomeIaLimpo = rec.nome.replace(/(Dr\.|Dra\.|Prof\.|Profa\.|PhD)\s*/gi, "").trim();
             const nomeIaNormalizado = normalize(nomeIaLimpo);
-
+            
             const resultadosApi = await getProfessorsData({ q: nomeIaLimpo });
             
             const match = resultadosApi.find(prof => {
               const nomeProfNormalizado = normalize(prof.nome);
-              return nomeProfNormalizado.includes(nomeIaNormalizado) || 
-                     nomeIaNormalizado.includes(nomeProfNormalizado);
+              return nomeProfNormalizado.includes(nomeIaNormalizado) || nomeIaNormalizado.includes(nomeProfNormalizado);
             }) || {};
 
-            console.log(`📸 Foto URL para ${match.nome}:`, match.foto_url); // Debug da foto
-
-            // === LÓGICA DA FOTO ===
-            // Pega a URL de onde estiver disponível
+            const realId = match.id || match._id || match.siape || match.matricula || extractIdFromUrl(match.pagina_sigaa_url);
             const urlFoto = match.foto_url || match.foto || match.avatar || null;
 
             return {
-              id: match.id || `ai-${index}`,
+              id: realId || `ai-${index}`,
               nome: formatName(match.nome || rec.nome),
               departamento: match.departamento || rec.departamento,
               email: extractEmail(match.contatos),
               campus: getCampus(match.departamento),
               areasPesquisa: extractAreas(match),
-
-              // === MAPA DA MINA PARA A FOTO ===
-              // Passamos a mesma URL para várias chaves possíveis
               foto: urlFoto,
               foto_url: urlFoto,
-              image: urlFoto, 
-              src: urlFoto,   
-              avatar: urlFoto,
-
+              image: urlFoto,
               explicacaoIa: rec.explicacao, 
-              encontradoNoBanco: !!match.nome
+              encontradoNoBanco: !!realId 
             };
           } catch (err) {
-            console.error(`Erro ao processar ${rec.nome}`, err);
+            console.error(err);
             return {
               id: `fallback-${index}`,
               nome: formatName(rec.nome),
@@ -169,42 +155,33 @@ export default function EncontrarOrientadorPage() {
               campus: "UnB",
               areasPesquisa: [],
               explicacaoIa: rec.explicacao,
-              foto: null
+              encontradoNoBanco: false
             };
           }
         })
       );
 
-      setResults({
-        message: "Encontramos os orientadores ideais! 🎉",
-        subMessage: "Estes professores combinam com seus interesses e habilidades.",
-        professores: professoresComDetalhes,
-      });
-
+      setResults({ message: "Sucesso", professores: professoresComDetalhes });
     } catch (error) {
-      console.error("Erro fatal:", error);
-      setResults({ 
-        error: true, 
-        message: "Ocorreu um erro ao processar. Tente novamente." 
-      });
+      console.error(error);
+      setResults({ error: true, message: "Erro ao processar recomendações." });
     } finally {
       setIsLoading(false);
     }
   };
 
+  // 3. RESET COM LIMPEZA DE MEMÓRIA
   const handleReset = () => {
+    // Limpa o storage
+    sessionStorage.removeItem(STORAGE_KEY_STEP);
+    sessionStorage.removeItem(STORAGE_KEY_RESULTS);
+    sessionStorage.removeItem(STORAGE_KEY_FORM);
+
+    // Reseta o estado local
     setCurrentStep(1);
     setResults(null);
-    setFormData({
-      nome: "",
-      curso: "",
-      tipoProjeto: "",
-      topicosInteresse: [],
-      habilidadesTecnicas: [],
-    });
+    setFormData({ nome: "", curso: "", tipoProjeto: "", topicosInteresse: [], habilidadesTecnicas: [] });
   };
-
-  const handleEdit = (step) => setCurrentStep(step);
 
   const renderStep = () => {
     switch (currentStep) {
@@ -213,29 +190,22 @@ export default function EncontrarOrientadorPage() {
       case 3: return <ProjectTypeStep value={formData.tipoProjeto} onChange={(v) => updateFormData("tipoProjeto", v)} onNext={handleNext} onBack={handleBack} />;
       case 4: return <InterestsStep value={formData.topicosInteresse} onChange={(v) => updateFormData("topicosInteresse", v)} onNext={handleNext} onBack={handleBack} />;
       case 5: return <SkillsStep value={formData.habilidadesTecnicas} onChange={(v) => updateFormData("habilidadesTecnicas", v)} onNext={handleNext} onBack={handleBack} />;
-      case 6: return <ReviewStep formData={formData} onEdit={handleEdit} onSubmit={handleSubmit} onBack={handleBack} />;
+      case 6: return <ReviewStep formData={formData} onEdit={(step) => setCurrentStep(step)} onSubmit={handleSubmit} onBack={handleBack} />;
       case 7: return <ResultsStep isLoading={isLoading} results={results} onReset={handleReset} onBack={() => navigate("/professores")} />;
       default: return null;
     }
   };
 
-  const pageBg = useColorModeValue("gray.50", "gray.900");
-  const cardBg = useColorModeValue("white", "gray.800");
-
   return (
-    <Box bg={pageBg} minH="calc(100vh - 60px)" py={{ base: 8, md: 12 }}>
+    <Box bg={useColorModeValue("gray.50", "gray.900")} minH="calc(100vh - 60px)" py={{ base: 8, md: 12 }}>
       <Container maxW="container.md">
         <VStack spacing={6} align="stretch">
           <Box textAlign="center">
-            <Heading as="h1" size={{ base: '2xl', md: '3xl' }} mb={2} color="blue.800" fontWeight="bold" letterSpacing="tight">
-              🎓 Encontre seu Orientador Ideal
-            </Heading>
-            <Text color="gray.600" fontSize={{ base: 'md', md: 'lg' }}>
-              Nossa IA analisa seu perfil e sugere os melhores professores para você.
-            </Text>
+            <Heading as="h1" size={{ base: '2xl', md: '3xl' }} mb={2} color="blue.800">🎓 Encontre seu Orientador Ideal</Heading>
+            <Text color="gray.600" fontSize={{ base: 'md', md: 'lg' }}>Nossa IA analisa seu perfil e sugere os melhores professores.</Text>
           </Box>
           {currentStep < 7 && <StepIndicator currentStep={currentStep} totalSteps={6} />}
-          <Box bg={cardBg} p={{ base: 5, md: 7 }} borderRadius="2xl" boxShadow="md">
+          <Box bg={useColorModeValue("white", "gray.800")} p={{ base: 5, md: 7 }} borderRadius="2xl" boxShadow="md">
             {renderStep()}
           </Box>
         </VStack>
