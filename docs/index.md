@@ -61,7 +61,7 @@ O Portal é uma aplicação web que funciona como um agregador de dados com uma 
 
 ### 2.2 Estrutura Técnica
 
-O sistema adota uma arquitetura de **Micro-serviços** (ou Três Camadas): **Frontend** em **[Framework X]**, **Backend API** em **[Tecnologia Y]**, e persistência de dados em **[Tipo de Banco de Dados]**. As tecnologias foram escolhidas visando performance e robustez (Ex: React, Node.js e PostgreSQL).
+O sistema adota uma arquitetura de **Micro-serviços** (ou Três Camadas): **Frontend** em **React + Vite **, **Backend API** em **Render**, e persistência de dados em **Json**. As tecnologias foram escolhidas visando performance e robustez (Ex: React, Node.js e PostgreSQL).
 
 ***
 
@@ -77,7 +77,7 @@ O planejamento foi guiado pelo Story Map, que visualiza o trabalho em três gran
 
 ### 3.2 Organização do Trabalho
 
-Adotamos o framework **Scrum** com Sprints de duas semanas, realizando *Plannings*, *Reviews* e *Retrospectivas* para garantir o ajuste contínuo do processo. As ferramentas essenciais foram **GitHub** (Versionamento e Issues), **GitHub Actions** (CI) e **[Nome da Ferramenta de Board]** (Gestão de Tarefas).
+Adotamos o framework **Scrum** com Sprints de duas semanas, realizando *Plannings*, *Reviews* e *Retrospectivas* para garantir o ajuste contínuo do processo. As ferramentas essenciais foram **GitHub** (Versionamento e Issues), **GitHub Actions** (CI).
 
 * **Modelo Ágil Utilizado:** Scrum.
 * **Eventos:** Sprint planning, reviews e retrospectivas realizadas regularmente.
