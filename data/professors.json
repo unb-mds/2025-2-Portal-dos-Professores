@@ -34133,26 +34133,8 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2314993",
             "descricao_pessoal": "não informada",
             "lattes_url": null,
-            "formacao_academica": {
-                "GRADUAÇÃO": [
-                    "1986 - 1991: Engenharia Elétrica\nUniversidade Federal do Ceará"
-                ],
-                "MESTRADO": [
-                    "1992 - 1994: Engenharia Elétrica\nUniversidade Federal de Santa Catarina"
-                ],
-                "DOUTORADO": [
-                    "2001 - 2005: Imagem, Visao e Robotica\nInstitut National Polytechnique de Grenoble"
-                ],
-                "PÓS-DOUTORADO": [
-                    "2015 - 2015: Pós-Doutorado\nUniversity of Canterbury",
-                    "2006 - Incompleto: Pós-Doutorado\nUniversidade de Brasília"
-                ]
-            },
-            "contatos": {
-                "sala": "não informado",
-                "telefone": "3684",
-                "email": "carla.koike@gmail.com"
-            },
+            "formacao_academica": {},
+            "contatos": {},
             "dados_lattes": null,
             "dados_scholar": null
         },
@@ -36120,6 +36102,9 @@
                 ],
                 "DOUTORADO": [
                     "1997 - 2003: Informática\nPontifícia Universidade Católica do Rio de Janeiro"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2024 - 2025: Pós-Doutorado\nUniversidade Federal de Mato Grosso"
                 ]
             },
             "contatos": {
@@ -38630,10 +38615,10 @@
         {
             "nome": "JONATHAN ROSA MOREIRA",
             "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO - BRASÍLIA",
-            "foto_url": "https://arquivos.unb.br/arquivos/20241681434b733186096aeb379a8ee19/Foto_JRM.jpg",
+            "foto_url": "https://arquivos.unb.br/arquivos/202602711929df382830450891676662f/JRM_FOTO.jpeg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3414854",
             "descricao_pessoal": "não informada",
-            "lattes_url": null,
+            "lattes_url": "https://lattes.cnpq.br/9262866585872095",
             "formacao_academica": {
                 "GRADUAÇÃO": [
                     "2004 - 2008: Bacharelado em Sistemas de Informação\nFaculdade Cenecista de Brasília -Campanha Nacional de Escolas da Comunidade",
@@ -38644,18 +38629,18 @@
                     "2020 - 2021: Biblioteconomia\nUniversidade de Caxias do Sul",
                     "2019 - 2020: Licenciatura em Letras - Português e Espanhol\nFaculdade Integrada de Brasília",
                     "2021 - 2024: Letras Português - Inglês\nUniversidade Católica de Brasília",
-                    "2021 - : Estatística\nUniversidade Anhembi Morumbi"
+                    "2021 - 2025: Estatística\nUniversidade Anhembi Morumbi"
                 ],
                 "ESPECIALIZAÇÃO": [
                     "2012 - 2014: Lato Sensu em Gestão de Processos Acadêmicos\nCentro Universitário Projeção",
-                    "2020 - 2020: Educação a Distância\nUniversidade Paulista",
                     "2010 - 2011: Tecnologias em Ensino a Distância\nUniversidade Cidade de São Paulo",
+                    "2020 - 2020: Educação a Distância\nUniversidade Paulista",
+                    "2016 - 2017: Psicopedagogia e Educação Especial\nS B I",
                     "2008 - 2009: MBA em Governança de Tecnologia da Informação\nUniversidade Ceuma",
                     "2014 - 2015: Educação em e para os Direitos Humanos\nUniversidade de Brasília",
                     "2014 - 2016: Planejamento, Implementação e Gestão da EAD\nUniversidade Federal Fluminense",
                     "2017 - 2018: Letramento Informacional: educação para a informação\nUniversidade Federal de Goiás",
-                    "2015 - 2016: Gestão de Políticas Públicas de Gênero e Raça\nUniversidade de Brasília",
-                    "2016 - 2017: Psicopedagogia e Educação Especial\nS B I"
+                    "2015 - 2016: Gestão de Políticas Públicas de Gênero e Raça\nUniversidade de Brasília"
                 ],
                 "MESTRADO": [
                     "2010 - 2011: Gestão do Conhecimento e Tecnologia da Informação\nUniversidade Católica de Brasília"
@@ -48111,29 +48096,12 @@
         {
             "nome": "CLEYTON HERCULES GONTIJO",
             "departamento": "DEPARTAMENTO DE MATEMÁTICA - BRASÍLIA",
-            "foto_url": "https://arquivos.unb.br/arquivos/2024240083241a3247983b194416803f5/Cleyton_15setembro2023.jpg",
+            "foto_url": "https://arquivos.unb.br/arquivos/202614820214413860729dfa08a2285e8/Gemini_Generated_Image_9reyhs9reyhs9rey.png",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1714408",
             "descricao_pessoal": "Professor Associado IV na Universidade de Brasília - UnB, com lotação no Departamento de Matemática. É membro do Programa de Pós-Graduação em Educação da UnB, orientando pesquisas nos cursos de mestrado acadêmico e doutorado em educação. Possui graduação em Licenciatura em Ciências e Matemática pelo Centro Universitário de Brasília (1991), mestrado em Educação pela Universidade de Brasília (1999) e doutorado em Psicologia pela Universidade de Brasília (2007). Tem experiência na área de Matemática, com ênfase em Educação Matemática, atuando principalmente nos seguintes temas: criatividade em matemática, avaliação em matemática e resolução de problemas.",
             "lattes_url": "http://lattes.cnpq.br/0556476746202406",
-            "formacao_academica": {
-                "GRADUAÇÃO": [
-                    "1988 - 1991: Licenciatura em Ciências e Matemática\nCentro Universitário de Brasília"
-                ],
-                "ESPECIALIZAÇÃO": [
-                    "1993 - 1995: Especialização em Administração da Educação\nUniversidade de Brasília"
-                ],
-                "MESTRADO": [
-                    "1997 - 1999: Educação\nUniversidade de Brasília"
-                ],
-                "DOUTORADO": [
-                    "2003 - 2007: Psicologia\nUniversidade de Brasília"
-                ]
-            },
-            "contatos": {
-                "sala": "A1 – 438/1",
-                "telefone": "6481",
-                "email": "cleyton@unb.br"
-            },
+            "formacao_academica": {},
+            "contatos": {},
             "dados_lattes": {
                 "resumo_cv": null,
                 "atuacao_profissional": [
@@ -49136,6 +49104,9 @@
                 ],
                 "DOUTORADO": [
                     "2011 - 2015: Matemática\nUniversidade de Brasília"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2026 - : Pós-Doutorado\nUniversity of Bath"
                 ]
             },
             "contatos": {
@@ -49579,9 +49550,10 @@
                     "2001 - 2004: Matemática\nUniversidade Estadual de Campinas"
                 ],
                 "PÓS-DOUTORADO": [
-                    "2009 - 2009: Pós-Doutorado\nUniversidade Federal de Campina Grande",
+                    "2016 - 2016: Pós-Doutorado\nUniversidade Estadual Paulista Júlio de Mesquita Filho",
                     "2012 - 2013: Pós-Doutorado\nUniversidad de Sevilla",
-                    "2016 - : Pós-Doutorado\nUniversidade Estadual Paulista Júlio de Mesquita Filho"
+                    "2024 - 2024: Pós-Doutorado\nUniversidade Estadual Paulista Júlio de Mesquita Filho",
+                    "2009 - 2009: Pós-Doutorado\nUniversidade Federal de Campina Grande"
                 ]
             },
             "contatos": {
@@ -58461,9 +58433,9 @@
         {
             "nome": "ANA CAROLINA SIMIONATO ARAKAKI",
             "departamento": "FACULDADE DE CIÊNCIA DA INFORMAÇÃO - BRASÍLIA",
-            "foto_url": "https://arquivos.unb.br/arquivos/202601511854263829353494d4e6f8551/WhatsApp_Image_2026-02-26_at_17.16.17.jpeg",
+            "foto_url": "https://arquivos.unb.br/arquivos/2026008245f7c039424379878ce61e6c3/img20260324155334585.jpg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1225384",
-            "descricao_pessoal": "Professora e pesquisadora da Faculdade de Ciência da Informação da Universidade de Brasília (UnB), com atuação no eixo de organização e representação da informação e do conhecimento, é também docente permanente no Programa de Pós-Graduação em Ciência da Informação da Universidade Federal de São Carlos (PPGCI/UFSCar) e no Programa de Pós-Graduação em Ciência da Informação da Universidade de Brasília (PPGCINF/UnB).",
+            "descricao_pessoal": "não informada",
             "lattes_url": "http://lattes.cnpq.br/9896600626524397",
             "formacao_academica": {
                 "GRADUAÇÃO": [
@@ -60420,7 +60392,7 @@
         {
             "nome": "CLOVIS CARVALHO BRITTO",
             "departamento": "FACULDADE DE CIÊNCIA DA INFORMAÇÃO - BRASÍLIA",
-            "foto_url": "https://arquivos.unb.br/arquivos/20231661623b6826947131fa9af8ad76f/Foto_Clovis.jpg",
+            "foto_url": "https://arquivos.unb.br/arquivos/20260950062424390052468d0c2c7f048/2.jpg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1051862",
             "descricao_pessoal": "Professor Associado II na Faculdade de Ciência da Informação da Universidade de Brasília no Curso de Museologia e no Programa de Pós-Graduação em Ciência da Informação. Professor Permanente no Programa de Pós-Graduação em Museologia da Universidade Federal da Bahia. Professor Colaborador no Departamento de Museologia e Investigador colaborador no Centro de Estudos Interdisciplinares em Educação e Desenvolvimento da Universidade Lusófona, em Portugal. Bolsista de Produtividade em Pesquisa do Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq) na área de Museologia (2020-2026). Consultor ad hoc do CNPq e da Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (CAPES). Líder do Grupo de Pesquisa Museologia, Patrimônio e Memória (UnB) e membro do Grupo de Pesquisa Cultura, Memória e Desenvolvimento (UnB).",
             "lattes_url": "http://lattes.cnpq.br/7846212059366799",
@@ -63279,7 +63251,7 @@
         {
             "nome": "FERNANDA FARINELLI",
             "departamento": "FACULDADE DE CIÊNCIA DA INFORMAÇÃO - BRASÍLIA",
-            "foto_url": "https://arquivos.unb.br/arquivos/2022223124ef372514937580a257b7488/foto1.jpg",
+            "foto_url": "https://arquivos.unb.br/arquivos/20262330040b6f393479823313ed8d46f/eu.png",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3294813",
             "descricao_pessoal": "não informada",
             "lattes_url": "http://lattes.cnpq.br/1907817850408525",
@@ -66429,30 +66401,8 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1127793",
             "descricao_pessoal": "não informada",
             "lattes_url": null,
-            "formacao_academica": {
-                "GRADUAÇÃO": [
-                    "1983 - 1990: Engenharia Mecânica\nUniversidade de Brasília"
-                ],
-                "ESPECIALIZAÇÃO": [
-                    "2000 - 2001: Inteligência Competitiva\nUniversidade Federal do Rio de Janeiro"
-                ],
-                "MESTRADO": [
-                    "1995 - 1997: Biblioteconomia\nUniversidade de Brasília"
-                ],
-                "DOUTORADO": [
-                    "2006 - 2010: Sciences de l'Information et de la Communication\nUniversité du Sud Toulon-Var",
-                    "2006 - 2010: Ciências da Informação\nUniversidade de Brasília"
-                ],
-                "PÓS-DOUTORADO": [
-                    "2021 - 2021: Pós-Doutorado\nUniversidade Federal de Santa Catarina",
-                    "2016 - 2017: Pós-Doutorado\nUniversitat Jaume I"
-                ]
-            },
-            "contatos": {
-                "sala": "não informado",
-                "telefone": "2642",
-                "email": "lillianalvares@unb.br"
-            },
+            "formacao_academica": {},
+            "contatos": {},
             "dados_lattes": null,
             "dados_scholar": {
                 "scholar_id": "9WBY2zAAAAAJ",
@@ -73011,26 +72961,8 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1077415",
             "descricao_pessoal": null,
             "lattes_url": null,
-            "formacao_academica": {
-                "GRADUAÇÃO": [
-                    "2000 - 2001: Programme de formation intégrée d'élèves-ingénieur\nEcole Superieure D'Electricite",
-                    "1997 - 2002: Engenharia Elétrica\nUniversidade Estadual de Campinas"
-                ],
-                "MESTRADO": [
-                    "2002 - 2004: Engenharia Elétrica\nUniversidade Estadual de Campinas"
-                ],
-                "DOUTORADO": [
-                    "2009 - 2012: Ciência da Informação\nUniversidade de São Paulo"
-                ],
-                "PÓS-DOUTORADO": [
-                    "2013 - : Pós-Doutorado\nUniversidade de São Paulo"
-                ]
-            },
-            "contatos": {
-                "sala": "não informado",
-                "telefone": "2634",
-                "email": "daltonmartins@unb.br"
-            },
+            "formacao_academica": {},
+            "contatos": {},
             "dados_lattes": null,
             "dados_scholar": {
                 "scholar_id": "b4ScU6gAAAAJ",
@@ -145499,29 +145431,8 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1170729",
             "descricao_pessoal": "FRC is a Professor of Fluid Mechanics and Applied Mathematics in the Department of Mechanical Engineering at the University of Brasília. He is also a researcher PQ- 1 of CNPq - Brazil since 2000. His current research interests include: rheology of complex fluids; hydrodynamic of magnetic fluids, non-Newtonian fluid dynamics, microhydrodynamics of active and passive particles in suspensions; and mechanics of mobile suspensions in general. His group focuses on developing mathematical and computational modelling tools with experimental investigations, that is highly interdisciplinary.",
             "lattes_url": "http://lattes.cnpq.br/5983081720502349",
-            "formacao_academica": {
-                "GRADUAÇÃO": [
-                    "1981 - 1986: Engenharia Mecânica\nUniversidade de Brasília"
-                ],
-                "ESPECIALIZAÇÃO": [
-                    "1991 - 1992: Advanced Studies On Applied Mathematics\nUniversity of Cambridge"
-                ],
-                "MESTRADO": [
-                    "1987 - 1989: Ciências Mecânicas\nUniversidade de Brasília"
-                ],
-                "DOUTORADO": [
-                    "1991 - 1995: DAMTP - Applied Math and Theoretical Physics\nUniversity of Cambridge"
-                ],
-                "PÓS-DOUTORADO": [
-                    "1998 - 2000: Pós-Doutorado\nYale University",
-                    "2013 - 2013: Pós-Doutorado\nUniversity of California, Santa Barbara"
-                ]
-            },
-            "contatos": {
-                "sala": "D140/18",
-                "telefone": "75687",
-                "email": "frcunha@unb.br"
-            },
+            "formacao_academica": {},
+            "contatos": {},
             "dados_lattes": {
                 "resumo_cv": null,
                 "atuacao_profissional": [
@@ -160800,25 +160711,8 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2131191",
             "descricao_pessoal": "não informada",
             "lattes_url": "http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4418475P1",
-            "formacao_academica": {
-                "GRADUAÇÃO": [
-                    "2002 - 2006: Engenharia de Computação\nUniversidade Estadual de Campinas"
-                ],
-                "MESTRADO": [
-                    "2007 - 2009: Engenharia Elétrica\nUniversidade Estadual de Campinas"
-                ],
-                "DOUTORADO": [
-                    "2009 - 2013: Engenharia Elétrica\nUniversidade Estadual de Campinas"
-                ],
-                "PÓS-DOUTORADO": [
-                    "2013 - 2014: Pós-Doutorado\nUniversidade Estadual de Campinas"
-                ]
-            },
-            "contatos": {
-                "sala": "BT-40/18",
-                "telefone": "75647",
-                "email": "danielgs@unb.br"
-            },
+            "formacao_academica": {},
+            "contatos": {},
             "dados_lattes": null,
             "dados_scholar": {
                 "scholar_id": "nhwujwMAAAAJ",
