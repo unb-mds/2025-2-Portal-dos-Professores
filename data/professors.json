@@ -34133,8 +34133,27 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2314993",
             "descricao_pessoal": "não informada",
             "lattes_url": null,
-            "formacao_academica": {},
-            "contatos": {},
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2025 - : Letras Língua Estrangeira Aplicada\nUniversidade de Brasília",
+                    "1986 - 1991: Engenharia Elétrica\nUniversidade Federal do Ceará"
+                ],
+                "MESTRADO": [
+                    "1992 - 1994: Engenharia Elétrica\nUniversidade Federal de Santa Catarina"
+                ],
+                "DOUTORADO": [
+                    "2001 - 2005: Imagem, Visao e Robotica\nInstitut National Polytechnique de Grenoble"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2015 - 2015: Pós-Doutorado\nUniversity of Canterbury",
+                    "2006 - Incompleto: Pós-Doutorado\nUniversidade de Brasília"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3684",
+                "email": "carla.koike@gmail.com"
+            },
             "dados_lattes": null,
             "dados_scholar": null
         },
@@ -103458,7 +103477,7 @@
                     "2004 - Incompleto: Comunicação Social - Jornalismo\nUniversidade Federal de Viçosa"
                 ],
                 "MESTRADO": [
-                    "2010 - 2012: Bioquimica Agricola\nUniversidade Federal de Viçosa"
+                    "2010 - 2012: Bioquímica e Biotecnologia\nUniversidade Federal de Viçosa"
                 ],
                 "DOUTORADO": [
                     "2012 - 2016: Ciências Farmacêuticas\nUniversidade Federal de Minas Gerais"
@@ -105046,7 +105065,7 @@
         {
             "nome": "FABIO MOREIRA DA SILVA",
             "departamento": "INSTITUTO DE QUÍMICA - BRASÍLIA",
-            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "foto_url": "https://arquivos.unb.br/arquivos/20262441159f35391571983f4b1f04d1a/FabioPiri.jpeg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1948783",
             "descricao_pessoal": "não informada",
             "lattes_url": null,
@@ -105068,7 +105087,7 @@
                 ]
             },
             "contatos": {
-                "sala": "BT 86/05 I",
+                "sala": "BT86/05 IQ",
                 "telefone": "31073828",
                 "email": "não informado"
             },
@@ -106968,7 +106987,7 @@
         {
             "nome": "GERSON DE SOUZA MOL",
             "departamento": "INSTITUTO DE QUÍMICA - BRASÍLIA",
-            "foto_url": "https://arquivos.unb.br/arquivos/2023101201d79827553573acff8f3005e/Gerson_foto_2.jpeg",
+            "foto_url": "https://arquivos.unb.br/arquivos/2026206158fe2b3875178057cef9d35ac/Imagem_do_WhatsApp_de_2025-09-23_s_11.12.52_d5132218.jpg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=418913",
             "descricao_pessoal": "não informada",
             "lattes_url": "http://lattes.cnpq.br/5435762270956940/",
@@ -183084,6 +183103,22 @@
                 "sala": "não informado",
                 "telefone": "não informado",
                 "email": "yurimaluf@gmail.com"
+            },
+            "dados_lattes": null,
+            "dados_scholar": null
+        },
+        {
+            "nome": "ANDREA NATALY PENA PENA",
+            "departamento": "FACULDADE DE ARQUITETURA E URBANISMO - BRASÍLIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3525753",
+            "descricao_pessoal": null,
+            "lattes_url": null,
+            "formacao_academica": {},
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "não informado",
+                "email": "natilla8746@gmail.com"
             },
             "dados_lattes": null,
             "dados_scholar": null
