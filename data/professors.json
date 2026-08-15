@@ -34129,7 +34129,7 @@
         {
             "nome": "CARLA MARIA CHAGAS E CAVALCANTE KOIKE",
             "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO - BRASÍLIA",
-            "foto_url": "https://arquivos.unb.br/arquivos/2025237073b703352245470c6ed023b29/Captura_de_Tela_2025-05-19_a768s_16.11.16.png",
+            "foto_url": "https://arquivos.unb.br/arquivos/20260161163aef40670926eedfcbdc2e5/Eu.jpg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2314993",
             "descricao_pessoal": "não informada",
             "lattes_url": null,
@@ -36166,7 +36166,7 @@
             "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO - BRASÍLIA",
             "foto_url": "https://arquivos.unb.br/arquivos/2020164239d9a320416677e95108238e4/profflaviovidal-novo.png",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2366026",
-            "descricao_pessoal": "Professor Associado no Departamento de Ciência da Computação da Universidade de Brasília. Com experiência na área de Ciência da Computação e Engenharia Elétrica, com ênfase em Visão Computacional e Automação de Sistemas, atuando principalmente nos seguintes temas: visão computacional (rastreamento, análise de movimento e análise/reconhecimento facial), automação de sistemas, arquitetura de computadores e processamento digital de imagens. Dentre as diversas atividades de pesquisa é coordenador e membro fundador do Laboratório de Imagens, Sinais e Acústica (LISA) e líder do Grupo de Pesquisa em Sistemas Biométricos (BiTGroup), ambos cadastrados no Diretório de Grupos de Pesquisa Lattes.",
+            "descricao_pessoal": "Professor Titular no Departamento de Ciência da Computação da Universidade de Brasília. Com experiência na área de Ciência da Computação e Engenharia Elétrica, com ênfase em Visão Computacional e Automação de Sistemas, atuando principalmente nos seguintes temas: visão computacional (rastreamento, análise de movimento e análise/reconhecimento facial), automação de sistemas, arquitetura de computadores e processamento digital de imagens. Dentre as diversas atividades de pesquisa é coordenador e membro fundador do Laboratório de Imagens, Sinais e Acústica (LISA) e líder do Grupo de Pesquisa em Sistemas Biométricos (BiTGroup), ambos cadastrados no Diretório de Grupos de Pesquisa Lattes.",
             "lattes_url": "http://lattes.cnpq.br/0453892715674953",
             "formacao_academica": {
                 "GRADUAÇÃO": [
@@ -48118,7 +48118,7 @@
         {
             "nome": "CLEYTON HERCULES GONTIJO",
             "departamento": "DEPARTAMENTO DE MATEMÁTICA - BRASÍLIA",
-            "foto_url": "https://arquivos.unb.br/arquivos/202614820214413860729dfa08a2285e8/Gemini_Generated_Image_9reyhs9reyhs9rey.png",
+            "foto_url": "https://arquivos.unb.br/arquivos/2026145021107b40684823b21f780fe33/Cleyton_2026.jpeg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1714408",
             "descricao_pessoal": "Professor Titular da Universidade de Brasília - UnB, com lotação no Departamento de Matemática. É membro do Programa de Pós-Graduação em Educação da UnB, orientando pesquisas nos cursos de mestrado acadêmico e doutorado em educação. Possui graduação em Licenciatura em Ciências e Matemática pelo Centro Universitário de Brasília (1991), mestrado em Educação pela Universidade de Brasília (1999) e doutorado em Psicologia pela Universidade de Brasília (2007). Tem experiência na área de Matemática, com ênfase em Educação Matemática, atuando principalmente nos seguintes temas: criatividade em matemática, avaliação em matemática e resolução de problemas.",
             "lattes_url": "http://lattes.cnpq.br/0556476746202406",
@@ -49134,25 +49134,8 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1198222",
             "descricao_pessoal": "não informada",
             "lattes_url": "http://lattes.cnpq.br/4191295466830127",
-            "formacao_academica": {
-                "GRADUAÇÃO": [
-                    "2005 - 2008: Licenciatura Plena em Matemática\nUniversidade Estadual de Goías-UnU-UEG-Santa Helena de Goías"
-                ],
-                "MESTRADO": [
-                    "2009 - 2011: Matemática\nUniversidade Federal de Goiás"
-                ],
-                "DOUTORADO": [
-                    "2011 - 2015: Matemática\nUniversidade de Brasília"
-                ],
-                "PÓS-DOUTORADO": [
-                    "2026 - : Pós-Doutorado\nUniversity of Bath"
-                ]
-            },
-            "contatos": {
-                "sala": "não informado",
-                "telefone": "3107-6481",
-                "email": "emersonmelo@unb.br"
-            },
+            "formacao_academica": {},
+            "contatos": {},
             "dados_lattes": {
                 "resumo_cv": null,
                 "atuacao_profissional": [
@@ -51006,8 +50989,22 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2279022",
             "descricao_pessoal": "não informada",
             "lattes_url": null,
-            "formacao_academica": {},
-            "contatos": {},
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1992 - 1995: Bacharelado em Matemática\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "1996 - 1998: Matemática\nUniversidade de Brasília"
+                ],
+                "DOUTORADO": [
+                    "2017 - 2022: Educação\nUniversidade de Brasília"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "31076450",
+                "email": "lineuc@unb.br"
+            },
             "dados_lattes": null,
             "dados_scholar": null
         },
@@ -76020,26 +76017,8 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1040312",
             "descricao_pessoal": null,
             "lattes_url": null,
-            "formacao_academica": {
-                "GRADUAÇÃO": [
-                    "1981 - 1985: Bacharelado Em Estatística\nUniversidade de Brasília",
-                    "1985 - 1987: Bacharelado Em Matemática\nUniversidade de Brasília"
-                ],
-                "MESTRADO": [
-                    "1988 - 1991: Estatística\nUniversidade Estadual de Campinas"
-                ],
-                "DOUTORADO": [
-                    "1994 - 1999: Estatística\nUniversity of Washington"
-                ],
-                "PÓS-DOUTORADO": [
-                    "2011 - 2011: Pós-Doutorado\nUniversidade Federal do Rio de Janeiro"
-                ]
-            },
-            "contatos": {
-                "sala": "não informado",
-                "telefone": "3107-3659",
-                "email": "aegomes@unb.br"
-            },
+            "formacao_academica": {},
+            "contatos": {},
             "dados_lattes": null,
             "dados_scholar": null
         },
@@ -77299,7 +77278,7 @@
             "foto_url": "https://arquivos.unb.br/arquivos/2024151201e05d306156365adb2214907/20231219_160732.jpg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1145677",
             "descricao_pessoal": "não informada",
-            "lattes_url": null,
+            "lattes_url": "https://lattes.cnpq.br/4486716856546664",
             "formacao_academica": {
                 "GRADUAÇÃO": [
                     "2010 - Incompleto: Ensino de Matemática\nUniversidade Pedagógica - Moçambique",
@@ -77316,7 +77295,7 @@
                 ]
             },
             "contatos": {
-                "sala": "não informado",
+                "sala": "A1 30/28",
                 "telefone": "31073659/3696",
                 "email": "frederico.almeida@unb.br"
             },
@@ -77604,10 +77583,10 @@
         {
             "nome": "GUILHERME SOUZA RODRIGUES",
             "departamento": "DEPTO ESTATÍSTICA - BRASÍLIA",
-            "foto_url": "https://arquivos.unb.br/arquivos/2020022103a9b020414552c06fb09de42/Foto_perfil.jpeg",
+            "foto_url": "https://arquivos.unb.br/arquivos/2026161036d027395167348bbbf2f6a04/Guigo_-_1x1.jpg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3000020",
             "descricao_pessoal": "não informada",
-            "lattes_url": null,
+            "lattes_url": "http://lattes.cnpq.br/0809840707861688",
             "formacao_academica": {
                 "GRADUAÇÃO": [
                     "2003 - 2008: Estatística\nUniversidade de Brasília"
@@ -77770,10 +77749,10 @@
         {
             "nome": "HELTON SAULO BEZERRA DOS SANTOS",
             "departamento": "DEPTO ESTATÍSTICA - BRASÍLIA",
-            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "foto_url": "https://arquivos.unb.br/arquivos/2026144020b5904021476cb9aec0f3904/IMG-2169.jpg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1071560",
-            "descricao_pessoal": null,
-            "lattes_url": null,
+            "descricao_pessoal": "não informada",
+            "lattes_url": "https://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4138533H8",
             "formacao_academica": {
                 "GRADUAÇÃO": [
                     "2004 - 2007: Ciências Econômicas\nUniversidade Católica de Brasília"
@@ -78674,22 +78653,8 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2655121",
             "descricao_pessoal": null,
             "lattes_url": null,
-            "formacao_academica": {
-                "GRADUAÇÃO": [
-                    "1999 - 2002: Estatística\nUniversidade de São Paulo"
-                ],
-                "MESTRADO": [
-                    "2003 - 2006: Estatística\nUniversidade de São Paulo"
-                ],
-                "DOUTORADO": [
-                    "2012 - 2016: Psicologia Social, do Trabalho e das Organizações (Psto)\nUniversidade de Brasília"
-                ]
-            },
-            "contatos": {
-                "sala": "não informado",
-                "telefone": "3664",
-                "email": "lgvinha@gmail.com"
-            },
+            "formacao_academica": {},
+            "contatos": {},
             "dados_lattes": null,
             "dados_scholar": null
         },
@@ -79959,8 +79924,23 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2696020",
             "descricao_pessoal": null,
             "lattes_url": null,
-            "formacao_academica": {},
-            "contatos": {},
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1998 - 2001: Estatística\nUniversidade de Brasília",
+                    "1994 - Incompleto: Economia\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "2001 - 2004: Estatística\nUniversity of Minnesota"
+                ],
+                "DOUTORADO": [
+                    "2004 - 2007: Estatística\nUniversity of Minnesota"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3107-3696",
+                "email": "bbandrade@unb.br"
+            },
             "dados_lattes": null,
             "dados_scholar": null
         },
@@ -80268,30 +80248,8 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2658711",
             "descricao_pessoal": "Professor da Faculdade de Arquitetura e Urbanismo",
             "lattes_url": null,
-            "formacao_academica": {
-                "GRADUAÇÃO": [
-                    "2001 - 2006: Arquitetura e Urbanismo\nUniversidade Federal do Piauí",
-                    "2004 - Incompleto: Comunicação Social Publicidade e Propaganda\nCENTRO DE ENSINO UNIFICADO DE TERESINA"
-                ],
-                "ESPECIALIZAÇÃO": [
-                    "2008 - 2009: Reabilita\nUniversidade de Brasília"
-                ],
-                "MESTRADO": [
-                    "2007 - 2009: Arquitetura e Urbanismo\nUniversidade de Brasília"
-                ],
-                "DOUTORADO": [
-                    "2009 - 2013: Arquitetura e Urbanismo\nUniversidade de Brasília"
-                ],
-                "PÓS-DOUTORADO": [
-                    "2019 - 2020: Pós-Doutorado\nHarvard University",
-                    "2016 - 2016: Pós-Doutorado\nUniversidade Nova de Lisboa"
-                ]
-            },
-            "contatos": {
-                "sala": "não informado",
-                "telefone": "7445",
-                "email": "caiosilva@unb.br"
-            },
+            "formacao_academica": {},
+            "contatos": {},
             "dados_lattes": null,
             "dados_scholar": {
                 "scholar_id": "je6on0sAAAAJ",
@@ -88547,27 +88505,8 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1316209",
             "descricao_pessoal": "Tem experiência na área de Física Quântica, atuando principalmente nos seguintes temas: Emaranhamento, Não-Classicalidade e Fundamentos de Física Quântica. Recentemente atua em propostas de implementações físicas de portas lógicas quânticas, estados emaranhados e medições, além de esquemas de interferometria quântica.",
             "lattes_url": "http://lattes.cnpq.br/4382609252542284",
-            "formacao_academica": {
-                "GRADUAÇÃO": [
-                    "2002 - 2006: Bacharelado em Matemática\nUniversidade Estadual de Campinas",
-                    "2002 - 2007: Bacharelado em Física\nUniversidade Estadual de Campinas"
-                ],
-                "MESTRADO": [
-                    "2007 - 2009: Física\nUniversidade Estadual de Campinas"
-                ],
-                "DOUTORADO": [
-                    "2009 - 2013: Física\nUniversidade Estadual de Campinas"
-                ],
-                "PÓS-DOUTORADO": [
-                    "2015 - 2016: Pós-Doutorado\nUniversidade Federal de Goiás",
-                    "2013 - 2015: Pós-Doutorado\nUniversitat Siegen"
-                ]
-            },
-            "contatos": {
-                "sala": "A1-06/4",
-                "telefone": "7700",
-                "email": "frank.steinhoff@unb.br"
-            },
+            "formacao_academica": {},
+            "contatos": {},
             "dados_lattes": {
                 "resumo_cv": null,
                 "atuacao_profissional": [
@@ -105350,23 +105289,8 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2935149",
             "descricao_pessoal": "não informada",
             "lattes_url": null,
-            "formacao_academica": {
-                "GRADUAÇÃO": [
-                    "2023 - : Química\nUniversidade Federal de Juiz de Fora",
-                    "2000 - 2004: Engenharia Agricola\nUniversidade Federal de Lavras"
-                ],
-                "MESTRADO": [
-                    "2004 - 2007: ENGENHARIA de Processos Quimicos e Bioquimicos\nUniversidade Federal do Rio de Janeiro"
-                ],
-                "DOUTORADO": [
-                    "2008 - 2013: ENGENHARIA de Processos Quimicos e Bioquimicos\nUniversidade Federal do Rio de Janeiro"
-                ]
-            },
-            "contatos": {
-                "sala": "não informado",
-                "telefone": "3866",
-                "email": "eqdamasceno@gmail.com"
-            },
+            "formacao_academica": {},
+            "contatos": {},
             "dados_lattes": null,
             "dados_scholar": null
         },
@@ -152485,7 +152409,7 @@
             "departamento": "DEPTO ENGENHARIA DE PRODUCAO - BRASÍLIA",
             "foto_url": "https://arquivos.unb.br/arquivos/2023118153b45d2641551f043b4d175ab/f12023.jpg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1320804",
-            "descricao_pessoal": "Professor Associado do Departamento de Engenharia de Produção. Graduado em Matemática (UnB), Especialista em Ciência de Dados (PUC-RJ), Especialista em Inteligência Artificial (PUC-MG), Mestre e Doutor em Economia (UnB), Pós-Doutor (ICMC - USP)",
+            "descricao_pessoal": "Professor Associado do Departamento de Engenharia de Produção. Graduado em Matemática (UnB), Graduado em Ciência da Computação (UCB), Especialista em Ciência de Dados (PUC-RJ), Especialista em Inteligência Artificial (PUC-MG), Mestre e Doutor em Economia (UnB), Doutorando em Computação (Unesp), Pós-Doutor em Matematica Computacional (ICMC - USP)",
             "lattes_url": "http://lattes.cnpq.br/9297412598307091",
             "formacao_academica": {
                 "GRADUAÇÃO": [
@@ -183199,10 +183123,10 @@
         {
             "nome": "YURI SAMPAIO MALUF",
             "departamento": "DEPTO ESTATÍSTICA - BRASÍLIA",
-            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "foto_url": "https://arquivos.unb.br/arquivos/2026184122aa9e4044507f06ced20899c/1762799479722.jpg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1209061",
-            "descricao_pessoal": null,
-            "lattes_url": null,
+            "descricao_pessoal": "não informada",
+            "lattes_url": "https://lattes.cnpq.br/9455543122845191",
             "formacao_academica": {
                 "GRADUAÇÃO": [
                     "2021 - : Licenciatura em Matemática\nFUNDACAO UNIVERSIDADE VIRTUAL DO ESTADO DE SAO PAULO-UNIVESP",
@@ -183222,7 +183146,7 @@
             "contatos": {
                 "sala": "não informado",
                 "telefone": "não informado",
-                "email": "yurimaluf@gmail.com"
+                "email": "yurimaluf@yahoo.com"
             },
             "dados_lattes": null,
             "dados_scholar": null
@@ -183459,8 +183383,34 @@
             },
             "contatos": {
                 "sala": "A1-426/12",
-                "telefone": "3107-6479",
+                "telefone": "não informado",
                 "email": "deivid.vale@unb.br"
+            },
+            "dados_lattes": null,
+            "dados_scholar": null
+        },
+        {
+            "nome": "TALIA ALVES XAVIER",
+            "departamento": "DEPTO ESTATÍSTICA - BRASÍLIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/2023175080a3aa2906510d76060105f22/WhatsApp_Image_2023-09-20_at_07.51.06.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1531151",
+            "descricao_pessoal": "não informada",
+            "lattes_url": null,
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2017 - 2022: Estatística\nUniversidade de Brasília"
+                ],
+                "ESPECIALIZAÇÃO": [
+                    "2024 - 2024: Pós-graduação em Ciência de Dados\nFACULDADE FOCUS"
+                ],
+                "MESTRADO": [
+                    "2023 - 2026: Estatistica\nUniversidade de Brasília"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "não informado",
+                "email": "não informado"
             },
             "dados_lattes": null,
             "dados_scholar": null
