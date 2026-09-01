@@ -49134,8 +49134,25 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1198222",
             "descricao_pessoal": "não informada",
             "lattes_url": "http://lattes.cnpq.br/4191295466830127",
-            "formacao_academica": {},
-            "contatos": {},
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2005 - 2008: Licenciatura Plena em Matemática\nUniversidade Estadual de Goías-UnU-UEG-Santa Helena de Goías"
+                ],
+                "MESTRADO": [
+                    "2009 - 2011: Matemática\nUniversidade Federal de Goiás"
+                ],
+                "DOUTORADO": [
+                    "2011 - 2015: Matemática\nUniversidade de Brasília"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2026 - : Pós-Doutorado\nUniversity of Bath"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3107-6481",
+                "email": "emersonmelo@unb.br"
+            },
             "dados_lattes": {
                 "resumo_cv": null,
                 "atuacao_profissional": [
@@ -76017,8 +76034,26 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1040312",
             "descricao_pessoal": null,
             "lattes_url": null,
-            "formacao_academica": {},
-            "contatos": {},
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1981 - 1985: Bacharelado Em Estatística\nUniversidade de Brasília",
+                    "1985 - 1987: Bacharelado Em Matemática\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "1988 - 1991: Estatística\nUniversidade Estadual de Campinas"
+                ],
+                "DOUTORADO": [
+                    "1994 - 1999: Estatística\nUniversity of Washington"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2011 - 2011: Pós-Doutorado\nUniversidade Federal do Rio de Janeiro"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3107-3659",
+                "email": "aegomes@unb.br"
+            },
             "dados_lattes": null,
             "dados_scholar": null
         },
@@ -78653,8 +78688,22 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2655121",
             "descricao_pessoal": null,
             "lattes_url": null,
-            "formacao_academica": {},
-            "contatos": {},
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1999 - 2002: Estatística\nUniversidade de São Paulo"
+                ],
+                "MESTRADO": [
+                    "2003 - 2006: Estatística\nUniversidade de São Paulo"
+                ],
+                "DOUTORADO": [
+                    "2012 - 2016: Psicologia Social, do Trabalho e das Organizações (Psto)\nUniversidade de Brasília"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3664",
+                "email": "lgvinha@gmail.com"
+            },
             "dados_lattes": null,
             "dados_scholar": null
         },
@@ -80248,8 +80297,30 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2658711",
             "descricao_pessoal": "Professor da Faculdade de Arquitetura e Urbanismo",
             "lattes_url": null,
-            "formacao_academica": {},
-            "contatos": {},
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2001 - 2006: Arquitetura e Urbanismo\nUniversidade Federal do Piauí",
+                    "2004 - Incompleto: Comunicação Social Publicidade e Propaganda\nCENTRO DE ENSINO UNIFICADO DE TERESINA"
+                ],
+                "ESPECIALIZAÇÃO": [
+                    "2008 - 2009: Reabilita\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "2007 - 2009: Arquitetura e Urbanismo\nUniversidade de Brasília"
+                ],
+                "DOUTORADO": [
+                    "2009 - 2013: Arquitetura e Urbanismo\nUniversidade de Brasília"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2019 - 2020: Pós-Doutorado\nHarvard University",
+                    "2016 - 2016: Pós-Doutorado\nUniversidade Nova de Lisboa"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "7445",
+                "email": "caiosilva@unb.br"
+            },
             "dados_lattes": null,
             "dados_scholar": {
                 "scholar_id": "je6on0sAAAAJ",
@@ -101797,7 +101868,7 @@
         {
             "nome": "CLAUDIA CRISTINA GATTO",
             "departamento": "INSTITUTO DE QUÍMICA - BRASÍLIA",
-            "foto_url": "https://arquivos.unb.br/arquivos/2020142232c9a42037547e5ee04713fe8/Foto_CV.gif",
+            "foto_url": "https://arquivos.unb.br/arquivos/20261231309bed40897469984facee028/1_-_Copia_2.jpg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2565759",
             "descricao_pessoal": "Professora Titular do Instituto de Química da Universidade de Brasília e responsável pelo LASIC (Laboratório de Síntese Inorgânica e Cristalografia) e pelo Laboratório de Difração de Raios X do IQ-UnB.\nInstituto de Química - Divisão de Química Inorgânica\n\nGrupo de Pesquisa: LASIC - Laboratório de Síntese Inorgânica e Cristalografia\nLocal: IQ - B1 71/3\nhttp://lattes.cnpq.br/0533357429795905\nORCID: https://orcid.org/0000-0002-3736-6861\nResearcherID: I-9924-2014",
             "lattes_url": "http://lattes.cnpq.br/0533357429795905",
@@ -105289,8 +105360,23 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2935149",
             "descricao_pessoal": "não informada",
             "lattes_url": null,
-            "formacao_academica": {},
-            "contatos": {},
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2023 - : Química\nUniversidade Federal de Juiz de Fora",
+                    "2000 - 2004: Engenharia Agricola\nUniversidade Federal de Lavras"
+                ],
+                "MESTRADO": [
+                    "2004 - 2007: ENGENHARIA de Processos Quimicos e Bioquimicos\nUniversidade Federal do Rio de Janeiro"
+                ],
+                "DOUTORADO": [
+                    "2008 - 2013: ENGENHARIA de Processos Quimicos e Bioquimicos\nUniversidade Federal do Rio de Janeiro"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "3866",
+                "email": "fernandadamasceno@unb.br"
+            },
             "dados_lattes": null,
             "dados_scholar": null
         },
@@ -118520,10 +118606,10 @@
         {
             "nome": "ALEXANDRE KEPLER SOARES",
             "departamento": "DEPTO ENGENHARIA CIVIL E AMBIENTAL - BRASÍLIA",
-            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "foto_url": "https://arquivos.unb.br/arquivos/20260601495dbc40589172359a9907e0d/Foto-SIGAA.jpeg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1646016",
-            "descricao_pessoal": null,
-            "lattes_url": null,
+            "descricao_pessoal": "Possui graduação em Engenharia Civil pela Universidade Federal de Mato Grosso do Sul (2000), mestrado e doutorado em Engenharia Hidráulica e Saneamento pela Escola de Engenharia de São Carlos - EESC/USP (2003 e 2007), e pós-doutorado no Departamento de Hidráulica e Saneamento da Escola de Engenharia de São Carlos (EESC/USP) e no Instituto Superior Técnico da Universidade de Lisboa, Portugal. Tem experiência nas áreas de Engenharia Hidráulica e Recursos Hídricos, atuando principalmente em sistemas de distribuição de água, transientes hidráulicos, perdas em redes de distribuição de água e modelos para otimização. Foi professor na Universidade Federal de Mato Grosso (2008 a 2010) e na Universidade Federal de Goiás (2010 a 2018). Atuou como Superintendente de Recursos Hídricos e Secretário-Executivo do Conselho Estadual de Meio Ambiente, entre 2016 e 2018, no Estado de Goiás. Participou como membro titular ou suplente em colegiados de Comitês de Bacias Hidrográficas, Conselho Estadual de Recursos Hídricos de Goiás, Conselho Nacional de Recursos Hídricos e Conselho Nacional do Meio Ambiente. Desde 2018, é professor associado da Universidade de Brasília, onde ministra aulas para os cursos de Engenharia Ambiental e Sanitária e Engenharia Civil e para o Programa de Pós-Graduação em Tecnologia Ambiental e Recursos Hídricos. No biênio 2024-2025, foi presidente da Associação Brasileira de Recursos Hídricos (ABRHidro).",
+            "lattes_url": "http://lattes.cnpq.br/3620209642728740",
             "formacao_academica": {
                 "GRADUAÇÃO": [
                     "1996 - 2000: Engenharia Civil\nUniversidade Federal de Mato Grosso do Sul"
@@ -127013,7 +127099,7 @@
         {
             "nome": "JOSE WILSON DOS SANTOS FERREIRA",
             "departamento": "DEPTO ENGENHARIA CIVIL E AMBIENTAL - BRASÍLIA",
-            "foto_url": "https://arquivos.unb.br/arquivos/2024121001e4dd3028308ec86e179a6e8/3x4.jpeg",
+            "foto_url": "https://arquivos.unb.br/arquivos/2026094101cff241145704d0046f5ea5c/IMG_9648.JPEG",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1293542",
             "descricao_pessoal": "não informada",
             "lattes_url": "http://lattes.cnpq.br/2756173610233772",
@@ -151970,7 +152056,11 @@
                     "2002 - 2004: Pós-Doutorado\nUniversità degli Studi di Roma Tor Vergata"
                 ]
             },
-            "contatos": {},
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "5503",
+                "email": "giuseppe.vairo@unb.br"
+            },
             "dados_lattes": null,
             "dados_scholar": null
         },
@@ -160755,7 +160845,7 @@
             "departamento": "DEPTO ENGENHARIA ELETRICA - BRASÍLIA",
             "foto_url": "https://arquivos.unb.br/arquivos/20200952005fff2051064f37e2be62177/perfil_2020.png",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2131191",
-            "descricao_pessoal": "não informada",
+            "descricao_pessoal": "É professor associado do Departamento de Engenharia Elétrica da Faculdade de Tecnologia da Universidade de Brasília (UnB).",
             "lattes_url": "http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4418475P1",
             "formacao_academica": {
                 "GRADUAÇÃO": [
@@ -163387,6 +163477,9 @@
                 ],
                 "DOUTORADO": [
                     "2002 - 2006: Engenharia Elétrica\nUniversidade de Brasília"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2026 - : Pós-Doutorado\nUniversidad Complutense de Madrid"
                 ]
             },
             "contatos": {
@@ -166441,7 +166534,7 @@
         {
             "nome": "JOSE ONIRAM DE AQUINO LIMAVERDE FILHO",
             "departamento": "DEPTO ENGENHARIA ELETRICA - BRASÍLIA",
-            "foto_url": "https://arquivos.unb.br/arquivos/202423000898773272731411c4ac12a12/Perfil_V5.jpg",
+            "foto_url": "https://arquivos.unb.br/arquivos/20262211587f78389900211de68c38187/Perfil_V5.JPEG",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2387918",
             "descricao_pessoal": "não informada",
             "lattes_url": "http://lattes.cnpq.br/3528038175088341",
@@ -178153,10 +178246,10 @@
         {
             "nome": "DANIEL COSTA DE CARVALHO",
             "departamento": "DEPTO ENGENHARIA FLORESTAL - BRASÍLIA",
-            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "foto_url": "https://arquivos.unb.br/arquivos/202619113746e84057204cc93056ee1a6/Foto_perfil.jpeg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1032840",
-            "descricao_pessoal": null,
-            "lattes_url": null,
+            "descricao_pessoal": "não informada",
+            "lattes_url": "http://lattes.cnpq.br/6394423734483181",
             "formacao_academica": {
                 "GRADUAÇÃO": [
                     "2003 - 2008: Engenharia Florestal\nUniversidade Federal Rural do Rio de Janeiro"
@@ -183107,13 +183200,27 @@
         {
             "nome": "LI CHONG LEE BACELAR DE CASTRO",
             "departamento": "DEPTO ENGENHARIA CIVIL E AMBIENTAL - BRASÍLIA",
-            "foto_url": "https://arquivos.unb.br/arquivos/2025221168984e373797759c521624e01/lee.jpg",
+            "foto_url": "https://arquivos.unb.br/arquivos/20261760017ad13823550635a28b46d58/LEE.jpeg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1518834",
-            "descricao_pessoal": "não informada",
-            "lattes_url": null,
-            "formacao_academica": {},
+            "descricao_pessoal": "Técnico em Edificações pela Escola Técnica Federal do Rio Grande do Norte - ETFRN (1997), graduação em Engenharia Civil pela Universidade Federal do Rio Grande do Norte (2003), Mestrado (2005) e Doutorado (2009) em Estruturas e Construção Civil, ambos pela Universidade de Brasília - UnB. Tem experiência na área de Engenharia Civil, com ênfase em Estruturas e Construção Civil. Atua principalmente nos seguintes temas: Soluções inteligentes em projetos, Perícias, Reabilitação Estrutural, Estruturas especiais, Fundações e Contenções. Professor universitário desde 2003. Detém conhecimentos avançados nos softwares AutoCAD, CAD/TQS, CYPECAD, EBERICK, ROBOT STRUCTURAL ANALYSIS PROFESSIONAL, REVIT. Pesquisador nas áreas de Inteligência Artificial para Estruturas e Construção Civil com publicações em periódicos e congressos nacionais e internacionais. Já orientou vários trabalhos de conclusão de curso e de Especialização. Analista de Infraestrutura do Ministério da Gestão e Inovação com exercício descentralizado na Coordenação-Geral de Logística, Patrimônio e Engenharia da Controladoria-Geral da União.",
+            "lattes_url": "https://lattes.cnpq.br/5218106601309077",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1998 - 2003: Engenharia Civil\nUniversidade Federal do Rio Grande do Norte"
+                ],
+                "ESPECIALIZAÇÃO": [
+                    "2017 - 2018: Políticas de Infraestrutura\nEscola Nacional de Administração Pública",
+                    "2023 - 2023: Docência e Metodologias para o Ensino Superior\nInstituto de Pós-Graduação e Graduação"
+                ],
+                "MESTRADO": [
+                    "2003 - 2005: Estruturas e Construção Civil\nUniversidade de Brasília"
+                ],
+                "DOUTORADO": [
+                    "2005 - 2009: Estruturas e Construção Civil\nUniversidade de Brasília"
+                ]
+            },
             "contatos": {
-                "sala": "não informado",
+                "sala": "05",
                 "telefone": "5531",
                 "email": "li.castro@unb.br"
             },
@@ -183352,9 +183459,9 @@
                 ]
             },
             "contatos": {
-                "sala": "não informado",
+                "sala": "A1-30-7",
                 "telefone": "não informado",
-                "email": "não informado"
+                "email": "patricia.oliveira@unb.br"
             },
             "dados_lattes": null,
             "dados_scholar": null
@@ -183362,7 +183469,7 @@
         {
             "nome": "DEIVID RODRIGUES DO VALE",
             "departamento": "DEPARTAMENTO DE MATEMÁTICA - BRASÍLIA",
-            "foto_url": "https://arquivos.unb.br/arquivos/2026124031de40405326632b9faf211c3/Screenshot_2026-07-31_at_22.47.16.png",
+            "foto_url": "https://arquivos.unb.br/arquivos/2026156035b38b41149853037a050d035/servletrecuperafoto.gif",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=3548591",
             "descricao_pessoal": "Atualmente, sou professor assistente no Departamento de Matemática atuando na área de Teoria da Computação.\nPara mais informações visite minha página pessoal em https://deividrvale.github.io",
             "lattes_url": "http://lattes.cnpq.br/1003576625763513",
@@ -183411,6 +183518,121 @@
                 "sala": "não informado",
                 "telefone": "não informado",
                 "email": "não informado"
+            },
+            "dados_lattes": null,
+            "dados_scholar": null
+        },
+        {
+            "nome": "CARLOS ALEXANDER RECAREY MORFA",
+            "departamento": "FACULDADE DE TECNOLOGIA - BRASÍLIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1052124",
+            "descricao_pessoal": null,
+            "lattes_url": null,
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1987 - 1991: Ingeniería Civil\nUniversidad Central Marta Abreu de Las Villas"
+                ],
+                "DOUTORADO": [
+                    "1996 - 2000: Mecânica computacional e métodos numéricos na engenharia\nUniversidad Central Marta Abreu de Las Villas"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2002 - 2003: Pós-Doutorado\nCentro Inter. de Métodos Numéricos en Ingeniería"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "não informado",
+                "email": "carlosarecarey@gmail.com"
+            },
+            "dados_lattes": null,
+            "dados_scholar": null
+        },
+        {
+            "nome": "CAROLINA SANTOS BONFIM",
+            "departamento": "INSTITUTO DE QUÍMICA - BRASÍLIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1525720",
+            "descricao_pessoal": null,
+            "lattes_url": null,
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2008 - 2015: Química\nUniversidade Federal da Bahia",
+                    "2015 - 2018: Química\nUniversidade Federal da Bahia"
+                ],
+                "MESTRADO": [
+                    "2018 - 2020: Ensino, Filosofia e História das Ciências\nUniversidade Federal da Bahia"
+                ],
+                "DOUTORADO": [
+                    "2020 - 2025: EDUCAÇÃO EM CIÊNCIAS\nUniversidade de Brasília"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "não informado",
+                "email": "carol.sb88@gmail.com"
+            },
+            "dados_lattes": null,
+            "dados_scholar": null
+        },
+        {
+            "nome": "DANIEL ALVES DA SILVA",
+            "departamento": "DEPTO ENGENHARIA ELETRICA - BRASÍLIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202213809448b62501585a5bc32d870b3/daniel.jpeg",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1362495",
+            "descricao_pessoal": null,
+            "lattes_url": null,
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "1999 - 2002: Bacharelado em Sistemas de Informação\nFaculdade Alvorada"
+                ],
+                "ESPECIALIZAÇÃO": [
+                    "2004 - 2005: MBA em Gerencia de Projetos\nFaculdades Integradas Anglo-Americano"
+                ],
+                "MESTRADO": [
+                    "2012 - 2014: Engenharia Elétrica e de Redes\nUniversidade de Brasília"
+                ],
+                "DOUTORADO": [
+                    "2016 - 2021: ENGENHARIA ELÉTRICA\nUniversidade de Brasília"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2024 - 2025: Pós-Doutorado\nHamm-Lippstadt University of Applied Sciences"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "61995257887",
+                "email": "daniel.odf@gmail.com"
+            },
+            "dados_lattes": null,
+            "dados_scholar": null
+        },
+        {
+            "nome": "JOAO PEDRO CARVALHO SILVEIRA",
+            "departamento": "DEPTO ENGENHARIA ELETRICA - BRASÍLIA",
+            "foto_url": "https://arquivos.unb.br/arquivos/202614001229263948321572a30da91bd/COBEP4.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1915873",
+            "descricao_pessoal": "não informada",
+            "lattes_url": "http://lattes.cnpq.br/8544315639538097",
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2008 - 2013: Engenharia de Energia\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "2014 - 2016: ENGENHARIA ELÉTRICA\nUniversidade de Brasília"
+                ],
+                "DOUTORADO": [
+                    "2017 - 2022: Engenharia Elétrica\nUniversidade Estadual de Campinas"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2023 - 2026: Pós-Doutorado\nCentro de Estudos de PetrÃ³leo",
+                    "2022 - : Pós-Doutorado\nUniversidade Estadual de Campinas"
+                ]
+            },
+            "contatos": {
+                "sala": "BT 46/18",
+                "telefone": "31075510",
+                "email": "joao.silveira@unb.br"
             },
             "dados_lattes": null,
             "dados_scholar": null
