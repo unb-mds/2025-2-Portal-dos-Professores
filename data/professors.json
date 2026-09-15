@@ -58485,11 +58485,11 @@
             "departamento": "FACULDADE DE CIÊNCIA DA INFORMAÇÃO - BRASÍLIA",
             "foto_url": "https://arquivos.unb.br/arquivos/2026008245f7c039424379878ce61e6c3/img20260324155334585.jpg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1225384",
-            "descricao_pessoal": "não informada",
+            "descricao_pessoal": "Professora Associada e Pesquisadora da Faculdade de Ciência da Informação da Universidade de Brasília (UnB), com atuação no eixo de organização e representação da informação e do conhecimento, é também docente permanente no Programa de Pós-Graduação em Ciência da Informação da Universidade Federal de São Carlos (PPGCI/UFSCar) e no Programa de Pós-Graduação em Ciência da Informação da Universidade de Brasília (PPGCINF/UnB). Bolsista de Produtividade em Pesquisa do CNPq - Nível C.",
             "lattes_url": "http://lattes.cnpq.br/9896600626524397",
             "formacao_academica": {
                 "GRADUAÇÃO": [
-                    "2022 - : Ciência de Dados\nFUNDACAO UNIVERSIDADE VIRTUAL DO ESTADO DE SAO PAULO-UNIVESP",
+                    "2022 - 2026: Ciência de Dados\nFUNDACAO UNIVERSIDADE VIRTUAL DO ESTADO DE SAO PAULO-UNIVESP",
                     "2007 - 2010: Biblioteconomia\nUniversidade Estadual Paulista Júlio de Mesquita Filho",
                     "2022 - 2025: Bacharelado em Tecnologia da Informação (ênfase em análise de dados)\nFUNDACAO UNIVERSIDADE VIRTUAL DO ESTADO DE SAO PAULO-UNIVESP"
                 ],
@@ -67875,6 +67875,9 @@
                 ],
                 "DOUTORADO": [
                     "2017 - 2021: Artes\nUniversidade de Brasília"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2026 - : Pós-Doutorado\nUniversidade de São Paulo"
                 ]
             },
             "contatos": {
@@ -71922,7 +71925,7 @@
             }
         },
         {
-            "nome": "SHIRLEY CARVALHÊDO FRANCO",
+            "nome": "SHIRLEY CARVALHEDO FRANCO",
             "departamento": "FACULDADE DE CIÊNCIA DA INFORMAÇÃO - BRASÍLIA",
             "foto_url": "https://arquivos.unb.br/arquivos/2022054091c3d32361552379617414d0c/FAB15B3D-B4AC-4093-AA11-D09F16278A8F.png",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2343982",
@@ -88576,8 +88579,27 @@
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1316209",
             "descricao_pessoal": "Tem experiência na área de Física Quântica, atuando principalmente nos seguintes temas: Emaranhamento, Não-Classicalidade e Fundamentos de Física Quântica. Recentemente atua em propostas de implementações físicas de portas lógicas quânticas, estados emaranhados e medições, além de esquemas de interferometria quântica.",
             "lattes_url": "http://lattes.cnpq.br/4382609252542284",
-            "formacao_academica": {},
-            "contatos": {},
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2002 - 2006: Bacharelado em Matemática\nUniversidade Estadual de Campinas",
+                    "2002 - 2007: Bacharelado em Física\nUniversidade Estadual de Campinas"
+                ],
+                "MESTRADO": [
+                    "2007 - 2009: Física\nUniversidade Estadual de Campinas"
+                ],
+                "DOUTORADO": [
+                    "2009 - 2013: Física\nUniversidade Estadual de Campinas"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2015 - 2016: Pós-Doutorado\nUniversidade Federal de Goiás",
+                    "2013 - 2015: Pós-Doutorado\nUniversitat Siegen"
+                ]
+            },
+            "contatos": {
+                "sala": "A1-06/4",
+                "telefone": "7700",
+                "email": "frank.steinhoff@unb.br"
+            },
             "dados_lattes": {
                 "resumo_cv": null,
                 "atuacao_profissional": [
@@ -124912,7 +124934,7 @@
             "foto_url": "https://arquivos.unb.br/arquivos/202414006813dc3093376a846d1c5ae88/shareImage_1614173916_4.jpeg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1335816",
             "descricao_pessoal": "não informada",
-            "lattes_url": null,
+            "lattes_url": "http://lattes.cnpq.br/1134301014530617",
             "formacao_academica": {
                 "GRADUAÇÃO": [
                     "1995 - 2001: Environmental Engineering\nUniversidad de Santiago de Chile"
@@ -124930,7 +124952,7 @@
             "contatos": {
                 "sala": "não informado",
                 "telefone": "0989",
-                "email": "pineda@unb.br"
+                "email": "não informado"
             },
             "dados_lattes": null,
             "dados_scholar": null
@@ -183392,7 +183414,7 @@
                     "2010 - 2012: Física\nUniversidade de Brasília"
                 ],
                 "DOUTORADO": [
-                    "2012 - 2015: Física\nNorwegian University of Science and Technology"
+                    "2012 - 2016: Física\nNorwegian University of Science and Technology"
                 ],
                 "PÓS-DOUTORADO": [
                     "2024 - 2026: Pós-Doutorado\nLawrence Berkeley National Laboratory",
