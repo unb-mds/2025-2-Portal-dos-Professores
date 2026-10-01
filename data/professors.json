@@ -40244,8 +40244,8 @@
             "departamento": "DEPTO CIÊNCIAS DA COMPUTAÇÃO - BRASÍLIA",
             "foto_url": "https://arquivos.unb.br/arquivos/20201870984eb320452967a3c36119a26/small_me.jpg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1613634",
-            "descricao_pessoal": "não informada",
-            "lattes_url": null,
+            "descricao_pessoal": "Sou professor adjunto do departamento de Ciência da Computação da Universidade de Brasília (UnB), Brasília, DF, Brasil (2019). Anteriormente, fui coordenador de P&D do Departamento CTIC da Rede Nacional de Pesquisas (RNP), Brasília, DF, Brasil (2017~2019).",
+            "lattes_url": "http://lattes.cnpq.br/3793781874827385",
             "formacao_academica": {
                 "GRADUAÇÃO": [
                     "2006 - 2010: Ciência da Computação\nUniversidade Federal de Itajubá"
@@ -51933,7 +51933,8 @@
                     "2013 - 2017: MATEMÁTICA - UFPA - UFAM\nUniversidade Federal do Pará"
                 ],
                 "PÓS-DOUTORADO": [
-                    "2018 - : Pós-Doutorado\nUniversidade Federal do Espírito Santo"
+                    "2018 - : Pós-Doutorado\nUniversidade Federal do Espírito Santo",
+                    "2026 - : Pós-Doutorado\nUniversidade de Sevilha"
                 ]
             },
             "contatos": {
@@ -52107,7 +52108,7 @@
         {
             "nome": "NILTON MOURA BARROSO NETO",
             "departamento": "DEPARTAMENTO DE MATEMÁTICA - BRASÍLIA",
-            "foto_url": "https://arquivos.unb.br/arquivos/2023187021ccb327012132fd7520574e6/nilton_3x4.png",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1858991",
             "descricao_pessoal": "não informada",
             "lattes_url": null,
@@ -58485,7 +58486,7 @@
             "departamento": "FACULDADE DE CIÊNCIA DA INFORMAÇÃO - BRASÍLIA",
             "foto_url": "https://arquivos.unb.br/arquivos/2026008245f7c039424379878ce61e6c3/img20260324155334585.jpg",
             "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1225384",
-            "descricao_pessoal": "Professora Associada e Pesquisadora da Faculdade de Ciência da Informação da Universidade de Brasília (UnB), com atuação no eixo de organização e representação da informação e do conhecimento, é também docente permanente no Programa de Pós-Graduação em Ciência da Informação da Universidade Federal de São Carlos (PPGCI/UFSCar) e no Programa de Pós-Graduação em Ciência da Informação da Universidade de Brasília (PPGCINF/UnB). Bolsista de Produtividade em Pesquisa do CNPq - Nível C.",
+            "descricao_pessoal": "Professora Associada da Faculdade de Ciência da Informação da Universidade de Brasília (UnB), atua nas áreas de organização e representação da informação e do conhecimento. É docente permanente dos Programas de Pós-Graduação em Ciência da Informação da UnB e da UFSCar e bolsista de Produtividade em Pesquisa do CNPq – Nível C.",
             "lattes_url": "http://lattes.cnpq.br/9896600626524397",
             "formacao_academica": {
                 "GRADUAÇÃO": [
@@ -152533,7 +152534,7 @@
                     "2024 - 2024: Inteligência Artificial e Aprendizado de Máquina\nPontifícia Universidade Católica de Minas Gerais"
                 ],
                 "MESTRADO": [
-                    "2006 - 2008: Economia\nUniversidade de Brasília"
+                    "2005 - 2007: Economia\nUniversidade de Brasília"
                 ],
                 "DOUTORADO": [
                     "2008 - 2011: Economia\nUniversidade de Brasília",
@@ -183559,7 +183560,8 @@
                     "1996 - 2000: Mecânica computacional e métodos numéricos na engenharia\nUniversidad Central Marta Abreu de Las Villas"
                 ],
                 "PÓS-DOUTORADO": [
-                    "2002 - 2003: Pós-Doutorado\nCentro Inter. de Métodos Numéricos en Ingeniería"
+                    "2002 - 2003: Pós-Doutorado\nCentro Inter. de Métodos Numéricos en Ingeniería",
+                    "2026 - : Pós-Doutorado\nUniversidade de Brasília"
                 ]
             },
             "contatos": {
@@ -183655,6 +183657,37 @@
                 "sala": "BT 46/18",
                 "telefone": "31075510",
                 "email": "joao.silveira@unb.br"
+            },
+            "dados_lattes": null,
+            "dados_scholar": null
+        },
+        {
+            "nome": "MARCIO SAMPAIO GOMES FILHO",
+            "departamento": "INSTITUTO DE FÍSICA - BRASÍLIA",
+            "foto_url": "https://sigaa.unb.br/sigaa/img/no_picture.png",
+            "pagina_sigaa_url": "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1389743",
+            "descricao_pessoal": null,
+            "lattes_url": null,
+            "formacao_academica": {
+                "GRADUAÇÃO": [
+                    "2021 - 2022: Licenciatura em Física\nFaculdade Única de Ipatinga",
+                    "2010 - 2013: Ciências Naturais\nUniversidade de Brasília"
+                ],
+                "MESTRADO": [
+                    "2014 - 2016: Engenharia da Nanotecnologia\nUniversidade Federal do Rio de Janeiro"
+                ],
+                "DOUTORADO": [
+                    "2016 - 2020: Física\nUniversidade de Brasília"
+                ],
+                "PÓS-DOUTORADO": [
+                    "2020 - 2023: Pós-Doutorado\nUniversidade Federal do ABC",
+                    "2023 - : Pós-Doutorado\nUniversidade Estadual Paulista Júlio de Mesquita Filho"
+                ]
+            },
+            "contatos": {
+                "sala": "não informado",
+                "telefone": "61982840111",
+                "email": "marcio.filho@unb.br"
             },
             "dados_lattes": null,
             "dados_scholar": null
